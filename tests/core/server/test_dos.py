@@ -5,17 +5,17 @@ import logging
 import pytest
 from aiohttp import ClientSession, ClientTimeout, ServerDisconnectedError, WSCloseCode, WSMessage, WSMsgType
 
-from taco.full_node.full_node_api import FullNodeAPI
-from taco.protocols import full_node_protocol
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.protocols.shared_protocol import Handshake
-from taco.server.outbound_message import make_msg, Message
-from taco.server.rate_limits import RateLimiter
-from taco.server.server import ssl_context_for_client
-from taco.server.ws_connection import WSTacoConnection
-from taco.types.peer_info import PeerInfo
-from taco.util.ints import uint16, uint64
-from taco.util.errors import Err
+from btchia.full_node.full_node_api import FullNodeAPI
+from btchia.protocols import full_node_protocol
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.protocols.shared_protocol import Handshake
+from btchia.server.outbound_message import make_msg, Message
+from btchia.server.rate_limits import RateLimiter
+from btchia.server.server import ssl_context_for_client
+from btchia.server.ws_connection import WSBTChiaConnection
+from btchia.types.peer_info import PeerInfo
+from btchia.util.ints import uint16, uint64
+from btchia.util.errors import Err
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 
@@ -62,7 +62,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.taco_ca_crt_path, server_2.taco_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.btchia_ca_crt_path, server_2.btchia_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -111,7 +111,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.taco_ca_crt_path, server_2.taco_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.btchia_ca_crt_path, server_2.btchia_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -157,7 +157,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.taco_ca_crt_path, server_2.taco_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.btchia_ca_crt_path, server_2.btchia_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -188,8 +188,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSTacoConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSTacoConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSBTChiaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSBTChiaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -241,8 +241,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSTacoConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSTacoConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSBTChiaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSBTChiaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -290,8 +290,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSTacoConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSTacoConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSBTChiaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSBTChiaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"

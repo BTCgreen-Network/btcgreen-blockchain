@@ -1,6 +1,6 @@
 import pytest
 
-from taco.wallet.chialisp import (
+from btchia.wallet.chialisp import (
     apply,
     args,
     cons,

@@ -2,25 +2,25 @@
 import asyncio
 import time
 import pytest
-from taco.simulator.simulator_protocol import FarmNewBlockProtocol
-from taco.types.peer_info import PeerInfo
-from taco.util.ints import uint16, uint32, uint64
+from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
+from btchia.types.peer_info import PeerInfo
+from btchia.util.ints import uint16, uint32, uint64
 from tests.setup_nodes import setup_simulators_and_wallets
-from taco.wallet.did_wallet.did_wallet import DIDWallet
-from taco.wallet.did_wallet import did_wallet_puzzles
+from btchia.wallet.did_wallet.did_wallet import DIDWallet
+from btchia.wallet.did_wallet import did_wallet_puzzles
 from clvm_tools import binutils
-from taco.types.blockchain_format.program import Program
-from taco.wallet.derivation_record import DerivationRecord
-from taco.types.coin_solution import CoinSolution
+from btchia.types.blockchain_format.program import Program
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.types.coin_solution import CoinSolution
 from blspy import AugSchemeMPL
-from taco.types.spend_bundle import SpendBundle
-from taco.wallet.transaction_record import TransactionRecord
-from taco.wallet.derive_keys import master_sk_to_wallet_sk
-from taco.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+from btchia.types.spend_bundle import SpendBundle
+from btchia.wallet.transaction_record import TransactionRecord
+from btchia.wallet.derive_keys import master_sk_to_wallet_sk
+from btchia.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
 from tests.time_out_assert import time_out_assert
 from secrets import token_bytes
-from taco.wallet.util.transaction_type import TransactionType
-from taco.consensus.default_constants import DEFAULT_CONSTANTS
+from btchia.wallet.util.transaction_type import TransactionType
+from btchia.consensus.default_constants import DEFAULT_CONSTANTS
 
 
 @pytest.fixture(scope="module")

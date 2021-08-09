@@ -2,7 +2,7 @@ import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import FarmCard from '../../farm/card/FarmCard';
-import { FormatLargeNumber } from '@taco/core';
+import { FormatLargeNumber } from '@btchia/core';
 import type { RootState } from '../../../modules/rootReducer';
 
 export default function FullNodeCardDifficulty() {

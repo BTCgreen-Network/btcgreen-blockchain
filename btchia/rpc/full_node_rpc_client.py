@@ -1,24 +1,24 @@
 from typing import Dict, List, Optional, Tuple, Any
 
-from taco.consensus.block_record import BlockRecord
-from taco.full_node.signage_point import SignagePoint
-from taco.rpc.rpc_client import RpcClient
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_record import CoinRecord
-from taco.types.coin_solution import CoinSolution
-from taco.types.end_of_slot_bundle import EndOfSubSlotBundle
-from taco.types.full_block import FullBlock
-from taco.types.spend_bundle import SpendBundle
-from taco.types.unfinished_header_block import UnfinishedHeaderBlock
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.ints import uint32, uint64
+from btchia.consensus.block_record import BlockRecord
+from btchia.full_node.signage_point import SignagePoint
+from btchia.rpc.rpc_client import RpcClient
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_record import CoinRecord
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btchia.types.full_block import FullBlock
+from btchia.types.spend_bundle import SpendBundle
+from btchia.types.unfinished_header_block import UnfinishedHeaderBlock
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.ints import uint32, uint64
 
 
 class FullNodeRpcClient(RpcClient):
     """
-    Client to Taco RPC, connects to a local full node. Uses HTTP/JSON, and converts back from
+    Client to BTChia RPC, connects to a local full node. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run Taco's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run BTChia's
     protocol on top of TCP), it's a separate protocol on top of HTTP thats provides easy access
     to the full node.
     """

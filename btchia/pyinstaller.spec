@@ -9,15 +9,15 @@ from PyInstaller.utils.hooks import collect_submodules, copy_metadata
 
 THIS_IS_WINDOWS = platform.system().lower().startswith("win")
 
-ROOT = pathlib.Path(importlib.import_module("taco").__file__).absolute().parent.parent
+ROOT = pathlib.Path(importlib.import_module("btchia").__file__).absolute().parent.parent
 
 
 def solve_name_collision_problem(analysis):
     """
-    There is a collision between the `taco` file name (which is the executable)
-    and the `taco` directory, which contains non-code resources like `english.txt`.
+    There is a collision between the `btchia` file name (which is the executable)
+    and the `btchia` directory, which contains non-code resources like `english.txt`.
     We move all the resources in the zipped area so there is no
-    need to create the `taco` directory, since the names collide.
+    need to create the `btchia` directory, since the names collide.
 
     Fetching data now requires going into a zip file, so it will be slower.
     It's best if files that are used frequently are cached.
@@ -31,7 +31,7 @@ def solve_name_collision_problem(analysis):
     zipped = []
     datas = []
     for data in analysis.datas:
-        if str(data[0]).startswith("taco/"):
+        if str(data[0]).startswith("btchia/"):
             zipped.append(data)
         else:
             datas.append(data)
@@ -48,7 +48,7 @@ keyring_imports = collect_submodules("keyring.backends")
 # keyring uses entrypoints to read keyring.backends from metadata file entry_points.txt.
 keyring_datas = copy_metadata("keyring")[0]
 
-version_data = copy_metadata(get_distribution("taco-blockchain"))[0]
+version_data = copy_metadata(get_distribution("btchia-blockchain"))[0]
 
 block_cipher = None
 
@@ -61,9 +61,9 @@ SERVERS = [
     "timelord",
 ]
 
-# TODO: collapse all these entry points into one `taco_exec` entrypoint that accepts the server as a parameter
+# TODO: collapse all these entry points into one `btchia_exec` entrypoint that accepts the server as a parameter
 
-entry_points = ["taco.cmds.taco"] + [f"taco.server.start_{s}" for s in SERVERS]
+entry_points = ["btchia.cmds.btchia"] + [f"btchia.server.start_{s}" for s in SERVERS]
 
 hiddenimports = []
 hiddenimports.extend(entry_points)
@@ -77,10 +77,10 @@ if THIS_IS_WINDOWS:
 
 # this probably isn't necessary
 if THIS_IS_WINDOWS:
-    entry_points.extend(["aiohttp", "taco.util.bip39"])
+    entry_points.extend(["aiohttp", "btchia.util.bip39"])
 
 if THIS_IS_WINDOWS:
-    taco_mod = importlib.import_module("taco")
+    btchia_mod = importlib.import_module("btchia")
     dll_paths = ROOT / "*.dll"
 
     binaries = [
@@ -101,10 +101,10 @@ if THIS_IS_WINDOWS:
 
 datas = []
 
-datas.append((f"{ROOT}/taco/util/english.txt", "taco/util"))
-datas.append((f"{ROOT}/taco/util/initial-config.yaml", "taco/util"))
-datas.append((f"{ROOT}/taco/wallet/puzzles/*.hex", "taco/wallet/puzzles"))
-datas.append((f"{ROOT}/taco/ssl/*", "taco/ssl"))
+datas.append((f"{ROOT}/btchia/util/english.txt", "btchia/util"))
+datas.append((f"{ROOT}/btchia/util/initial-config.yaml", "btchia/util"))
+datas.append((f"{ROOT}/btchia/wallet/puzzles/*.hex", "btchia/wallet/puzzles"))
+datas.append((f"{ROOT}/btchia/ssl/*", "btchia/ssl"))
 datas.append((f"{ROOT}/mozilla-ca/*", "mozilla-ca"))
 datas.append(version_data)
 
@@ -154,11 +154,11 @@ def add_binary(name, path_to_script, collect_args):
 
 COLLECT_ARGS = []
 
-add_binary("taco", f"{ROOT}/taco/cmds/taco.py", COLLECT_ARGS)
-add_binary("daemon", f"{ROOT}/taco/daemon/server.py", COLLECT_ARGS)
+add_binary("btchia", f"{ROOT}/btchia/cmds/btchia.py", COLLECT_ARGS)
+add_binary("daemon", f"{ROOT}/btchia/daemon/server.py", COLLECT_ARGS)
 
 for server in SERVERS:
-    add_binary(f"start_{server}", f"{ROOT}/taco/server/start_{server}.py", COLLECT_ARGS)
+    add_binary(f"start_{server}", f"{ROOT}/btchia/server/start_{server}.py", COLLECT_ARGS)
 
 COLLECT_KWARGS = dict(
     strip=False,

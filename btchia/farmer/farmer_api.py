@@ -5,23 +5,23 @@ from typing import Callable, Optional, List, Any, Dict
 import aiohttp
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-import taco.server.ws_connection as ws
-from taco.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from taco.farmer.farmer import Farmer
-from taco.protocols import farmer_protocol, harvester_protocol
-from taco.protocols.harvester_protocol import PoolDifficulty
-from taco.protocols.pool_protocol import (
+import btchia.server.ws_connection as ws
+from btchia.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from btchia.farmer.farmer import Farmer
+from btchia.protocols import farmer_protocol, harvester_protocol
+from btchia.protocols.harvester_protocol import PoolDifficulty
+from btchia.protocols.pool_protocol import (
     get_current_authentication_token,
     PoolErrorCode,
     PostPartialRequest,
     PostPartialPayload,
 )
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.server.outbound_message import NodeType, make_msg
-from taco.types.blockchain_format.pool_target import PoolTarget
-from taco.types.blockchain_format.proof_of_space import ProofOfSpace
-from taco.util.api_decorators import api_request, peer_required
-from taco.util.ints import uint32, uint64
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.server.outbound_message import NodeType, make_msg
+from btchia.types.blockchain_format.pool_target import PoolTarget
+from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
+from btchia.util.api_decorators import api_request, peer_required
+from btchia.util.ints import uint32, uint64
 
 
 class FarmerAPI:
@@ -36,7 +36,7 @@ class FarmerAPI:
     @api_request
     @peer_required
     async def new_proof_of_space(
-        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSTacoConnection
+        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSBTChiaConnection
     ):
         """
         This is a response from the harvester, for a NewChallenge. Here we check if the proof

@@ -6,28 +6,28 @@ from typing import Dict, Optional, List, Any, Set, Tuple, Union
 
 from blspy import AugSchemeMPL, G1Element
 from secrets import token_bytes
-from taco.protocols import wallet_protocol
-from taco.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
-from taco.server.outbound_message import NodeType
-from taco.types.blockchain_format.coin import Coin
-from taco.types.coin_solution import CoinSolution
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.program import Program
-from taco.types.spend_bundle import SpendBundle
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.wallet.util.transaction_type import TransactionType
-from taco.util.ints import uint64, uint32, uint8
+from btchia.protocols import wallet_protocol
+from btchia.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
+from btchia.server.outbound_message import NodeType
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.program import Program
+from btchia.types.spend_bundle import SpendBundle
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.wallet.util.transaction_type import TransactionType
+from btchia.util.ints import uint64, uint32, uint8
 
-from taco.wallet.did_wallet.did_info import DIDInfo
-from taco.wallet.lineage_proof import LineageProof
-from taco.wallet.transaction_record import TransactionRecord
-from taco.wallet.util.wallet_types import WalletType
-from taco.wallet.wallet import Wallet
-from taco.wallet.wallet_coin_record import WalletCoinRecord
-from taco.wallet.wallet_info import WalletInfo
-from taco.wallet.derivation_record import DerivationRecord
-from taco.wallet.did_wallet import did_wallet_puzzles
-from taco.wallet.derive_keys import master_sk_to_wallet_sk
+from btchia.wallet.did_wallet.did_info import DIDInfo
+from btchia.wallet.lineage_proof import LineageProof
+from btchia.wallet.transaction_record import TransactionRecord
+from btchia.wallet.util.wallet_types import WalletType
+from btchia.wallet.wallet import Wallet
+from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btchia.wallet.wallet_info import WalletInfo
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.wallet.did_wallet import did_wallet_puzzles
+from btchia.wallet.derive_keys import master_sk_to_wallet_sk
 
 
 class DIDWallet:

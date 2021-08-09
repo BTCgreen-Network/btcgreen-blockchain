@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { AlertDialog } from '@taco/core';
+import { AlertDialog } from '@btchia/core';
 import type { RootState } from './rootReducer';
 import getDescriptiveError from '../util/getDescriptiveError';
 

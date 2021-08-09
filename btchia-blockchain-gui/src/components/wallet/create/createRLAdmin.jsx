@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { AlertDialog } from '@taco/core';
+import { AlertDialog } from '@btchia/core';
 import {
   Typography,
   Button,
@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { taco_to_mojo } from '../../../util/taco';
+import { btchia_to_mojo } from '../../../util/btchia';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -76,7 +76,7 @@ export const CreateRLAdminWallet = () => {
   const custom = customStyles();
   const dispatch = useDispatch();
   let interval_input = null;
-  let tacoper_input = null;
+  let btchiaper_input = null;
   let userpubkey_input = null;
   let amount_input = null;
   let fee_input = null;
@@ -104,10 +104,10 @@ export const CreateRLAdminWallet = () => {
       return;
     }
     if (
-      tacoper_input.value === '' ||
-      Number(tacoper_input.value) === 0 ||
-      !Number(tacoper_input.value) ||
-      isNaN(Number(tacoper_input.value))
+      btchiaper_input.value === '' ||
+      Number(btchiaper_input.value) === 0 ||
+      !Number(btchiaper_input.value) ||
+      isNaN(Number(btchiaper_input.value))
     ) {
       dispatch(
         openDialog(
@@ -156,18 +156,18 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const tacoper = taco_to_mojo(tacoper_input.value);
-    const tacoper_value = Number.parseInt(Number(tacoper));
+    const btchiaper = btchia_to_mojo(btchiaper_input.value);
+    const btchiaper_value = Number.parseInt(Number(btchiaper));
     const userpubkey = userpubkey_input.value;
-    const amount = taco_to_mojo(amount_input.value);
+    const amount = btchia_to_mojo(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = taco_to_mojo(fee_input.value);
+    // var fee = btchia_to_mojo(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(
       create_rl_admin_action(
         interval_value,
-        tacoper_value,
+        btchiaper_value,
         userpubkey,
         amount_value,
       ),
@@ -225,7 +225,7 @@ export const CreateRLAdminWallet = () => {
               color="secondary"
               fullWidth
               inputRef={(input) => {
-                tacoper_input = input;
+                btchiaper_input = input;
               }}
               label={<Trans>Spendable Amount</Trans>}
             />

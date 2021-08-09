@@ -1,15 +1,15 @@
 from pytest import raises
 
-from taco.consensus.default_constants import DEFAULT_CONSTANTS
-from taco.consensus.pos_quality import _expected_plot_size
-from taco.consensus.pot_iterations import (
+from btchia.consensus.default_constants import DEFAULT_CONSTANTS
+from btchia.consensus.pos_quality import _expected_plot_size
+from btchia.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_iters,
     is_overflow_block,
 )
-from taco.util.hash import std_hash
-from taco.util.ints import uint8, uint64
+from btchia.util.hash import std_hash
+from btchia.util.ints import uint8, uint64
 
 test_constants = DEFAULT_CONSTANTS.replace(**{"NUM_SPS_SUB_SLOT": 32, "SUB_SLOT_TIME_TARGET": 300})
 

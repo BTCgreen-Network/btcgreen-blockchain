@@ -2,8 +2,8 @@ from typing import List, Tuple, Optional
 
 import aiosqlite
 
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.db_wrapper import DBWrapper
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.db_wrapper import DBWrapper
 
 
 class WalletInterestedStore:

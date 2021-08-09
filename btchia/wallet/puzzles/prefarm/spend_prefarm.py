@@ -3,17 +3,17 @@ import asyncio
 from blspy import G2Element
 from clvm_tools import binutils
 
-from taco.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from taco.rpc.full_node_rpc_client import FullNodeRpcClient
-from taco.types.blockchain_format.program import Program
-from taco.types.coin_solution import CoinSolution
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.spend_bundle import SpendBundle
-from taco.util.bech32m import decode_puzzle_hash
-from taco.util.condition_tools import parse_sexp_to_conditions
-from taco.util.config import load_config
-from taco.util.default_root import DEFAULT_ROOT_PATH
-from taco.util.ints import uint32, uint16
+from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
+from btchia.types.blockchain_format.program import Program
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.bech32m import decode_puzzle_hash
+from btchia.util.condition_tools import parse_sexp_to_conditions
+from btchia.util.config import load_config
+from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btchia.util.ints import uint32, uint16
 
 
 def print_conditions(spend_bundle: SpendBundle):
@@ -45,8 +45,8 @@ async def main() -> None:
         print(farmer_prefarm.amount, farmer_amounts)
         assert farmer_amounts == farmer_prefarm.amount // 2
         assert pool_amounts == pool_prefarm.amount // 2
-        address1 = "xtx1rdatypul5c642jkeh4yp933zu3hw8vv8tfup8ta6zfampnyhjnusxdgns6"  # Key 1
-        address2 = "xtx1duvy5ur5eyj7lp5geetfg84cj2d7xgpxt7pya3lr2y6ke3696w9qvda66e"  # Key 2
+        address1 = "xbtc1rdatypul5c642jkeh4yp933zu3hw8vv8tfup8ta6zfampnyhjnusxdgns6"  # Key 1
+        address2 = "xbtc1duvy5ur5eyj7lp5geetfg84cj2d7xgpxt7pya3lr2y6ke3696w9qvda66e"  # Key 2
 
         ph1 = decode_puzzle_hash(address1)
         ph2 = decode_puzzle_hash(address2)

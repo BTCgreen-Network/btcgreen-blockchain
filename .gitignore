@@ -25,7 +25,7 @@ config/keys.yaml
 config/plots.yaml
 
 # Bundled code
-taco-blockchain.tar.gz.tar.gz
+btchia-blockchain.tar.gz.tar.gz
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -66,7 +66,7 @@ activate
 .idea
 
 # Packaging
-taco-blockchain.tar.gz
+btchia-blockchain.tar.gz
 
 # Timelord utilities
 vdf_bench
@@ -88,13 +88,13 @@ main.sym
 *.recompiled
 
 # Dev config react
-# taco-blockchain-gui/src/dev_config.js
+# btchia-blockchain-gui/src/dev_config.js
 # React built app
-taco-blockchain-gui/.eslintcache
-taco-blockchain-gui/build
+btchia-blockchain-gui/.eslintcache
+btchia-blockchain-gui/build
 build_scripts/dist
 build_scripts/*.Dmg
-taco-blockchain-gui/src/locales/_build
+btchia-blockchain-gui/src/locales/_build
 build_scripts\win_build
 build_scripts/win_build
 win_code_sign_cert.p12

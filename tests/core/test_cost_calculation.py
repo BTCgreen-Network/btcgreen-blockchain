@@ -6,13 +6,13 @@ import time
 import pytest
 from clvm_tools import binutils
 
-from taco.consensus.condition_costs import ConditionCost
-from taco.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from taco.full_node.bundle_tools import simple_solution_generator
-from taco.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
-from taco.types.blockchain_format.program import Program, SerializedProgram
-from taco.types.generator_types import BlockGenerator
-from taco.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
+from btchia.consensus.condition_costs import ConditionCost
+from btchia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from btchia.full_node.bundle_tools import simple_solution_generator
+from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
+from btchia.types.blockchain_format.program import Program, SerializedProgram
+from btchia.types.generator_types import BlockGenerator
+from btchia.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
 from tests.setup_nodes import bt, test_constants
 
 from .make_block_generator import make_block_generator
@@ -46,7 +46,7 @@ def large_block_generator(size):
     except FileNotFoundError:
         generator = make_block_generator(size)
         blob = bytes(generator.program)
-        #  TODO: Re-enable large-block*.hex but cache in ~/.taco/subdir
+        #  TODO: Re-enable large-block*.hex but cache in ~/.btchia/subdir
         #  with open(hex_path, "w") as f:
         #      f.write(blob.hex())
         return blob

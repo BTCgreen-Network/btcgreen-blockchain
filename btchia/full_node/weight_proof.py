@@ -6,27 +6,27 @@ import random
 from concurrent.futures.process import ProcessPoolExecutor
 from typing import Dict, List, Optional, Tuple
 
-from taco.consensus.block_header_validation import validate_finished_header_block
-from taco.consensus.block_record import BlockRecord
-from taco.consensus.blockchain_interface import BlockchainInterface
-from taco.consensus.constants import ConsensusConstants
-from taco.consensus.deficit import calculate_deficit
-from taco.consensus.full_block_to_block_record import header_block_to_sub_block_record
-from taco.consensus.pot_iterations import (
+from btchia.consensus.block_header_validation import validate_finished_header_block
+from btchia.consensus.block_record import BlockRecord
+from btchia.consensus.blockchain_interface import BlockchainInterface
+from btchia.consensus.constants import ConsensusConstants
+from btchia.consensus.deficit import calculate_deficit
+from btchia.consensus.full_block_to_block_record import header_block_to_sub_block_record
+from btchia.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_iters,
     is_overflow_block,
 )
-from taco.consensus.vdf_info_computation import get_signage_point_vdf_info
-from taco.types.blockchain_format.classgroup import ClassgroupElement
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot
-from taco.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from taco.types.blockchain_format.vdf import VDFInfo
-from taco.types.end_of_slot_bundle import EndOfSubSlotBundle
-from taco.types.header_block import HeaderBlock
-from taco.types.weight_proof import (
+from btchia.consensus.vdf_info_computation import get_signage_point_vdf_info
+from btchia.types.blockchain_format.classgroup import ClassgroupElement
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot
+from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btchia.types.blockchain_format.vdf import VDFInfo
+from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btchia.types.header_block import HeaderBlock
+from btchia.types.weight_proof import (
     SubEpochChallengeSegment,
     SubEpochData,
     SubSlotData,
@@ -34,10 +34,10 @@ from taco.types.weight_proof import (
     SubEpochSegments,
     RecentChainData,
 )
-from taco.util.block_cache import BlockCache
-from taco.util.hash import std_hash
-from taco.util.ints import uint8, uint32, uint64, uint128
-from taco.util.streamable import dataclass_from_dict, recurse_jsonify
+from btchia.util.block_cache import BlockCache
+from btchia.util.hash import std_hash
+from btchia.util.ints import uint8, uint32, uint64, uint128
+from btchia.util.streamable import dataclass_from_dict, recurse_jsonify
 
 log = logging.getLogger(__name__)
 

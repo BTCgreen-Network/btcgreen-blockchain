@@ -5,16 +5,16 @@ from typing import List, Tuple
 from blspy import G2Element
 from clvm_tools import binutils
 
-from taco.types.blockchain_format.program import Program, INFINITE_COST
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.spend_bundle import SpendBundle
-from taco.util.condition_tools import ConditionOpcode
+from btchia.types.blockchain_format.program import Program, INFINITE_COST
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.condition_tools import ConditionOpcode
 
-from taco.util.ints import uint64
-from taco.wallet.puzzles.load_clvm import load_clvm
+from btchia.util.ints import uint64
+from btchia.wallet.puzzles.load_clvm import load_clvm
 
 from tests.core.full_node.test_conditions import bt, check_spend_bundle_validity, initial_blocks
 

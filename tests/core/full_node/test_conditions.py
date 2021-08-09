@@ -14,18 +14,18 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from taco.consensus.blockchain import ReceiveBlockResult
-from taco.consensus.constants import ConsensusConstants
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.program import Program
-from taco.types.coin_record import CoinRecord
-from taco.types.coin_solution import CoinSolution
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.full_block import FullBlock
-from taco.types.spend_bundle import SpendBundle
+from btchia.consensus.blockchain import ReceiveBlockResult
+from btchia.consensus.constants import ConsensusConstants
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.program import Program
+from btchia.types.coin_record import CoinRecord
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.full_block import FullBlock
+from btchia.types.spend_bundle import SpendBundle
 from tests.block_tools import BlockTools, test_constants
-from taco.util.errors import Err
-from taco.util.ints import uint32
+from btchia.util.errors import Err
+from btchia.util.ints import uint32
 
 from .ram_db import create_ram_blockchain
 

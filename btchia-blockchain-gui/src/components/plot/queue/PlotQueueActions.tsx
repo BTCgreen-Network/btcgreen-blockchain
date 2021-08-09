@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useDispatch } from 'react-redux';
-import { ConfirmDialog, More } from '@taco/core';
+import { ConfirmDialog, More } from '@btchia/core';
 import {
   Box,
   Divider,

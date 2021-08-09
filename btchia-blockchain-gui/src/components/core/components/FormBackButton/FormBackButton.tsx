@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Trans } from '@lingui/macro';
 import { useHistory } from 'react-router';
-import { Button, ConfirmDialog } from '@taco/core';
+import { Button, ConfirmDialog } from '@btchia/core';
 import { useFormContext } from 'react-hook-form';
 import useOpenDialog from '../../../../hooks/useOpenDialog';
 

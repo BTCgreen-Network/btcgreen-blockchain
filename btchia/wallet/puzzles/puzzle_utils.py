@@ -1,4 +1,4 @@
-from taco.util.condition_tools import ConditionOpcode
+from btchia.util.condition_tools import ConditionOpcode
 
 
 def make_create_coin_condition(puzzle_hash, amount):

@@ -5,7 +5,7 @@ import WalletGraph from '../WalletGraph';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { mojo_to_taco_string } from '../../../util/taco';
+import { mojo_to_btchia_string } from '../../../util/btchia';
 
 const StyledGraphContainer = styled.div`
   margin-left: -1rem;
@@ -32,14 +32,14 @@ export default function WalletCardTotalBalance(props: Props) {
       title={<Trans>Total Balance</Trans>}
       tooltip={
         <Trans>
-          This is the total amount of taco in the blockchain at the current peak
+          This is the total amount of btchia in the blockchain at the current peak
           sub block that is controlled by your private keys. It includes frozen
           farming rewards, but not pending incoming and outgoing transactions.
         </Trans>
       }
       value={
         <>
-          {mojo_to_taco_string(value)} {currencyCode}
+          {mojo_to_btchia_string(value)} {currencyCode}
         </>
       }
       description={

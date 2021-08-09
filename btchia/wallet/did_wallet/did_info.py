@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.ints import uint64
-from taco.util.streamable import streamable, Streamable
-from taco.wallet.lineage_proof import LineageProof
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.ints import uint64
+from btchia.util.streamable import streamable, Streamable
+from btchia.wallet.lineage_proof import LineageProof
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.coin import Coin
 
 
 @dataclass(frozen=True)

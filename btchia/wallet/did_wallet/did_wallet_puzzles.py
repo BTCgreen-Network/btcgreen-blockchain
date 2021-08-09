@@ -1,13 +1,13 @@
 from clvm_tools import binutils
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.blockchain_format.program import Program
 from typing import List, Optional, Tuple
 from blspy import G1Element
-from taco.types.blockchain_format.coin import Coin
-from taco.types.coin_solution import CoinSolution
-from taco.util.ints import uint64
-from taco.wallet.puzzles.load_clvm import load_clvm
-from taco.types.condition_opcodes import ConditionOpcode
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.coin_solution import CoinSolution
+from btchia.util.ints import uint64
+from btchia.wallet.puzzles.load_clvm import load_clvm
+from btchia.types.condition_opcodes import ConditionOpcode
 
 
 SINGLETON_TOP_LAYER_MOD = load_clvm("singleton_top_layer.clvm")

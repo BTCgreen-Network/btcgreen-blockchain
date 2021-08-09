@@ -1,18 +1,18 @@
 import click
 
-from taco import __version__
-from taco.cmds.configure import configure_cmd
-from taco.cmds.farm import farm_cmd
-from taco.cmds.init import init_cmd
-from taco.cmds.keys import keys_cmd
-from taco.cmds.netspace import netspace_cmd
-from taco.cmds.plots import plots_cmd
-from taco.cmds.show import show_cmd
-from taco.cmds.start import start_cmd
-from taco.cmds.stop import stop_cmd
-from taco.cmds.wallet import wallet_cmd
-from taco.cmds.plotnft import plotnft_cmd
-from taco.util.default_root import DEFAULT_ROOT_PATH
+from btchia import __version__
+from btchia.cmds.configure import configure_cmd
+from btchia.cmds.farm import farm_cmd
+from btchia.cmds.init import init_cmd
+from btchia.cmds.keys import keys_cmd
+from btchia.cmds.netspace import netspace_cmd
+from btchia.cmds.plots import plots_cmd
+from btchia.cmds.show import show_cmd
+from btchia.cmds.start import start_cmd
+from btchia.cmds.stop import stop_cmd
+from btchia.cmds.wallet import wallet_cmd
+from btchia.cmds.plotnft import plotnft_cmd
+from btchia.util.default_root import DEFAULT_ROOT_PATH
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
@@ -34,8 +34,8 @@ def monkey_patch_click() -> None:
 
 
 @click.group(
-    help=f"\n  Manage taco blockchain infrastructure ({__version__})\n",
-    epilog="Try 'taco start node', 'taco netspace -d 192', or 'taco show -s'",
+    help=f"\n  Manage btchia blockchain infrastructure ({__version__})\n",
+    epilog="Try 'btchia start node', 'btchia netspace -d 192', or 'btchia show -s'",
     context_settings=CONTEXT_SETTINGS,
 )
 @click.option("--root-path", default=DEFAULT_ROOT_PATH, help="Config file root", type=click.Path(), show_default=True)
@@ -47,15 +47,15 @@ def cli(ctx: click.Context, root_path: str) -> None:
     ctx.obj["root_path"] = Path(root_path)
 
 
-@cli.command("version", short_help="Show taco version")
+@cli.command("version", short_help="Show btchia version")
 def version_cmd() -> None:
     print(__version__)
 
 
-@cli.command("run_daemon", short_help="Runs taco daemon")
+@cli.command("run_daemon", short_help="Runs btchia daemon")
 @click.pass_context
 def run_daemon_cmd(ctx: click.Context) -> None:
-    from taco.daemon.server import async_run_daemon
+    from btchia.daemon.server import async_run_daemon
     import asyncio
 
     asyncio.get_event_loop().run_until_complete(async_run_daemon(ctx.obj["root_path"]))

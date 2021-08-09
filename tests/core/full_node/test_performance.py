@@ -9,14 +9,14 @@ from typing import Dict
 import pytest
 import cProfile
 
-from taco.consensus.block_record import BlockRecord
-from taco.full_node.full_node_api import FullNodeAPI
-from taco.protocols import full_node_protocol as fnp
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.condition_with_args import ConditionWithArgs
-from taco.types.unfinished_block import UnfinishedBlock
-from taco.util.clvm import int_to_bytes
-from taco.util.ints import uint64
+from btchia.consensus.block_record import BlockRecord
+from btchia.full_node.full_node_api import FullNodeAPI
+from btchia.protocols import full_node_protocol as fnp
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.condition_with_args import ConditionWithArgs
+from btchia.types.unfinished_block import UnfinishedBlock
+from btchia.util.clvm import int_to_bytes
+from btchia.util.ints import uint64
 from tests.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
 

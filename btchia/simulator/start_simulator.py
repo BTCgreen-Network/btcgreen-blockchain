@@ -2,14 +2,14 @@ from multiprocessing import freeze_support
 from pathlib import Path
 from typing import Dict
 
-from taco.full_node.full_node import FullNode
-from taco.rpc.full_node_rpc_api import FullNodeRpcApi
-from taco.server.outbound_message import NodeType
-from taco.server.start_service import run_service
+from btchia.full_node.full_node import FullNode
+from btchia.rpc.full_node_rpc_api import FullNodeRpcApi
+from btchia.server.outbound_message import NodeType
+from btchia.server.start_service import run_service
 from tests.block_tools import BlockTools, test_constants
-from taco.util.config import load_config_cli
-from taco.util.default_root import DEFAULT_ROOT_PATH
-from taco.util.path import mkdir, path_from_root
+from btchia.util.config import load_config_cli
+from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btchia.util.path import mkdir, path_from_root
 
 from .full_node_simulator import FullNodeSimulator
 

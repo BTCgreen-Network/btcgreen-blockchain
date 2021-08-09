@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
-from taco.types.blockchain_format.program import SerializedProgram
-from taco.util.ints import uint32
-from taco.util.streamable import Streamable, streamable
+from btchia.types.blockchain_format.program import SerializedProgram
+from btchia.util.ints import uint32
+from btchia.util.streamable import Streamable, streamable
 
 
 class GeneratorBlockCacheInterface:

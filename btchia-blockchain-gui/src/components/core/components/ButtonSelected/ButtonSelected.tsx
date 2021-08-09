@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps } from '@taco/core';
+import { Button, ButtonProps } from '@btchia/core';
 import { Check as CheckIcon } from '@material-ui/icons';
 
 type Props = ButtonProps & {

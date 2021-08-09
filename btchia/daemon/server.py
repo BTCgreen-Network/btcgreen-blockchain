@@ -16,24 +16,24 @@ from typing import Any, Dict, List, Optional, TextIO, Tuple, cast
 
 from websockets import ConnectionClosedOK, WebSocketException, WebSocketServerProtocol, serve
 
-from taco.cmds.init_funcs import taco_init
-from taco.daemon.windows_signal import kill
-from taco.server.server import ssl_context_for_root, ssl_context_for_server
-from taco.ssl.create_ssl import get_mozilla_ca_crt
-from taco.util.taco_logging import initialize_logging
-from taco.util.config import load_config
-from taco.util.json_util import dict_to_json_str
-from taco.util.path import mkdir
-from taco.util.service_groups import validate_service
-from taco.util.setproctitle import setproctitle
-from taco.util.ws_message import WsRpcMessage, create_payload, format_response
+from btchia.cmds.init_funcs import btchia_init
+from btchia.daemon.windows_signal import kill
+from btchia.server.server import ssl_context_for_root, ssl_context_for_server
+from btchia.ssl.create_ssl import get_mozilla_ca_crt
+from btchia.util.btchia_logging import initialize_logging
+from btchia.util.config import load_config
+from btchia.util.json_util import dict_to_json_str
+from btchia.util.path import mkdir
+from btchia.util.service_groups import validate_service
+from btchia.util.setproctitle import setproctitle
+from btchia.util.ws_message import WsRpcMessage, create_payload, format_response
 
 io_pool_exc = ThreadPoolExecutor()
 
 try:
     from aiohttp import ClientSession, web
 except ModuleNotFoundError:
-    print("Error: Make sure to run . ./activate from the project folder before starting Taco.")
+    print("Error: Make sure to run . ./activate from the project folder before starting BTChia.")
     quit()
 
 try:
@@ -45,7 +45,7 @@ except ImportError:
 
 log = logging.getLogger(__name__)
 
-service_plotter = "taco plots create"
+service_plotter = "btchia plots create"
 
 
 async def fetch(url: str):
@@ -78,15 +78,15 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "taco": "taco",
-        "taco_wallet": "start_wallet",
-        "taco_full_node": "start_full_node",
-        "taco_harvester": "start_harvester",
-        "taco_farmer": "start_farmer",
-        "taco_introducer": "start_introducer",
-        "taco_timelord": "start_timelord",
-        "taco_timelord_launcher": "timelord_launcher",
-        "taco_full_node_simulator": "start_simulator",
+        "btchia": "btchia",
+        "btchia_wallet": "start_wallet",
+        "btchia_full_node": "start_full_node",
+        "btchia_harvester": "start_harvester",
+        "btchia_farmer": "start_farmer",
+        "btchia_introducer": "start_introducer",
+        "btchia_timelord": "start_timelord",
+        "btchia_timelord_launcher": "timelord_launcher",
+        "btchia_full_node_simulator": "start_simulator",
     }
 
     def executable_for_service(service_name: str) -> str:
@@ -692,7 +692,7 @@ class WebSocketServer:
 
         # TODO: fix this hack
         asyncio.get_event_loop().call_later(5, lambda *args: sys.exit(0))
-        log.info("taco daemon exiting in 5 seconds")
+        log.info("btchia daemon exiting in 5 seconds")
 
         response = {"success": True}
         return response
@@ -749,8 +749,8 @@ def plotter_log_path(root_path: Path, id: str):
 
 
 def launch_plotter(root_path: Path, service_name: str, service_array: List[str], id: str):
-    # we need to pass on the possibly altered TACO_ROOT
-    os.environ["TACO_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered BTCHIA_ROOT
+    os.environ["BTCHIA_ROOT"] = str(root_path)
     service_executable = executable_for_service(service_array[0])
 
     # Swap service name with name of executable
@@ -799,14 +799,14 @@ def launch_service(root_path: Path, service_command) -> Tuple[subprocess.Popen, 
     """
     Launch a child process.
     """
-    # set up TACO_ROOT
+    # set up BTCHIA_ROOT
     # invoke correct script
     # save away PID
 
-    # we need to pass on the possibly altered TACO_ROOT
-    os.environ["TACO_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered BTCHIA_ROOT
+    os.environ["BTCHIA_ROOT"] = str(root_path)
 
-    log.debug(f"Launching service with TACO_ROOT: {os.environ['TACO_ROOT']}")
+    log.debug(f"Launching service with BTCHIA_ROOT: {os.environ['BTCHIA_ROOT']}")
 
     # Insert proper e
     service_array = service_command.split()
@@ -975,9 +975,9 @@ def singleton(lockfile: Path, text: str = "semaphore") -> Optional[TextIO]:
 
 
 async def async_run_daemon(root_path: Path) -> int:
-    taco_init(root_path)
+    btchia_init(root_path)
     config = load_config(root_path, "config.yaml")
-    setproctitle("taco_daemon")
+    setproctitle("btchia_daemon")
     initialize_logging("daemon", config["logging"], root_path)
     lockfile = singleton(daemon_launch_lock_path(root_path))
     crt_path = root_path / config["daemon_ssl"]["private_crt"]
@@ -1015,7 +1015,7 @@ def run_daemon(root_path: Path) -> int:
 
 
 def main() -> int:
-    from taco.util.default_root import DEFAULT_ROOT_PATH
+    from btchia.util.default_root import DEFAULT_ROOT_PATH
 
     return run_daemon(DEFAULT_ROOT_PATH)
 

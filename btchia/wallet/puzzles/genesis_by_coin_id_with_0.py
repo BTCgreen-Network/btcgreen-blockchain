@@ -1,9 +1,9 @@
 from typing import Optional
 
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.wallet.puzzles.load_clvm import load_clvm
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.wallet.puzzles.load_clvm import load_clvm
 
 MOD = load_clvm("genesis-by-coin-id-with-0.clvm", package_or_requirement=__name__)
 

@@ -5,11 +5,11 @@ from typing import List, Optional, Set, Tuple
 import aiosqlite
 from blspy import G1Element
 
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.db_wrapper import DBWrapper
-from taco.util.ints import uint32
-from taco.wallet.derivation_record import DerivationRecord
-from taco.wallet.util.wallet_types import WalletType
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.db_wrapper import DBWrapper
+from btchia.util.ints import uint32
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.wallet.util.wallet_types import WalletType
 
 log = logging.getLogger(__name__)
 

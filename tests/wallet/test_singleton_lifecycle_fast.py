@@ -4,15 +4,15 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from blspy import G1Element, G2Element
 from clvm_tools import binutils
 
-from taco.types.blockchain_format.program import Program, SerializedProgram
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution as CoinSpend
-from taco.types.spend_bundle import SpendBundle
-from taco.util.condition_tools import ConditionOpcode
-from taco.util.ints import uint64
-from taco.wallet.puzzles.load_clvm import load_clvm
+from btchia.types.blockchain_format.program import Program, SerializedProgram
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution as CoinSpend
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.condition_tools import ConditionOpcode
+from btchia.util.ints import uint64
+from btchia.wallet.puzzles.load_clvm import load_clvm
 
 from tests.clvm.coin_store import BadSpendBundleError, CoinStore, CoinTimestamp
 

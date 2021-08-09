@@ -7,13 +7,13 @@ from typing import Any, Callable, Dict, List, Optional
 
 import aiohttp
 
-from taco.server.outbound_message import NodeType
-from taco.server.server import ssl_context_for_server
-from taco.types.peer_info import PeerInfo
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.ints import uint16
-from taco.util.json_util import dict_to_json_str, obj_to_response
-from taco.util.ws_message import create_payload, create_payload_dict, format_response, pong
+from btchia.server.outbound_message import NodeType
+from btchia.server.server import ssl_context_for_server
+from btchia.types.peer_info import PeerInfo
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.ints import uint16
+from btchia.util.json_util import dict_to_json_str, obj_to_response
+from btchia.util.ws_message import create_payload, create_payload_dict, format_response, pong
 
 log = logging.getLogger(__name__)
 

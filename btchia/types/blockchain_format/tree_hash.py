@@ -10,8 +10,8 @@ from typing import Optional, Set
 
 from clvm import CLVMObject
 
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.hash import std_hash
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.hash import std_hash
 
 
 def sha256_treehash(sexp: CLVMObject, precalculated: Optional[Set[bytes32]] = None) -> bytes32:

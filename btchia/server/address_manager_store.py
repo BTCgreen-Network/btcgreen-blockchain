@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 
 import aiosqlite
 
-from taco.server.address_manager import (
+from btchia.server.address_manager import (
     BUCKET_SIZE,
     NEW_BUCKET_COUNT,
     NEW_BUCKETS_PER_ADDRESS,

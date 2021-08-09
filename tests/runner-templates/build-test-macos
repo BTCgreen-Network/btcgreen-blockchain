@@ -58,9 +58,9 @@ CHECKOUT_TEST_BLOCKS_AND_PLOTS
     - name: Link home directory
       run: |
         cd $HOME
-        ln -s $GITHUB_WORKSPACE/.taco
-        echo "$HOME/.taco"
-        ls -al $HOME/.taco
+        ln -s $GITHUB_WORKSPACE/.btchia
+        echo "$HOME/.btchia"
+        ls -al $HOME/.btchia
 
     - name: Run install script
       env:

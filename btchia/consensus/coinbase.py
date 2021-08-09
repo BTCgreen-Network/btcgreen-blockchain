@@ -1,9 +1,9 @@
 from blspy import G1Element
 
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.ints import uint32, uint64
-from taco.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.ints import uint32, uint64
+from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk
 
 
 def create_puzzlehash_for_pk(pub_key: G1Element) -> bytes32:

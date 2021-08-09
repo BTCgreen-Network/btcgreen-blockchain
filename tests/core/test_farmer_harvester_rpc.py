@@ -6,22 +6,22 @@ import pytest
 from blspy import AugSchemeMPL
 from chiapos import DiskPlotter
 
-from taco.consensus.coinbase import create_puzzlehash_for_pk
-from taco.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
-from taco.protocols import farmer_protocol
-from taco.rpc.farmer_rpc_api import FarmerRpcApi
-from taco.rpc.farmer_rpc_client import FarmerRpcClient
-from taco.rpc.harvester_rpc_api import HarvesterRpcApi
-from taco.rpc.harvester_rpc_client import HarvesterRpcClient
-from taco.rpc.rpc_server import start_rpc_server
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from btchia.consensus.coinbase import create_puzzlehash_for_pk
+from btchia.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
+from btchia.protocols import farmer_protocol
+from btchia.rpc.farmer_rpc_api import FarmerRpcApi
+from btchia.rpc.farmer_rpc_client import FarmerRpcClient
+from btchia.rpc.harvester_rpc_api import HarvesterRpcApi
+from btchia.rpc.harvester_rpc_client import HarvesterRpcClient
+from btchia.rpc.rpc_server import start_rpc_server
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
 from tests.block_tools import get_plot_dir
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.config import load_config, save_config
-from taco.util.hash import std_hash
-from taco.util.ints import uint8, uint16, uint32, uint64
-from taco.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.config import load_config, save_config
+from btchia.util.hash import std_hash
+from btchia.util.ints import uint8, uint16, uint32, uint64
+from btchia.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
 from tests.time_out_assert import time_out_assert
 
@@ -202,7 +202,7 @@ class TestRpc:
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(472)).get_g1()
             )
 
-            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xtx"), encode_puzzle_hash(new_ph_2, "xtx"))
+            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xbtc"), encode_puzzle_hash(new_ph_2, "xbtc"))
             targets_3 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_3["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_3["pool_target"]) == new_ph_2
@@ -211,7 +211,7 @@ class TestRpc:
             new_ph_3: bytes32 = create_puzzlehash_for_pk(
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(1888)).get_g1()
             )
-            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xtx"))
+            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xbtc"))
             targets_4 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_4["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_4["pool_target"]) == new_ph_3
@@ -219,10 +219,10 @@ class TestRpc:
 
             root_path = farmer_api.farmer._root_path
             config = load_config(root_path, "config.yaml")
-            assert config["farmer"]["xtx_target_address"] == encode_puzzle_hash(new_ph, "xtx")
-            assert config["pool"]["xtx_target_address"] == encode_puzzle_hash(new_ph_3, "xtx")
+            assert config["farmer"]["xbtc_target_address"] == encode_puzzle_hash(new_ph, "xbtc")
+            assert config["pool"]["xbtc_target_address"] == encode_puzzle_hash(new_ph_3, "xbtc")
 
-            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xtx")
+            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xbtc")
             added_char = new_ph_3_encoded + "a"
             with pytest.raises(ValueError):
                 await client.set_reward_targets(None, added_char)

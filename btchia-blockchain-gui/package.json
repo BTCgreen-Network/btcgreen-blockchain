@@ -1,8 +1,8 @@
 {
-  "name": "taco-blockchain",
-  "author": "Taco Network <hello@taco.net> (https://taco.net/)",
-  "description": "GUI for Taco Blockchain",
-  "productName": "Taco Blockchain",
+  "name": "btchia-blockchain",
+  "author": "BTChia Network <hello@btchia.net> (https://btchia.net/)",
+  "description": "GUI for BTChia Blockchain",
+  "productName": "BTChia Blockchain",
   "private": true,
   "homepage": "./",
   "main": "build/electron/main.js",

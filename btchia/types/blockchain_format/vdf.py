@@ -7,11 +7,11 @@ from functools import lru_cache
 
 from chiavdf import create_discriminant, verify_n_wesolowski
 
-from taco.consensus.constants import ConsensusConstants
-from taco.types.blockchain_format.classgroup import ClassgroupElement
-from taco.types.blockchain_format.sized_bytes import bytes32, bytes100
-from taco.util.ints import uint8, uint64
-from taco.util.streamable import Streamable, streamable
+from btchia.consensus.constants import ConsensusConstants
+from btchia.types.blockchain_format.classgroup import ClassgroupElement
+from btchia.types.blockchain_format.sized_bytes import bytes32, bytes100
+from btchia.util.ints import uint8, uint64
+from btchia.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

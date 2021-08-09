@@ -1,9 +1,9 @@
 import React, { useMemo, ReactNode } from 'react';
-import { Table } from '@taco/core';
+import { Table } from '@btchia/core';
 import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { Box } from '@material-ui/core';
-import { mojo_to_taco_string } from '../../util/taco';
+import { mojo_to_btchia_string } from '../../util/btchia';
 
 const Amount = styled(Box)`
   white-space: normal;
@@ -46,7 +46,7 @@ export default function TradesTable(props: Props) {
         return {
           side: amount < 0 ? <Trans>Sell</Trans> : <Trans>Buy</Trans>,
           name: <Amount>{name}</Amount>,
-          amount: <Amount>{mojo_to_taco_string(humanAmount)}</Amount>,
+          amount: <Amount>{mojo_to_btchia_string(humanAmount)}</Amount>,
         };
       }),
     [rows],

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
-import { State } from '@taco/core';
+import { State } from '@btchia/core';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
 import type Plot from '../../../types/Plot';

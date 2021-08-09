@@ -4,9 +4,9 @@ from typing import List, Any
 import blspy
 from blspy import AugSchemeMPL
 
-from taco.types.coin_solution import CoinSolution
-from taco.types.spend_bundle import SpendBundle
-from taco.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
 
 
 async def sign_coin_solutions(

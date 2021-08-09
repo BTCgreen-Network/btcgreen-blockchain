@@ -1,7 +1,7 @@
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.ints import uint64
-from taco.util.hash import std_hash
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.ints import uint64
+from btchia.util.hash import std_hash
 import io
 
 

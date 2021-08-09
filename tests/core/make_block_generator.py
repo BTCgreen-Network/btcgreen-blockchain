@@ -2,15 +2,15 @@ from typing import Dict
 
 import blspy
 
-from taco.full_node.bundle_tools import simple_solution_generator
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.program import Program
-from taco.types.coin_solution import CoinSolution
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.generator_types import BlockGenerator
-from taco.types.spend_bundle import SpendBundle
-from taco.util.ints import uint64
-from taco.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
+from btchia.full_node.bundle_tools import simple_solution_generator
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.program import Program
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.generator_types import BlockGenerator
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.ints import uint64
+from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
 
 GROUP_ORDER = 0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000001
 

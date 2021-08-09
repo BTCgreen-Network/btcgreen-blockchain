@@ -12,11 +12,11 @@ global.key_path = 'config/ssl/daemon/private_daemon.key';
 
 function loadConfig(net) {
   try {
-    // check if TACO_ROOT is set. it overrides 'net'
+    // check if BTCHIA_ROOT is set. it overrides 'net'
     const config_root_dir =
-      'TACO_ROOT' in process.env
-        ? process.env.TACO_ROOT
-        : path.join(os.homedir(), '.taco', net);
+      'BTCHIA_ROOT' in process.env
+        ? process.env.BTCHIA_ROOT
+        : path.join(os.homedir(), '.btchia', net);
     const config = yaml.load(
       fs.readFileSync(path.join(config_root_dir, 'config/config.yaml'), 'utf8'),
     );

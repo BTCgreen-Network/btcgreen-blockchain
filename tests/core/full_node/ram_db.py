@@ -2,11 +2,11 @@ from typing import Tuple
 
 import aiosqlite
 
-from taco.consensus.blockchain import Blockchain
-from taco.consensus.constants import ConsensusConstants
-from taco.full_node.block_store import BlockStore
-from taco.full_node.coin_store import CoinStore
-from taco.util.db_wrapper import DBWrapper
+from btchia.consensus.blockchain import Blockchain
+from btchia.consensus.constants import ConsensusConstants
+from btchia.full_node.block_store import BlockStore
+from btchia.full_node.coin_store import CoinStore
+from btchia.util.db_wrapper import DBWrapper
 
 
 async def create_ram_blockchain(consensus_constants: ConsensusConstants) -> Tuple[aiosqlite.Connection, Blockchain]:

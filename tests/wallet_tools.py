@@ -2,21 +2,21 @@ from typing import Dict, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-from taco.consensus.constants import ConsensusConstants
-from taco.util.hash import std_hash
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.condition_with_args import ConditionWithArgs
-from taco.types.spend_bundle import SpendBundle
-from taco.util.clvm import int_from_bytes, int_to_bytes
-from taco.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
-from taco.util.ints import uint32, uint64
-from taco.wallet.derive_keys import master_sk_to_wallet_sk
-from taco.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from btchia.consensus.constants import ConsensusConstants
+from btchia.util.hash import std_hash
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.condition_with_args import ConditionWithArgs
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.clvm import int_from_bytes, int_to_bytes
+from btchia.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
+from btchia.util.ints import uint32, uint64
+from btchia.wallet.derive_keys import master_sk_to_wallet_sk
+from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
     puzzle_for_pk,

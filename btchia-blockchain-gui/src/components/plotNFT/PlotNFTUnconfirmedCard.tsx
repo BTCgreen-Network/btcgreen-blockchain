@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
-import { Flex, Link, Loading } from '@taco/core';
+import { Flex, Link, Loading } from '@btchia/core';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import type UnconfirmedPlotNFT from '../../types/UnconfirmedPlotNFT';
 import useTransaction from '../../hooks/useTransaction';

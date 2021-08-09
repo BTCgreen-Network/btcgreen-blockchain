@@ -7,33 +7,33 @@ import pytest
 from clvm import SExp
 from clvm.EvalError import EvalError
 
-import taco.server.ws_connection as ws
+import btchia.server.ws_connection as ws
 
-from taco.full_node.mempool import Mempool
-from taco.full_node.full_node_api import FullNodeAPI
-from taco.protocols import full_node_protocol
-from taco.simulator.simulator_protocol import FarmNewBlockProtocol
-from taco.types.announcement import Announcement
-from taco.types.blockchain_format.coin import Coin
-from taco.types.coin_solution import CoinSolution
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.condition_with_args import ConditionWithArgs
-from taco.types.spend_bundle import SpendBundle
-from taco.util.clvm import int_to_bytes
-from taco.util.condition_tools import conditions_for_solution
-from taco.util.errors import Err, ValidationError
-from taco.util.ints import uint64
-from taco.util.hash import std_hash
-from taco.types.mempool_inclusion_status import MempoolInclusionStatus
-from taco.util.api_decorators import api_request, peer_required, bytes_required
-from taco.full_node.mempool_check_conditions import parse_condition_args
+from btchia.full_node.mempool import Mempool
+from btchia.full_node.full_node_api import FullNodeAPI
+from btchia.protocols import full_node_protocol
+from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
+from btchia.types.announcement import Announcement
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.condition_with_args import ConditionWithArgs
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.clvm import int_to_bytes
+from btchia.util.condition_tools import conditions_for_solution
+from btchia.util.errors import Err, ValidationError
+from btchia.util.ints import uint64
+from btchia.util.hash import std_hash
+from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
+from btchia.util.api_decorators import api_request, peer_required, bytes_required
+from btchia.full_node.mempool_check_conditions import parse_condition_args
 
 from tests.connection_utils import connect_and_get_peer
 from tests.core.node_height import node_height_at_least
 from tests.setup_nodes import bt, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
-from taco.types.blockchain_format.program import Program, INFINITE_COST
-from taco.consensus.condition_costs import ConditionCost
+from btchia.types.blockchain_format.program import Program, INFINITE_COST
+from btchia.consensus.condition_costs import ConditionCost
 
 BURN_PUZZLE_HASH = b"0" * 32
 BURN_PUZZLE_HASH_2 = b"1" * 32
@@ -111,7 +111,7 @@ class TestMempool:
 async def respond_transaction(
     node: FullNodeAPI,
     tx: full_node_protocol.RespondTransaction,
-    peer: ws.WSTacoConnection,
+    peer: ws.WSBTChiaConnection,
     tx_bytes: bytes = b"",
     test: bool = False,
 ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:

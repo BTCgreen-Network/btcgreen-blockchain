@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from taco.util.streamable import Streamable, streamable
+from btchia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

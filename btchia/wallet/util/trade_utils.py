@@ -1,12 +1,12 @@
 from typing import Dict, Optional, Tuple
 
-from taco.types.blockchain_format.program import Program, INFINITE_COST
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.spend_bundle import SpendBundle
-from taco.util.condition_tools import conditions_dict_for_solution
-from taco.wallet.cc_wallet import cc_utils
-from taco.wallet.trade_record import TradeRecord
-from taco.wallet.trading.trade_status import TradeStatus
+from btchia.types.blockchain_format.program import Program, INFINITE_COST
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.condition_tools import conditions_dict_for_solution
+from btchia.wallet.cc_wallet import cc_utils
+from btchia.wallet.trade_record import TradeRecord
+from btchia.wallet.trading.trade_status import TradeStatus
 
 
 def trade_status_ui_string(status: TradeStatus):
@@ -83,10 +83,10 @@ def get_discrepancies_for_spend_bundle(
                 coin_amount = coinsol.coin.amount
                 out_amount = get_output_amount_for_puzzle_and_solution(puzzle, solution)
                 diff = coin_amount - out_amount
-                if "taco" in cc_discrepancies:
-                    cc_discrepancies["taco"] = cc_discrepancies["taco"] + diff
+                if "btchia" in cc_discrepancies:
+                    cc_discrepancies["btchia"] = cc_discrepancies["btchia"] + diff
                 else:
-                    cc_discrepancies["taco"] = diff
+                    cc_discrepancies["btchia"] = diff
 
         return True, cc_discrepancies, None
     except Exception as e:

@@ -1,9 +1,9 @@
 from typing import Optional, Tuple, Union
 
-from taco.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
-from taco.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.ints import uint64
+from btchia.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
+from btchia.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.ints import uint64
 
 
 def iters_from_block(

@@ -1,15 +1,15 @@
 from typing import Callable, Dict, List, Optional
 
-from taco.farmer.farmer import Farmer
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.ws_message import WsRpcMessage, create_payload_dict
+from btchia.farmer.farmer import Farmer
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FarmerRpcApi:
     def __init__(self, farmer: Farmer):
         self.service = farmer
-        self.service_name = "taco_farmer"
+        self.service_name = "btchia_farmer"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

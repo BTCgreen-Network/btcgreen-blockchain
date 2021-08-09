@@ -3,13 +3,13 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, BasicSchemeMPL, G1Element, G2Element
 
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.spend_bundle import SpendBundle
-from taco.util.condition_tools import ConditionOpcode
-from taco.util.hash import std_hash
-from taco.wallet.puzzles import (
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.condition_tools import ConditionOpcode
+from btchia.util.hash import std_hash
+from btchia.wallet.puzzles import (
     p2_conditions,
     p2_delegated_conditions,
     p2_delegated_puzzle,

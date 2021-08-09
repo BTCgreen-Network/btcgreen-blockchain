@@ -9,18 +9,18 @@ from typing import Dict, Optional, List, Set
 
 import aiosqlite
 
-import taco.server.ws_connection as ws
+import btchia.server.ws_connection as ws
 import dns.asyncresolver
-from taco.protocols import full_node_protocol, introducer_protocol
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.server.address_manager import AddressManager, ExtendedPeerInfo
-from taco.server.address_manager_store import AddressManagerStore
-from taco.server.outbound_message import NodeType, make_msg
-from taco.server.server import TacoServer
-from taco.types.peer_info import PeerInfo, TimestampedPeerInfo
-from taco.util.hash import std_hash
-from taco.util.ints import uint64
-from taco.util.path import mkdir, path_from_root
+from btchia.protocols import full_node_protocol, introducer_protocol
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.server.address_manager import AddressManager, ExtendedPeerInfo
+from btchia.server.address_manager_store import AddressManagerStore
+from btchia.server.outbound_message import NodeType, make_msg
+from btchia.server.server import BTChiaServer
+from btchia.types.peer_info import PeerInfo, TimestampedPeerInfo
+from btchia.util.hash import std_hash
+from btchia.util.ints import uint64
+from btchia.util.path import mkdir, path_from_root
 
 MAX_PEERS_RECEIVED_PER_REQUEST = 1000
 MAX_TOTAL_PEERS_RECEIVED = 3000
@@ -37,7 +37,7 @@ class FullNodeDiscovery:
 
     def __init__(
         self,
-        server: TacoServer,
+        server: BTChiaServer,
         root_path: Path,
         target_outbound_count: int,
         peer_db_path: str,
@@ -48,7 +48,7 @@ class FullNodeDiscovery:
         default_port: Optional[int],
         log,
     ):
-        self.server: TacoServer = server
+        self.server: BTChiaServer = server
         self.message_queue: asyncio.Queue = asyncio.Queue()
         self.is_closed = False
         self.target_outbound_count = target_outbound_count
@@ -127,7 +127,7 @@ class FullNodeDiscovery:
     def add_message(self, message, data):
         self.message_queue.put_nowait((message, data))
 
-    async def on_connect(self, peer: ws.WSTacoConnection):
+    async def on_connect(self, peer: ws.WSBTChiaConnection):
         if (
             peer.is_outbound is False
             and peer.peer_server_port is not None
@@ -154,7 +154,7 @@ class FullNodeDiscovery:
             await peer.send_message(msg)
 
     # Updates timestamps each time we receive a message for outbound connections.
-    async def update_peer_timestamp_on_message(self, peer: ws.WSTacoConnection):
+    async def update_peer_timestamp_on_message(self, peer: ws.WSBTChiaConnection):
         if (
             peer.is_outbound
             and peer.peer_server_port is not None
@@ -192,7 +192,7 @@ class FullNodeDiscovery:
         if self.introducer_info is None:
             return None
 
-        async def on_connect(peer: ws.WSTacoConnection):
+        async def on_connect(peer: ws.WSBTChiaConnection):
             msg = make_msg(ProtocolMessageTypes.request_peers_introducer, introducer_protocol.RequestPeersIntroducer())
             await peer.send_message(msg)
 

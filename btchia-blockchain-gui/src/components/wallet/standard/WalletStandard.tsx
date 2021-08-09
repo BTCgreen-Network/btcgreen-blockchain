@@ -5,13 +5,13 @@ import {
   Amount,
   Fee,
   Form,
-  TextField as TacoTextField,
+  TextField as BTChiaTextField,
   AlertDialog,
   CopyToClipboard,
   Flex,
   Card,
   ConfirmDialog,
-} from '@taco/core';
+} from '@btchia/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import isNumeric from 'validator/es/lib/isNumeric';
@@ -42,7 +42,7 @@ import {
   send_transaction,
   farm_block,
 } from '../../../modules/message';
-import { /* mojo_to_taco_string, */ taco_to_mojo } from '../../../util/taco';
+import { /* mojo_to_btchia_string, */ btchia_to_mojo } from '../../../util/btchia';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';
@@ -238,7 +238,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_taco_string(props.balance)} {currencyCode}
+            {mojo_to_btchia_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -273,7 +273,7 @@ function BalanceCard(props: BalanceCardProps) {
         balance={balance}
         tooltip={
           <Trans>
-            This is the total amount of taco in the blockchain at the current
+            This is the total amount of btchia in the blockchain at the current
             peak sub block that is controlled by your private keys. It includes
             frozen farming rewards, but not pending incoming and outgoing
             transactions.
@@ -285,9 +285,9 @@ function BalanceCard(props: BalanceCardProps) {
         balance={balance_spendable}
         tooltip={
           <Trans>
-            This is the amount of Taco that you can currently use to make
+            This is the amount of BTChia that you can currently use to make
             transactions. It does not include pending farming rewards, pending
-            incoming transactions, and Taco that you have just spent but is not
+            incoming transactions, and BTChia that you have just spent but is not
             yet in the blockchain.
           </Trans>
         }
@@ -454,7 +454,7 @@ function SendCard(props: SendCardProps) {
         openDialog(
           <AlertDialog>
             <Trans>
-              Error: Cannot send taco to coloured address. Please enter a taco
+              Error: Cannot send btchia to coloured address. Please enter a btchia
               address.
             </Trans>
           </AlertDialog>,
@@ -463,15 +463,15 @@ function SendCard(props: SendCardProps) {
       return;
     }
 
-    if (address.slice(0, 12) === 'taco_addr://') {
+    if (address.slice(0, 12) === 'btchia_addr://') {
       address = address.slice(12);
     }
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.slice(2);
     }
 
-    const amountValue = Number.parseFloat(taco_to_mojo(amount));
-    const feeValue = Number.parseFloat(taco_to_mojo(fee));
+    const amountValue = Number.parseFloat(btchia_to_mojo(amount));
+    const feeValue = Number.parseFloat(btchia_to_mojo(fee));
 
     dispatch(send_transaction(wallet_id, amountValue, feeValue, address));
 
@@ -494,7 +494,7 @@ function SendCard(props: SendCardProps) {
       <Form methods={methods} onSubmit={handleSubmit}>
         <Grid spacing={2} container>
           <Grid xs={12} item>
-            <TacoTextField
+            <BTChiaTextField
               name="address"
               variant="filled"
               color="secondary"
@@ -644,7 +644,7 @@ export default function StandardWallet(props: StandardWalletProps) {
       <Flex gap={1} alignItems="center">
         <Flex flexGrow={1}>
           <Typography variant="h5" gutterBottom>
-            <Trans>Taco Wallet</Trans>
+            <Trans>BTChia Wallet</Trans>
           </Typography>
         </Flex>
         <More>

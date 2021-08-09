@@ -8,17 +8,17 @@ from typing import Any, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.spend_bundle import SpendBundle
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.ints import uint8, uint32, uint64, uint128
-from taco.util.streamable import Streamable, streamable
-from taco.wallet.derivation_record import DerivationRecord
-from taco.wallet.derive_keys import master_sk_to_wallet_sk
-from taco.wallet.rl_wallet.rl_wallet_puzzles import (
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.spend_bundle import SpendBundle
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.ints import uint8, uint32, uint64, uint128
+from btchia.util.streamable import Streamable, streamable
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.wallet.derive_keys import master_sk_to_wallet_sk
+from btchia.wallet.rl_wallet.rl_wallet_puzzles import (
     make_clawback_solution,
     rl_make_aggregation_puzzle,
     rl_make_aggregation_solution,
@@ -26,12 +26,12 @@ from taco.wallet.rl_wallet.rl_wallet_puzzles import (
     rl_puzzle_for_pk,
     solution_for_rl,
 )
-from taco.wallet.transaction_record import TransactionRecord
-from taco.wallet.util.transaction_type import TransactionType
-from taco.wallet.util.wallet_types import WalletType
-from taco.wallet.wallet import Wallet
-from taco.wallet.wallet_coin_record import WalletCoinRecord
-from taco.wallet.wallet_info import WalletInfo
+from btchia.wallet.transaction_record import TransactionRecord
+from btchia.wallet.util.transaction_type import TransactionType
+from btchia.wallet.util.wallet_types import WalletType
+from btchia.wallet.wallet import Wallet
+from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btchia.wallet.wallet_info import WalletInfo
 
 
 @dataclass(frozen=True)

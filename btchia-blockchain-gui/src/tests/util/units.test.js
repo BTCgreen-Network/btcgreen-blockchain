@@ -2,8 +2,8 @@ const units = require('../../util/units');
 
 describe('units', () => {
   describe('#getUnit', () => {
-    it('gets unit of taco', () => {
-      const result = units.getUnit('taco');
+    it('gets unit of btchia', () => {
+      const result = units.getUnit('btchia');
 
       expect(result).toBe(1);
     });
@@ -18,11 +18,11 @@ describe('units', () => {
       expect(result).toBe(1e-9);
     });
     it('supports uppercase characters', () => {
-      const result = units.getUnit('TACO');
+      const result = units.getUnit('BTCHIA');
 
       expect(result).toBe(1);
     });
-    it('gets unit of taco using alias', () => {
+    it('gets unit of btchia using alias', () => {
       const result = units.getUnit('ch');
 
       expect(result).toBe(1);
@@ -46,8 +46,8 @@ describe('units', () => {
     });
   });
   describe('#getDisplay', () => {
-    it('gets display of taco', () => {
-      const result = units.getDisplay('taco');
+    it('gets display of btchia', () => {
+      const result = units.getDisplay('btchia');
 
       expect(result).toEqual({
         format: '{amount} CH',
@@ -87,13 +87,13 @@ describe('units', () => {
       expect(result).toEqual(1);
     });
     it('modifies an existing unit', () => {
-      units.setUnit('taco', 9);
+      units.setUnit('btchia', 9);
 
-      const result = units.getUnit('taco');
+      const result = units.getUnit('btchia');
 
       expect(result).toEqual(9);
 
-      units.setUnit('taco', 1);
+      units.setUnit('btchia', 1);
     });
   });
   describe('#setDisplay', () => {
@@ -111,15 +111,15 @@ describe('units', () => {
       });
     });
     it('updates an existing display', () => {
-      units.setDisplay('taco', {
-        format: '{amount} TXTX',
+      units.setDisplay('btchia', {
+        format: '{amount} TXBTC',
         fractionDigits: 0,
       });
 
-      const result = units.getDisplay('taco');
+      const result = units.getDisplay('btchia');
 
       expect(result).toEqual({
-        format: '{amount} TXTX',
+        format: '{amount} TXBTC',
         fractionDigits: 0,
       });
     });

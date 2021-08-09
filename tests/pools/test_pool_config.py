@@ -3,8 +3,8 @@ from pathlib import Path
 
 from blspy import AugSchemeMPL, PrivateKey
 
-from taco.pools.pool_config import PoolWalletConfig
-from taco.util.config import load_config, save_config, create_default_taco_config
+from btchia.pools.pool_config import PoolWalletConfig
+from btchia.util.config import load_config, save_config, create_default_btchia_config
 
 
 def test_pool_config():
@@ -13,7 +13,7 @@ def test_pool_config():
     eg_config = test_path / "config.yaml"
     to_config = test_path / "test_pool_config.yaml"
 
-    create_default_taco_config(test_root, ["config.yaml"])
+    create_default_btchia_config(test_root, ["config.yaml"])
     assert eg_config.exists()
     eg_config.rename(to_config)
     config = load_config(test_root, "test_pool_config.yaml")

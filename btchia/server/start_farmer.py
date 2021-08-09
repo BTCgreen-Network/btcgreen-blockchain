@@ -1,17 +1,17 @@
 import pathlib
 from typing import Dict
 
-from taco.consensus.constants import ConsensusConstants
-from taco.consensus.default_constants import DEFAULT_CONSTANTS
-from taco.farmer.farmer import Farmer
-from taco.farmer.farmer_api import FarmerAPI
-from taco.rpc.farmer_rpc_api import FarmerRpcApi
-from taco.server.outbound_message import NodeType
-from taco.server.start_service import run_service
-from taco.types.peer_info import PeerInfo
-from taco.util.config import load_config_cli
-from taco.util.default_root import DEFAULT_ROOT_PATH
-from taco.util.keychain import Keychain
+from btchia.consensus.constants import ConsensusConstants
+from btchia.consensus.default_constants import DEFAULT_CONSTANTS
+from btchia.farmer.farmer import Farmer
+from btchia.farmer.farmer_api import FarmerAPI
+from btchia.rpc.farmer_rpc_api import FarmerRpcApi
+from btchia.server.outbound_message import NodeType
+from btchia.server.start_service import run_service
+from btchia.types.peer_info import PeerInfo
+from btchia.util.config import load_config_cli
+from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btchia.util.keychain import Keychain
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

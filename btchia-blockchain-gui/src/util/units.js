@@ -1,17 +1,17 @@
 const units = {
-  taco: 1,
+  btchia: 1,
   mojo: 1 / 1e12,
   colouredcoin: 1 / 1e9,
 };
 
 const aliases = {
-  taco: ['ch', 'taco', 'Taco'],
+  btchia: ['ch', 'btchia', 'BTChia'],
   mojo: ['mj', 'mojo'],
   colouredcoin: ['cc', 'colouredcoin'],
 };
 
 const display = {
-  taco: {
+  btchia: {
     format: '{amount} CH',
     fractionDigits: 12,
   },

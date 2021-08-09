@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from taco.consensus.condition_costs import ConditionCost
-from taco.types.blockchain_format.program import SerializedProgram
-from taco.types.condition_opcodes import ConditionOpcode
-from taco.types.name_puzzle_condition import NPC
-from taco.util.ints import uint64, uint16
-from taco.util.streamable import Streamable, streamable
+from btchia.consensus.condition_costs import ConditionCost
+from btchia.types.blockchain_format.program import SerializedProgram
+from btchia.types.condition_opcodes import ConditionOpcode
+from btchia.types.name_puzzle_condition import NPC
+from btchia.util.ints import uint64, uint16
+from btchia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

@@ -6,23 +6,23 @@ import signal
 from sys import platform
 from typing import Any, Callable, List, Optional, Tuple
 
-from taco.daemon.server import singleton, service_launch_lock_path
-from taco.server.ssl_context import taco_ssl_ca_paths, private_ssl_ca_paths
+from btchia.daemon.server import singleton, service_launch_lock_path
+from btchia.server.ssl_context import btchia_ssl_ca_paths, private_ssl_ca_paths
 
 try:
     import uvloop
 except ImportError:
     uvloop = None
 
-from taco.rpc.rpc_server import start_rpc_server
-from taco.server.outbound_message import NodeType
-from taco.server.server import TacoServer
-from taco.server.upnp import UPnP
-from taco.types.peer_info import PeerInfo
-from taco.util.taco_logging import initialize_logging
-from taco.util.config import load_config, load_config_cli
-from taco.util.setproctitle import setproctitle
-from taco.util.ints import uint16
+from btchia.rpc.rpc_server import start_rpc_server
+from btchia.server.outbound_message import NodeType
+from btchia.server.server import BTChiaServer
+from btchia.server.upnp import UPnP
+from btchia.types.peer_info import PeerInfo
+from btchia.util.btchia_logging import initialize_logging
+from btchia.util.config import load_config, load_config_cli
+from btchia.util.setproctitle import setproctitle
+from btchia.util.ints import uint16
 
 from .reconnect_task import start_reconnect_task
 
@@ -64,7 +64,7 @@ class Service:
         self._rpc_close_task: Optional[asyncio.Task] = None
         self._network_id: str = network_id
 
-        proctitle_name = f"taco_{service_name}"
+        proctitle_name = f"btchia_{service_name}"
         setproctitle(proctitle_name)
         self._log = logging.getLogger(service_name)
 
@@ -76,11 +76,11 @@ class Service:
 
         self._rpc_info = rpc_info
         private_ca_crt, private_ca_key = private_ssl_ca_paths(root_path, self.config)
-        taco_ca_crt, taco_ca_key = taco_ssl_ca_paths(root_path, self.config)
+        btchia_ca_crt, btchia_ca_key = btchia_ssl_ca_paths(root_path, self.config)
         inbound_rlp = self.config.get("inbound_rate_limit_percent")
         outbound_rlp = self.config.get("outbound_rate_limit_percent")
         assert inbound_rlp and outbound_rlp
-        self._server = TacoServer(
+        self._server = BTChiaServer(
             advertised_port,
             node,
             peer_api,
@@ -92,7 +92,7 @@ class Service:
             root_path,
             service_config,
             (private_ca_crt, private_ca_key),
-            (taco_ca_crt, taco_ca_key),
+            (btchia_ca_crt, btchia_ca_key),
             name=f"{service_name}_server",
         )
         f = getattr(node, "set_server", None)
@@ -226,7 +226,7 @@ class Service:
 
         self._log.info("Waiting for socket to be closed (if opened)")
 
-        self._log.info("Waiting for TacoServer to be closed")
+        self._log.info("Waiting for BTChiaServer to be closed")
         await self._server.await_closed()
 
         if self._rpc_close_task:

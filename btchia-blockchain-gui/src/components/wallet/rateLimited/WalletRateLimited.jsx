@@ -13,12 +13,12 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
-import { AlertDialog, Card, Flex } from '@taco/core';
+import { AlertDialog, Card, Flex } from '@btchia/core';
 import {
   send_transaction,
   rl_set_user_info_action,
 } from '../../../modules/message';
-import { mojo_to_taco_string, taco_to_mojo } from '../../../util/taco';
+import { mojo_to_btchia_string, btchia_to_mojo } from '../../../util/btchia';
 import { get_transaction_result } from '../../../util/transaction_result';
 import { openDialog } from '../../../modules/dialog';
 import WalletHistory from '../WalletHistory';
@@ -240,9 +240,9 @@ const IncompleteCard = (props) => {
 
   function submit() {
     const ip_val = ip_input.value;
-    const hextxeck = /[\da-f]+$/gi;
+    const hexbtceck = /[\da-f]+$/gi;
 
-    if (!hextxeck.test(ip_val) || ip_val.value === '') {
+    if (!hexbtceck.test(ip_val) || ip_val.value === '') {
       dispatch(openDialog('Please enter a valid info packet'));
       return;
     }
@@ -251,17 +251,17 @@ const IncompleteCard = (props) => {
     const ip_debuf = ip_unhex.toString('utf8');
     const ip_parsed = JSON.parse(ip_debuf);
     const interval_input = ip_parsed.interval;
-    const tacoper_input = ip_parsed.limit;
+    const btchiaper_input = ip_parsed.limit;
     const origin_input = ip_parsed.origin_string;
     const admin_pubkey_input = ip_parsed.admin_pubkey;
     const interval_value = Number.parseInt(Number(interval_input));
-    const tacoper_value = Number.parseInt(Number(tacoper_input));
+    const btchiaper_value = Number.parseInt(Number(btchiaper_input));
     const origin_parsed = JSON.parse(origin_input);
     dispatch(
       rl_set_user_info_action(
         id,
         interval_value,
-        tacoper_value,
+        btchiaper_value,
         origin_parsed,
         admin_pubkey_input,
       ),
@@ -399,8 +399,8 @@ const RLDetailsCard = (props) => {
             <Box flexGrow={1}>
               <Typography variant="subtitle1">
                 <Trans>
-                  Spending Limit (taco per interval):{' '}
-                  {mojo_to_taco_string(limit)}
+                  Spending Limit (btchia per interval):{' '}
+                  {mojo_to_btchia_string(limit)}
                 </Trans>
               </Typography>
             </Box>
@@ -446,8 +446,8 @@ const RLDetailsCard = (props) => {
             <Box flexGrow={1}>
               <Typography variant="subtitle1">
                 <Trans>
-                  Spending Limit (taco per interval):{' '}
-                  {mojo_to_taco_string(limit)}
+                  Spending Limit (btchia per interval):{' '}
+                  {mojo_to_btchia_string(limit)}
                 </Trans>
               </Typography>
             </Box>
@@ -512,7 +512,7 @@ const BalanceCardSubSection = (props) => {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_taco_string(props.balance)} {currencyCode}
+            {mojo_to_btchia_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -652,8 +652,8 @@ const SendCard = (props) => {
       );
       return;
     }
-    const amount = taco_to_mojo(amount_input.value);
-    const fee = taco_to_mojo(fee_input.value);
+    const amount = btchia_to_mojo(amount_input.value);
+    const fee = btchia_to_mojo(fee_input.value);
 
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.slice(2);

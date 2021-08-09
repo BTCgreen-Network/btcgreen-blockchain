@@ -1,13 +1,13 @@
 from typing import Callable, Optional
 
-from taco.introducer.introducer import Introducer
-from taco.protocols.introducer_protocol import RequestPeersIntroducer, RespondPeersIntroducer
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.server.outbound_message import Message, make_msg
-from taco.server.ws_connection import WSTacoConnection
-from taco.types.peer_info import TimestampedPeerInfo
-from taco.util.api_decorators import api_request, peer_required
-from taco.util.ints import uint64
+from btchia.introducer.introducer import Introducer
+from btchia.protocols.introducer_protocol import RequestPeersIntroducer, RespondPeersIntroducer
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.server.outbound_message import Message, make_msg
+from btchia.server.ws_connection import WSBTChiaConnection
+from btchia.types.peer_info import TimestampedPeerInfo
+from btchia.util.api_decorators import api_request, peer_required
+from btchia.util.ints import uint64
 
 
 class IntroducerAPI:
@@ -24,7 +24,7 @@ class IntroducerAPI:
     async def request_peers_introducer(
         self,
         request: RequestPeersIntroducer,
-        peer: WSTacoConnection,
+        peer: WSBTChiaConnection,
     ) -> Optional[Message]:
         max_peers = self.introducer.max_peers_to_send
         if self.introducer.server is None or self.introducer.server.introducer_peers is None:

@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 // import { useRouteMatch, useHistory } from 'react-router';
 import { /*useDispatch, */ useSelector } from 'react-redux';
-import { FormatLargeNumber } from '@taco/core';
+import { FormatLargeNumber } from '@btchia/core';
 import StandardWallet from './standard/WalletStandard';
 /*
 import {
@@ -47,8 +47,8 @@ const WalletItem = (props: any) => {
 
   let mainLabel = <></>;
   if (type === WalletType.STANDARD_WALLET) {
-    mainLabel = <Trans>Taco Wallet</Trans>;
-    name = 'Taco';
+    mainLabel = <Trans>BTChia Wallet</Trans>;
+    name = 'BTChia';
   } else if (type === WalletType.COLOURED_COIN) {
     mainLabel = <Trans>CC Wallet</Trans>;
   } else if (type === WalletType.RATE_LIMITED) {

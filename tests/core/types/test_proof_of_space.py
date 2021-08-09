@@ -1,7 +1,7 @@
 from secrets import token_bytes
 
-from taco.consensus.default_constants import DEFAULT_CONSTANTS
-from taco.types.blockchain_format.proof_of_space import ProofOfSpace  # pylint: disable=E0401
+from btchia.consensus.default_constants import DEFAULT_CONSTANTS
+from btchia.types.blockchain_format.proof_of_space import ProofOfSpace  # pylint: disable=E0401
 
 
 class TestProofOfSpace:

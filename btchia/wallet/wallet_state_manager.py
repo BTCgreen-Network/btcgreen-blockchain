@@ -12,55 +12,55 @@ from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiabip158 import PyBIP158
 from cryptography.fernet import Fernet
 
-from taco import __version__
-from taco.consensus.block_record import BlockRecord
-from taco.consensus.coinbase import pool_parent_id, farmer_parent_id
-from taco.consensus.constants import ConsensusConstants
-from taco.consensus.find_fork_point import find_fork_point_in_chain
-from taco.full_node.weight_proof import WeightProofHandler
-from taco.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
-from taco.pools.pool_wallet import PoolWallet
-from taco.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
-from taco.types.blockchain_format.coin import Coin
-from taco.types.blockchain_format.program import Program
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.full_block import FullBlock
-from taco.types.header_block import HeaderBlock
-from taco.types.mempool_inclusion_status import MempoolInclusionStatus
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.db_wrapper import DBWrapper
-from taco.util.errors import Err
-from taco.util.hash import std_hash
-from taco.util.ints import uint32, uint64, uint128
-from taco.wallet.block_record import HeaderBlockRecord
-from taco.wallet.cc_wallet.cc_wallet import CCWallet
-from taco.wallet.derivation_record import DerivationRecord
-from taco.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
-from taco.wallet.key_val_store import KeyValStore
-from taco.wallet.rl_wallet.rl_wallet import RLWallet
-from taco.wallet.settings.user_settings import UserSettings
-from taco.wallet.trade_manager import TradeManager
-from taco.wallet.transaction_record import TransactionRecord
-from taco.wallet.util.backup_utils import open_backup_file
-from taco.wallet.util.transaction_type import TransactionType
-from taco.wallet.util.wallet_types import WalletType
-from taco.wallet.wallet import Wallet
-from taco.wallet.wallet_action import WalletAction
-from taco.wallet.wallet_action_store import WalletActionStore
-from taco.wallet.wallet_block_store import WalletBlockStore
-from taco.wallet.wallet_blockchain import WalletBlockchain
-from taco.wallet.wallet_coin_record import WalletCoinRecord
-from taco.wallet.wallet_coin_store import WalletCoinStore
-from taco.wallet.wallet_info import WalletInfo, WalletInfoBackup
-from taco.wallet.wallet_interested_store import WalletInterestedStore
-from taco.wallet.wallet_pool_store import WalletPoolStore
-from taco.wallet.wallet_puzzle_store import WalletPuzzleStore
-from taco.wallet.wallet_sync_store import WalletSyncStore
-from taco.wallet.wallet_transaction_store import WalletTransactionStore
-from taco.wallet.wallet_user_store import WalletUserStore
-from taco.server.server import TacoServer
-from taco.wallet.did_wallet.did_wallet import DIDWallet
+from btchia import __version__
+from btchia.consensus.block_record import BlockRecord
+from btchia.consensus.coinbase import pool_parent_id, farmer_parent_id
+from btchia.consensus.constants import ConsensusConstants
+from btchia.consensus.find_fork_point import find_fork_point_in_chain
+from btchia.full_node.weight_proof import WeightProofHandler
+from btchia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
+from btchia.pools.pool_wallet import PoolWallet
+from btchia.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
+from btchia.types.blockchain_format.coin import Coin
+from btchia.types.blockchain_format.program import Program
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.full_block import FullBlock
+from btchia.types.header_block import HeaderBlock
+from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.db_wrapper import DBWrapper
+from btchia.util.errors import Err
+from btchia.util.hash import std_hash
+from btchia.util.ints import uint32, uint64, uint128
+from btchia.wallet.block_record import HeaderBlockRecord
+from btchia.wallet.cc_wallet.cc_wallet import CCWallet
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
+from btchia.wallet.key_val_store import KeyValStore
+from btchia.wallet.rl_wallet.rl_wallet import RLWallet
+from btchia.wallet.settings.user_settings import UserSettings
+from btchia.wallet.trade_manager import TradeManager
+from btchia.wallet.transaction_record import TransactionRecord
+from btchia.wallet.util.backup_utils import open_backup_file
+from btchia.wallet.util.transaction_type import TransactionType
+from btchia.wallet.util.wallet_types import WalletType
+from btchia.wallet.wallet import Wallet
+from btchia.wallet.wallet_action import WalletAction
+from btchia.wallet.wallet_action_store import WalletActionStore
+from btchia.wallet.wallet_block_store import WalletBlockStore
+from btchia.wallet.wallet_blockchain import WalletBlockchain
+from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btchia.wallet.wallet_coin_store import WalletCoinStore
+from btchia.wallet.wallet_info import WalletInfo, WalletInfoBackup
+from btchia.wallet.wallet_interested_store import WalletInterestedStore
+from btchia.wallet.wallet_pool_store import WalletPoolStore
+from btchia.wallet.wallet_puzzle_store import WalletPuzzleStore
+from btchia.wallet.wallet_sync_store import WalletSyncStore
+from btchia.wallet.wallet_transaction_store import WalletTransactionStore
+from btchia.wallet.wallet_user_store import WalletUserStore
+from btchia.server.server import BTChiaServer
+from btchia.wallet.did_wallet.did_wallet import DIDWallet
 
 
 class WalletStateManager:
@@ -107,7 +107,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: TacoServer
+    server: BTChiaServer
     root_path: Path
 
     @staticmethod
@@ -116,7 +116,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: TacoServer,
+        server: BTChiaServer,
         root_path: Path,
         name: str = None,
     ):

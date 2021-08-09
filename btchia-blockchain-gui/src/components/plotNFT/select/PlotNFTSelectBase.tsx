@@ -12,7 +12,7 @@ import {
   RadioGroup,
   Fee,
   TextField,
-} from '@taco/core';
+} from '@btchia/core';
 import {
   Grid,
   FormControl,
@@ -103,7 +103,7 @@ export default function PlotNFTSelectBase(props: Props) {
                     control={<Radio />}
                     label={
                       <Trans>
-                        Self pool. When you win a block you will earn XTX
+                        Self pool. When you win a block you will earn XBTC
                         rewards.
                       </Trans>
                     }

@@ -14,16 +14,16 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'release-builds')
 
   return Promise.resolve({
-    appDirectory: path.join(rootPath, 'Taco-win32-x64'),
-    authors: 'Taco Network',
-    version: process.env.TACO_INSTALLER_VERSION,
+    appDirectory: path.join(rootPath, 'BTChia-win32-x64'),
+    authors: 'BTChia Network',
+    version: process.env.BTCHIA_INSTALLER_VERSION,
     noMsi: true,
-    iconUrl: 'https://raw.githubusercontent.com/Taco-Network/taco-blockchain/master/electron-react/src/assets/img/taco.ico',
+    iconUrl: 'https://raw.githubusercontent.com/BTChia-Network/btchia-blockchain/master/electron-react/src/assets/img/btchia.ico',
     outputDirectory: path.join(outPath, 'windows-installer'),
     certificateFile: 'win_code_sign_cert.p12',
     certificatePassword: process.env.WIN_CODE_SIGN_PASS,
-    exe: 'Taco.exe',
-    setupExe: 'TacoSetup-' + process.env.TACO_INSTALLER_VERSION + '.exe',
-    setupIcon: path.join(rootPath, 'src', 'assets', 'img', 'taco.ico')
+    exe: 'BTChia.exe',
+    setupExe: 'BTChiaSetup-' + process.env.BTCHIA_INSTALLER_VERSION + '.exe',
+    setupIcon: path.join(rootPath, 'src', 'assets', 'img', 'btchia.ico')
   })
 }

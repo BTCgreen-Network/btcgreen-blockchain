@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from taco.full_node.sync_store import SyncStore
-from taco.util.hash import std_hash
+from btchia.full_node.sync_store import SyncStore
+from btchia.util.hash import std_hash
 
 
 @pytest.fixture(scope="module")

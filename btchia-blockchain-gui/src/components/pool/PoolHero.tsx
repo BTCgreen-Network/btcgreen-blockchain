@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, Typography } from '@material-ui/core';
-import { CardHero } from '@taco/core';
-import { Pool as PoolIcon } from '@taco/icons';
+import { CardHero } from '@btchia/core';
+import { Pool as PoolIcon } from '@btchia/icons';
 
 const StyledPoolIcon = styled(PoolIcon)`
   font-size: 4rem;
@@ -24,7 +24,7 @@ export default function PoolHero() {
           <StyledPoolIcon color="primary" />
           <Typography variant="body1">
             <Trans>
-              Smooth out your XTX farming rewards by joining a pool.
+              Smooth out your XBTC farming rewards by joining a pool.
             </Trans>
           </Typography>
           <Button onClick={handleJoinPool} variant="contained" color="primary">

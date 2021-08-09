@@ -1,8 +1,8 @@
 from typing import Union
 
-from taco.consensus.block_record import BlockRecord
-from taco.consensus.blockchain_interface import BlockchainInterface
-from taco.types.header_block import HeaderBlock
+from btchia.consensus.block_record import BlockRecord
+from btchia.consensus.blockchain_interface import BlockchainInterface
+from btchia.types.header_block import HeaderBlock
 
 
 def find_fork_point_in_chain(

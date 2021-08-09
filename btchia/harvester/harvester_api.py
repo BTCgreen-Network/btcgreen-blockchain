@@ -5,20 +5,20 @@ from typing import Callable, List, Tuple
 
 from blspy import AugSchemeMPL, G2Element, G1Element
 
-from taco.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from taco.harvester.harvester import Harvester
-from taco.plotting.plot_tools import PlotInfo, parse_plot_info
-from taco.protocols import harvester_protocol
-from taco.protocols.farmer_protocol import FarmingInfo
-from taco.protocols.harvester_protocol import Plot
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.server.outbound_message import make_msg
-from taco.server.ws_connection import WSTacoConnection
-from taco.types.blockchain_format.proof_of_space import ProofOfSpace
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.util.api_decorators import api_request, peer_required
-from taco.util.ints import uint8, uint32, uint64
-from taco.wallet.derive_keys import master_sk_to_local_sk
+from btchia.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from btchia.harvester.harvester import Harvester
+from btchia.plotting.plot_tools import PlotInfo, parse_plot_info
+from btchia.protocols import harvester_protocol
+from btchia.protocols.farmer_protocol import FarmingInfo
+from btchia.protocols.harvester_protocol import Plot
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.server.outbound_message import make_msg
+from btchia.server.ws_connection import WSBTChiaConnection
+from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.util.api_decorators import api_request, peer_required
+from btchia.util.ints import uint8, uint32, uint64
+from btchia.wallet.derive_keys import master_sk_to_local_sk
 
 
 class HarvesterAPI:
@@ -49,7 +49,7 @@ class HarvesterAPI:
     @peer_required
     @api_request
     async def new_signage_point_harvester(
-        self, new_challenge: harvester_protocol.NewSignagePointHarvester, peer: WSTacoConnection
+        self, new_challenge: harvester_protocol.NewSignagePointHarvester, peer: WSBTChiaConnection
     ):
         """
         The harvester receives a new signage point from the farmer, this happens at the start of each slot.

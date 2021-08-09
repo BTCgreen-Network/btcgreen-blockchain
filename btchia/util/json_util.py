@@ -4,7 +4,7 @@ from typing import Any
 
 from aiohttp import web
 
-from taco.wallet.util.wallet_types import WalletType
+from btchia.wallet.util.wallet_types import WalletType
 
 
 class EnhancedJSONEncoder(json.JSONEncoder):

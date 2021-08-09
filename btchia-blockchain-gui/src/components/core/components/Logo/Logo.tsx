@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, BoxProps } from '@material-ui/core';
-import { Taco } from '@taco/icons';
+import { BTChia } from '@btchia/icons';
 
-const StyledTaco = styled(Taco)`
+const StyledBTChia = styled(BTChia)`
   max-width: 100%;
   width: auto;
   height: auto;
@@ -12,7 +12,7 @@ const StyledTaco = styled(Taco)`
 export default function Logo(props: BoxProps) {
   return (
     <Box {...props}>
-      <StyledTaco />
+      <StyledBTChia />
     </Box>
   );
 }

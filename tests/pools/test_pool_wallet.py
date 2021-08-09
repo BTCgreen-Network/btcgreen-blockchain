@@ -5,15 +5,15 @@ from typing import List
 import pytest
 from blspy import PrivateKey
 
-from taco.pools.pool_wallet import PoolWallet
-from taco.pools.pool_wallet_info import PoolState, FARMING_TO_POOL
-from taco.simulator.simulator_protocol import FarmNewBlockProtocol
-from taco.types.coin_solution import CoinSolution
-from taco.types.full_block import FullBlock
-from taco.types.peer_info import PeerInfo
-from taco.util.ints import uint16, uint32
-from taco.wallet.derive_keys import master_sk_to_singleton_owner_sk
-from taco.wallet.wallet_state_manager import WalletStateManager
+from btchia.pools.pool_wallet import PoolWallet
+from btchia.pools.pool_wallet_info import PoolState, FARMING_TO_POOL
+from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.full_block import FullBlock
+from btchia.types.peer_info import PeerInfo
+from btchia.util.ints import uint16, uint32
+from btchia.wallet.derive_keys import master_sk_to_singleton_owner_sk
+from btchia.wallet.wallet_state_manager import WalletStateManager
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 
 

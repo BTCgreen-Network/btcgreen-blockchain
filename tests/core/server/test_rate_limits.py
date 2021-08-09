@@ -2,9 +2,9 @@ import asyncio
 
 import pytest
 
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.server.outbound_message import make_msg
-from taco.server.rate_limits import RateLimiter, NON_TX_FREQ
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.server.outbound_message import make_msg
+from btchia.server.rate_limits import RateLimiter, NON_TX_FREQ
 from tests.setup_nodes import test_constants
 
 

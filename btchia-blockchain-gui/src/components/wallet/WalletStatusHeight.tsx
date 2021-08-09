@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FormatLargeNumber } from '@taco/core';
+import { FormatLargeNumber } from '@btchia/core';
 import type { RootState } from '../../modules/rootReducer';
 
 export default function WalletStatusHeight() {

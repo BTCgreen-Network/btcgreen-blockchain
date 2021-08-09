@@ -9,14 +9,14 @@ from typing import Callable, Dict, List, Optional, Set, Tuple, Union, Any
 
 from blspy import PrivateKey
 
-from taco.consensus.block_record import BlockRecord
-from taco.consensus.constants import ConsensusConstants
-from taco.consensus.multiprocess_validation import PreValidationResult
-from taco.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH
-from taco.protocols import wallet_protocol
-from taco.protocols.full_node_protocol import RequestProofOfWeight, RespondProofOfWeight
-from taco.protocols.protocol_message_types import ProtocolMessageTypes
-from taco.protocols.wallet_protocol import (
+from btchia.consensus.block_record import BlockRecord
+from btchia.consensus.constants import ConsensusConstants
+from btchia.consensus.multiprocess_validation import PreValidationResult
+from btchia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH
+from btchia.protocols import wallet_protocol
+from btchia.protocols.full_node_protocol import RequestProofOfWeight, RespondProofOfWeight
+from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btchia.protocols.wallet_protocol import (
     RejectAdditionsRequest,
     RejectRemovalsRequest,
     RequestAdditions,
@@ -26,40 +26,40 @@ from taco.protocols.wallet_protocol import (
     RespondHeaderBlocks,
     RespondRemovals,
 )
-from taco.server.node_discovery import WalletPeers
-from taco.server.outbound_message import Message, NodeType, make_msg
-from taco.server.server import TacoServer
-from taco.server.ws_connection import WSTacoConnection
-from taco.types.blockchain_format.coin import Coin, hash_coin_list
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.coin_solution import CoinSolution
-from taco.types.header_block import HeaderBlock
-from taco.types.mempool_inclusion_status import MempoolInclusionStatus
-from taco.types.peer_info import PeerInfo
-from taco.util.byte_types import hexstr_to_bytes
-from taco.util.errors import Err, ValidationError
-from taco.util.ints import uint32, uint128
-from taco.util.keychain import Keychain
-from taco.util.lru_cache import LRUCache
-from taco.util.merkle_set import MerkleSet, confirm_included_already_hashed, confirm_not_included_already_hashed
-from taco.util.path import mkdir, path_from_root
-from taco.wallet.block_record import HeaderBlockRecord
-from taco.wallet.derivation_record import DerivationRecord
-from taco.wallet.settings.settings_objects import BackupInitialized
-from taco.wallet.transaction_record import TransactionRecord
-from taco.wallet.util.backup_utils import open_backup_file
-from taco.wallet.util.wallet_types import WalletType
-from taco.wallet.wallet_action import WalletAction
-from taco.wallet.wallet_blockchain import ReceiveBlockResult
-from taco.wallet.wallet_state_manager import WalletStateManager
-from taco.util.profiler import profile_task
+from btchia.server.node_discovery import WalletPeers
+from btchia.server.outbound_message import Message, NodeType, make_msg
+from btchia.server.server import BTChiaServer
+from btchia.server.ws_connection import WSBTChiaConnection
+from btchia.types.blockchain_format.coin import Coin, hash_coin_list
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.coin_solution import CoinSolution
+from btchia.types.header_block import HeaderBlock
+from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
+from btchia.types.peer_info import PeerInfo
+from btchia.util.byte_types import hexstr_to_bytes
+from btchia.util.errors import Err, ValidationError
+from btchia.util.ints import uint32, uint128
+from btchia.util.keychain import Keychain
+from btchia.util.lru_cache import LRUCache
+from btchia.util.merkle_set import MerkleSet, confirm_included_already_hashed, confirm_not_included_already_hashed
+from btchia.util.path import mkdir, path_from_root
+from btchia.wallet.block_record import HeaderBlockRecord
+from btchia.wallet.derivation_record import DerivationRecord
+from btchia.wallet.settings.settings_objects import BackupInitialized
+from btchia.wallet.transaction_record import TransactionRecord
+from btchia.wallet.util.backup_utils import open_backup_file
+from btchia.wallet.util.wallet_types import WalletType
+from btchia.wallet.wallet_action import WalletAction
+from btchia.wallet.wallet_blockchain import ReceiveBlockResult
+from btchia.wallet.wallet_state_manager import WalletStateManager
+from btchia.util.profiler import profile_task
 
 
 class WalletNode:
     key_config: Dict
     config: Dict
     constants: ConsensusConstants
-    server: Optional[TacoServer]
+    server: Optional[BTChiaServer]
     log: logging.Logger
     wallet_peers: WalletPeers
     # Maintains the state of the wallet (blockchain and transactions), handles DB connections
@@ -117,7 +117,7 @@ class WalletNode:
     def get_key_for_fingerprint(self, fingerprint: Optional[int]) -> Optional[PrivateKey]:
         private_keys = self.keychain.get_all_private_keys()
         if len(private_keys) == 0:
-            self.log.warning("No keys present. Create keys with the UI, or with the 'taco keys' program.")
+            self.log.warning("No keys present. Create keys with the UI, or with the 'btchia keys' program.")
             return None
 
         private_key: Optional[PrivateKey] = None
@@ -318,7 +318,7 @@ class WalletNode:
 
         return messages
 
-    def set_server(self, server: TacoServer):
+    def set_server(self, server: BTChiaServer):
         self.server = server
         DNS_SERVERS_EMPTY: list = []
         # TODO: Perhaps use a different set of DNS seeders for wallets, to split the traffic.
@@ -335,7 +335,7 @@ class WalletNode:
             self.log,
         )
 
-    async def on_connect(self, peer: WSTacoConnection):
+    async def on_connect(self, peer: WSBTChiaConnection):
         if self.wallet_state_manager is None or self.backup_initialized is False:
             return None
         messages_peer_ids = await self._messages_to_resend()
@@ -380,7 +380,7 @@ class WalletNode:
                 return True
         return False
 
-    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSTacoConnection):
+    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSBTChiaConnection):
         if self.wallet_state_manager is None:
             return None
         header_block_records: List[HeaderBlockRecord] = []
@@ -430,7 +430,7 @@ class WalletNode:
                 else:
                     self.log.debug(f"Result: {result}")
 
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSTacoConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSBTChiaConnection):
         if self.wallet_state_manager is None:
             return
 
@@ -618,7 +618,7 @@ class WalletNode:
             self.log.info("Not performing sync, already caught up.")
             return None
 
-        peers: List[WSTacoConnection] = self.server.get_full_node_connections()
+        peers: List[WSBTChiaConnection] = self.server.get_full_node_connections()
         if len(peers) == 0:
             self.log.info("No peers to sync to")
             return None
@@ -661,7 +661,7 @@ class WalletNode:
 
     async def fetch_blocks_and_validate(
         self,
-        peer: WSTacoConnection,
+        peer: WSBTChiaConnection,
         height_start: uint32,
         height_end: uint32,
         fork_point_with_peak: Optional[uint32],
@@ -914,7 +914,7 @@ class WalletNode:
         return additional_coin_spends
 
     async def get_additions(
-        self, peer: WSTacoConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
+        self, peer: WSBTChiaConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
     ) -> Optional[List[Coin]]:
         if (additions is not None and len(additions) > 0) or get_all_additions:
             if get_all_additions:
@@ -948,7 +948,7 @@ class WalletNode:
             return []  # No added coins
 
     async def get_removals(
-        self, peer: WSTacoConnection, block_i, additions, removals, request_all_removals=False
+        self, peer: WSBTChiaConnection, block_i, additions, removals, request_all_removals=False
     ) -> Optional[List[Coin]]:
         assert self.wallet_state_manager is not None
         # Check if we need all removals

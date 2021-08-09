@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
-from taco.types.blockchain_format.sized_bytes import bytes32
-from taco.types.condition_with_args import ConditionWithArgs
-from taco.util.condition_tools import ConditionOpcode
-from taco.util.streamable import Streamable, streamable
+from btchia.types.blockchain_format.sized_bytes import bytes32
+from btchia.types.condition_with_args import ConditionWithArgs
+from btchia.util.condition_tools import ConditionOpcode
+from btchia.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

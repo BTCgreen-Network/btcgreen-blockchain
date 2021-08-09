@@ -4,11 +4,11 @@ from secrets import token_bytes
 import aiosqlite
 import pytest
 
-from taco.types.blockchain_format.coin import Coin
-from taco.util.db_wrapper import DBWrapper
-from taco.util.ints import uint64
+from btchia.types.blockchain_format.coin import Coin
+from btchia.util.db_wrapper import DBWrapper
+from btchia.util.ints import uint64
 
-from taco.wallet.wallet_interested_store import WalletInterestedStore
+from btchia.wallet.wallet_interested_store import WalletInterestedStore
 
 
 @pytest.fixture(scope="module")

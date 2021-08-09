@@ -1,5 +1,5 @@
 enum Unit {
-  TACO = 'TACO',
+  BTCHIA = 'BTCHIA',
   MOJO = 'MOJO',
   COLOURED_COIN = 'COLOUREDCOIN',
 }

@@ -12,7 +12,7 @@ const convert = (amount, from, to) => {
   return Number.parseFloat(amountInFromUnit.div(units.getUnit(to)));
 };
 
-class Taco {
+class BTChia {
   constructor(value, unit) {
     this._value = value;
     this._unit = unit;
@@ -73,42 +73,42 @@ class Taco {
   }
 }
 
-export const taco_formatter = (value, unit) => new Taco(value, unit);
+export const btchia_formatter = (value, unit) => new BTChia(value, unit);
 
-taco_formatter.convert = convert;
-taco_formatter.setDisplay = units.setDisplay;
-taco_formatter.setUnit = units.setUnit;
-taco_formatter.getUnit = units.getUnit;
-taco_formatter.setFiat = (currency, rate, display = null) => {
+btchia_formatter.convert = convert;
+btchia_formatter.setDisplay = units.setDisplay;
+btchia_formatter.setUnit = units.setUnit;
+btchia_formatter.getUnit = units.getUnit;
+btchia_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const mojo_to_taco = (mojo) => {
-  return taco_formatter(Number.parseInt(mojo), 'mojo').to('taco').value();
+export const mojo_to_btchia = (mojo) => {
+  return btchia_formatter(Number.parseInt(mojo), 'mojo').to('btchia').value();
 };
 
-export const taco_to_mojo = (taco) => {
-  return taco_formatter(Number.parseFloat(Number(taco)), 'taco')
+export const btchia_to_mojo = (btchia) => {
+  return btchia_formatter(Number.parseFloat(Number(btchia)), 'btchia')
     .to('mojo')
     .value();
 };
 
-export const mojo_to_taco_string = (mojo) => {
-  return taco_formatter(Number(mojo), 'mojo').to('taco').toString();
+export const mojo_to_btchia_string = (mojo) => {
+  return btchia_formatter(Number(mojo), 'mojo').to('btchia').toString();
 };
 
 export const mojo_to_colouredcoin = (mojo) => {
-  return taco_formatter(Number.parseInt(mojo), 'mojo')
+  return btchia_formatter(Number.parseInt(mojo), 'mojo')
     .to('colouredcoin')
     .value();
 };
 
 export const colouredcoin_to_mojo = (colouredcoin) => {
-  return taco_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
+  return btchia_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
     .to('mojo')
     .value();
 };
 
 export const mojo_to_colouredcoin_string = (mojo) => {
-  return taco_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
+  return btchia_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
 };

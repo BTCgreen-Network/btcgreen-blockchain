@@ -3,48 +3,48 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from taco.types.blockchain_format.program import Program, SerializedProgram
+from btchia.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "taco/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "taco/wallet/puzzles/cc.clvm",
-        "taco/wallet/puzzles/chialisp_deserialisation.clvm",
-        "taco/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "taco/wallet/puzzles/generator_for_single_coin.clvm",
-        "taco/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "taco/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "taco/wallet/puzzles/lock.inner.puzzle.clvm",
-        "taco/wallet/puzzles/p2_conditions.clvm",
-        "taco/wallet/puzzles/p2_delegated_conditions.clvm",
-        "taco/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "taco/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "taco/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "taco/wallet/puzzles/p2_puzzle_hash.clvm",
-        "taco/wallet/puzzles/rl_aggregation.clvm",
-        "taco/wallet/puzzles/rl.clvm",
-        "taco/wallet/puzzles/sha256tree_module.clvm",
-        "taco/wallet/puzzles/singleton_top_layer.clvm",
-        "taco/wallet/puzzles/did_innerpuz.clvm",
-        "taco/wallet/puzzles/decompress_puzzle.clvm",
-        "taco/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
-        "taco/wallet/puzzles/decompress_coin_solution_entry.clvm",
-        "taco/wallet/puzzles/block_program_zero.clvm",
-        "taco/wallet/puzzles/test_generator_deserialize.clvm",
-        "taco/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
-        "taco/wallet/puzzles/p2_singleton.clvm",
-        "taco/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
-        "taco/wallet/puzzles/pool_member_innerpuz.clvm",
-        "taco/wallet/puzzles/singleton_launcher.clvm",
-        "taco/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
+        "btchia/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "btchia/wallet/puzzles/cc.clvm",
+        "btchia/wallet/puzzles/chialisp_deserialisation.clvm",
+        "btchia/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "btchia/wallet/puzzles/generator_for_single_coin.clvm",
+        "btchia/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "btchia/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "btchia/wallet/puzzles/lock.inner.puzzle.clvm",
+        "btchia/wallet/puzzles/p2_conditions.clvm",
+        "btchia/wallet/puzzles/p2_delegated_conditions.clvm",
+        "btchia/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "btchia/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "btchia/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "btchia/wallet/puzzles/p2_puzzle_hash.clvm",
+        "btchia/wallet/puzzles/rl_aggregation.clvm",
+        "btchia/wallet/puzzles/rl.clvm",
+        "btchia/wallet/puzzles/sha256tree_module.clvm",
+        "btchia/wallet/puzzles/singleton_top_layer.clvm",
+        "btchia/wallet/puzzles/did_innerpuz.clvm",
+        "btchia/wallet/puzzles/decompress_puzzle.clvm",
+        "btchia/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
+        "btchia/wallet/puzzles/decompress_coin_solution_entry.clvm",
+        "btchia/wallet/puzzles/block_program_zero.clvm",
+        "btchia/wallet/puzzles/test_generator_deserialize.clvm",
+        "btchia/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "btchia/wallet/puzzles/p2_singleton.clvm",
+        "btchia/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
+        "btchia/wallet/puzzles/pool_member_innerpuz.clvm",
+        "btchia/wallet/puzzles/singleton_launcher.clvm",
+        "btchia/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["taco/wallet/puzzles/create-lock-puzzlehash.clvm", "taco/wallet/puzzles/condition_codes.clvm"]
+    ["btchia/wallet/puzzles/create-lock-puzzlehash.clvm", "btchia/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "taco/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "btchia/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -71,7 +71,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to taco/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to btchia/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

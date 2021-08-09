@@ -1,10 +1,10 @@
-Taco is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
+BTChia is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
 
 Discord Channel: https://discord.gg/xguteVCYHh
 
-Website: https://taconetwork.net (coming soon)
+Website: https://btchianetwork.net (coming soon)
 
-Introducer: dns-introducer.taconetwork.net:18620
+Introducer: dns-introducer.btchianetwork.net:18620
 
 Changelog:
 v1.0.0 - Initial Release

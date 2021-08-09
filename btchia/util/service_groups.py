@@ -1,19 +1,19 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "taco_harvester taco_timelord_launcher taco_timelord taco_farmer taco_full_node taco_wallet".split(),
-    "node": "taco_full_node".split(),
-    "harvester": "taco_harvester".split(),
-    "farmer": "taco_harvester taco_farmer taco_full_node taco_wallet".split(),
-    "farmer-no-wallet": "taco_harvester taco_farmer taco_full_node".split(),
-    "farmer-only": "taco_farmer".split(),
-    "timelord": "taco_timelord_launcher taco_timelord taco_full_node".split(),
-    "timelord-only": "taco_timelord".split(),
-    "timelord-launcher-only": "taco_timelord_launcher".split(),
-    "wallet": "taco_wallet taco_full_node".split(),
-    "wallet-only": "taco_wallet".split(),
-    "introducer": "taco_introducer".split(),
-    "simulator": "taco_full_node_simulator".split(),
+    "all": "btchia_harvester btchia_timelord_launcher btchia_timelord btchia_farmer btchia_full_node btchia_wallet".split(),
+    "node": "btchia_full_node".split(),
+    "harvester": "btchia_harvester".split(),
+    "farmer": "btchia_harvester btchia_farmer btchia_full_node btchia_wallet".split(),
+    "farmer-no-wallet": "btchia_harvester btchia_farmer btchia_full_node".split(),
+    "farmer-only": "btchia_farmer".split(),
+    "timelord": "btchia_timelord_launcher btchia_timelord btchia_full_node".split(),
+    "timelord-only": "btchia_timelord".split(),
+    "timelord-launcher-only": "btchia_timelord_launcher".split(),
+    "wallet": "btchia_wallet btchia_full_node".split(),
+    "wallet-only": "btchia_wallet".split(),
+    "introducer": "btchia_introducer".split(),
+    "simulator": "btchia_full_node_simulator".split(),
 }
 
 
