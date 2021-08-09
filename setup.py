@@ -43,9 +43,9 @@ dev_dependencies = [
 kwargs = dict(
     name="btchia-blockchain",
     author="Mariano Sorgente",
-    author_email="mariano@btchianetwork.net",
+    author_email="mariano@btchia.org",
     description="BTChia blockchain full node, farmer, timelord, and wallet.",
-    url="https://btchianetwork.net/",
+    url="https://btchia.org/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="btchia blockchain node",

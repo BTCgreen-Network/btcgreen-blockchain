@@ -2,9 +2,9 @@ BTChia is a cryptocurrency forked from Chia and uses the Proof of Space and Time
 
 Discord Channel: https://discord.gg/xguteVCYHh
 
-Website: https://btchianetwork.net (coming soon)
+Website: https://btchia.org (coming soon)
 
-Introducer: dns-introducer.btchianetwork.net:18620
+Introducer: dns-introducer.btchia.org:18620
 
 Changelog:
 v1.0.0 - Initial Release
