@@ -3,22 +3,22 @@ import time
 from typing import Tuple, Dict, List, Optional, Set
 from clvm import SExp
 
-from btchia.consensus.cost_calculator import NPCResult
-from btchia.consensus.condition_costs import ConditionCost
-from btchia.full_node.generator import create_generator_args, setup_generator_args
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import NIL
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_record import CoinRecord
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.generator_types import BlockGenerator
-from btchia.types.name_puzzle_condition import NPC
-from btchia.util.clvm import int_from_bytes, int_to_bytes
-from btchia.util.condition_tools import ConditionOpcode, conditions_by_opcode
-from btchia.util.errors import Err, ValidationError
-from btchia.util.ints import uint32, uint64, uint16
-from btchia.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
-from btchia.wallet.puzzles.rom_bootstrap_generator import get_generator
+from btcgreen.consensus.cost_calculator import NPCResult
+from btcgreen.consensus.condition_costs import ConditionCost
+from btcgreen.full_node.generator import create_generator_args, setup_generator_args
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import NIL
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.types.name_puzzle_condition import NPC
+from btcgreen.util.clvm import int_from_bytes, int_to_bytes
+from btcgreen.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from btcgreen.util.errors import Err, ValidationError
+from btcgreen.util.ints import uint32, uint64, uint16
+from btcgreen.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
+from btcgreen.wallet.puzzles.rom_bootstrap_generator import get_generator
 
 GENERATOR_MOD = get_generator()
 

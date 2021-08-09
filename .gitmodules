@@ -1,6 +1,6 @@
-[submodule "btchia-blockchain-gui"]
-	path = btchia-blockchain-gui
-	url = https://github.com/BTChia-Network/btchia-blockchain-gui.git
+[submodule "btcgreen-blockchain-gui"]
+	path = btcgreen-blockchain-gui
+	url = https://github.com/BTCgreen-Network/btcgreen-blockchain-gui.git
 	branch = pools
 [submodule "mozilla-ca"]
 	path = mozilla-ca

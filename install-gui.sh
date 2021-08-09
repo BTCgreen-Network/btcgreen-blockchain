@@ -4,17 +4,17 @@ export NODE_OPTIONS="--max-old-space-size=3000"
 
 
 if [ -z "$VIRTUAL_ENV" ]; then
-  echo "This requires the btchia python virtual environment."
+  echo "This requires the btcgreen python virtual environment."
   echo "Execute '. ./activate' before running."
 	exit 1
 fi
 
 if [ "$(id -u)" = 0 ]; then
-  echo "The BTChia Blockchain GUI can not be installed or run by the root user."
+  echo "The BTCgreen Blockchain GUI can not be installed or run by the root user."
 	exit 1
 fi
 
-# Allows overriding the branch or commit to build in btchia-blockchain-gui
+# Allows overriding the branch or commit to build in btcgreen-blockchain-gui
 SUBMODULE_BRANCH=$1
 
 UBUNTU=false
@@ -80,7 +80,7 @@ if [ ! "$CI" ]; then
 	echo "Running git submodule update."
 	echo ""
 	git submodule update
-	cd btchia-blockchain-gui
+	cd btcgreen-blockchain-gui
 
 	if [ "$SUBMODULE_BRANCH" ];
 	then
@@ -100,6 +100,6 @@ else
 fi
 
 echo ""
-echo "BTChia blockchain install-gui.sh completed."
+echo "BTCgreen blockchain install-gui.sh completed."
 echo ""
-echo "Type 'cd btchia-blockchain-gui' and then 'npm run electron &' to start the GUI."
+echo "Type 'cd btcgreen-blockchain-gui' and then 'npm run electron &' to start the GUI."

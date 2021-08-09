@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Spinner } from '@btchia/core';
+import { Spinner } from '@btcgreen/core';
 import { RootState } from '../../modules/rootReducer';
 
 export default function AppLoading() {

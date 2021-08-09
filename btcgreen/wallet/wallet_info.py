@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from btchia.util.ints import uint8, uint32
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.util.ints import uint8, uint32
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

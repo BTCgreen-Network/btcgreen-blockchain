@@ -1,12 +1,12 @@
 import pathlib
 from typing import Dict
 
-from btchia.introducer.introducer import Introducer
-from btchia.introducer.introducer_api import IntroducerAPI
-from btchia.server.outbound_message import NodeType
-from btchia.server.start_service import run_service
-from btchia.util.config import load_config_cli
-from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.introducer.introducer import Introducer
+from btcgreen.introducer.introducer_api import IntroducerAPI
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.start_service import run_service
+from btcgreen.util.config import load_config_cli
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.header_block import HeaderBlock
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

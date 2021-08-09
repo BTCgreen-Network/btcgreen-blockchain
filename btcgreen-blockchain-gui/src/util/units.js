@@ -1,17 +1,17 @@
 const units = {
-  btchia: 1,
+  btcgreen: 1,
   mojo: 1 / 1e12,
   colouredcoin: 1 / 1e9,
 };
 
 const aliases = {
-  btchia: ['ch', 'btchia', 'BTChia'],
+  btcgreen: ['ch', 'btcgreen', 'BTCgreen'],
   mojo: ['mj', 'mojo'],
   colouredcoin: ['cc', 'colouredcoin'],
 };
 
 const display = {
-  btchia: {
+  btcgreen: {
     format: '{amount} CH',
     fractionDigits: 12,
   },

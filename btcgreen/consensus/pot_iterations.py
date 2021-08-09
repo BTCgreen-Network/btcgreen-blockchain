@@ -1,8 +1,8 @@
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.pos_quality import _expected_plot_size
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint64, uint128
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.pos_quality import _expected_plot_size
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint64, uint128
 
 
 def is_overflow_block(constants: ConsensusConstants, signage_point_index: uint8) -> bool:

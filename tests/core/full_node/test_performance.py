@@ -9,14 +9,14 @@ from typing import Dict
 import pytest
 import cProfile
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.full_node.full_node_api import FullNodeAPI
-from btchia.protocols import full_node_protocol as fnp
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.unfinished_block import UnfinishedBlock
-from btchia.util.clvm import int_to_bytes
-from btchia.util.ints import uint64
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.full_node.full_node_api import FullNodeAPI
+from btcgreen.protocols import full_node_protocol as fnp
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.unfinished_block import UnfinishedBlock
+from btcgreen.util.clvm import int_to_bytes
+from btcgreen.util.ints import uint64
 from tests.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
 

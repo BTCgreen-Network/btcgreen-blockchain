@@ -4,12 +4,12 @@ import asyncio
 import pytest
 from colorlog import logging
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.protocols import full_node_protocol
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.peer_info import PeerInfo
-from btchia.util.ints import uint16, uint32
-from btchia.wallet.wallet_state_manager import WalletStateManager
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.protocols import full_node_protocol
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.ints import uint16, uint32
+from btcgreen.wallet.wallet_state_manager import WalletStateManager
 from tests.connection_utils import disconnect_all_and_reconnect
 from tests.core.fixtures import default_400_blocks, default_1000_blocks
 from tests.setup_nodes import bt, self_hostname, setup_node_and_wallet, setup_simulators_and_wallets, test_constants

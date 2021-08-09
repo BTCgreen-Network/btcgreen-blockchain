@@ -1,8 +1,8 @@
 {
-  "name": "btchia-blockchain",
-  "author": "BTChia Network <hello@btchia.net> (https://btchia.net/)",
-  "description": "GUI for BTChia Blockchain",
-  "productName": "BTChia Blockchain",
+  "name": "btcgreen-blockchain",
+  "author": "BTCgreen Network <hello@btcgreen.net> (https://btcgreen.net/)",
+  "description": "GUI for BTCgreen Blockchain",
+  "productName": "BTCgreen Blockchain",
   "private": true,
   "homepage": "./",
   "main": "build/electron/main.js",

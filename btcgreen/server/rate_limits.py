@@ -4,8 +4,8 @@ import time
 from collections import Counter
 from typing import Optional
 
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import Message
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import Message
 
 log = logging.getLogger(__name__)
 

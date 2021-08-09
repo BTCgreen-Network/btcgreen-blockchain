@@ -2,9 +2,9 @@ import asyncio
 
 import pytest
 
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import make_msg
-from btchia.server.rate_limits import RateLimiter, NON_TX_FREQ
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import make_msg
+from btcgreen.server.rate_limits import RateLimiter, NON_TX_FREQ
 from tests.setup_nodes import test_constants
 
 

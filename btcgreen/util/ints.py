@@ -1,6 +1,6 @@
 from typing import Any, BinaryIO
 
-from btchia.util.struct_stream import StructStream
+from btcgreen.util.struct_stream import StructStream
 
 
 class int8(StructStream):

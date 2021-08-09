@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

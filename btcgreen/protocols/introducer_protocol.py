@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from btchia.types.peer_info import TimestampedPeerInfo
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.peer_info import TimestampedPeerInfo
+from btcgreen.util.streamable import Streamable, streamable
 
 """
 Protocol to introducer

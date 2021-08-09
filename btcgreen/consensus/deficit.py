@@ -1,8 +1,8 @@
 from typing import Optional
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.constants import ConsensusConstants
-from btchia.util.ints import uint8, uint32
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.util.ints import uint8, uint32
 
 
 def calculate_deficit(

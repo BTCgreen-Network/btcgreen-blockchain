@@ -4,13 +4,13 @@ from typing import Optional
 
 import pytest
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.full_node.full_node_api import FullNodeAPI
-from btchia.protocols import full_node_protocol
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.peer_info import PeerInfo
-from btchia.util.ints import uint16, uint32
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.full_node.full_node_api import FullNodeAPI
+from btcgreen.protocols import full_node_protocol
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.ints import uint16, uint32
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

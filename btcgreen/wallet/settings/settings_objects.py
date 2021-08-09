@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

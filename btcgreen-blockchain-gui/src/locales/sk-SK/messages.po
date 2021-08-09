@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: sk_SK\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-07 17:39\n"
 "Last-Translator: \n"
 "Language-Team: Slovak\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: sk\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr "(voliteľné)"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "* Chcete viac preskúmať BTChia bloky? Vyskúšajte aplikáciu <0>BTChia Explorer</0> vytvorenú open source vývojárom."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "* Chcete viac preskúmať BTCgreen bloky? Vyskúšajte aplikáciu <0>BTCgreen Explorer</0> vytvorenú open source vývojárom."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Kombajn je služba bežiaca na stroji, kde sú uložené polia. Farmár 
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "O BTChia blockchaine"
+msgid "About BTCgreen Blockchain"
+msgstr "O BTCgreen blockchaine"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Blok VDF iterácii"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "Blok s výškou {0} v BTChia blockchaine"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "Blok s výškou {0} v BTCgreen blockchaine"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -674,8 +674,8 @@ msgid "Edit"
 msgstr "Upraviť"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
-msgstr "Zadajte 24 slov, ktoré ste si uložili pre účely obnovenia vašej peňaženky BTChia."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
+msgstr "Zadajte 24 slov, ktoré ste si uložili pre účely obnovenia vašej peňaženky BTCgreen."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -688,8 +688,8 @@ msgid "Error"
 msgstr "Chyba"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
-msgstr "Chyba: BTChia nie je možné odoslať na farebnú adresu. Zadajte prosím BTChia adresu."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
+msgstr "Chyba: BTCgreen nie je možné odoslať na farebnú adresu. Zadajte prosím BTCgreen adresu."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "Polia, ktoré prešli filtrom"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "Polia sú pridelené priestory na vašom pevnom disku používanom na ťažbu a zarábanie BTChia. <0>Ďalšie informácie</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "Polia sú pridelené priestory na vašom pevnom disku používanom na ťažbu a zarábanie BTCgreen. <0>Ďalšie informácie</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1902,8 +1902,8 @@ msgstr "Dĺžka disponibilného intervalu (počet blokov)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "Limit výdavkov (btchia na interval): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "Limit výdavkov (btcgreen na interval): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "Stav:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,16 +1999,16 @@ msgstr "Synchronizácia <0/>/<1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
-msgstr "BTChia"
+msgid "BTCgreen"
+msgstr "BTCgreen"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
-msgstr "BTChia Blockchain Wiki"
+msgid "BTCgreen Blockchain Wiki"
+msgstr "BTCgreen Blockchain Wiki"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
-msgstr "BTChia peňaženka"
+msgid "BTCgreen Wallet"
+msgstr "BTCgreen peňaženka"
 
 #: src/components/pool/PoolInfo.tsx:37
 msgid "Target Puzzle Hash"
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Táto možnosť je dostupná iba z Electron aplikácie."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "Toto je množstvo BTChia, ktoré môžete v súčasnosti použiť na uskutočnenie transakcií. Nezahŕňa nespracované odmeny za ťažbu, nespracované prichádzajúce transakcie a BTChia, ktorú ste práve minuli, ale ešte nie je v blockchaine."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "Toto je množstvo BTCgreen, ktoré môžete v súčasnosti použiť na uskutočnenie transakcií. Nezahŕňa nespracované odmeny za ťažbu, nespracované prichádzajúce transakcie a BTCgreen, ktorú ste práve minuli, ale ešte nie je v blockchaine."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Toto je čas, kedy ťažiar vytvoril blok, a to ešte predtým, ako bol finalizovaný s dôkazom o čase"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Toto je celkové množstvo BTChia v blockchaine v aktuálne najnovšom čiastkovom bloku, ktorý je kontrolovaný vašimi súkromnými kľúčmi. Zahŕňa zmrazené odmeny za ťaženie, ale nie nespracované prichádzajúce a odchádzajúce transakcie."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Toto je celkové množstvo BTCgreen v blockchaine v aktuálne najnovšom čiastkovom bloku, ktorý je kontrolovaný vašimi súkromnými kľúčmi. Zahŕňa zmrazené odmeny za ťaženie, ale nie nespracované prichádzajúce a odchádzajúce transakcie."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,7 +2173,7 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Tento obchod bol zahrnutý v blockchaine na tejto pozícii"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
 msgstr "Táto verzia Chii nie je kompatibilná s blockchainom a farmenie na nej nie je bezpečné."
 
 #: src/components/fullNode/FullNode.jsx:92
@@ -2214,8 +2214,8 @@ msgstr "Celková veľkosť polí:"
 msgid "Total Size of Plots"
 msgstr "Celková veľkosť polí"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr "Stav peňaženky:"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr "Chcete sa pripojiť k združeniu? Vytvorte NFT poľa"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "Chcete zarobiť viac BTChia? Pridajte na svoju farmu ďalšie polia."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "Chcete zarobiť viac BTCgreen? Pridajte na svoju farmu ďalšie polia."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Váha je celková pridaná obtiažnosť všetkých blokov až po tento blok vrátane tohto bloku"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "Vitajte v BTChia. Prosím prihláste sa s existujúcim kľúčom, alebo si vytvorte nový."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "Vitajte v BTCgreen. Prosím prihláste sa s existujúcim kľúčom, alebo si vytvorte nový."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr "Najprv musíte získať svoje odmeny"
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,8 +2583,8 @@ msgstr "{0} bodov pred {1} - {2} hodinami"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Odmena Za Blok"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
 msgstr "{currencyCode} Celkové množstvo vyfarmárčenej Chii"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28

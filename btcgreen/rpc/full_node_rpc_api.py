@@ -1,27 +1,27 @@
 from typing import Any, Callable, Dict, List, Optional
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
-from btchia.full_node.full_node import FullNode
-from btchia.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_record import CoinRecord
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.full_block import FullBlock
-from btchia.types.generator_types import BlockGenerator
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_header_block import UnfinishedHeaderBlock
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint32, uint64, uint128
-from btchia.util.ws_message import WsRpcMessage, create_payload_dict
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR
+from btcgreen.full_node.full_node import FullNode
+from btcgreen.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_header_block import UnfinishedHeaderBlock
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint32, uint64, uint128
+from btcgreen.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FullNodeRpcApi:
     def __init__(self, service: FullNode):
         self.service = service
-        self.service_name = "btchia_full_node"
+        self.service_name = "btcgreen_full_node"
         self.cached_blockchain_state: Optional[Dict] = None
 
     def get_routes(self) -> Dict[str, Callable]:

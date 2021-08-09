@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, Typography } from '@material-ui/core';
-import { CardHero } from '@btchia/core';
-import { Pool as PoolIcon } from '@btchia/icons';
+import { CardHero } from '@btcgreen/core';
+import { Pool as PoolIcon } from '@btcgreen/icons';
 
 const StyledPoolIcon = styled(PoolIcon)`
   font-size: 4rem;

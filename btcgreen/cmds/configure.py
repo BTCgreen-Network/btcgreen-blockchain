@@ -3,8 +3,8 @@ from typing import Dict
 
 import click
 
-from btchia.util.config import load_config, save_config, str2bool
-from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.config import load_config, save_config, str2bool
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
 
 def configure(
@@ -86,7 +86,7 @@ def configure(
         if testnet == "true" or testnet == "t":
             print("Setting Testnet")
             testnet_port = "58444"
-            testnet_introducer = "beta1_introducer.btchia.org"
+            testnet_introducer = "beta1_introducer.btcgreen.org"
             testnet = "testnet7"
             config["full_node"]["port"] = int(testnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(testnet_port)
@@ -111,7 +111,7 @@ def configure(
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
             mainnet_port = "9282"
-            mainnet_introducer = "dns-introducer.btchia.org"
+            mainnet_introducer = "dns-introducer.btcgreen.org"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)
@@ -136,7 +136,7 @@ def configure(
             print("Please choose True or False")
 
     if change_made:
-        print("Restart any running btchia services for changes to take effect")
+        print("Restart any running btcgreen services for changes to take effect")
         save_config(root_path, "config.yaml", config)
     return 0
 

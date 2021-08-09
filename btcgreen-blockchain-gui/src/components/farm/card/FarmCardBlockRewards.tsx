@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { mojo_to_btchia } from '../../../util/btchia';
+import { mojo_to_btcgreen } from '../../../util/btcgreen';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
 export default function FarmCardBlockRewards() {
@@ -26,7 +26,7 @@ export default function FarmCardBlockRewards() {
       const val =
         BigInt(farmerRewardAmount.toString()) +
         BigInt(poolRewardAmount.toString());
-      return mojo_to_btchia(val);
+      return mojo_to_btcgreen(val);
     }
   }, [farmerRewardAmount, poolRewardAmount]);
 

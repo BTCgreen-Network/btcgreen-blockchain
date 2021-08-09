@@ -2,9 +2,9 @@ from typing import Dict, List
 
 from sortedcontainers import SortedDict
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.mempool_item import MempoolItem
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.mempool_item import MempoolItem
 
 
 class Mempool:

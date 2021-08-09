@@ -1,9 +1,9 @@
 from typing import Dict, List, Optional
 
-from btchia.types.blockchain_format.coin import Coin, hash_coin_list
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.errors import Err
-from btchia.util.merkle_set import MerkleSet
+from btcgreen.types.blockchain_format.coin import Coin, hash_coin_list
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.errors import Err
+from btcgreen.util.merkle_set import MerkleSet
 
 
 def validate_block_merkle_roots(

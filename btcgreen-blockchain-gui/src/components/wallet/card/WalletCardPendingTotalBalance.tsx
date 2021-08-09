@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { mojo_to_btchia_string } from '../../../util/btchia';
+import { mojo_to_btcgreen_string } from '../../../util/btcgreen';
 
 type Props = {
   wallet_id: number;
@@ -33,7 +33,7 @@ export default function WalletCardPendingTotalBalance(props: Props) {
       }
       value={
         <>
-          {mojo_to_btchia_string(value)} {currencyCode}
+          {mojo_to_btcgreen_string(value)} {currencyCode}
         </>
       }
     />

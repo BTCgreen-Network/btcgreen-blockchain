@@ -7,36 +7,36 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 from blspy import PrivateKey, G1Element
 
-from btchia.cmds.init_funcs import check_keys
-from btchia.consensus.block_rewards import calculate_base_farmer_reward
-from btchia.pools.pool_wallet import PoolWallet
-from btchia.pools.pool_wallet_info import create_pool_state, FARMING_TO_POOL, PoolWalletInfo, PoolState
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import NodeType, make_msg
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint32, uint64
-from btchia.util.keychain import bytes_to_mnemonic, generate_mnemonic
-from btchia.util.path import path_from_root
-from btchia.util.ws_message import WsRpcMessage, create_payload_dict
-from btchia.wallet.cc_wallet.cc_wallet import CCWallet
-from btchia.wallet.derive_keys import master_sk_to_singleton_owner_sk
-from btchia.wallet.rl_wallet.rl_wallet import RLWallet
-from btchia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
-from btchia.wallet.did_wallet.did_wallet import DIDWallet
-from btchia.wallet.trade_record import TradeRecord
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
-from btchia.wallet.util.trade_utils import trade_record_to_dict
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_info import WalletInfo
-from btchia.wallet.wallet_node import WalletNode
-from btchia.util.config import load_config
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.cmds.init_funcs import check_keys
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward
+from btcgreen.pools.pool_wallet import PoolWallet
+from btcgreen.pools.pool_wallet_info import create_pool_state, FARMING_TO_POOL, PoolWalletInfo, PoolState
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import NodeType, make_msg
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.util.keychain import bytes_to_mnemonic, generate_mnemonic
+from btcgreen.util.path import path_from_root
+from btcgreen.util.ws_message import WsRpcMessage, create_payload_dict
+from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
+from btcgreen.wallet.derive_keys import master_sk_to_singleton_owner_sk
+from btcgreen.wallet.rl_wallet.rl_wallet import RLWallet
+from btcgreen.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+from btcgreen.wallet.did_wallet.did_wallet import DIDWallet
+from btcgreen.wallet.trade_record import TradeRecord
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.backup_utils import download_backup, get_backup_info, upload_backup
+from btcgreen.wallet.util.trade_utils import trade_record_to_dict
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_info import WalletInfo
+from btcgreen.wallet.wallet_node import WalletNode
+from btcgreen.util.config import load_config
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
 
 # Timeout for response from wallet/full node for sending a transaction
 TIMEOUT = 30
@@ -48,7 +48,7 @@ class WalletRpcApi:
     def __init__(self, wallet_node: WalletNode):
         assert wallet_node is not None
         self.service = wallet_node
-        self.service_name = "btchia_wallet"
+        self.service_name = "btcgreen_wallet"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {
@@ -129,7 +129,7 @@ class WalletRpcApi:
             data["wallet_id"] = args[1]
         if args[2] is not None:
             data["additional_data"] = args[2]
-        return [create_payload_dict("state_changed", data, "btchia_wallet", "wallet_ui")]
+        return [create_payload_dict("state_changed", data, "btcgreen_wallet", "wallet_ui")]
 
     async def _stop_wallet(self):
         """
@@ -536,7 +536,7 @@ class WalletRpcApi:
             if request["mode"] == "new":
                 owner_puzzle_hash: bytes32 = await self.service.wallet_state_manager.main_wallet.get_puzzle_hash(True)
 
-                from btchia.pools.pool_wallet_info import initial_pool_state_from_dict
+                from btcgreen.pools.pool_wallet_info import initial_pool_state_from_dict
 
                 async with self.service.wallet_state_manager.lock:
                     last_wallet: Optional[

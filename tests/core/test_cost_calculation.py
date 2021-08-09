@@ -6,13 +6,13 @@ import time
 import pytest
 from clvm_tools import binutils
 
-from btchia.consensus.condition_costs import ConditionCost
-from btchia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from btchia.full_node.bundle_tools import simple_solution_generator
-from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.generator_types import BlockGenerator
-from btchia.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
+from btcgreen.consensus.condition_costs import ConditionCost
+from btcgreen.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from btcgreen.full_node.bundle_tools import simple_solution_generator
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
 from tests.setup_nodes import bt, test_constants
 
 from .make_block_generator import make_block_generator
@@ -46,7 +46,7 @@ def large_block_generator(size):
     except FileNotFoundError:
         generator = make_block_generator(size)
         blob = bytes(generator.program)
-        #  TODO: Re-enable large-block*.hex but cache in ~/.btchia/subdir
+        #  TODO: Re-enable large-block*.hex but cache in ~/.btcgreen/subdir
         #  with open(hex_path, "w") as f:
         #      f.write(blob.hex())
         return blob

@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ro_RO\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-06 23:46\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: ro\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "Vrei să explorezi blocurile BTChia mai mult? Verifică <0>BTChia Explorer</0> construit de către un dezvoltator open-source."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "Vrei să explorezi blocurile BTCgreen mai mult? Verifică <0>BTCgreen Explorer</0> construit de către un dezvoltator open-source."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Un 'cultivator' este un serviciu care rulează pe o mașină care dețin
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "Despre blockchain-ul BTChia"
+msgid "About BTCgreen Blockchain"
+msgstr "Despre blockchain-ul BTCgreen"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Iterațiile VDF pentru bloc"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "Bloc la înălțimea {0} în blockchainul BTChia"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "Bloc la înălțimea {0} în blockchainul BTCgreen"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -674,8 +674,8 @@ msgid "Edit"
 msgstr "Editare"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
-msgstr "Introduceti cele 24 de cuvinte din mnemmonic seed pe care le-ati salvat pentru a restaura portofelul dvs. BTChia."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
+msgstr "Introduceti cele 24 de cuvinte din mnemmonic seed pe care le-ati salvat pentru a restaura portofelul dvs. BTCgreen."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -688,8 +688,8 @@ msgid "Error"
 msgstr "Eroare"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
-msgstr "Eroare: Nu se poate trimite btchia la adresa colorată. Vă rugăm să introduceți o adresă btchia."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
+msgstr "Eroare: Nu se poate trimite btcgreen la adresa colorată. Vă rugăm să introduceți o adresă btcgreen."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "Parcele Filtrate"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "Parcelele reprezintă spațiu alocat pe hard-disc, folosite pentru a cultiva și câștiga BTChia. <0>Află mai multe</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "Parcelele reprezintă spațiu alocat pe hard-disc, folosite pentru a cultiva și câștiga BTCgreen. <0>Află mai multe</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1902,8 +1902,8 @@ msgstr "Lungimea intervalului pentru cheltuieli (număr de blocuri)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "Limită de cheltuieli (BTChia per interval): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "Limită de cheltuieli (BTCgreen per interval): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "Status:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,16 +1999,16 @@ msgstr ""
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
-msgstr "BTChia"
+msgid "BTCgreen"
+msgstr "BTCgreen"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
-msgstr "Wiki Blockchain BTChia"
+msgid "BTCgreen Blockchain Wiki"
+msgstr "Wiki Blockchain BTCgreen"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
-msgstr "Portofel BTChia"
+msgid "BTCgreen Wallet"
+msgstr "Portofel BTCgreen"
 
 #: src/components/pool/PoolInfo.tsx:37
 msgid "Target Puzzle Hash"
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Aceasta facilitate este disponibila doar din GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "Aceasta este suma de BTChia pe care o puteți utiliza în prezent pentru a efectua tranzacții. Nu include recompense în așteptare, tranzacții în așteptare și BTChia pe care tocmai le-ați cheltuit, dar care nu se află încă în blockchain."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "Aceasta este suma de BTCgreen pe care o puteți utiliza în prezent pentru a efectua tranzacții. Nu include recompense în așteptare, tranzacții în așteptare și BTCgreen pe care tocmai le-ați cheltuit, dar care nu se află încă în blockchain."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Acesta este momentul în care blocul a fost creat de fermier, care este înainte de a fi finalizat cu o 'proof of time'"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Aceasta este cantitatea totală de btchia din blockchain la subblocul peak curent care este controlat de cheile dvs. private. Include recompense înghețate, dar nu tranzacții în așteptare de intrare și de ieșire."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Aceasta este cantitatea totală de btcgreen din blockchain la subblocul peak curent care este controlat de cheile dvs. private. Include recompense înghețate, dar nu tranzacții în așteptare de intrare și de ieșire."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,7 +2173,7 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Această tranzacție a fost inclusă pe blockchain la această înălțime a blocului"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
 msgstr ""
 
 #: src/components/fullNode/FullNode.jsx:92
@@ -2214,8 +2214,8 @@ msgstr "Dimensiunea totală a parcelelor:"
 msgid "Total Size of Plots"
 msgstr "Dimensiunea totală a parcelelor"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "Vrei să câștigi mai multe BTChia? Adaugă mai multe parcele la ferma ta."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "Vrei să câștigi mai multe BTCgreen? Adaugă mai multe parcele la ferma ta."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Greutatea este dificultatea totala adaugata a tuturor subblocurilor până la acesta inclusiv"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "Bine ati venit la BTChia. Va rugam logati-va cu o cheie existenta, sau creati o noua cheie."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "Bine ati venit la BTCgreen. Va rugam logati-va cu o cheie existenta, sau creati o noua cheie."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,9 +2583,9 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Răsplată Blocuri"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
-msgstr "{currencyCode} Total BTChia cultivat"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
+msgstr "{currencyCode} Total BTCgreen cultivat"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

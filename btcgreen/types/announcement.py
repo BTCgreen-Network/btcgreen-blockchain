@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.hash import std_hash
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.hash import std_hash
 
 
 @dataclass(frozen=True)

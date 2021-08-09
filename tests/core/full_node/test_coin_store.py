@@ -6,20 +6,20 @@ from typing import List, Optional, Set, Tuple
 import aiosqlite
 import pytest
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.consensus.blockchain import Blockchain, ReceiveBlockResult
-from btchia.consensus.coinbase import create_farmer_coin, create_pool_coin
-from btchia.full_node.block_store import BlockStore
-from btchia.full_node.coin_store import CoinStore
-from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.coin_record import CoinRecord
-from btchia.types.full_block import FullBlock
-from btchia.types.generator_types import BlockGenerator
-from btchia.util.generator_tools import tx_removals_and_additions
-from btchia.util.ints import uint64, uint32
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.consensus.blockchain import Blockchain, ReceiveBlockResult
+from btcgreen.consensus.coinbase import create_farmer_coin, create_pool_coin
+from btcgreen.full_node.block_store import BlockStore
+from btcgreen.full_node.coin_store import CoinStore
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.util.generator_tools import tx_removals_and_additions
+from btcgreen.util.ints import uint64, uint32
 from tests.wallet_tools import WalletTool
-from btchia.util.db_wrapper import DBWrapper
+from btcgreen.util.db_wrapper import DBWrapper
 from tests.setup_nodes import bt, test_constants
 
 

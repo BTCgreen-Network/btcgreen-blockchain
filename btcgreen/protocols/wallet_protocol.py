@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.header_block import HeaderBlock
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.ints import uint8, uint32, uint128
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.ints import uint8, uint32, uint128
+from btcgreen.util.streamable import Streamable, streamable
 
 """
 Protocol between wallet (SPV node) and full node.

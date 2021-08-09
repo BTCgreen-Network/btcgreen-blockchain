@@ -1,10 +1,10 @@
 from unittest import TestCase
 
-from btchia.types.blockchain_format.program import Program, INFINITE_COST
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.types.blockchain_format.program import Program, INFINITE_COST
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
 
-DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="btchia.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="btcgreen.wallet.puzzles")
 
 
 def serialized_atom_overflow(size):

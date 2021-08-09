@@ -1,8 +1,8 @@
 from typing import Union
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.types.header_block import HeaderBlock
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.types.header_block import HeaderBlock
 
 
 def find_fork_point_in_chain(

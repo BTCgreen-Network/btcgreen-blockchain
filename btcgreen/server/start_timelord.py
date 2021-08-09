@@ -2,15 +2,15 @@ import logging
 import pathlib
 from typing import Dict
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.server.outbound_message import NodeType
-from btchia.server.start_service import run_service
-from btchia.timelord.timelord import Timelord
-from btchia.timelord.timelord_api import TimelordAPI
-from btchia.types.peer_info import PeerInfo
-from btchia.util.config import load_config_cli
-from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.start_service import run_service
+from btcgreen.timelord.timelord import Timelord
+from btcgreen.timelord.timelord_api import TimelordAPI
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.config import load_config_cli
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

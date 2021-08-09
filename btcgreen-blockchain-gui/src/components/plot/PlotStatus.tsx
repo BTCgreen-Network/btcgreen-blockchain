@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { Flex, Indicator, StateColor, TooltipIcon } from '@btchia/core';
+import { Flex, Indicator, StateColor, TooltipIcon } from '@btcgreen/core';
 import type Plot from '../../types/Plot';
 import useFarmerStatus from '../../hooks/useFarmerStatus';
 import FarmerStatus from '../../constants/FarmerStatus';

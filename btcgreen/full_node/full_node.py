@@ -10,53 +10,53 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union
 import aiosqlite
 from blspy import AugSchemeMPL
 
-import btchia.server.ws_connection as ws  # lgtm [py/import-and-import-from]
-from btchia.consensus.block_creation import unfinished_block_to_full_block
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain import Blockchain, ReceiveBlockResult
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from btchia.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from btchia.consensus.multiprocess_validation import PreValidationResult
-from btchia.consensus.pot_iterations import calculate_sp_iters
-from btchia.full_node.block_store import BlockStore
-from btchia.full_node.bundle_tools import detect_potential_template_generator
-from btchia.full_node.coin_store import CoinStore
-from btchia.full_node.full_node_store import FullNodeStore
-from btchia.full_node.mempool_manager import MempoolManager
-from btchia.full_node.signage_point import SignagePoint
-from btchia.full_node.sync_store import SyncStore
-from btchia.full_node.weight_proof import WeightProofHandler
-from btchia.protocols import farmer_protocol, full_node_protocol, timelord_protocol, wallet_protocol
-from btchia.protocols.full_node_protocol import (
+import btcgreen.server.ws_connection as ws  # lgtm [py/import-and-import-from]
+from btcgreen.consensus.block_creation import unfinished_block_to_full_block
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain import Blockchain, ReceiveBlockResult
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from btcgreen.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from btcgreen.consensus.multiprocess_validation import PreValidationResult
+from btcgreen.consensus.pot_iterations import calculate_sp_iters
+from btcgreen.full_node.block_store import BlockStore
+from btcgreen.full_node.bundle_tools import detect_potential_template_generator
+from btcgreen.full_node.coin_store import CoinStore
+from btcgreen.full_node.full_node_store import FullNodeStore
+from btcgreen.full_node.mempool_manager import MempoolManager
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.full_node.sync_store import SyncStore
+from btcgreen.full_node.weight_proof import WeightProofHandler
+from btcgreen.protocols import farmer_protocol, full_node_protocol, timelord_protocol, wallet_protocol
+from btcgreen.protocols.full_node_protocol import (
     RejectBlocks,
     RequestBlocks,
     RespondBlock,
     RespondBlocks,
     RespondSignagePoint,
 )
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.node_discovery import FullNodePeers
-from btchia.server.outbound_message import Message, NodeType, make_msg
-from btchia.server.server import BTChiaServer
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.pool_target import PoolTarget
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from btchia.types.blockchain_format.vdf import CompressibleVDFField, VDFInfo, VDFProof
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.full_block import FullBlock
-from btchia.types.header_block import HeaderBlock
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_block import UnfinishedBlock
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.errors import ConsensusError, Err
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.path import mkdir, path_from_root
-from btchia.util.safe_cancel_task import cancel_task_safe
-from btchia.util.profiler import profile_task
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.node_discovery import FullNodePeers
+from btcgreen.server.outbound_message import Message, NodeType, make_msg
+from btcgreen.server.server import BTCgreenServer
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.pool_target import PoolTarget
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btcgreen.types.blockchain_format.vdf import CompressibleVDFField, VDFInfo, VDFProof
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_block import UnfinishedBlock
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.errors import ConsensusError, Err
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.path import mkdir, path_from_root
+from btcgreen.util.safe_cancel_task import cancel_task_safe
+from btcgreen.util.profiler import profile_task
 
 
 class FullNode:
@@ -174,7 +174,7 @@ class FullNode:
         if peak is not None:
             await self.weight_proof_handler.create_sub_epoch_segments()
 
-    def set_server(self, server: BTChiaServer):
+    def set_server(self, server: BTCgreenServer):
         self.server = server
         dns_servers = []
         try:
@@ -187,7 +187,7 @@ class FullNode:
             dns_servers = self.config["dns_servers"]
         elif self.config["port"] == 9282:
             # If `dns_servers` misses from the `config`, hardcode it if we're running mainnet.
-            dns_servers.append("dns-introducer.btchia.org")
+            dns_servers.append("dns-introducer.btcgreen.org")
         try:
             self.full_node_peers = FullNodePeers(
                 self.server,
@@ -212,7 +212,7 @@ class FullNode:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    async def short_sync_batch(self, peer: ws.WSBTChiaConnection, start_height: uint32, target_height: uint32) -> bool:
+    async def short_sync_batch(self, peer: ws.WSBTCgreenConnection, start_height: uint32, target_height: uint32) -> bool:
         """
         Tries to sync to a chain which is not too far in the future, by downloading batches of blocks. If the first
         block that we download is not connected to our chain, we return False and do an expensive long sync instead.
@@ -282,7 +282,7 @@ class FullNode:
         return True
 
     async def short_sync_backtrack(
-        self, peer: ws.WSBTChiaConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
+        self, peer: ws.WSBTCgreenConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
     ):
         """
         Performs a backtrack sync, where blocks are downloaded one at a time from newest to oldest. If we do not
@@ -338,7 +338,7 @@ class FullNode:
             await asyncio.sleep(sleep_before)
         self._state_changed("peer_changed_peak")
 
-    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSBTChiaConnection):
+    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSBTCgreenConnection):
         """
         We have received a notification of a new peak from a peer. This happens either when we have just connected,
         or when the peer has updated their peak.
@@ -416,7 +416,7 @@ class FullNode:
             self._sync_task = asyncio.create_task(self._sync())
 
     async def send_peak_to_timelords(
-        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSBTChiaConnection] = None
+        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSBTCgreenConnection] = None
     ):
         """
         Sends current peak to timelords
@@ -489,7 +489,7 @@ class FullNode:
         else:
             return True
 
-    async def on_connect(self, connection: ws.WSBTChiaConnection):
+    async def on_connect(self, connection: ws.WSBTCgreenConnection):
         """
         Whenever we connect to another node / wallet, send them our current heads. Also send heads to farmers
         and challenges to timelords.
@@ -541,7 +541,7 @@ class FullNode:
             elif connection.connection_type is NodeType.TIMELORD:
                 await self.send_peak_to_timelords()
 
-    def on_disconnect(self, connection: ws.WSBTChiaConnection):
+    def on_disconnect(self, connection: ws.WSBTCgreenConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self._state_changed("close_connection")
         self._state_changed("sync_mode")
@@ -809,7 +809,7 @@ class FullNode:
     async def receive_block_batch(
         self,
         all_blocks: List[FullBlock],
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
         fork_point: Optional[uint32],
         wp_summaries: Optional[List[SubEpochSummary]] = None,
     ) -> Tuple[bool, bool, Optional[uint32]]:
@@ -903,7 +903,7 @@ class FullNode:
     async def signage_point_post_processing(
         self,
         request: full_node_protocol.RespondSignagePoint,
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
         ip_sub_slot: Optional[EndOfSubSlotBundle],
     ):
         self.log.info(
@@ -957,7 +957,7 @@ class FullNode:
         await self.server.send_to_all([msg], NodeType.FARMER)
 
     async def peak_post_processing(
-        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSBTChiaConnection]
+        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSBTCgreenConnection]
     ):
         """
         Must be called under self.blockchain.lock. This updates the internal state of the full node with the
@@ -1106,7 +1106,7 @@ class FullNode:
     async def respond_block(
         self,
         respond_block: full_node_protocol.RespondBlock,
-        peer: Optional[ws.WSBTChiaConnection] = None,
+        peer: Optional[ws.WSBTCgreenConnection] = None,
     ) -> Optional[Message]:
         """
         Receive a full block from a peer full node (or ourselves).
@@ -1267,7 +1267,7 @@ class FullNode:
     async def respond_unfinished_block(
         self,
         respond_unfinished_block: full_node_protocol.RespondUnfinishedBlock,
-        peer: Optional[ws.WSBTChiaConnection],
+        peer: Optional[ws.WSBTCgreenConnection],
         farmed_block: bool = False,
     ):
         """
@@ -1424,7 +1424,7 @@ class FullNode:
         self._state_changed("unfinished_block")
 
     async def new_infusion_point_vdf(
-        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSBTChiaConnection] = None
+        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSBTCgreenConnection] = None
     ) -> Optional[Message]:
         # Lookup unfinished blocks
         unfinished_block: Optional[UnfinishedBlock] = self.full_node_store.get_unfinished_block(
@@ -1527,7 +1527,7 @@ class FullNode:
         return None
 
     async def respond_end_of_sub_slot(
-        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSBTChiaConnection
+        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSBTCgreenConnection
     ) -> Tuple[Optional[Message], bool]:
 
         fetched_ss = self.full_node_store.get_sub_slot(request.end_of_slot_bundle.challenge_chain.get_hash())
@@ -1615,7 +1615,7 @@ class FullNode:
         self,
         transaction: SpendBundle,
         spend_name: bytes32,
-        peer: Optional[ws.WSBTChiaConnection] = None,
+        peer: Optional[ws.WSBTCgreenConnection] = None,
         test: bool = False,
     ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:
         if self.sync_store.get_sync_mode():
@@ -1827,7 +1827,7 @@ class FullNode:
         if self.server is not None:
             await self.server.send_to_all([msg], NodeType.FULL_NODE)
 
-    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSBTChiaConnection):
+    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSBTCgreenConnection):
         is_fully_compactified = await self.block_store.is_fully_compactified(request.header_hash)
         if is_fully_compactified is None or is_fully_compactified:
             return False
@@ -1845,7 +1845,7 @@ class FullNode:
             if response is not None and isinstance(response, full_node_protocol.RespondCompactVDF):
                 await self.respond_compact_vdf(response, peer)
 
-    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSBTChiaConnection):
+    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSBTCgreenConnection):
         header_block = await self.blockchain.get_header_block_by_height(
             request.height, request.header_hash, tx_filter=False
         )
@@ -1889,7 +1889,7 @@ class FullNode:
         msg = make_msg(ProtocolMessageTypes.respond_compact_vdf, compact_vdf)
         await peer.send_message(msg)
 
-    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSBTChiaConnection):
+    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSBTCgreenConnection):
         field_vdf = CompressibleVDFField(int(request.field_vdf))
         if not await self._can_accept_compact_proof(
             request.vdf_info, request.vdf_proof, request.height, request.header_hash, field_vdf

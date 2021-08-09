@@ -3,18 +3,18 @@ from typing import List
 
 import pytest
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.full_node.mempool_manager import MempoolManager
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.peer_info import PeerInfo
-from btchia.util.ints import uint16, uint32, uint64
-from btchia.wallet.cc_wallet.cc_utils import cc_puzzle_hash_for_inner_puzzle_hash
-from btchia.wallet.cc_wallet.cc_wallet import CCWallet
-from btchia.wallet.puzzles.cc_loader import CC_MOD
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.full_node.mempool_manager import MempoolManager
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.ints import uint16, uint32, uint64
+from btcgreen.wallet.cc_wallet.cc_utils import cc_puzzle_hash_for_inner_puzzle_hash
+from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
+from btcgreen.wallet.puzzles.cc_loader import CC_MOD
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
 from tests.setup_nodes import setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

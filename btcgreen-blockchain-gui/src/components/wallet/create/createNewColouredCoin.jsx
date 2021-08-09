@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { AlertDialog } from '@btchia/core';
+import { AlertDialog } from '@btcgreen/core';
 import {
   Typography,
   Button,
@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_cc_action } from '../../../modules/message';
-import { btchia_to_mojo } from '../../../util/btchia';
+import { btcgreen_to_mojo } from '../../../util/btcgreen';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -83,8 +83,8 @@ export const CreateNewCCWallet = () => {
       return;
     }
     dispatch(createState(true, true));
-    const amount = btchia_to_mojo(amount_input.value);
-    const fee = btchia_to_mojo(fee_input.value);
+    const amount = btcgreen_to_mojo(amount_input.value);
+    const fee = btcgreen_to_mojo(fee_input.value);
     dispatch(create_cc_action(amount, fee));
   }
 

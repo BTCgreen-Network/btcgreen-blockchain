@@ -12,7 +12,7 @@ import {
   RadioGroup,
   Fee,
   TextField,
-} from '@btchia/core';
+} from '@btcgreen/core';
 import {
   Grid,
   FormControl,

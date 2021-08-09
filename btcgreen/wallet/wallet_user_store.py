@@ -2,10 +2,10 @@ from typing import List, Optional
 
 import aiosqlite
 
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint32
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_info import WalletInfo
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_info import WalletInfo
 
 
 class WalletUserStore:
@@ -48,7 +48,7 @@ class WalletUserStore:
     async def init_wallet(self):
         all_wallets = await self.get_all_wallet_info_entries()
         if len(all_wallets) == 0:
-            await self.create_wallet("BTChia Wallet", WalletType.STANDARD_WALLET, "")
+            await self.create_wallet("BTCgreen Wallet", WalletType.STANDARD_WALLET, "")
 
     async def _clear_database(self):
         cursor = await self.db_connection.execute("DELETE FROM users_wallets")

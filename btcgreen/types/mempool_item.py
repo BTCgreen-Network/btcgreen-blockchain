@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List
 
-from btchia.consensus.cost_calculator import NPCResult
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.ints import uint64
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.consensus.cost_calculator import NPCResult
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.ints import uint64
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

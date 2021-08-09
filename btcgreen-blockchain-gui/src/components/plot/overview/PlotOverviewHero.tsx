@@ -3,8 +3,8 @@ import { Trans } from '@lingui/macro';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Grid, Typography, Divider } from '@material-ui/core';
-import { CardHero, Flex, Link } from '@btchia/core';
-import { PlotHero as PlotHeroIcon } from '@btchia/icons';
+import { CardHero, Flex, Link } from '@btcgreen/core';
+import { PlotHero as PlotHeroIcon } from '@btcgreen/icons';
 import PlotAddDirectoryDialog from '../PlotAddDirectoryDialog';
 import { refreshPlots } from '../../../modules/harvesterMessages';
 import useOpenDialog from '../../../hooks/useOpenDialog';
@@ -34,11 +34,11 @@ export default function PlotOverviewHero() {
           <Typography variant="body1">
             <Trans>
               {
-                'Plots are allocated space on your hard drive used to farm and earn BTChia. '
+                'Plots are allocated space on your hard drive used to farm and earn BTCgreen. '
               }
               <Link
                 target="_blank"
-                href="https://github.com/BTChia-Network/btchia-blockchain/wiki/Network-Architecture"
+                href="https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Network-Architecture"
               >
                 Learn more
               </Link>

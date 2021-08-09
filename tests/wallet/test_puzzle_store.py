@@ -6,11 +6,11 @@ import aiosqlite
 import pytest
 from blspy import AugSchemeMPL
 
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint32
-from btchia.wallet.derivation_record import DerivationRecord
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_puzzle_store import WalletPuzzleStore
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.derivation_record import DerivationRecord
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_puzzle_store import WalletPuzzleStore
 
 
 @pytest.fixture(scope="module")

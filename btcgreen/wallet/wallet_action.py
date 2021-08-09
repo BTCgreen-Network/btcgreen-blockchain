@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from btchia.util.ints import uint32
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

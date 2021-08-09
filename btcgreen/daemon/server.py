@@ -16,24 +16,24 @@ from typing import Any, Dict, List, Optional, TextIO, Tuple, cast
 
 from websockets import ConnectionClosedOK, WebSocketException, WebSocketServerProtocol, serve
 
-from btchia.cmds.init_funcs import btchia_init
-from btchia.daemon.windows_signal import kill
-from btchia.server.server import ssl_context_for_root, ssl_context_for_server
-from btchia.ssl.create_ssl import get_mozilla_ca_crt
-from btchia.util.btchia_logging import initialize_logging
-from btchia.util.config import load_config
-from btchia.util.json_util import dict_to_json_str
-from btchia.util.path import mkdir
-from btchia.util.service_groups import validate_service
-from btchia.util.setproctitle import setproctitle
-from btchia.util.ws_message import WsRpcMessage, create_payload, format_response
+from btcgreen.cmds.init_funcs import btcgreen_init
+from btcgreen.daemon.windows_signal import kill
+from btcgreen.server.server import ssl_context_for_root, ssl_context_for_server
+from btcgreen.ssl.create_ssl import get_mozilla_ca_crt
+from btcgreen.util.btcgreen_logging import initialize_logging
+from btcgreen.util.config import load_config
+from btcgreen.util.json_util import dict_to_json_str
+from btcgreen.util.path import mkdir
+from btcgreen.util.service_groups import validate_service
+from btcgreen.util.setproctitle import setproctitle
+from btcgreen.util.ws_message import WsRpcMessage, create_payload, format_response
 
 io_pool_exc = ThreadPoolExecutor()
 
 try:
     from aiohttp import ClientSession, web
 except ModuleNotFoundError:
-    print("Error: Make sure to run . ./activate from the project folder before starting BTChia.")
+    print("Error: Make sure to run . ./activate from the project folder before starting BTCgreen.")
     quit()
 
 try:
@@ -45,7 +45,7 @@ except ImportError:
 
 log = logging.getLogger(__name__)
 
-service_plotter = "btchia plots create"
+service_plotter = "btcgreen plots create"
 
 
 async def fetch(url: str):
@@ -78,15 +78,15 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "btchia": "btchia",
-        "btchia_wallet": "start_wallet",
-        "btchia_full_node": "start_full_node",
-        "btchia_harvester": "start_harvester",
-        "btchia_farmer": "start_farmer",
-        "btchia_introducer": "start_introducer",
-        "btchia_timelord": "start_timelord",
-        "btchia_timelord_launcher": "timelord_launcher",
-        "btchia_full_node_simulator": "start_simulator",
+        "btcgreen": "btcgreen",
+        "btcgreen_wallet": "start_wallet",
+        "btcgreen_full_node": "start_full_node",
+        "btcgreen_harvester": "start_harvester",
+        "btcgreen_farmer": "start_farmer",
+        "btcgreen_introducer": "start_introducer",
+        "btcgreen_timelord": "start_timelord",
+        "btcgreen_timelord_launcher": "timelord_launcher",
+        "btcgreen_full_node_simulator": "start_simulator",
     }
 
     def executable_for_service(service_name: str) -> str:
@@ -692,7 +692,7 @@ class WebSocketServer:
 
         # TODO: fix this hack
         asyncio.get_event_loop().call_later(5, lambda *args: sys.exit(0))
-        log.info("btchia daemon exiting in 5 seconds")
+        log.info("btcgreen daemon exiting in 5 seconds")
 
         response = {"success": True}
         return response
@@ -749,8 +749,8 @@ def plotter_log_path(root_path: Path, id: str):
 
 
 def launch_plotter(root_path: Path, service_name: str, service_array: List[str], id: str):
-    # we need to pass on the possibly altered BTCHIA_ROOT
-    os.environ["BTCHIA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered BTCGREEN_ROOT
+    os.environ["BTCGREEN_ROOT"] = str(root_path)
     service_executable = executable_for_service(service_array[0])
 
     # Swap service name with name of executable
@@ -799,14 +799,14 @@ def launch_service(root_path: Path, service_command) -> Tuple[subprocess.Popen, 
     """
     Launch a child process.
     """
-    # set up BTCHIA_ROOT
+    # set up BTCGREEN_ROOT
     # invoke correct script
     # save away PID
 
-    # we need to pass on the possibly altered BTCHIA_ROOT
-    os.environ["BTCHIA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered BTCGREEN_ROOT
+    os.environ["BTCGREEN_ROOT"] = str(root_path)
 
-    log.debug(f"Launching service with BTCHIA_ROOT: {os.environ['BTCHIA_ROOT']}")
+    log.debug(f"Launching service with BTCGREEN_ROOT: {os.environ['BTCGREEN_ROOT']}")
 
     # Insert proper e
     service_array = service_command.split()
@@ -975,9 +975,9 @@ def singleton(lockfile: Path, text: str = "semaphore") -> Optional[TextIO]:
 
 
 async def async_run_daemon(root_path: Path) -> int:
-    btchia_init(root_path)
+    btcgreen_init(root_path)
     config = load_config(root_path, "config.yaml")
-    setproctitle("btchia_daemon")
+    setproctitle("btcgreen_daemon")
     initialize_logging("daemon", config["logging"], root_path)
     lockfile = singleton(daemon_launch_lock_path(root_path))
     crt_path = root_path / config["daemon_ssl"]["private_crt"]
@@ -1015,7 +1015,7 @@ def run_daemon(root_path: Path) -> int:
 
 
 def main() -> int:
-    from btchia.util.default_root import DEFAULT_ROOT_PATH
+    from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
     return run_daemon(DEFAULT_ROOT_PATH)
 

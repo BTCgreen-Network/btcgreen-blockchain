@@ -3,48 +3,48 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from btchia.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "btchia/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "btchia/wallet/puzzles/cc.clvm",
-        "btchia/wallet/puzzles/chialisp_deserialisation.clvm",
-        "btchia/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "btchia/wallet/puzzles/generator_for_single_coin.clvm",
-        "btchia/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "btchia/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "btchia/wallet/puzzles/lock.inner.puzzle.clvm",
-        "btchia/wallet/puzzles/p2_conditions.clvm",
-        "btchia/wallet/puzzles/p2_delegated_conditions.clvm",
-        "btchia/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "btchia/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "btchia/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "btchia/wallet/puzzles/p2_puzzle_hash.clvm",
-        "btchia/wallet/puzzles/rl_aggregation.clvm",
-        "btchia/wallet/puzzles/rl.clvm",
-        "btchia/wallet/puzzles/sha256tree_module.clvm",
-        "btchia/wallet/puzzles/singleton_top_layer.clvm",
-        "btchia/wallet/puzzles/did_innerpuz.clvm",
-        "btchia/wallet/puzzles/decompress_puzzle.clvm",
-        "btchia/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
-        "btchia/wallet/puzzles/decompress_coin_solution_entry.clvm",
-        "btchia/wallet/puzzles/block_program_zero.clvm",
-        "btchia/wallet/puzzles/test_generator_deserialize.clvm",
-        "btchia/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
-        "btchia/wallet/puzzles/p2_singleton.clvm",
-        "btchia/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
-        "btchia/wallet/puzzles/pool_member_innerpuz.clvm",
-        "btchia/wallet/puzzles/singleton_launcher.clvm",
-        "btchia/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
+        "btcgreen/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "btcgreen/wallet/puzzles/cc.clvm",
+        "btcgreen/wallet/puzzles/chialisp_deserialisation.clvm",
+        "btcgreen/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "btcgreen/wallet/puzzles/generator_for_single_coin.clvm",
+        "btcgreen/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "btcgreen/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "btcgreen/wallet/puzzles/lock.inner.puzzle.clvm",
+        "btcgreen/wallet/puzzles/p2_conditions.clvm",
+        "btcgreen/wallet/puzzles/p2_delegated_conditions.clvm",
+        "btcgreen/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "btcgreen/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "btcgreen/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "btcgreen/wallet/puzzles/p2_puzzle_hash.clvm",
+        "btcgreen/wallet/puzzles/rl_aggregation.clvm",
+        "btcgreen/wallet/puzzles/rl.clvm",
+        "btcgreen/wallet/puzzles/sha256tree_module.clvm",
+        "btcgreen/wallet/puzzles/singleton_top_layer.clvm",
+        "btcgreen/wallet/puzzles/did_innerpuz.clvm",
+        "btcgreen/wallet/puzzles/decompress_puzzle.clvm",
+        "btcgreen/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
+        "btcgreen/wallet/puzzles/decompress_coin_solution_entry.clvm",
+        "btcgreen/wallet/puzzles/block_program_zero.clvm",
+        "btcgreen/wallet/puzzles/test_generator_deserialize.clvm",
+        "btcgreen/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "btcgreen/wallet/puzzles/p2_singleton.clvm",
+        "btcgreen/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
+        "btcgreen/wallet/puzzles/pool_member_innerpuz.clvm",
+        "btcgreen/wallet/puzzles/singleton_launcher.clvm",
+        "btcgreen/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["btchia/wallet/puzzles/create-lock-puzzlehash.clvm", "btchia/wallet/puzzles/condition_codes.clvm"]
+    ["btcgreen/wallet/puzzles/create-lock-puzzlehash.clvm", "btcgreen/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "btchia/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "btcgreen/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -71,7 +71,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to btchia/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to btcgreen/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

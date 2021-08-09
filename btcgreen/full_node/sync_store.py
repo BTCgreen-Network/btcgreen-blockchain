@@ -2,8 +2,8 @@ import asyncio
 import logging
 from typing import Dict, List, Optional, Set, Tuple
 
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.ints import uint32, uint128
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.ints import uint32, uint128
 
 log = logging.getLogger(__name__)
 

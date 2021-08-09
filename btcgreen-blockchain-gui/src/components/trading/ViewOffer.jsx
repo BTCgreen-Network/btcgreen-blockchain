@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useMemo } from 'react';
-import { Dropzone } from '@btchia/core';
+import { Dropzone } from '@btcgreen/core';
 import { Trans } from '@lingui/macro';
 import { Button } from '@material-ui/core';
 import {
@@ -14,7 +14,7 @@ import {
   accept_trade_action,
   parse_trade_action,
 } from '../../modules/trade_messages';
-import { Card } from '@btchia/core';
+import { Card } from '@btcgreen/core';
 import TradesTable from './TradesTable';
 
 /* global BigInt */

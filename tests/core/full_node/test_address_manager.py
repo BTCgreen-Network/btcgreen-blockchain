@@ -6,9 +6,9 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from btchia.server.address_manager import AddressManager, ExtendedPeerInfo
-from btchia.server.address_manager_store import AddressManagerStore
-from btchia.types.peer_info import PeerInfo, TimestampedPeerInfo
+from btcgreen.server.address_manager import AddressManager, ExtendedPeerInfo
+from btcgreen.server.address_manager_store import AddressManagerStore
+from btcgreen.types.peer_info import PeerInfo, TimestampedPeerInfo
 
 
 @pytest.fixture(scope="module")

@@ -6,27 +6,27 @@ import random
 from concurrent.futures.process import ProcessPoolExecutor
 from typing import Dict, List, Optional, Tuple
 
-from btchia.consensus.block_header_validation import validate_finished_header_block
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.deficit import calculate_deficit
-from btchia.consensus.full_block_to_block_record import header_block_to_sub_block_record
-from btchia.consensus.pot_iterations import (
+from btcgreen.consensus.block_header_validation import validate_finished_header_block
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.deficit import calculate_deficit
+from btcgreen.consensus.full_block_to_block_record import header_block_to_sub_block_record
+from btcgreen.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_iters,
     is_overflow_block,
 )
-from btchia.consensus.vdf_info_computation import get_signage_point_vdf_info
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot
-from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from btchia.types.blockchain_format.vdf import VDFInfo
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.header_block import HeaderBlock
-from btchia.types.weight_proof import (
+from btcgreen.consensus.vdf_info_computation import get_signage_point_vdf_info
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot
+from btcgreen.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btcgreen.types.blockchain_format.vdf import VDFInfo
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.types.weight_proof import (
     SubEpochChallengeSegment,
     SubEpochData,
     SubSlotData,
@@ -34,10 +34,10 @@ from btchia.types.weight_proof import (
     SubEpochSegments,
     RecentChainData,
 )
-from btchia.util.block_cache import BlockCache
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.streamable import dataclass_from_dict, recurse_jsonify
+from btcgreen.util.block_cache import BlockCache
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.streamable import dataclass_from_dict, recurse_jsonify
 
 log = logging.getLogger(__name__)
 

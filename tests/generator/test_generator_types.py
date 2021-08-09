@@ -1,10 +1,10 @@
 from typing import Dict
 from unittest import TestCase
 
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.generator_types import GeneratorBlockCacheInterface
-from btchia.full_node.generator import create_block_generator, create_generator_args
-from btchia.util.ints import uint32
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.generator_types import GeneratorBlockCacheInterface
+from btcgreen.full_node.generator import create_block_generator, create_generator_args
+from btcgreen.util.ints import uint32
 
 gen0 = SerializedProgram.from_bytes(
     bytes.fromhex(

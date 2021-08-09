@@ -1,8 +1,8 @@
 from typing import Any, Dict
 
-from btchia.wallet.key_val_store import KeyValStore
-from btchia.wallet.settings.default_settings import default_settings
-from btchia.wallet.settings.settings_objects import BackupInitialized
+from btcgreen.wallet.key_val_store import KeyValStore
+from btcgreen.wallet.settings.default_settings import default_settings
+from btcgreen.wallet.settings.settings_objects import BackupInitialized
 
 
 class UserSettings:

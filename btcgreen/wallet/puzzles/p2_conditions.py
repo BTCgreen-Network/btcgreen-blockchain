@@ -10,7 +10,7 @@ require a delegated puzzle program, so in those cases, this is just what
 the doctor ordered.
 """
 
-from btchia.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.program import Program
 
 from .load_clvm import load_clvm
 

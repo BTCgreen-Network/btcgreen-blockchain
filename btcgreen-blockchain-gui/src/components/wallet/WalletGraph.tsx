@@ -2,14 +2,14 @@ import React, { ReactNode } from 'react';
 import { linearGradientDef } from '@nivo/core';
 import { ResponsiveLine } from '@nivo/line';
 import { orderBy, groupBy, sumBy, map } from 'lodash';
-// import { Flex, FormatLargeNumber } from '@btchia/core';
+// import { Flex, FormatLargeNumber } from '@btcgreen/core';
 import { /* Typography, */ Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import useWallet from '../../hooks/useWallet';
 import TransactionType from '../../constants/TransactionType';
 import type Transaction from '../../types/Transaction';
 import type Peak from '../../types/Peak';
-import { mojo_to_btchia } from '../../util/btchia';
+import { mojo_to_btcgreen } from '../../util/btcgreen';
 import usePeak from '../../hooks/usePeak';
 import useCurrencyCode from '../../hooks/useCurrencyCode';
 import blockHeightToTimestamp from '../../util/blockHeightToTimestamp';
@@ -197,8 +197,8 @@ function prepareGraphPoints(
   const points = [
     {
       x: peak.height,
-      y: Math.max(0, mojo_to_btchia(start)),
-      tooltip: mojo_to_btchia(balance),
+      y: Math.max(0, mojo_to_btcgreen(start)),
+      tooltip: mojo_to_btcgreen(balance),
     },
   ];
 
@@ -209,8 +209,8 @@ function prepareGraphPoints(
 
     points.push({
       x: timestamp,
-      y: Math.max(0, mojo_to_btchia(start)),
-      tooltip: mojo_to_btchia(start),
+      y: Math.max(0, mojo_to_btcgreen(start)),
+      tooltip: mojo_to_btcgreen(start),
     });
   });
 

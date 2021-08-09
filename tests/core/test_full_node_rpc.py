@@ -4,18 +4,18 @@ import logging
 import pytest
 from blspy import AugSchemeMPL
 
-from btchia.consensus.pot_iterations import is_overflow_block
-from btchia.full_node.signage_point import SignagePoint
-from btchia.protocols import full_node_protocol
-from btchia.rpc.full_node_rpc_api import FullNodeRpcApi
-from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
-from btchia.rpc.rpc_server import start_rpc_server
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_block import UnfinishedBlock
+from btcgreen.consensus.pot_iterations import is_overflow_block
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.protocols import full_node_protocol
+from btcgreen.rpc.full_node_rpc_api import FullNodeRpcApi
+from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
+from btcgreen.rpc.rpc_server import start_rpc_server
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import get_signage_point
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint16, uint8
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint16, uint8
 from tests.wallet_tools import WalletTool
 from tests.connection_utils import connect_and_get_peer
 from tests.setup_nodes import bt, self_hostname, setup_simulators_and_wallets, test_constants

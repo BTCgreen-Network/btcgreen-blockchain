@@ -9,7 +9,7 @@ const fs = require('fs');
 const PY_MAC_DIST_FOLDER = '../../../app.asar.unpacked/daemon';
 const PY_WIN_DIST_FOLDER = '../../../app.asar.unpacked/daemon';
 const PY_DIST_FILE = 'daemon';
-const PY_FOLDER = '../btchia/daemon';
+const PY_FOLDER = '../btcgreen/daemon';
 const PY_MODULE = 'server'; // without .py suffix
 
 let pyProc = null;
@@ -45,10 +45,10 @@ const getExecutablePath = (dist_file) => {
   return path.join(__dirname, PY_MAC_DIST_FOLDER, dist_file);
 };
 
-const getBTChiaVersion = () => {
+const getBTCgreenVersion = () => {
   let version = null;
-  const exePath = getExecutablePath('btchia');
-  // first see if we can get a btchia exe in a standard location relative to where we are
+  const exePath = getExecutablePath('btcgreen');
+  // first see if we can get a btcgreen exe in a standard location relative to where we are
   try {
     version = child_process
       .execFileSync(exePath, ['version'], {
@@ -56,7 +56,7 @@ const getBTChiaVersion = () => {
       })
       .trim();
   } catch (e1) {
-    // that didn't work, let's try as if we're in the venv or btchia is on the path
+    // that didn't work, let's try as if we're in the venv or btcgreen is on the path
     try {
       version = child_process
         .execFileSync(path.basename(exePath), ['version'], {
@@ -71,7 +71,7 @@ const getBTChiaVersion = () => {
   return version;
 };
 
-const startBTChiaDaemon = () => {
+const startBTCgreenDaemon = () => {
   let script = getScriptPath(PY_DIST_FILE);
   let processOptions = {};
   //processOptions.detached = true;
@@ -138,7 +138,7 @@ const startBTChiaDaemon = () => {
 };
 
 module.exports = {
-  startBTChiaDaemon,
-  getBTChiaVersion,
+  startBTCgreenDaemon,
+  getBTCgreenVersion,
   guessPackaged,
 };

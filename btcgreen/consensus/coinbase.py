@@ -1,9 +1,9 @@
 from blspy import G1Element
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk
 
 
 def create_puzzlehash_for_pk(pub_key: G1Element) -> bytes32:

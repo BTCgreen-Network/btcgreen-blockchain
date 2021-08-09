@@ -1,10 +1,10 @@
-BTChia is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
+BTCgreen is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
 
 Discord Channel: https://discord.gg/A9aHJ5ZYaS
 
 Website: Coming Soon
 
-Introducer: dns-introducer.btchia.org:9282
+Introducer: dns-introducer.btcgreen.org:9282
 
 Prefarm: 30,000
 

@@ -1,10 +1,10 @@
 import logging
 from typing import Callable, Optional
 
-from btchia.protocols import timelord_protocol
-from btchia.timelord.timelord import Chain, IterationType, Timelord, iters_from_block
-from btchia.util.api_decorators import api_request
-from btchia.util.ints import uint64
+from btcgreen.protocols import timelord_protocol
+from btcgreen.timelord.timelord import Chain, IterationType, Timelord, iters_from_block
+from btcgreen.util.api_decorators import api_request
+from btcgreen.util.ints import uint64
 
 log = logging.getLogger(__name__)
 

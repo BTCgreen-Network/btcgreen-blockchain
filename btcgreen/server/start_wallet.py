@@ -2,19 +2,19 @@ import pathlib
 from multiprocessing import freeze_support
 from typing import Dict
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.rpc.wallet_rpc_api import WalletRpcApi
-from btchia.server.outbound_message import NodeType
-from btchia.server.start_service import run_service
-from btchia.types.peer_info import PeerInfo
-from btchia.util.config import load_config_cli, load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.keychain import Keychain
-from btchia.wallet.wallet_node import WalletNode
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.rpc.wallet_rpc_api import WalletRpcApi
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.start_service import run_service
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.config import load_config_cli, load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.keychain import Keychain
+from btcgreen.wallet.wallet_node import WalletNode
 
 # See: https://bugs.python.org/issue29288
-from btchia.wallet.wallet_node_api import WalletNodeAPI
+from btcgreen.wallet.wallet_node_api import WalletNodeAPI
 
 "".encode("idna")
 

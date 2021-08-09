@@ -72,8 +72,8 @@ export default {
       'node_modules',
     ],
     alias: {
-      "@btchia/core": `${__dirname}/src/components/core`,
-      "@btchia/icons": `${__dirname}/src/components/icons`,
+      "@btcgreen/core": `${__dirname}/src/components/core`,
+      "@btcgreen/icons": `${__dirname}/src/components/icons`,
       crypto: 'crypto-browserify',
       stream: 'stream-browserify',
     },

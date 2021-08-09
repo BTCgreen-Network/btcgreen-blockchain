@@ -9,14 +9,14 @@ log = logging.getLogger(__name__)
 
 
 def show_plots(root_path: Path):
-    from btchia.plotting.plot_tools import get_plot_directories
+    from btcgreen.plotting.plot_tools import get_plot_directories
 
     print("Directories where plots are being searched for:")
     print("Note that subdirectories must be added manually")
     print(
-        "Add with 'btchia plots add -d [dir]' and remove with"
-        + " 'btchia plots remove -d [dir]'"
-        + " Scan and check plots with 'btchia plots check'"
+        "Add with 'btcgreen plots add -d [dir]' and remove with"
+        + " 'btcgreen plots remove -d [dir]'"
+        + " Scan and check plots with 'btcgreen plots check'"
     )
     print()
     for str_path in get_plot_directories(root_path):
@@ -27,11 +27,11 @@ def show_plots(root_path: Path):
 @click.pass_context
 def plots_cmd(ctx: click.Context):
     """Create, add, remove and check your plots"""
-    from btchia.util.btchia_logging import initialize_logging
+    from btcgreen.util.btcgreen_logging import initialize_logging
 
     root_path: Path = ctx.obj["root_path"]
     if not root_path.is_dir():
-        raise RuntimeError("Please initialize (or migrate) your config directory with 'btchia init'")
+        raise RuntimeError("Please initialize (or migrate) your config directory with 'btcgreen init'")
     initialize_logging("", {"log_stdout": True}, root_path)
 
 
@@ -102,7 +102,7 @@ def create_cmd(
     nobitfield: bool,
     exclude_final_dir: bool,
 ):
-    from btchia.plotting.create_plots import create_plots
+    from btcgreen.plotting.create_plots import create_plots
 
     class Params(object):
         def __init__(self):
@@ -151,7 +151,7 @@ def create_cmd(
 def check_cmd(
     ctx: click.Context, num: int, grep_string: str, list_duplicates: bool, debug_show_memo: bool, challenge_start: int
 ):
-    from btchia.plotting.check_plots import check_plots
+    from btcgreen.plotting.check_plots import check_plots
 
     check_plots(ctx.obj["root_path"], num, challenge_start, grep_string, list_duplicates, debug_show_memo)
 
@@ -167,7 +167,7 @@ def check_cmd(
 )
 @click.pass_context
 def add_cmd(ctx: click.Context, final_dir: str):
-    from btchia.plotting.plot_tools import add_plot_directory
+    from btcgreen.plotting.plot_tools import add_plot_directory
 
     add_plot_directory(Path(final_dir), ctx.obj["root_path"])
     print(f'Added plot directory "{final_dir}".')
@@ -184,7 +184,7 @@ def add_cmd(ctx: click.Context, final_dir: str):
 )
 @click.pass_context
 def remove_cmd(ctx: click.Context, final_dir: str):
-    from btchia.plotting.plot_tools import remove_plot_directory
+    from btcgreen.plotting.plot_tools import remove_plot_directory
 
     remove_plot_directory(Path(final_dir), ctx.obj["root_path"])
     print(f'Removed plot directory "{final_dir}".')

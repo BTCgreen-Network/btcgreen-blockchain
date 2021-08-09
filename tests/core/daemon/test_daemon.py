@@ -3,12 +3,12 @@ import json
 
 import aiohttp
 import pytest
-from btchia.server.outbound_message import NodeType
-from btchia.server.server import ssl_context_for_server
-from btchia.types.peer_info import PeerInfo
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.server import ssl_context_for_server
+from btcgreen.types.peer_info import PeerInfo
 from tests.block_tools import BlockTools
-from btchia.util.ints import uint16
-from btchia.util.ws_message import create_payload
+from btcgreen.util.ints import uint16
+from btcgreen.util.ws_message import create_payload
 from tests.core.node_height import node_height_at_least
 from tests.setup_nodes import setup_daemon, self_hostname, setup_full_system
 from tests.simulation.test_simulation import test_constants_modified
@@ -90,7 +90,7 @@ class TestDaemon:
 
         read_handler = asyncio.create_task(reader(ws, message_queue))
         data = {}
-        payload = create_payload("get_blockchain_state", data, service_name, "btchia_full_node")
+        payload = create_payload("get_blockchain_state", data, service_name, "btcgreen_full_node")
         await ws.send_str(payload)
 
         await asyncio.sleep(5)

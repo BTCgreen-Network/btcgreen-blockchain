@@ -8,27 +8,27 @@ from typing import Optional, List, Dict
 import pytest
 from blspy import G1Element, AugSchemeMPL
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.plotting.create_plots import create_plots
-from btchia.pools.pool_wallet_info import PoolWalletInfo, PoolSingletonState
-from btchia.protocols import full_node_protocol
-from btchia.protocols.full_node_protocol import RespondBlock
-from btchia.rpc.rpc_server import start_rpc_server
-from btchia.rpc.wallet_rpc_api import WalletRpcApi
-from btchia.rpc.wallet_rpc_client import WalletRpcClient
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.plotting.create_plots import create_plots
+from btcgreen.pools.pool_wallet_info import PoolWalletInfo, PoolSingletonState
+from btcgreen.protocols import full_node_protocol
+from btcgreen.protocols.full_node_protocol import RespondBlock
+from btcgreen.rpc.rpc_server import start_rpc_server
+from btcgreen.rpc.wallet_rpc_api import WalletRpcApi
+from btcgreen.rpc.wallet_rpc_client import WalletRpcClient
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
 
-from btchia.types.peer_info import PeerInfo
-from btchia.util.bech32m import encode_puzzle_hash
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.bech32m import encode_puzzle_hash
 from tests.block_tools import get_plot_dir, get_plot_tmp_dir
-from btchia.util.config import load_config
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint16, uint32
-from btchia.wallet.derive_keys import master_sk_to_local_sk
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.util.config import load_config
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint16, uint32
+from btcgreen.wallet.derive_keys import master_sk_to_local_sk
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.wallet_types import WalletType
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets, bt
 from tests.time_out_assert import time_out_assert
 
@@ -669,11 +669,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_btchia():
+            async def have_btcgreen():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_btchia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_btcgreen)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 our_ph, "", 0, "localhost:5000", "new", "SELF_POOLING"
@@ -781,11 +781,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_btchia():
+            async def have_btcgreen():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_btchia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_btcgreen)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 pool_a_ph, "https://pool-a.org", 5, "localhost:5000", "new", "FARMING_TO_POOL"
@@ -868,11 +868,11 @@ class TestPoolWalletRpc:
                 if WalletType(int(summary["type"])) == WalletType.POOLING_WALLET:
                     assert False
 
-            async def have_btchia():
+            async def have_btcgreen():
                 await self.farm_blocks(full_node_api, our_ph, 1)
                 return (await wallets[0].get_confirmed_balance()) > 0
 
-            await time_out_assert(timeout=WAIT_SECS, function=have_btchia)
+            await time_out_assert(timeout=WAIT_SECS, function=have_btcgreen)
 
             creation_tx: TransactionRecord = await client.create_new_pool_wallet(
                 pool_a_ph, "https://pool-a.org", 5, "localhost:5000", "new", "FARMING_TO_POOL"

@@ -2,17 +2,17 @@ from collections import defaultdict
 from dataclasses import dataclass, replace
 from typing import Dict, Iterator, Optional, Set
 
-from btchia.full_node.mempool_check_conditions import mempool_check_conditions_dict  # noqa
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_record import CoinRecord
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.condition_tools import (
+from btcgreen.full_node.mempool_check_conditions import mempool_check_conditions_dict  # noqa
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.condition_tools import (
     conditions_dict_for_solution,
     coin_announcement_names_for_conditions_dict,
     puzzle_announcement_names_for_conditions_dict,
 )
-from btchia.util.ints import uint32, uint64
+from btcgreen.util.ints import uint32, uint64
 
 
 MAX_COST = 11000000000

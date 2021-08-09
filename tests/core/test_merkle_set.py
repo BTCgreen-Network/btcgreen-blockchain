@@ -3,7 +3,7 @@ import itertools
 
 import pytest
 
-from btchia.util.merkle_set import MerkleSet, confirm_included_already_hashed
+from btcgreen.util.merkle_set import MerkleSet, confirm_included_already_hashed
 from tests.setup_nodes import bt
 
 

@@ -1,20 +1,20 @@
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-from btchia.pools.pool_wallet_info import PoolWalletInfo
-from btchia.rpc.rpc_client import RpcClient
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.bech32m import decode_puzzle_hash
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.transaction_record import TransactionRecord
+from btcgreen.pools.pool_wallet_info import PoolWalletInfo
+from btcgreen.rpc.rpc_client import RpcClient
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.bech32m import decode_puzzle_hash
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.transaction_record import TransactionRecord
 
 
 class WalletRpcClient(RpcClient):
     """
-    Client to BTChia RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
+    Client to BTCgreen RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run BTChia's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run BTCgreen's
     protocol on top of TCP), it's a separate protocol on top of HTTP that provides easy access
     to the full node.
     """
@@ -24,7 +24,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.btchia.org", "fingerprint": fingerprint, "type": "start"},
+                {"host": "https://backup.btcgreen.org", "fingerprint": fingerprint, "type": "start"},
             )
 
         except ValueError as e:
@@ -35,7 +35,7 @@ class WalletRpcClient(RpcClient):
             return await self.fetch(
                 "log_in",
                 {
-                    "host": "https://backup.btchia.org",
+                    "host": "https://backup.btcgreen.org",
                     "fingerprint": fingerprint,
                     "type": "restore_backup",
                     "file_path": file_path,
@@ -48,7 +48,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.btchia.org", "fingerprint": fingerprint, "type": "skip"},
+                {"host": "https://backup.btcgreen.org", "fingerprint": fingerprint, "type": "skip"},
             )
         except ValueError as e:
             return e.args[0]

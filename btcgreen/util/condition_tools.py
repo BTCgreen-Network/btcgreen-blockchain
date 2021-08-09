@@ -2,15 +2,15 @@ from typing import Dict, List, Optional, Tuple, Set
 
 from blspy import G1Element
 
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.util.clvm import int_from_bytes
-from btchia.util.errors import ConsensusError, Err
-from btchia.util.ints import uint64
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.util.clvm import int_from_bytes
+from btcgreen.util.errors import ConsensusError, Err
+from btcgreen.util.ints import uint64
 
 # TODO: review each `assert` and consider replacing with explicit checks
 #       since asserts can be stripped with python `-OO` flag

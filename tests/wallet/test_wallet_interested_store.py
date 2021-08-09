@@ -4,11 +4,11 @@ from secrets import token_bytes
 import aiosqlite
 import pytest
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint64
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint64
 
-from btchia.wallet.wallet_interested_store import WalletInterestedStore
+from btcgreen.wallet.wallet_interested_store import WalletInterestedStore
 
 
 @pytest.fixture(scope="module")

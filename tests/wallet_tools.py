@@ -2,21 +2,21 @@ from typing import Dict, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.util.hash import std_hash
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.clvm import int_from_bytes, int_to_bytes
-from btchia.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.derive_keys import master_sk_to_wallet_sk
-from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.util.hash import std_hash
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.clvm import int_from_bytes, int_to_bytes
+from btcgreen.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk
+from btcgreen.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
     puzzle_for_pk,

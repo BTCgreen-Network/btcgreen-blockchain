@@ -8,8 +8,8 @@ type Options = {
 };
 
 const defaultOptions = {
-  to: Unit.BTCHIA,
-  from: Unit.BTCHIA,
+  to: Unit.BTCGREEN,
+  from: Unit.BTCGREEN,
 };
 
 export default function unitFormat(value: number, options: Options): string {

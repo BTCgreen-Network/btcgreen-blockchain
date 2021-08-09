@@ -4,7 +4,7 @@ from typing import Any
 
 from aiohttp import web
 
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.util.wallet_types import WalletType
 
 
 class EnhancedJSONEncoder(json.JSONEncoder):

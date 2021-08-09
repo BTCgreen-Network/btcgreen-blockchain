@@ -1,8 +1,8 @@
 import unittest
 
-from btchia.util.setproctitle import setproctitle
+from btcgreen.util.setproctitle import setproctitle
 
 
 class TestSetProcTitle(unittest.TestCase):
     def test_does_not_crash(self):
-        setproctitle("btchia test title")
+        setproctitle("btcgreen test title")

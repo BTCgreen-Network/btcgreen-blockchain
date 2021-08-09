@@ -12,7 +12,7 @@ const convert = (amount, from, to) => {
   return Number.parseFloat(amountInFromUnit.div(units.getUnit(to)));
 };
 
-class BTChia {
+class BTCgreen {
   constructor(value, unit) {
     this._value = value;
     this._unit = unit;
@@ -73,42 +73,42 @@ class BTChia {
   }
 }
 
-export const btchia_formatter = (value, unit) => new BTChia(value, unit);
+export const btcgreen_formatter = (value, unit) => new BTCgreen(value, unit);
 
-btchia_formatter.convert = convert;
-btchia_formatter.setDisplay = units.setDisplay;
-btchia_formatter.setUnit = units.setUnit;
-btchia_formatter.getUnit = units.getUnit;
-btchia_formatter.setFiat = (currency, rate, display = null) => {
+btcgreen_formatter.convert = convert;
+btcgreen_formatter.setDisplay = units.setDisplay;
+btcgreen_formatter.setUnit = units.setUnit;
+btcgreen_formatter.getUnit = units.getUnit;
+btcgreen_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const mojo_to_btchia = (mojo) => {
-  return btchia_formatter(Number.parseInt(mojo), 'mojo').to('btchia').value();
+export const mojo_to_btcgreen = (mojo) => {
+  return btcgreen_formatter(Number.parseInt(mojo), 'mojo').to('btcgreen').value();
 };
 
-export const btchia_to_mojo = (btchia) => {
-  return btchia_formatter(Number.parseFloat(Number(btchia)), 'btchia')
+export const btcgreen_to_mojo = (btcgreen) => {
+  return btcgreen_formatter(Number.parseFloat(Number(btcgreen)), 'btcgreen')
     .to('mojo')
     .value();
 };
 
-export const mojo_to_btchia_string = (mojo) => {
-  return btchia_formatter(Number(mojo), 'mojo').to('btchia').toString();
+export const mojo_to_btcgreen_string = (mojo) => {
+  return btcgreen_formatter(Number(mojo), 'mojo').to('btcgreen').toString();
 };
 
 export const mojo_to_colouredcoin = (mojo) => {
-  return btchia_formatter(Number.parseInt(mojo), 'mojo')
+  return btcgreen_formatter(Number.parseInt(mojo), 'mojo')
     .to('colouredcoin')
     .value();
 };
 
 export const colouredcoin_to_mojo = (colouredcoin) => {
-  return btchia_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
+  return btcgreen_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
     .to('mojo')
     .value();
 };
 
 export const mojo_to_colouredcoin_string = (mojo) => {
-  return btchia_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
+  return btcgreen_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
 };

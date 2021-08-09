@@ -3,18 +3,18 @@ import time
 
 import pytest
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.consensus.blockchain import ReceiveBlockResult
-from btchia.protocols import full_node_protocol, wallet_protocol
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import Message
-from btchia.simulator.full_node_simulator import FullNodeSimulator
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.peer_info import PeerInfo
-from btchia.util.errors import Err
-from btchia.util.ints import uint16, uint32
-from btchia.wallet.transaction_record import TransactionRecord
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.consensus.blockchain import ReceiveBlockResult
+from btcgreen.protocols import full_node_protocol, wallet_protocol
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import Message
+from btcgreen.simulator.full_node_simulator import FullNodeSimulator
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.errors import Err
+from btcgreen.util.ints import uint16, uint32
+from btcgreen.wallet.transaction_record import TransactionRecord
 from tests.core.full_node.test_full_node import add_dummy_connection
 from tests.setup_nodes import bt, self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert

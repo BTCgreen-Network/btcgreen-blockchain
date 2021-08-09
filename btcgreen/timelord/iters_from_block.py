@@ -1,9 +1,9 @@
 from typing import Optional, Tuple, Union
 
-from btchia.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
-from btchia.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.ints import uint64
+from btcgreen.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
+from btcgreen.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.ints import uint64
 
 
 def iters_from_block(

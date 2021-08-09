@@ -1,6 +1,6 @@
 from ipaddress import ip_address, IPv4Network, IPv6Network
 from typing import Iterable, Union, Any
-from btchia.server.outbound_message import NodeType
+from btcgreen.server.outbound_message import NodeType
 
 
 def is_in_network(peer_host: str, networks: Iterable[Union[IPv4Network, IPv6Network]]) -> bool:
@@ -17,27 +17,27 @@ def is_localhost(peer_host: str) -> bool:
 
 def class_for_type(type: NodeType) -> Any:
     if type is NodeType.FULL_NODE:
-        from btchia.full_node.full_node_api import FullNodeAPI
+        from btcgreen.full_node.full_node_api import FullNodeAPI
 
         return FullNodeAPI
     elif type is NodeType.WALLET:
-        from btchia.wallet.wallet_node_api import WalletNodeAPI
+        from btcgreen.wallet.wallet_node_api import WalletNodeAPI
 
         return WalletNodeAPI
     elif type is NodeType.INTRODUCER:
-        from btchia.introducer.introducer_api import IntroducerAPI
+        from btcgreen.introducer.introducer_api import IntroducerAPI
 
         return IntroducerAPI
     elif type is NodeType.TIMELORD:
-        from btchia.timelord.timelord_api import TimelordAPI
+        from btcgreen.timelord.timelord_api import TimelordAPI
 
         return TimelordAPI
     elif type is NodeType.FARMER:
-        from btchia.farmer.farmer_api import FarmerAPI
+        from btcgreen.farmer.farmer_api import FarmerAPI
 
         return FarmerAPI
     elif type is NodeType.HARVESTER:
-        from btchia.harvester.harvester_api import HarvesterAPI
+        from btcgreen.harvester.harvester_api import HarvesterAPI
 
         return HarvesterAPI
     raise ValueError("No class for type")

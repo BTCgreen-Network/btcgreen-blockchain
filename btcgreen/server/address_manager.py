@@ -6,9 +6,9 @@ from random import choice, randrange
 from secrets import randbits
 from typing import Dict, List, Optional, Set, Tuple
 
-from btchia.types.peer_info import PeerInfo, TimestampedPeerInfo
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint16, uint64
+from btcgreen.types.peer_info import PeerInfo, TimestampedPeerInfo
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint16, uint64
 
 TRIED_BUCKETS_PER_GROUP = 8
 NEW_BUCKETS_PER_SOURCE_GROUP = 64

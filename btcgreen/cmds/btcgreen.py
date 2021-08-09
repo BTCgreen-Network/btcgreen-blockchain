@@ -1,18 +1,18 @@
 import click
 
-from btchia import __version__
-from btchia.cmds.configure import configure_cmd
-from btchia.cmds.farm import farm_cmd
-from btchia.cmds.init import init_cmd
-from btchia.cmds.keys import keys_cmd
-from btchia.cmds.netspace import netspace_cmd
-from btchia.cmds.plots import plots_cmd
-from btchia.cmds.show import show_cmd
-from btchia.cmds.start import start_cmd
-from btchia.cmds.stop import stop_cmd
-from btchia.cmds.wallet import wallet_cmd
-from btchia.cmds.plotnft import plotnft_cmd
-from btchia.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen import __version__
+from btcgreen.cmds.configure import configure_cmd
+from btcgreen.cmds.farm import farm_cmd
+from btcgreen.cmds.init import init_cmd
+from btcgreen.cmds.keys import keys_cmd
+from btcgreen.cmds.netspace import netspace_cmd
+from btcgreen.cmds.plots import plots_cmd
+from btcgreen.cmds.show import show_cmd
+from btcgreen.cmds.start import start_cmd
+from btcgreen.cmds.stop import stop_cmd
+from btcgreen.cmds.wallet import wallet_cmd
+from btcgreen.cmds.plotnft import plotnft_cmd
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
@@ -34,8 +34,8 @@ def monkey_patch_click() -> None:
 
 
 @click.group(
-    help=f"\n  Manage btchia blockchain infrastructure ({__version__})\n",
-    epilog="Try 'btchia start node', 'btchia netspace -d 192', or 'btchia show -s'",
+    help=f"\n  Manage btcgreen blockchain infrastructure ({__version__})\n",
+    epilog="Try 'btcgreen start node', 'btcgreen netspace -d 192', or 'btcgreen show -s'",
     context_settings=CONTEXT_SETTINGS,
 )
 @click.option("--root-path", default=DEFAULT_ROOT_PATH, help="Config file root", type=click.Path(), show_default=True)
@@ -47,15 +47,15 @@ def cli(ctx: click.Context, root_path: str) -> None:
     ctx.obj["root_path"] = Path(root_path)
 
 
-@cli.command("version", short_help="Show btchia version")
+@cli.command("version", short_help="Show btcgreen version")
 def version_cmd() -> None:
     print(__version__)
 
 
-@cli.command("run_daemon", short_help="Runs btchia daemon")
+@cli.command("run_daemon", short_help="Runs btcgreen daemon")
 @click.pass_context
 def run_daemon_cmd(ctx: click.Context) -> None:
-    from btchia.daemon.server import async_run_daemon
+    from btcgreen.daemon.server import async_run_daemon
     import asyncio
 
     asyncio.get_event_loop().run_until_complete(async_run_daemon(ctx.obj["root_path"]))

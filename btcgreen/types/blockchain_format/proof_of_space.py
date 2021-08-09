@@ -6,11 +6,11 @@ from bitstring import BitArray
 from blspy import G1Element, AugSchemeMPL, PrivateKey
 from chiapos import Verifier
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8
+from btcgreen.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

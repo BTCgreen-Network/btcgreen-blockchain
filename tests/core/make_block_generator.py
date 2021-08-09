@@ -2,15 +2,15 @@ from typing import Dict
 
 import blspy
 
-from btchia.full_node.bundle_tools import simple_solution_generator
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.generator_types import BlockGenerator
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.ints import uint64
-from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
+from btcgreen.full_node.bundle_tools import simple_solution_generator
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.ints import uint64
+from btcgreen.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
 
 GROUP_ORDER = 0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000001
 

@@ -2,8 +2,8 @@ import ipaddress
 from dataclasses import dataclass
 from typing import Optional, Union
 
-from btchia.util.ints import uint16, uint64
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.util.ints import uint16, uint64
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

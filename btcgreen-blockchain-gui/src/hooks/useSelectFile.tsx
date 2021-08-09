@@ -1,7 +1,7 @@
 import React from 'react';
 import isElectron from 'is-electron';
 import { Trans } from '@lingui/macro';
-import { AlertDialog } from '@btchia/core';
+import { AlertDialog } from '@btcgreen/core';
 import useOpenDialog from './useOpenDialog';
 
 export default function useSelectFile(): () => Promise<string | undefined> {

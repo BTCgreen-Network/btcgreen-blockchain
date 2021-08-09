@@ -1,13 +1,13 @@
 from typing import Callable, Dict, List
 
-from btchia.harvester.harvester import Harvester
-from btchia.util.ws_message import WsRpcMessage, create_payload_dict
+from btcgreen.harvester.harvester import Harvester
+from btcgreen.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class HarvesterRpcApi:
     def __init__(self, harvester: Harvester):
         self.service = harvester
-        self.service_name = "btchia_harvester"
+        self.service_name = "btcgreen_harvester"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

@@ -7,32 +7,32 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from blspy import AugSchemeMPL
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.coin_solution import CoinSolution
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.cc_wallet import cc_utils
-from btchia.wallet.cc_wallet.cc_utils import CC_MOD, SpendableCC, spend_bundle_for_spendable_ccs, uncurry_cc
-from btchia.wallet.cc_wallet.cc_wallet import CCWallet
-from btchia.wallet.puzzles.genesis_by_coin_id_with_0 import genesis_coin_id_for_genesis_coin_checker
-from btchia.wallet.trade_record import TradeRecord
-from btchia.wallet.trading.trade_status import TradeStatus
-from btchia.wallet.trading.trade_store import TradeStore
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.trade_utils import (
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.cc_wallet import cc_utils
+from btcgreen.wallet.cc_wallet.cc_utils import CC_MOD, SpendableCC, spend_bundle_for_spendable_ccs, uncurry_cc
+from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
+from btcgreen.wallet.puzzles.genesis_by_coin_id_with_0 import genesis_coin_id_for_genesis_coin_checker
+from btcgreen.wallet.trade_record import TradeRecord
+from btcgreen.wallet.trading.trade_status import TradeStatus
+from btcgreen.wallet.trading.trade_store import TradeStore
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.trade_utils import (
     get_discrepancies_for_spend_bundle,
     get_output_amount_for_puzzle_and_solution,
     get_output_discrepancy_for_puzzle_and_solution,
 )
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet import Wallet
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet import Wallet
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
 
 
 class TradeManager:
@@ -278,7 +278,7 @@ class TradeManager:
                         to_exclude = []
                     else:
                         to_exclude = spend_bundle.removals()
-                    new_spend_bundle = await wallet.create_spend_bundle_relative_btchia(amount, to_exclude)
+                    new_spend_bundle = await wallet.create_spend_bundle_relative_btcgreen(amount, to_exclude)
                 else:
                     return False, None, "unsupported wallet type"
                 if new_spend_bundle is None or new_spend_bundle.removals() == []:
@@ -336,7 +336,7 @@ class TradeManager:
         for key, value in result.items():
             wsm = self.wallet_state_manager
             wallet: Wallet = wsm.main_wallet
-            if key == "btchia":
+            if key == "btcgreen":
                 continue
             self.log.info(f"value is {key}")
             exists = await wsm.get_wallet_for_colour(key)
@@ -364,7 +364,7 @@ class TradeManager:
         cc_coinsol_outamounts: Dict[bytes32, List[Tuple[CoinSolution, int]]] = dict()
         aggsig = offer_spend_bundle.aggregated_signature
         cc_discrepancies: Dict[bytes32, int] = dict()
-        btchia_discrepancy = None
+        btcgreen_discrepancy = None
         wallets: Dict[bytes32, Any] = dict()  # colour to wallet dict
 
         for coinsol in offer_spend_bundle.coin_solutions:
@@ -397,24 +397,24 @@ class TradeManager:
                     cc_coinsol_outamounts[colour] = [(coinsol, total)]
 
             else:
-                # standard btchia coin
+                # standard btcgreen coin
                 unspent = await self.wallet_state_manager.get_spendable_coins_for_wallet(1)
                 if coinsol.coin in [record.coin for record in unspent]:
                     return False, None, "can't respond to own offer"
-                if btchia_discrepancy is None:
-                    btchia_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
+                if btcgreen_discrepancy is None:
+                    btcgreen_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
                 else:
-                    btchia_discrepancy += get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
+                    btcgreen_discrepancy += get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
                 coinsols.append(coinsol)
 
-        btchia_spend_bundle: Optional[SpendBundle] = None
-        if btchia_discrepancy is not None:
-            btchia_spend_bundle = await self.wallet_state_manager.main_wallet.create_spend_bundle_relative_btchia(
-                btchia_discrepancy, []
+        btcgreen_spend_bundle: Optional[SpendBundle] = None
+        if btcgreen_discrepancy is not None:
+            btcgreen_spend_bundle = await self.wallet_state_manager.main_wallet.create_spend_bundle_relative_btcgreen(
+                btcgreen_discrepancy, []
             )
-            if btchia_spend_bundle is not None:
+            if btcgreen_spend_bundle is not None:
                 for coinsol in coinsols:
-                    btchia_spend_bundle.coin_solutions.append(coinsol)
+                    btcgreen_spend_bundle.coin_solutions.append(coinsol)
 
         zero_spend_list: List[SpendBundle] = []
         spend_bundle = None
@@ -424,10 +424,10 @@ class TradeManager:
             if cc_discrepancies[colour] < 0:
                 my_cc_spends = await wallets[colour].select_coins(abs(cc_discrepancies[colour]))
             else:
-                if btchia_spend_bundle is None:
+                if btcgreen_spend_bundle is None:
                     to_exclude: List = []
                 else:
-                    to_exclude = btchia_spend_bundle.removals()
+                    to_exclude = btcgreen_spend_bundle.removals()
                 my_cc_spends = await wallets[colour].select_coins(0)
                 if my_cc_spends is None or my_cc_spends == set():
                     zero_spend_bundle: SpendBundle = await wallets[colour].generate_zero_val_coin(False, to_exclude)
@@ -435,7 +435,7 @@ class TradeManager:
                         return (
                             False,
                             None,
-                            "Unable to generate zero value coin. Confirm that you have btchia available",
+                            "Unable to generate zero value coin. Confirm that you have btcgreen available",
                         )
                     zero_spend_list.append(zero_spend_bundle)
 
@@ -529,49 +529,49 @@ class TradeManager:
 
         # Add transaction history for this trade
         now = uint64(int(time.time()))
-        if btchia_spend_bundle is not None:
-            spend_bundle = SpendBundle.aggregate([spend_bundle, btchia_spend_bundle])
-            if btchia_discrepancy < 0:
+        if btcgreen_spend_bundle is not None:
+            spend_bundle = SpendBundle.aggregate([spend_bundle, btcgreen_spend_bundle])
+            if btcgreen_discrepancy < 0:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=now,
                     to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(btchia_discrepancy)),
+                    amount=uint64(abs(btcgreen_discrepancy)),
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
-                    spend_bundle=btchia_spend_bundle,
-                    additions=btchia_spend_bundle.additions(),
-                    removals=btchia_spend_bundle.removals(),
+                    spend_bundle=btcgreen_spend_bundle,
+                    additions=btcgreen_spend_bundle.additions(),
+                    removals=btcgreen_spend_bundle.removals(),
                     wallet_id=uint32(1),
                     sent_to=[],
                     trade_id=std_hash(spend_bundle.name() + bytes(now)),
                     type=uint32(TransactionType.OUTGOING_TRADE.value),
-                    name=btchia_spend_bundle.name(),
+                    name=btcgreen_spend_bundle.name(),
                 )
             else:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),
                     to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(btchia_discrepancy)),
+                    amount=uint64(abs(btcgreen_discrepancy)),
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
-                    spend_bundle=btchia_spend_bundle,
-                    additions=btchia_spend_bundle.additions(),
-                    removals=btchia_spend_bundle.removals(),
+                    spend_bundle=btcgreen_spend_bundle,
+                    additions=btcgreen_spend_bundle.additions(),
+                    removals=btcgreen_spend_bundle.removals(),
                     wallet_id=uint32(1),
                     sent_to=[],
                     trade_id=std_hash(spend_bundle.name() + bytes(now)),
                     type=uint32(TransactionType.INCOMING_TRADE.value),
-                    name=btchia_spend_bundle.name(),
+                    name=btcgreen_spend_bundle.name(),
                 )
             my_tx_records.append(tx_record)
 
         for colour, amount in cc_discrepancies.items():
             wallet = wallets[colour]
-            if btchia_discrepancy > 0:
+            if btcgreen_discrepancy > 0:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),

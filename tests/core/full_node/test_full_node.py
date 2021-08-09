@@ -9,38 +9,38 @@ from typing import Dict, Optional, List
 
 import pytest
 
-from btchia.consensus.pot_iterations import is_overflow_block
-from btchia.full_node.bundle_tools import detect_potential_template_generator
-from btchia.full_node.full_node_api import FullNodeAPI
-from btchia.full_node.signage_point import SignagePoint
-from btchia.protocols import full_node_protocol as fnp, full_node_protocol
-from btchia.protocols import timelord_protocol
-from btchia.protocols.full_node_protocol import RespondTransaction
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.address_manager import AddressManager
-from btchia.server.outbound_message import Message
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.program import SerializedProgram
-from btchia.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.full_block import FullBlock
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.peer_info import PeerInfo, TimestampedPeerInfo
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_block import UnfinishedBlock
+from btcgreen.consensus.pot_iterations import is_overflow_block
+from btcgreen.full_node.bundle_tools import detect_potential_template_generator
+from btcgreen.full_node.full_node_api import FullNodeAPI
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.protocols import full_node_protocol as fnp, full_node_protocol
+from btcgreen.protocols import timelord_protocol
+from btcgreen.protocols.full_node_protocol import RespondTransaction
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.address_manager import AddressManager
+from btcgreen.server.outbound_message import Message
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.program import SerializedProgram
+from btcgreen.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.peer_info import PeerInfo, TimestampedPeerInfo
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import get_signage_point
-from btchia.util.clvm import int_to_bytes
-from btchia.util.errors import Err
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint16, uint32, uint64
-from btchia.util.recursive_replace import recursive_replace
-from btchia.util.vdf_prover import get_vdf_info_and_proof
+from btcgreen.util.clvm import int_to_bytes
+from btcgreen.util.errors import Err
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint16, uint32, uint64
+from btcgreen.util.recursive_replace import recursive_replace
+from btcgreen.util.vdf_prover import get_vdf_info_and_proof
 from tests.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
-from btchia.wallet.cc_wallet.cc_wallet import CCWallet
-from btchia.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
+from btcgreen.wallet.transaction_record import TransactionRecord
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer
 from tests.core.full_node.test_coin_store import get_future_reward_coins

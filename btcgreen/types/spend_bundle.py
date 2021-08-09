@@ -3,10 +3,10 @@ from typing import List
 
 from blspy import AugSchemeMPL, G2Element
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.streamable import Streamable, streamable
-from btchia.wallet.util.debug_spend_bundle import debug_spend_bundle
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.streamable import Streamable, streamable
+from btcgreen.wallet.util.debug_spend_bundle import debug_spend_bundle
 
 from .coin_solution import CoinSolution
 

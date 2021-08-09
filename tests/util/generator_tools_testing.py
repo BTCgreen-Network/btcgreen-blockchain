@@ -1,11 +1,11 @@
 from typing import List, Tuple
 
-from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.full_block import FullBlock
-from btchia.types.generator_types import BlockGenerator
-from btchia.util.generator_tools import additions_for_npc
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.util.generator_tools import additions_for_npc
 
 
 def run_and_get_removals_and_additions(

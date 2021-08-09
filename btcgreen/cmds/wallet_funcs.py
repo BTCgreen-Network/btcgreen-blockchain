@@ -7,27 +7,27 @@ from typing import Callable, List, Optional, Tuple
 
 import aiohttp
 
-from btchia.cmds.units import units
-from btchia.rpc.wallet_rpc_client import WalletRpcClient
-from btchia.server.start_wallet import SERVICE_NAME
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.ints import uint16, uint64
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.cmds.units import units
+from btcgreen.rpc.wallet_rpc_client import WalletRpcClient
+from btcgreen.server.start_wallet import SERVICE_NAME
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.ints import uint16, uint64
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.wallet_types import WalletType
 
 
 def print_transaction(tx: TransactionRecord, verbose: bool, name) -> None:
     if verbose:
         print(tx)
     else:
-        btchia_amount = Decimal(int(tx.amount)) / units["btchia"]
+        btcgreen_amount = Decimal(int(tx.amount)) / units["btcgreen"]
         to_address = encode_puzzle_hash(tx.to_puzzle_hash, name)
         print(f"Transaction {tx.name}")
         print(f"Status: {'Confirmed' if tx.confirmed else ('In mempool' if tx.is_in_mempool() else 'Pending')}")
-        print(f"Amount: {btchia_amount} {name}")
+        print(f"Amount: {btcgreen_amount} {name}")
         print(f"To address: {to_address}")
         print("Created at:", datetime.fromtimestamp(tx.created_at_time).strftime("%Y-%m-%d %H:%M:%S"))
         print("")
@@ -86,8 +86,8 @@ async def send(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> 
         )
         return
     print("Submitting transaction...")
-    final_amount = uint64(int(amount * units["btchia"]))
-    final_fee = uint64(int(fee * units["btchia"]))
+    final_amount = uint64(int(amount * units["btcgreen"]))
+    final_fee = uint64(int(fee * units["btcgreen"]))
     res = await wallet_client.send_transaction(wallet_id, final_amount, address, final_fee)
     tx_id = res.name
     start = time.time()
@@ -96,11 +96,11 @@ async def send(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> 
         tx = await wallet_client.get_transaction(wallet_id, tx_id)
         if len(tx.sent_to) > 0:
             print(f"Transaction submitted to nodes: {tx.sent_to}")
-            print(f"Do btchia wallet get_transaction -f {fingerprint} -tx 0x{tx_id} to get status")
+            print(f"Do btcgreen wallet get_transaction -f {fingerprint} -tx 0x{tx_id} to get status")
             return None
 
     print("Transaction not yet submitted to nodes")
-    print(f"Do 'btchia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status")
+    print(f"Do 'btcgreen wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status")
 
 
 async def get_address(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> None:
@@ -119,7 +119,7 @@ def wallet_coin_unit(typ: WalletType, address_prefix: str) -> Tuple[str, int]:
     if typ == WalletType.COLOURED_COIN:
         return "", units["colouredcoin"]
     if typ in [WalletType.STANDARD_WALLET, WalletType.POOLING_WALLET, WalletType.MULTI_SIG, WalletType.RATE_LIMITED]:
-        return address_prefix, units["btchia"]
+        return address_prefix, units["btcgreen"]
     return "", units["mojo"]
 
 
@@ -157,7 +157,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
     else:
         fingerprints = await wallet_client.get_public_keys()
     if len(fingerprints) == 0:
-        print("No keys loaded. Run 'btchia keys generate' or import a key")
+        print("No keys loaded. Run 'btcgreen keys generate' or import a key")
         return None
     if len(fingerprints) == 1:
         fingerprint = fingerprints[0]
@@ -190,7 +190,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
             use_cloud = True
             if "backup_path" in log_in_response:
                 path = log_in_response["backup_path"]
-                print(f"Backup file from backup.btchia.org downloaded and written to: {path}")
+                print(f"Backup file from backup.btcgreen.org downloaded and written to: {path}")
                 val = input("Do you want to use this file to restore from backup? (Y/N) ")
                 if val.lower() == "y":
                     log_in_response = await wallet_client.log_in_and_restore(fingerprint, path)
@@ -243,7 +243,7 @@ async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_para
         if isinstance(e, aiohttp.ClientConnectorError):
             print(
                 f"Connection error. Check if the wallet is running at {wallet_rpc_port}. "
-                "You can run the wallet via:\n\tbtchia start wallet"
+                "You can run the wallet via:\n\tbtcgreen start wallet"
             )
         else:
             print(f"Exception from 'wallet' {e}")

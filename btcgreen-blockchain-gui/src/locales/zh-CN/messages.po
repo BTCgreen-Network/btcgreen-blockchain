@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: zh_CN\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-06 23:46\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,7 +23,7 @@ msgid "(Optional)"
 msgstr "（可选）"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
 msgstr "* 想要进一步了解奇亚？来看看一位开源开发者创建的 <0>奇亚区块浏览器</0>。"
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
@@ -44,8 +44,8 @@ msgstr "收割机是一个在存有农田文件的机器上运行的服务。农
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "关于奇亚BTChia区块链项目"
+msgid "About BTCgreen Blockchain"
+msgstr "关于奇亚BTCgreen区块链项目"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,7 +216,7 @@ msgid "Block VDF Iterations"
 msgstr "区块可验证延迟函数迭代"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
+msgid "Block at height {0} in the BTCgreen blockchain"
 msgstr "奇亚区块链上高度为 {0} 的区块"
 
 #: src/components/fullNode/FullNode.jsx:331
@@ -674,7 +674,7 @@ msgid "Edit"
 msgstr "编辑"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
 msgstr "请输入你保存的24个助记词来恢复奇亚钱包"
 
 #: src/components/farm/FarmerStatus.tsx:21
@@ -688,7 +688,7 @@ msgid "Error"
 msgstr "错误"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
 msgstr "错误：无法发送奇亚到染色地址。请输入奇亚钱包地址。"
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
@@ -1464,7 +1464,7 @@ msgid "Plots Passed Filter"
 msgstr "通过初筛的农田"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
 msgstr "农田就是在你的硬盘上分配的一块空间，用来收获奇亚币。<0>了解更多</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
@@ -1902,7 +1902,7 @@ msgstr "支出迭代长度(区块数)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
 msgstr "消费限额（单位时间可消费的奇亚币）：{0}"
 
 #: src/components/fullNode/FullNode.jsx:100
@@ -1951,8 +1951,8 @@ msgstr "状态："
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,15 +1999,15 @@ msgstr "正在同步 <0/> / <1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
+msgid "BTCgreen"
 msgstr "奇亚"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
+msgid "BTCgreen Blockchain Wiki"
 msgstr "奇亚区块链项目维基"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
+msgid "BTCgreen Wallet"
 msgstr "奇亚钱包"
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2107,7 +2107,7 @@ msgid "This feature is available only from the GUI."
 msgstr "此功能只在图形界面中提供。"
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
 msgstr "这是你目前可以交易的奇亚币数额。该数额不包含处理中的农场奖励、收入交易，以及未经区块链确认的支付交易。"
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
@@ -2127,7 +2127,7 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "此时间是该区块被农民创建的时间，因此，此时间会早于其被时间认证机制最终确认的时间。"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
 msgstr "这里是你的私钥所控制的, 到目前最新子块高度为止的全部奇亚数. 包含被冻结的耕种奖励, 但不包含待处理的收入与支出."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
@@ -2173,7 +2173,7 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "该交易在链上的区块高度"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
 msgstr "此版本的奇亚客户端与区块链已经不再兼容，无法安全地种植。"
 
 #: src/components/fullNode/FullNode.jsx:92
@@ -2214,8 +2214,8 @@ msgstr "总农田大小："
 msgid "Total Size of Plots"
 msgstr "总农田大小："
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr "钱包状态："
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,7 +2408,7 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr "想要加入农业合作社？创建一个农田NFT"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
 msgstr "想要获得更多奇亚币？ 给你的农场多开垦一些农田吧。"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
@@ -2424,7 +2424,7 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "权重是施加给所有子块包括目前这块的额外的困难度."
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
 msgstr "欢迎来到奇亚。请用已有的密钥登录，或者创建一个新的密钥。"
 
 #: src/components/wallet/WalletAdd.tsx:66
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr "你需要先领取你的奖励。"
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,8 +2583,8 @@ msgstr "{0} 积点 {1} - {2} 小时前"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} 区块奖励"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
 msgstr "{currencyCode} 收获的奇亚币总计"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28

@@ -7,36 +7,36 @@ from typing import Callable, Dict, List, Optional, Tuple, Set
 from blspy import AugSchemeMPL, G2Element
 from chiabip158 import PyBIP158
 
-import btchia.server.ws_connection as ws
-from btchia.consensus.block_creation import create_unfinished_block
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
-from btchia.full_node.bundle_tools import best_solution_generator_from_template, simple_solution_generator
-from btchia.full_node.full_node import FullNode
-from btchia.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
-from btchia.full_node.signage_point import SignagePoint
-from btchia.protocols import farmer_protocol, full_node_protocol, introducer_protocol, timelord_protocol, wallet_protocol
-from btchia.protocols.full_node_protocol import RejectBlock, RejectBlocks
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.protocols.wallet_protocol import PuzzleSolutionResponse, RejectHeaderBlocks, RejectHeaderRequest
-from btchia.server.outbound_message import Message, make_msg
-from btchia.types.blockchain_format.coin import Coin, hash_coin_list
-from btchia.types.blockchain_format.pool_target import PoolTarget
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_record import CoinRecord
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.full_block import FullBlock
-from btchia.types.generator_types import BlockGenerator
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.mempool_item import MempoolItem
-from btchia.types.peer_info import PeerInfo
-from btchia.types.unfinished_block import UnfinishedBlock
-from btchia.util.api_decorators import api_request, peer_required, bytes_required, execute_task
-from btchia.util.generator_tools import get_block_header
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.merkle_set import MerkleSet
+import btcgreen.server.ws_connection as ws
+from btcgreen.consensus.block_creation import create_unfinished_block
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
+from btcgreen.full_node.bundle_tools import best_solution_generator_from_template, simple_solution_generator
+from btcgreen.full_node.full_node import FullNode
+from btcgreen.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.protocols import farmer_protocol, full_node_protocol, introducer_protocol, timelord_protocol, wallet_protocol
+from btcgreen.protocols.full_node_protocol import RejectBlock, RejectBlocks
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.protocols.wallet_protocol import PuzzleSolutionResponse, RejectHeaderBlocks, RejectHeaderRequest
+from btcgreen.server.outbound_message import Message, make_msg
+from btcgreen.types.blockchain_format.coin import Coin, hash_coin_list
+from btcgreen.types.blockchain_format.pool_target import PoolTarget
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.mempool_item import MempoolItem
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.types.unfinished_block import UnfinishedBlock
+from btcgreen.util.api_decorators import api_request, peer_required, bytes_required, execute_task
+from btcgreen.util.generator_tools import get_block_header
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.merkle_set import MerkleSet
 
 
 class FullNodeAPI:
@@ -62,7 +62,7 @@ class FullNodeAPI:
 
     @peer_required
     @api_request
-    async def request_peers(self, _request: full_node_protocol.RequestPeers, peer: ws.WSBTChiaConnection):
+    async def request_peers(self, _request: full_node_protocol.RequestPeers, peer: ws.WSBTCgreenConnection):
         if peer.peer_server_port is None:
             return None
         peer_info = PeerInfo(peer.peer_host, peer.peer_server_port)
@@ -73,7 +73,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def respond_peers(
-        self, request: full_node_protocol.RespondPeers, peer: ws.WSBTChiaConnection
+        self, request: full_node_protocol.RespondPeers, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         self.log.debug(f"Received {len(request.peer_list)} peers")
         if self.full_node.full_node_peers is not None:
@@ -83,7 +83,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def respond_peers_introducer(
-        self, request: introducer_protocol.RespondPeersIntroducer, peer: ws.WSBTChiaConnection
+        self, request: introducer_protocol.RespondPeersIntroducer, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         self.log.debug(f"Received {len(request.peer_list)} peers from introducer")
         if self.full_node.full_node_peers is not None:
@@ -95,7 +95,7 @@ class FullNodeAPI:
     @execute_task
     @peer_required
     @api_request
-    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSBTChiaConnection) -> Optional[Message]:
+    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSBTCgreenConnection) -> Optional[Message]:
         """
         A peer notifies us that they have added a new peak to their blockchain. If we don't have it,
         we can ask for it.
@@ -108,7 +108,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def new_transaction(
-        self, transaction: full_node_protocol.NewTransaction, peer: ws.WSBTChiaConnection
+        self, transaction: full_node_protocol.NewTransaction, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         """
         A peer notifies us of a new transaction.
@@ -212,7 +212,7 @@ class FullNodeAPI:
     async def respond_transaction(
         self,
         tx: full_node_protocol.RespondTransaction,
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
         tx_bytes: bytes = b"",
         test: bool = False,
     ) -> Optional[Message]:
@@ -360,7 +360,7 @@ class FullNodeAPI:
     async def respond_block(
         self,
         respond_block: full_node_protocol.RespondBlock,
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
     ) -> Optional[Message]:
         """
         Receive a full block from a peer full node (or ourselves).
@@ -421,7 +421,7 @@ class FullNodeAPI:
     async def respond_unfinished_block(
         self,
         respond_unfinished_block: full_node_protocol.RespondUnfinishedBlock,
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
     ) -> Optional[Message]:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -431,7 +431,7 @@ class FullNodeAPI:
     @api_request
     @peer_required
     async def new_signage_point_or_end_of_sub_slot(
-        self, new_sp: full_node_protocol.NewSignagePointOrEndOfSubSlot, peer: ws.WSBTChiaConnection
+        self, new_sp: full_node_protocol.NewSignagePointOrEndOfSubSlot, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         # Ignore if syncing
         if self.full_node.sync_store.get_sync_mode():
@@ -557,7 +557,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def respond_signage_point(
-        self, request: full_node_protocol.RespondSignagePoint, peer: ws.WSBTChiaConnection
+        self, request: full_node_protocol.RespondSignagePoint, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -613,7 +613,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def respond_end_of_sub_slot(
-        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSBTChiaConnection
+        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -625,7 +625,7 @@ class FullNodeAPI:
     async def request_mempool_transactions(
         self,
         request: full_node_protocol.RequestMempoolTransactions,
-        peer: ws.WSBTChiaConnection,
+        peer: ws.WSBTCgreenConnection,
     ) -> Optional[Message]:
         received_filter = PyBIP158(bytearray(request.filter))
 
@@ -641,7 +641,7 @@ class FullNodeAPI:
     @api_request
     @peer_required
     async def declare_proof_of_space(
-        self, request: farmer_protocol.DeclareProofOfSpace, peer: ws.WSBTChiaConnection
+        self, request: farmer_protocol.DeclareProofOfSpace, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         """
         Creates a block body and header, with the proof of space, coinbase, and fee targets provided
@@ -929,7 +929,7 @@ class FullNodeAPI:
     @api_request
     @peer_required
     async def signed_values(
-        self, farmer_request: farmer_protocol.SignedValues, peer: ws.WSBTChiaConnection
+        self, farmer_request: farmer_protocol.SignedValues, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         """
         Signature of header hash, by the harvester. This is enough to create an unfinished
@@ -994,7 +994,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def new_infusion_point_vdf(
-        self, request: timelord_protocol.NewInfusionPointVDF, peer: ws.WSBTChiaConnection
+        self, request: timelord_protocol.NewInfusionPointVDF, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -1005,7 +1005,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def new_signage_point_vdf(
-        self, request: timelord_protocol.NewSignagePointVDF, peer: ws.WSBTChiaConnection
+        self, request: timelord_protocol.NewSignagePointVDF, peer: ws.WSBTCgreenConnection
     ) -> None:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -1022,7 +1022,7 @@ class FullNodeAPI:
     @peer_required
     @api_request
     async def new_end_of_sub_slot_vdf(
-        self, request: timelord_protocol.NewEndOfSubSlotVDF, peer: ws.WSBTChiaConnection
+        self, request: timelord_protocol.NewEndOfSubSlotVDF, peer: ws.WSBTCgreenConnection
     ) -> Optional[Message]:
         if self.full_node.sync_store.get_sync_mode():
             return None
@@ -1276,7 +1276,7 @@ class FullNodeAPI:
     @execute_task
     @peer_required
     @api_request
-    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSBTChiaConnection):
+    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSBTCgreenConnection):
         if self.full_node.sync_store.get_sync_mode():
             return None
         # this semaphore will only allow a limited number of tasks call
@@ -1286,14 +1286,14 @@ class FullNodeAPI:
 
     @peer_required
     @api_request
-    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSBTChiaConnection):
+    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSBTCgreenConnection):
         if self.full_node.sync_store.get_sync_mode():
             return None
         await self.full_node.request_compact_vdf(request, peer)
 
     @peer_required
     @api_request
-    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSBTChiaConnection):
+    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSBTCgreenConnection):
         if self.full_node.sync_store.get_sync_mode():
             return None
         await self.full_node.respond_compact_vdf(request, peer)

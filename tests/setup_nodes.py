@@ -4,24 +4,24 @@ import signal
 from secrets import token_bytes
 from typing import Dict, List, Optional
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
-from btchia.full_node.full_node_api import FullNodeAPI
-from btchia.server.start_farmer import service_kwargs_for_farmer
-from btchia.server.start_full_node import service_kwargs_for_full_node
-from btchia.server.start_harvester import service_kwargs_for_harvester
-from btchia.server.start_introducer import service_kwargs_for_introducer
-from btchia.server.start_service import Service
-from btchia.server.start_timelord import service_kwargs_for_timelord
-from btchia.server.start_wallet import service_kwargs_for_wallet
-from btchia.simulator.start_simulator import service_kwargs_for_full_node_simulator
-from btchia.timelord.timelord_launcher import kill_processes, spawn_process
-from btchia.types.peer_info import PeerInfo
-from btchia.util.bech32m import encode_puzzle_hash
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
+from btcgreen.full_node.full_node_api import FullNodeAPI
+from btcgreen.server.start_farmer import service_kwargs_for_farmer
+from btcgreen.server.start_full_node import service_kwargs_for_full_node
+from btcgreen.server.start_harvester import service_kwargs_for_harvester
+from btcgreen.server.start_introducer import service_kwargs_for_introducer
+from btcgreen.server.start_service import Service
+from btcgreen.server.start_timelord import service_kwargs_for_timelord
+from btcgreen.server.start_wallet import service_kwargs_for_wallet
+from btcgreen.simulator.start_simulator import service_kwargs_for_full_node_simulator
+from btcgreen.timelord.timelord_launcher import kill_processes, spawn_process
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.bech32m import encode_puzzle_hash
 from tests.block_tools import BlockTools, test_constants
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint16, uint32
-from btchia.util.keychain import Keychain, bytes_to_mnemonic
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint16, uint32
+from btcgreen.util.keychain import Keychain, bytes_to_mnemonic
 from tests.time_out_assert import time_out_assert_custom_interval
 
 bt = BlockTools(constants=test_constants)

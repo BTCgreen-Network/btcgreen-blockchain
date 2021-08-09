@@ -5,20 +5,20 @@ from typing import Callable, List, Tuple
 
 from blspy import AugSchemeMPL, G2Element, G1Element
 
-from btchia.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from btchia.harvester.harvester import Harvester
-from btchia.plotting.plot_tools import PlotInfo, parse_plot_info
-from btchia.protocols import harvester_protocol
-from btchia.protocols.farmer_protocol import FarmingInfo
-from btchia.protocols.harvester_protocol import Plot
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import make_msg
-from btchia.server.ws_connection import WSBTChiaConnection
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.api_decorators import api_request, peer_required
-from btchia.util.ints import uint8, uint32, uint64
-from btchia.wallet.derive_keys import master_sk_to_local_sk
+from btcgreen.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from btcgreen.harvester.harvester import Harvester
+from btcgreen.plotting.plot_tools import PlotInfo, parse_plot_info
+from btcgreen.protocols import harvester_protocol
+from btcgreen.protocols.farmer_protocol import FarmingInfo
+from btcgreen.protocols.harvester_protocol import Plot
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import make_msg
+from btcgreen.server.ws_connection import WSBTCgreenConnection
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.api_decorators import api_request, peer_required
+from btcgreen.util.ints import uint8, uint32, uint64
+from btcgreen.wallet.derive_keys import master_sk_to_local_sk
 
 
 class HarvesterAPI:
@@ -49,7 +49,7 @@ class HarvesterAPI:
     @peer_required
     @api_request
     async def new_signage_point_harvester(
-        self, new_challenge: harvester_protocol.NewSignagePointHarvester, peer: WSBTChiaConnection
+        self, new_challenge: harvester_protocol.NewSignagePointHarvester, peer: WSBTCgreenConnection
     ):
         """
         The harvester receives a new signage point from the farmer, this happens at the start of each slot.

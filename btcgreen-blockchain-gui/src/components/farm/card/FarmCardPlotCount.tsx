@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { FormatLargeNumber } from '@btchia/core';
+import { FormatLargeNumber } from '@btcgreen/core';
 import FarmCard from './FarmCard';
 import usePlots from '../../../hooks/usePlots';
 

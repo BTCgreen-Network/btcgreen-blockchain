@@ -8,14 +8,14 @@ import aiosqlite
 import pytest
 from clvm_tools import binutils
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint64
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint64
 
-from btchia.wallet.wallet_pool_store import WalletPoolStore
+from btcgreen.wallet.wallet_pool_store import WalletPoolStore
 
 log = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import { Typography } from '@material-ui/core';
-import { Link, Table, Card } from '@btchia/core';
+import { Link, Table, Card } from '@btcgreen/core';
 import type { RootState } from '../../modules/rootReducer';
 import type { Row } from '../core/components/Table/Table';
 
@@ -62,13 +62,13 @@ export default function FarmLatestBlockChallenges() {
       />
       <Typography variant="caption">
         <Trans>
-          *Want to explore BTChia’s blocks further? Check out{' '}
+          *Want to explore BTCgreen’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://btchia.posat.io/"
+            href="https://btcgreen.posat.io/"
             target="_blank"
           >
-            BTChia Explorer
+            BTCgreen Explorer
           </Link>{' '}
           built by that one smart guy on discord.
         </Trans>

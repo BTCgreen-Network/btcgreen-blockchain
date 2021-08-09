@@ -4,13 +4,13 @@ from typing import Optional, Dict
 
 from blspy import G1Element
 
-from btchia.protocols.pool_protocol import POOL_PROTOCOL_VERSION
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint32, uint8
-from btchia.util.streamable import streamable, Streamable
+from btcgreen.protocols.pool_protocol import POOL_PROTOCOL_VERSION
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint32, uint8
+from btcgreen.util.streamable import streamable, Streamable
 
 
 class PoolSingletonState(IntEnum):

@@ -8,10 +8,10 @@ from typing import Dict, List
 
 import pkg_resources
 
-from btchia.util.btchia_logging import initialize_logging
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.setproctitle import setproctitle
+from btcgreen.util.btcgreen_logging import initialize_logging
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.setproctitle import setproctitle
 
 active_processes: List = []
 stopped = False
@@ -87,7 +87,7 @@ async def spawn_all_processes(config: Dict, net_config: Dict):
 
 def main():
     root_path = DEFAULT_ROOT_PATH
-    setproctitle("btchia_timelord_launcher")
+    setproctitle("btcgreen_timelord_launcher")
     net_config = load_config(root_path, "config.yaml")
     config = net_config["timelord_launcher"]
     initialize_logging("TLauncher", config["logging"], root_path)

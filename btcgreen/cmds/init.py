@@ -16,12 +16,12 @@ def init_cmd(ctx: click.Context, create_certs: str):
 
     \b
     Follow these steps to create new certificates for a remote harvester:
-    - Make a copy of your Farming Machine CA directory: ~/.btchia/[version]/config/ssl/ca
-    - Shut down all btchia daemon processes with `btchia stop all -d`
-    - Run `btchia init -c [directory]` on your remote harvester,
+    - Make a copy of your Farming Machine CA directory: ~/.btcgreen/[version]/config/ssl/ca
+    - Shut down all btcgreen daemon processes with `btcgreen stop all -d`
+    - Run `btcgreen init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
-    - Get more details on remote harvester on BTChia wiki:
-      https://github.com/BTChia-Network/btchia-blockchain/wiki/Farming-on-many-machines
+    - Get more details on remote harvester on BTCgreen wiki:
+      https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init
@@ -30,7 +30,7 @@ def init_cmd(ctx: click.Context, create_certs: str):
 
 
 if __name__ == "__main__":
-    from .init_funcs import btchia_init
-    from btchia.util.default_root import DEFAULT_ROOT_PATH
+    from .init_funcs import btcgreen_init
+    from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
-    btchia_init(DEFAULT_ROOT_PATH)
+    btcgreen_init(DEFAULT_ROOT_PATH)

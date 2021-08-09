@@ -5,16 +5,16 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.condition_tools import ConditionOpcode
-from btchia.util.ints import uint64
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.wallet.lineage_proof import LineageProof
-from btchia.wallet.puzzles import (
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.util.ints import uint64
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.wallet.lineage_proof import LineageProof
+from btcgreen.wallet.puzzles import (
     p2_conditions,
     p2_delegated_puzzle_or_hidden_puzzle,
     singleton_top_layer,
@@ -29,10 +29,10 @@ from .coin_store import CoinStore, CoinTimestamp, BadSpendBundleError
 
 """
 This test suite aims to test:
-    - btchia.wallet.puzzles.singleton_top_layer.py
-    - btchia.wallet.puzzles.singleton_top_layer.clvm
-    - btchia.wallet.puzzles.p2_singleton.clvm
-    - btchia.wallet.puzzles.p2_singleton_or_delayed_puzhash.clvm
+    - btcgreen.wallet.puzzles.singleton_top_layer.py
+    - btcgreen.wallet.puzzles.singleton_top_layer.clvm
+    - btcgreen.wallet.puzzles.p2_singleton.clvm
+    - btcgreen.wallet.puzzles.p2_singleton_or_delayed_puzhash.clvm
 """
 
 T1 = CoinTimestamp(1, 10000000)

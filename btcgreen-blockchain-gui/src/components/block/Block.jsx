@@ -19,7 +19,7 @@ import {
   Loading,
   TooltipIcon,
   Flex,
-} from '@btchia/core';
+} from '@btcgreen/core';
 import {
   unix_to_short_date,
   hex_to_array,
@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { mojo_to_btchia } from '../../util/btchia';
+import { mojo_to_btcgreen } from '../../util/btcgreen';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -171,13 +171,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = mojo_to_btchia(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = mojo_to_btchia(
+  const poolReward = mojo_to_btcgreen(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = mojo_to_btcgreen(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
-  const btchiaFees = blockRecord.fees
-    ? mojo_to_btchia(BigInt(blockRecord.fees))
+  const btcgreenFees = blockRecord.fees
+    ? mojo_to_btcgreen(BigInt(blockRecord.fees))
     : '';
 
   const rows = [
@@ -268,7 +268,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.btchiaexplorer.com/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
+          href={`https://www.btcgreenexplorer.com/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(
@@ -284,7 +284,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.btchiaexplorer.com/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
+          href={`https://www.btcgreenexplorer.com/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(
@@ -319,7 +319,7 @@ export default function Block() {
     },
     {
       name: <Trans>Fees Amount</Trans>,
-      value: btchiaFees ? `${btchiaFees} ${currencyCode}` : '',
+      value: btcgreenFees ? `${btcgreenFees} ${currencyCode}` : '',
       tooltip: (
         <Trans>
           The total transactions fees in this block. Rewarded to the farmer.
@@ -334,7 +334,7 @@ export default function Block() {
         title={
           <BlockTitle>
             <Trans>
-              Block at height {blockRecord.height} in the BTChia blockchain
+              Block at height {blockRecord.height} in the BTCgreen blockchain
             </Trans>
           </BlockTitle>
         }

@@ -1,13 +1,13 @@
 from clvm_tools import binutils
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.program import Program
 from typing import List, Optional, Tuple
 from blspy import G1Element
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.coin_solution import CoinSolution
-from btchia.util.ints import uint64
-from btchia.wallet.puzzles.load_clvm import load_clvm
-from btchia.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.util.ints import uint64
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.types.condition_opcodes import ConditionOpcode
 
 
 SINGLETON_TOP_LAYER_MOD = load_clvm("singleton_top_layer.clvm")

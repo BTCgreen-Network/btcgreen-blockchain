@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: sv_SE\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-07 11:47\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: sv-SE\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "*Vill du utforska BTChias block lite mer? Ta en titt på <0>BTChia Explorer</0> som har skapats som öppen källkod av en utvecklare."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "*Vill du utforska BTCgreens block lite mer? Ta en titt på <0>BTCgreen Explorer</0> som har skapats som öppen källkod av en utvecklare."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "En skördare är en tjänst som körs på en maskin där plottar lagras.
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "Om BTChia Blockchain"
+msgid "About BTCgreen Blockchain"
+msgstr "Om BTCgreen Blockchain"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "VDF-iterationer för block"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "Block vid höjd {0} i BTChia-blockkedjan"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "Block vid höjd {0} i BTCgreen-blockkedjan"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -674,8 +674,8 @@ msgid "Edit"
 msgstr "Redigera"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
-msgstr "Skriv in din sparade minnesfras på 24 ord för att återställa din BTChia-plånbok."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
+msgstr "Skriv in din sparade minnesfras på 24 ord för att återställa din BTCgreen-plånbok."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -688,8 +688,8 @@ msgid "Error"
 msgstr "Fel"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
-msgstr "Fel: det går inte att skicka btchia till färgad adress. Ange en btchia-adress."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
+msgstr "Fel: det går inte att skicka btcgreen till färgad adress. Ange en btcgreen-adress."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "Plottar som passerat filtret"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "Plottar är reserverat utrymme på din hårddisk som används för att odla och tjäna BTChia. <0>Läs mer</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "Plottar är reserverat utrymme på din hårddisk som används för att odla och tjäna BTCgreen. <0>Läs mer</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1902,8 +1902,8 @@ msgstr "Längd på spenderintervall (antal block)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "Spenderbegränsning (btchia per intervall): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "Spenderbegränsning (btcgreen per intervall): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "Status:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,16 +1999,16 @@ msgstr "Synkar <0/>/<1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
-msgstr "BTChia"
+msgid "BTCgreen"
+msgstr "BTCgreen"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
-msgstr "BTChia Blockchains wiki"
+msgid "BTCgreen Blockchain Wiki"
+msgstr "BTCgreen Blockchains wiki"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
-msgstr "BTChia-plånbok"
+msgid "BTCgreen Wallet"
+msgstr "BTCgreen-plånbok"
 
 #: src/components/pool/PoolInfo.tsx:37
 msgid "Target Puzzle Hash"
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Denna funktion kan bara användas från GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "Detta är den mängd BTChia du för tillfället kan använda för transaktioner. Det innefattar inte väntande odlingsbelöningar, väntande inkommande transaktioner eller BTChia som du just spenderat men som ännu inte finns i blockkedjan."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "Detta är den mängd BTCgreen du för tillfället kan använda för transaktioner. Det innefattar inte väntande odlingsbelöningar, väntande inkommande transaktioner eller BTCgreen som du just spenderat men som ännu inte finns i blockkedjan."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Detta är den tidpunkt då blocket skapades av odlaren, vilket är innan det färdigställs med ett bevis-på-tid"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Detta är den sammanlagda mängden btchia i blockkedjan vid det aktuella topp-underblocket som kontrolleras av dina privata nycklar. Det innefattar frusna odlingsbelöningar, men inte väntande inkommande och utgående transaktioner."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Detta är den sammanlagda mängden btcgreen i blockkedjan vid det aktuella topp-underblocket som kontrolleras av dina privata nycklar. Det innefattar frusna odlingsbelöningar, men inte väntande inkommande och utgående transaktioner."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Denna affärstransaktion lades till i blockkedjan vid denna blockhöjd"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
-msgstr "Denna version av BTChia är inte längre kompatibel med blockkedjan och kan därför inte användas för odling."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
+msgstr "Denna version av BTCgreen är inte längre kompatibel med blockkedjan och kan därför inte användas för odling."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2214,8 +2214,8 @@ msgstr "Sammanlagd plottstorlek:"
 msgid "Total Size of Plots"
 msgstr "Sammanlagd storlek hos alla plottar"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "Vill du tjäna mer BTChia? Lägg till fler plottar till din odling."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "Vill du tjäna mer BTCgreen? Lägg till fler plottar till din odling."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Vikt är den sammanlagda svårighetsgraden för alla underblock upp till och inklusive detta"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "Välkommen till BTChia. Logga in med en existerande nyckel, eller skapa en ny nyckel."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "Välkommen till BTCgreen. Logga in med en existerande nyckel, eller skapa en ny nyckel."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2497,8 +2497,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2585,9 +2585,9 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} blockbelöningar"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
-msgstr "{currencyCode} Totalt antal BTChia som odlats"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
+msgstr "{currencyCode} Totalt antal BTCgreen som odlats"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

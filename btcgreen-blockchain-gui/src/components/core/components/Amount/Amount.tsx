@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useWatch, useFormContext } from 'react-hook-form';
 import TextField, { TextFieldProps } from '../TextField';
-import { btchia_to_mojo } from '../../../../util/btchia';
+import { btcgreen_to_mojo } from '../../../../util/btcgreen';
 import useCurrencyCode from '../../../../hooks/useCurrencyCode';
 import FormatLargeNumber from '../FormatLargeNumber';
 import Flex from '../Flex';
@@ -54,7 +54,7 @@ export default function Amount(props: AmountProps) {
     name,
   });
 
-  const mojo = btchia_to_mojo(value);
+  const mojo = btcgreen_to_mojo(value);
 
   return (
     <FormControl variant={variant} fullWidth={fullWidth}>

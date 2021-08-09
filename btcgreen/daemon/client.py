@@ -6,11 +6,11 @@ from typing import Any, Dict, Optional
 
 import websockets
 
-from btchia.server.server import ssl_context_for_client
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.config import load_config
-from btchia.util.json_util import dict_to_json_str
-from btchia.util.ws_message import WsRpcMessage, create_payload_dict
+from btcgreen.server.server import ssl_context_for_client
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.config import load_config
+from btcgreen.util.json_util import dict_to_json_str
+from btcgreen.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class DaemonProxy:

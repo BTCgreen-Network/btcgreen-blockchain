@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { AlertDialog } from '@btchia/core';
+import { AlertDialog } from '@btcgreen/core';
 import {
   Typography,
   Button,
@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { btchia_to_mojo } from '../../../util/btchia';
+import { btcgreen_to_mojo } from '../../../util/btcgreen';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -76,7 +76,7 @@ export const CreateRLAdminWallet = () => {
   const custom = customStyles();
   const dispatch = useDispatch();
   let interval_input = null;
-  let btchiaper_input = null;
+  let btcgreenper_input = null;
   let userpubkey_input = null;
   let amount_input = null;
   let fee_input = null;
@@ -104,10 +104,10 @@ export const CreateRLAdminWallet = () => {
       return;
     }
     if (
-      btchiaper_input.value === '' ||
-      Number(btchiaper_input.value) === 0 ||
-      !Number(btchiaper_input.value) ||
-      isNaN(Number(btchiaper_input.value))
+      btcgreenper_input.value === '' ||
+      Number(btcgreenper_input.value) === 0 ||
+      !Number(btcgreenper_input.value) ||
+      isNaN(Number(btcgreenper_input.value))
     ) {
       dispatch(
         openDialog(
@@ -156,18 +156,18 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const btchiaper = btchia_to_mojo(btchiaper_input.value);
-    const btchiaper_value = Number.parseInt(Number(btchiaper));
+    const btcgreenper = btcgreen_to_mojo(btcgreenper_input.value);
+    const btcgreenper_value = Number.parseInt(Number(btcgreenper));
     const userpubkey = userpubkey_input.value;
-    const amount = btchia_to_mojo(amount_input.value);
+    const amount = btcgreen_to_mojo(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = btchia_to_mojo(fee_input.value);
+    // var fee = btcgreen_to_mojo(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(
       create_rl_admin_action(
         interval_value,
-        btchiaper_value,
+        btcgreenper_value,
         userpubkey,
         amount_value,
       ),
@@ -225,7 +225,7 @@ export const CreateRLAdminWallet = () => {
               color="secondary"
               fullWidth
               inputRef={(input) => {
-                btchiaper_input = input;
+                btcgreenper_input = input;
               }}
               label={<Trans>Spendable Amount</Trans>}
             />

@@ -2,10 +2,10 @@ import asyncio
 
 import pytest
 
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.peer_info import PeerInfo
-from btchia.util.ints import uint16, uint64
-from btchia.wallet.rl_wallet.rl_wallet import RLWallet
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.ints import uint16, uint64
+from btcgreen.wallet.rl_wallet.rl_wallet import RLWallet
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from btchia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.vdf import VDFInfo, VDFProof
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

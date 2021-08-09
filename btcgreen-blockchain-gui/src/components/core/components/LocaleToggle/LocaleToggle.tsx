@@ -43,7 +43,7 @@ export default function LocaleToggle(props: Props) {
     handleClose();
 
     openExternal(
-      'https://github.com/BTChia-Network/btchia-blockchain-gui/tree/main/src/locales/README.md',
+      'https://github.com/BTCgreen-Network/btcgreen-blockchain-gui/tree/main/src/locales/README.md',
     );
   }
 

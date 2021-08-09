@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { mojo_to_btchia_string } from '../../../util/btchia';
+import { mojo_to_btcgreen_string } from '../../../util/btcgreen';
 
 type Props = {
   wallet_id: number;
@@ -24,15 +24,15 @@ export default function WalletCardSpendableBalance(props: Props) {
       title={<Trans>Spendable Balance</Trans>}
       tooltip={
         <Trans>
-          This is the amount of BTChia that you can currently use to make
+          This is the amount of BTCgreen that you can currently use to make
           transactions. It does not include pending farming rewards, pending
-          incoming transactions, and BTChia that you have just spent but is not
+          incoming transactions, and BTCgreen that you have just spent but is not
           yet in the blockchain.
         </Trans>
       }
       value={
         <>
-          {mojo_to_btchia_string(value)} {currencyCode}
+          {mojo_to_btcgreen_string(value)} {currencyCode}
         </>
       }
     />

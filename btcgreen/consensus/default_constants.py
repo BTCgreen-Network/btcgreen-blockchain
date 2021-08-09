@@ -1,4 +1,4 @@
-from btchia.util.ints import uint64
+from btcgreen.util.ints import uint64
 
 from .constants import ConsensusConstants
 
@@ -29,7 +29,7 @@ testnet_kwargs = {
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("3651040b10c417512ee251d64e566cf72f42c97d14f7e06eb11893eb1447772a"),
-    # Forks of btchia should change this value to provide replay attack protection. This is set to mainnet genesis chall
+    # Forks of btcgreen should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("a41b40c6fbb8941cfa3bd8f1c85ebdeabfd0872c321bb5c1128581d127861585"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"

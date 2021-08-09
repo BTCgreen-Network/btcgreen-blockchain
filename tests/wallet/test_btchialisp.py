@@ -1,6 +1,6 @@
 import pytest
 
-from btchia.wallet.chialisp import (
+from btcgreen.wallet.chialisp import (
     apply,
     args,
     cons,

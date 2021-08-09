@@ -9,8 +9,8 @@ import {
   Loading,
   StateColor,
   Table,
-} from '@btchia/core';
-import { Status } from '@btchia/icons';
+} from '@btcgreen/core';
+import { Status } from '@btcgreen/icons';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Tooltip, Typography } from '@material-ui/core';

@@ -1,10 +1,10 @@
-from btchia.protocols import full_node_protocol, introducer_protocol, wallet_protocol
-from btchia.server.outbound_message import NodeType
-from btchia.server.ws_connection import WSBTChiaConnection
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.util.api_decorators import api_request, peer_required, execute_task
-from btchia.util.errors import Err
-from btchia.wallet.wallet_node import WalletNode
+from btcgreen.protocols import full_node_protocol, introducer_protocol, wallet_protocol
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.ws_connection import WSBTCgreenConnection
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.util.api_decorators import api_request, peer_required, execute_task
+from btcgreen.util.errors import Err
+from btcgreen.wallet.wallet_node import WalletNode
 
 
 class WalletNodeAPI:
@@ -23,10 +23,10 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSBTChiaConnection):
+    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSBTCgreenConnection):
         pass
 
-    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSBTChiaConnection):
+    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSBTCgreenConnection):
         """
         The full node has rejected our request for removals.
         """
@@ -42,7 +42,7 @@ class WalletNodeAPI:
     @execute_task
     @peer_required
     @api_request
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSBTChiaConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSBTCgreenConnection):
         """
         The full node sent as a new peak
         """
@@ -61,7 +61,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSBTChiaConnection):
+    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSBTCgreenConnection):
         pass
 
     @api_request
@@ -70,7 +70,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSBTChiaConnection):
+    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSBTCgreenConnection):
         """
         This is an ack for our previous SendTransaction call. This removes the transaction from
         the send queue if we have sent it to enough nodes.
@@ -94,7 +94,7 @@ class WalletNodeAPI:
     @peer_required
     @api_request
     async def respond_peers_introducer(
-        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSBTChiaConnection
+        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSBTCgreenConnection
     ):
         if not self.wallet_node.has_full_node():
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), False)
@@ -106,7 +106,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSBTChiaConnection):
+    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSBTCgreenConnection):
         if not self.wallet_node.has_full_node():
             self.log.info(f"Wallet received {len(request.peer_list)} peers.")
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), True)

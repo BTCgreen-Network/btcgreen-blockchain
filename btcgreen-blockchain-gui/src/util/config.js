@@ -12,11 +12,11 @@ global.key_path = 'config/ssl/daemon/private_daemon.key';
 
 function loadConfig(net) {
   try {
-    // check if BTCHIA_ROOT is set. it overrides 'net'
+    // check if BTCGREEN_ROOT is set. it overrides 'net'
     const config_root_dir =
-      'BTCHIA_ROOT' in process.env
-        ? process.env.BTCHIA_ROOT
-        : path.join(os.homedir(), '.btchia', net);
+      'BTCGREEN_ROOT' in process.env
+        ? process.env.BTCGREEN_ROOT
+        : path.join(os.homedir(), '.btcgreen', net);
     const config = yaml.load(
       fs.readFileSync(path.join(config_root_dir, 'config/config.yaml'), 'utf8'),
     );

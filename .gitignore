@@ -25,7 +25,7 @@ config/keys.yaml
 config/plots.yaml
 
 # Bundled code
-btchia-blockchain.tar.gz.tar.gz
+btcgreen-blockchain.tar.gz.tar.gz
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -66,7 +66,7 @@ activate
 .idea
 
 # Packaging
-btchia-blockchain.tar.gz
+btcgreen-blockchain.tar.gz
 
 # Timelord utilities
 vdf_bench
@@ -88,13 +88,13 @@ main.sym
 *.recompiled
 
 # Dev config react
-# btchia-blockchain-gui/src/dev_config.js
+# btcgreen-blockchain-gui/src/dev_config.js
 # React built app
-btchia-blockchain-gui/.eslintcache
-btchia-blockchain-gui/build
+btcgreen-blockchain-gui/.eslintcache
+btcgreen-blockchain-gui/build
 build_scripts/dist
 build_scripts/*.Dmg
-btchia-blockchain-gui/src/locales/_build
+btcgreen-blockchain-gui/src/locales/_build
 build_scripts\win_build
 build_scripts/win_build
 win_code_sign_cert.p12

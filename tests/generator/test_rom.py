@@ -3,23 +3,23 @@ from unittest import TestCase
 from clvm_tools import binutils
 from clvm_tools.clvmc import compile_clvm_text
 
-from btchia.full_node.generator import run_generator
-from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.name_puzzle_condition import NPC
-from btchia.types.generator_types import BlockGenerator, GeneratorArg
-from btchia.util.clvm import int_to_bytes
-from btchia.util.condition_tools import ConditionOpcode
-from btchia.util.ints import uint32
-from btchia.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.full_node.generator import run_generator
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.name_puzzle_condition import NPC
+from btcgreen.types.generator_types import BlockGenerator, GeneratorArg
+from btcgreen.util.clvm import int_to_bytes
+from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
 
 MAX_COST = int(1e15)
 COST_PER_BYTE = int(12000)
 
 
-DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="btchia.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="btcgreen.wallet.puzzles")
 
 
 GENERATOR_CODE = """

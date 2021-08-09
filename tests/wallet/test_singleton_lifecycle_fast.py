@@ -4,15 +4,15 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from blspy import G1Element, G2Element
 from clvm_tools import binutils
 
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution as CoinSpend
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.condition_tools import ConditionOpcode
-from btchia.util.ints import uint64
-from btchia.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution as CoinSpend
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.util.ints import uint64
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
 
 from tests.clvm.coin_store import BadSpendBundleError, CoinStore, CoinTimestamp
 

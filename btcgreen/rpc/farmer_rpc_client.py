@@ -1,14 +1,14 @@
 from typing import Dict, List, Optional, Any
 
-from btchia.rpc.rpc_client import RpcClient
-from btchia.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.rpc.rpc_client import RpcClient
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
 
 
 class FarmerRpcClient(RpcClient):
     """
-    Client to BTChia RPC, connects to a local farmer. Uses HTTP/JSON, and converts back from
+    Client to BTCgreen RPC, connects to a local farmer. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run BTChia's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run BTCgreen's
     protocol on top of TCP), it's a separate protocol on top of HTTP that provides easy access
     to the full node.
     """

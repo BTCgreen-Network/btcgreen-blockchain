@@ -10,7 +10,7 @@ import {
   Loading,
   Table,
   IconButton,
-} from '@btchia/core';
+} from '@btcgreen/core';
 import { Button, Tooltip } from '@material-ui/core';
 import { service_connection_types } from '../../util/service_names';
 import Connection from '../../types/Connection';

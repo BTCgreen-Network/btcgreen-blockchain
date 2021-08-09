@@ -33,7 +33,7 @@ class UPnP:
                             self.upnp.deleteportmapping(port, "TCP")
                         except Exception as e:
                             log.info(f"Removal of previous portmapping failed. This does not indicate an error: {e}")
-                        self.upnp.addportmapping(port, "TCP", self.upnp.lanaddr, port, "btchia", "")
+                        self.upnp.addportmapping(port, "TCP", self.upnp.lanaddr, port, "btcgreen", "")
                         log.info(
                             f"Port {port} opened with UPnP. lanaddr {self.upnp.lanaddr} "
                             f"external: {self.upnp.externalipaddress()}"
@@ -47,7 +47,7 @@ class UPnP:
                         keep_going = False
             except Exception as e:
                 log.info(
-                    "UPnP failed. This is not required to run btchia, it allows incoming connections from other peers."
+                    "UPnP failed. This is not required to run btcgreen, it allows incoming connections from other peers."
                 )
                 log.info(e)
 

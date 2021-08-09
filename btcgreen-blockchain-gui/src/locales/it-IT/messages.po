@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: it_IT\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-06 23:47\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "*Vuoi esplorare ulteriormente i blocchi della rete BTChia? Dai uno sguardo a <0>BTChia Explorer</0> creato da uno sviluppatore open source."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "*Vuoi esplorare ulteriormente i blocchi della rete BTCgreen? Dai uno sguardo a <0>BTCgreen Explorer</0> creato da uno sviluppatore open source."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Un harvester (letteralmente mietitrice) è un servizio eseguito sulla ma
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "Informazioni sulla Blockchain di BTChia"
+msgid "About BTCgreen Blockchain"
+msgstr "Informazioni sulla Blockchain di BTCgreen"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Blocco Iterazioni VDF"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "Blocco all'altezza {0} nella blockchain BTChia"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "Blocco all'altezza {0} nella blockchain BTCgreen"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -494,7 +494,7 @@ msgstr ""
 
 #: src/components/selectKey/SelectKey.tsx:182
 msgid "Create a new private key"
-msgstr "Crea una nuova btchiave privata"
+msgstr "Crea una nuova btcgreenve privata"
 
 #: src/components/wallet/create/WalletCreate.jsx:224
 msgid "Create admin wallet"
@@ -556,7 +556,7 @@ msgstr "Stato attuale dello scambio"
 
 #: src/components/selectKey/SelectKey.tsx:156
 msgid "DANGER: permanently delete private key"
-msgstr "ATTENZIONE: cancella permanentemente la btchiave privata"
+msgstr "ATTENZIONE: cancella permanentemente la btcgreenve privata"
 
 #: src/components/wallet/Wallets.tsx:53
 #~ msgid "DID Wallet"
@@ -600,19 +600,19 @@ msgstr ""
 #: src/components/selectKey/SelectKey.tsx:79
 #: src/components/selectKey/SelectKey.tsx:200
 msgid "Delete all keys"
-msgstr "Elimina tutte le btchiavi"
+msgstr "Elimina tutte le btcgreenvi"
 
 #: src/components/selectKey/SelectKey.tsx:58
 msgid "Delete key"
-msgstr "Elimina btchiave"
+msgstr "Elimina btcgreenve"
 
 #: src/components/selectKey/SelectKey.tsx:84
 msgid "Deleting all keys will permanently remove the keys from your computer, make sure you have backups. Are you sure you want to continue?"
-msgstr "Eliminando tutte le btchiavi queste saranno rimosse definitivamente dal tuo computer, assicurati di avere un backup. Sei sicuro di voler continuare?"
+msgstr "Eliminando tutte le btcgreenvi queste saranno rimosse definitivamente dal tuo computer, assicurati di avere un backup. Sei sicuro di voler continuare?"
 
 #: src/components/selectKey/SelectKey.tsx:63
 msgid "Deleting the key will permanently remove the key from your computer, make sure you have backups. Are you sure you want to continue?"
-msgstr "Eliminando la btchiave questa sarà rimossa definitivamente dal tuo computer, assicurati di avere un backup. Sei sicuro di voler continuare?"
+msgstr "Eliminando la btcgreenve questa sarà rimossa definitivamente dal tuo computer, assicurati di avere un backup. Sei sicuro di voler continuare?"
 
 #: src/electron/main.tsx:304
 msgid "Developer"
@@ -674,8 +674,8 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
-msgstr "Inserisci le 24 parole mnemoniche che hai salvato per poter ripristinare il tuo wallet BTChia."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
+msgstr "Inserisci le 24 parole mnemoniche che hai salvato per poter ripristinare il tuo wallet BTCgreen."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -688,8 +688,8 @@ msgid "Error"
 msgstr "Errore"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
-msgstr "Errore: impossibile inviare btchia ad un indirizzo colorato. Perfavore inserisci un indirizzo btchia."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
+msgstr "Errore: impossibile inviare btcgreen ad un indirizzo colorato. Perfavore inserisci un indirizzo btcgreen."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -729,7 +729,7 @@ msgstr "Coltiva"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:211
 msgid "Farmer Public Key"
-msgstr "BTChiave pubblica del farmer"
+msgstr "BTCgreenve pubblica del farmer"
 
 #: src/components/block/Block.jsx:267
 msgid "Farmer Puzzle Hash"
@@ -877,7 +877,7 @@ msgstr ""
 
 #: src/components/wallet/standard/WalletStandard.tsx:583
 msgid "HD or Hierarchical Deterministic keys are a type of public key/private key scheme where one private key can have a nearly infinite number of different public keys (and therefor wallet receive addresses) that will all ultimately come back to and be spendable by a single private key."
-msgstr "HD o Hierarchical Deterministic keys sono un tipo di schema a btchiave pubblica/btchiave privata dove una btchiave privata può avere un numero quasi infinito di btchiavi pubbliche diverse (e quindi indirizzi di ricezione del wallet) che sono spendibili da una singola btchiave privata."
+msgstr "HD o Hierarchical Deterministic keys sono un tipo di schema a btcgreenve pubblica/btcgreenve privata dove una btcgreenve privata può avere un numero quasi infinito di btcgreenvi pubbliche diverse (e quindi indirizzi di ricezione del wallet) che sono spendibili da una singola btcgreenve privata."
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:49
 #~ msgid "Harvester ID"
@@ -1020,7 +1020,7 @@ msgstr "Dimensione-K"
 
 #: src/components/dashboard/DashboardSideBar.tsx:66
 msgid "Keys"
-msgstr "BTChiavi"
+msgstr "BTCgreenvi"
 
 #: src/components/farm/FarmFullNodeConnections.tsx:64
 #: src/components/farm/FarmYourHarvesterNetwork.tsx:64
@@ -1183,7 +1183,7 @@ msgstr "No"
 
 #: src/middleware/middleware_api.jsx:301
 msgid "No 24 word seed, since this key is imported."
-msgstr "Nessun seed di 24 parole, dato che la btchiave è importata."
+msgstr "Nessun seed di 24 parole, dato che la btcgreenve è importata."
 
 #: src/components/farm/card/FarmCardLastHeightFarmed.tsx:21
 msgid "No blocks farmed yet"
@@ -1195,7 +1195,7 @@ msgstr "Nessuna transazione precedente"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:156
 msgid "No private keys for one or both addresses. Safe only if you are sending rewards to another wallet."
-msgstr "Nessuna btchiave privata per uno o entrambi gli indirizzi. Sicuro solo se stai inviando ricompense ad un altro wallet."
+msgstr "Nessuna btcgreenve privata per uno o entrambi gli indirizzi. Sicuro solo se stai inviando ricompense ad un altro wallet."
 
 #: src/components/farm/FarmFullNodeConnections.tsx:32
 #: src/components/farm/FarmYourHarvesterNetwork.tsx:32
@@ -1412,7 +1412,7 @@ msgstr "Id Plot"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:75
 msgid "Plot Key"
-msgstr "BTChiave Plot"
+msgstr "BTCgreenve Plot"
 
 #: src/components/pool/PoolOverview.tsx:40
 msgid "Plot NFT"
@@ -1429,7 +1429,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:259
 msgid "Plot Public Key"
-msgstr "BTChiave Pubblica del Plot"
+msgstr "BTCgreenve Pubblica del Plot"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:49
 #~ msgid "Plot Seed"
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "Plot che hanno passato il filtro"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "I plot sono dello spazio allocato sui tuoi dischi che viene usato per coltivare e guadagnare BTChia. <0>Per saperne di più</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "I plot sono dello spazio allocato sui tuoi dischi che viene usato per coltivare e guadagnare BTCgreen. <0>Per saperne di più</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1509,7 +1509,7 @@ msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:81
 msgid "Pool Key"
-msgstr "BTChiave Pool"
+msgstr "BTCgreenve Pool"
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:77
 msgid "Pool Login Link"
@@ -1523,7 +1523,7 @@ msgstr ""
 #: src/components/block/Block.jsx:263
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:222
 msgid "Pool Public Key"
-msgstr "BTChiave Pubblica Pool"
+msgstr "BTCgreenve Pubblica Pool"
 
 #: src/components/block/Block.jsx:283
 msgid "Pool Puzzle Hash"
@@ -1606,15 +1606,15 @@ msgstr "Hash Header Precedente"
 
 #: src/components/selectKey/SelectKey.tsx:136
 msgid "Private key with public fingerprint {fingerprint}"
-msgstr "BTChiave privata con impronta pubblica {fingerprint}"
+msgstr "BTCgreenve privata con impronta pubblica {fingerprint}"
 
 #: src/middleware/middleware_api.jsx:249
 msgid "Private key {0}"
-msgstr "BTChiave privata {0}"
+msgstr "BTCgreenve privata {0}"
 
 #: src/middleware/middleware_api.jsx:259
 msgid "Private key:"
-msgstr "BTChiave privata:"
+msgstr "BTCgreenve privata:"
 
 #: src/components/block/Block.jsx:251
 msgid "Proof of Space Size"
@@ -1634,7 +1634,7 @@ msgstr "Pubkey"
 
 #: src/middleware/middleware_api.jsx:267
 msgid "Public key:"
-msgstr "BTChiave pubblica:"
+msgstr "BTCgreenve pubblica:"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:162
 msgid "Queue Name"
@@ -1751,7 +1751,7 @@ msgstr "Posizione seconda cartella temporanea"
 
 #: src/components/selectKey/SelectKey.tsx:145
 msgid "See private key"
-msgstr "Vedi btchiave privata"
+msgstr "Vedi btcgreenve privata"
 
 #: src/middleware/middleware_api.jsx:293
 msgid "Seed:"
@@ -1767,7 +1767,7 @@ msgstr "Selezione Cartella Finale"
 
 #: src/components/selectKey/SelectKey.tsx:104
 msgid "Select Key"
-msgstr "Selezione BTChiave"
+msgstr "Selezione BTCgreenve"
 
 #: src/components/trading/ViewOffer.jsx:37
 msgid "Select Offer"
@@ -1902,8 +1902,8 @@ msgstr "Lunghezza Intervallo di Spesa (numero di blocchi)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "Limite di Spesa (btchia per intervallo): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "Limite di Spesa (btcgreen per intervallo): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "Stato:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,16 +1999,16 @@ msgstr "Sincronizzazione <0/>/<1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
-msgstr "BTChia"
+msgid "BTCgreen"
+msgstr "BTCgreen"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
-msgstr "Wiki della Blockchain BTChia"
+msgid "BTCgreen Blockchain Wiki"
+msgstr "Wiki della Blockchain BTCgreen"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
-msgstr "Portafoglio BTChia"
+msgid "BTCgreen Wallet"
+msgstr "Portafoglio BTCgreen"
 
 #: src/components/pool/PoolInfo.tsx:37
 msgid "Target Puzzle Hash"
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Questa funzione è disponibile solo sulla GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "Questo è l'ammontare di BTChia che puoi utilizzare attualmente per fare transazioni. Non include le ricompense coltivate in sospeso, transazioni in entrata in sospeso, e BTChia che tua hai appena speso ma non sono ancora nella blockchain."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "Questo è l'ammontare di BTCgreen che puoi utilizzare attualmente per fare transazioni. Non include le ricompense coltivate in sospeso, transazioni in entrata in sospeso, e BTCgreen che tua hai appena speso ma non sono ancora nella blockchain."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Questo è il tempo in cui il blocco è stato creato dal coltivatore, che è precedente a quando è stato finalizzato con una prova di tempo"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Questo è l'ammontare totale di btchia nella blockchain nell'attuale sottoblocco di picco che è controllato dalle tue btchiavi private. Questo include le ricompense da farming congelate, ma non le transazioni in entrata e uscita che sono in attesa."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Questo è l'ammontare totale di btcgreen nella blockchain nell'attuale sottoblocco di picco che è controllato dalle tue btcgreenvi private. Questo include le ricompense da farming congelate, ma non le transazioni in entrata e uscita che sono in attesa."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Questo commercio è stato incluso sulla blockchain a questa altezza di blocco"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
-msgstr "Questa versione di BTChia non è più compatibile con la blockchain e non può coltivare in modo sicuro."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
+msgstr "Questa versione di BTCgreen non è più compatibile con la blockchain e non può coltivare in modo sicuro."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2214,8 +2214,8 @@ msgstr "Dimensione Totale del Plot:"
 msgid "Total Size of Plots"
 msgstr "Dimensione Totale dei Plot"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "Vuoi guadagnare più BTChia? Aggingi più plot alla tua coltivazione."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "Vuoi guadagnare più BTCgreen? Aggingi più plot alla tua coltivazione."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Il peso è la difficoltà aggiunta in totale a tutti i sottoblocchi fino a e incluso questo"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "Benvenuto da BTChia. Per favore accedi con una btchiave esistente, o crea una nuova btchiave."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "Benvenuto da BTCgreen. Per favore accedi con una btcgreenve esistente, o crea una nuova btcgreenve."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,9 +2583,9 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Ricompense Blocco"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
-msgstr "{currencyCode} BTChia Farmati in Totale"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
+msgstr "{currencyCode} BTCgreen Farmati in Totale"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

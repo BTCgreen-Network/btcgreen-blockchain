@@ -1,6 +1,6 @@
 import unittest
 
-from btchia.util.lru_cache import LRUCache
+from btcgreen.util.lru_cache import LRUCache
 
 
 class TestLRUCache(unittest.TestCase):

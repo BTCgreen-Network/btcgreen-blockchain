@@ -6,28 +6,28 @@ from typing import Dict, Optional, List, Any, Set, Tuple, Union
 
 from blspy import AugSchemeMPL, G1Element
 from secrets import token_bytes
-from btchia.protocols import wallet_protocol
-from btchia.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
-from btchia.server.outbound_message import NodeType
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.program import Program
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.util.ints import uint64, uint32, uint8
+from btcgreen.protocols import wallet_protocol
+from btcgreen.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.util.ints import uint64, uint32, uint8
 
-from btchia.wallet.did_wallet.did_info import DIDInfo
-from btchia.wallet.lineage_proof import LineageProof
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet import Wallet
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
-from btchia.wallet.wallet_info import WalletInfo
-from btchia.wallet.derivation_record import DerivationRecord
-from btchia.wallet.did_wallet import did_wallet_puzzles
-from btchia.wallet.derive_keys import master_sk_to_wallet_sk
+from btcgreen.wallet.did_wallet.did_info import DIDInfo
+from btcgreen.wallet.lineage_proof import LineageProof
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet import Wallet
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.wallet.wallet_info import WalletInfo
+from btcgreen.wallet.derivation_record import DerivationRecord
+from btcgreen.wallet.did_wallet import did_wallet_puzzles
+from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk
 
 
 class DIDWallet:

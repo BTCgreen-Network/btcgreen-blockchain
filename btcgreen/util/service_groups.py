@@ -1,19 +1,19 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "btchia_harvester btchia_timelord_launcher btchia_timelord btchia_farmer btchia_full_node btchia_wallet".split(),
-    "node": "btchia_full_node".split(),
-    "harvester": "btchia_harvester".split(),
-    "farmer": "btchia_harvester btchia_farmer btchia_full_node btchia_wallet".split(),
-    "farmer-no-wallet": "btchia_harvester btchia_farmer btchia_full_node".split(),
-    "farmer-only": "btchia_farmer".split(),
-    "timelord": "btchia_timelord_launcher btchia_timelord btchia_full_node".split(),
-    "timelord-only": "btchia_timelord".split(),
-    "timelord-launcher-only": "btchia_timelord_launcher".split(),
-    "wallet": "btchia_wallet btchia_full_node".split(),
-    "wallet-only": "btchia_wallet".split(),
-    "introducer": "btchia_introducer".split(),
-    "simulator": "btchia_full_node_simulator".split(),
+    "all": "btcgreen_harvester btcgreen_timelord_launcher btcgreen_timelord btcgreen_farmer btcgreen_full_node btcgreen_wallet".split(),
+    "node": "btcgreen_full_node".split(),
+    "harvester": "btcgreen_harvester".split(),
+    "farmer": "btcgreen_harvester btcgreen_farmer btcgreen_full_node btcgreen_wallet".split(),
+    "farmer-no-wallet": "btcgreen_harvester btcgreen_farmer btcgreen_full_node".split(),
+    "farmer-only": "btcgreen_farmer".split(),
+    "timelord": "btcgreen_timelord_launcher btcgreen_timelord btcgreen_full_node".split(),
+    "timelord-only": "btcgreen_timelord".split(),
+    "timelord-launcher-only": "btcgreen_timelord_launcher".split(),
+    "wallet": "btcgreen_wallet btcgreen_full_node".split(),
+    "wallet-only": "btcgreen_wallet".split(),
+    "introducer": "btcgreen_introducer".split(),
+    "simulator": "btcgreen_full_node_simulator".split(),
 }
 
 

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.blockchain_format.sized_bytes import bytes100
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.blockchain_format.sized_bytes import bytes100
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

@@ -2,15 +2,15 @@ import asyncio
 
 import pytest
 
-from btchia.rpc.wallet_rpc_api import WalletRpcApi
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.types.peer_info import PeerInfo
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.ints import uint16
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.rpc.wallet_rpc_api import WalletRpcApi
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.ints import uint16
+from btcgreen.wallet.util.wallet_types import WalletType
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 from tests.wallet.sync.test_wallet_sync import wallet_height_at_least

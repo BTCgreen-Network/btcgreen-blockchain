@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Typography } from '@material-ui/core';
-import { Flex } from '@btchia/core';
+import { Flex } from '@btcgreen/core';
 import { createTeleporter } from 'react-teleporter';
 
 const DashboardTitleTeleporter = createTeleporter();

@@ -3,8 +3,8 @@ import time
 from typing import Set, List, Optional
 from dataclasses import dataclass
 
-from btchia.types.peer_info import PeerInfo
-from btchia.util.ints import uint64, uint16
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.ints import uint64, uint16
 
 
 @dataclass(frozen=False)

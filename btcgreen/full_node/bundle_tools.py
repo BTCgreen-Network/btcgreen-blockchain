@@ -4,13 +4,13 @@ from typing import Optional, Tuple, List, Union
 from clvm import SExp
 from clvm_tools import binutils
 
-from btchia.full_node.generator import create_compressed_generator
-from btchia.types.blockchain_format.program import SerializedProgram, Program
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.generator_types import BlockGenerator, CompressorArg
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint32, uint64
+from btcgreen.full_node.generator import create_compressed_generator
+from btcgreen.types.blockchain_format.program import SerializedProgram, Program
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.generator_types import BlockGenerator, CompressorArg
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint32, uint64
 
 
 def spend_bundle_to_serialized_coin_solution_entry_list(bundle: SpendBundle) -> bytes:

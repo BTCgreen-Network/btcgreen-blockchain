@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from btchia.types.blockchain_format.program import Program, SerializedProgram, INFINITE_COST
-from btchia.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram, INFINITE_COST
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
 
 SHA256TREE_MOD = load_clvm("sha256tree_module.clvm")
 

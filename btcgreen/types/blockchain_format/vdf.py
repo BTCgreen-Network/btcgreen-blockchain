@@ -7,11 +7,11 @@ from functools import lru_cache
 
 from chiavdf import create_discriminant, verify_n_wesolowski
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.sized_bytes import bytes32, bytes100
-from btchia.util.ints import uint8, uint64
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32, bytes100
+from btcgreen.util.ints import uint8, uint64
+from btcgreen.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

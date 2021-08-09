@@ -1,10 +1,10 @@
-export const service_wallet = 'btchia_wallet';
-export const service_full_node = 'btchia_full_node';
-export const service_farmer = 'btchia_farmer';
-export const service_harvester = 'btchia_harvester';
-export const service_simulator = 'btchia_full_node_simulator';
+export const service_wallet = 'btcgreen_wallet';
+export const service_full_node = 'btcgreen_full_node';
+export const service_farmer = 'btcgreen_farmer';
+export const service_harvester = 'btcgreen_harvester';
+export const service_simulator = 'btcgreen_full_node_simulator';
 export const service_daemon = 'daemon';
-export const service_plotter = 'btchia plots create';
+export const service_plotter = 'btcgreen plots create';
 
 // Corresponds with outbound_message.py NodeTypes
 export const service_connection_types = {

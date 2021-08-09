@@ -9,7 +9,7 @@ import {
   Flex,
   Checkbox,
   TooltipIcon,
-} from '@btchia/core';
+} from '@btcgreen/core';
 import {
   Grid,
   FormControl,

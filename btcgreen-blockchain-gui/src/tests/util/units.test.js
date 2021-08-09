@@ -2,8 +2,8 @@ const units = require('../../util/units');
 
 describe('units', () => {
   describe('#getUnit', () => {
-    it('gets unit of btchia', () => {
-      const result = units.getUnit('btchia');
+    it('gets unit of btcgreen', () => {
+      const result = units.getUnit('btcgreen');
 
       expect(result).toBe(1);
     });
@@ -18,11 +18,11 @@ describe('units', () => {
       expect(result).toBe(1e-9);
     });
     it('supports uppercase characters', () => {
-      const result = units.getUnit('BTCHIA');
+      const result = units.getUnit('BTCGREEN');
 
       expect(result).toBe(1);
     });
-    it('gets unit of btchia using alias', () => {
+    it('gets unit of btcgreen using alias', () => {
       const result = units.getUnit('ch');
 
       expect(result).toBe(1);
@@ -46,8 +46,8 @@ describe('units', () => {
     });
   });
   describe('#getDisplay', () => {
-    it('gets display of btchia', () => {
-      const result = units.getDisplay('btchia');
+    it('gets display of btcgreen', () => {
+      const result = units.getDisplay('btcgreen');
 
       expect(result).toEqual({
         format: '{amount} CH',
@@ -87,13 +87,13 @@ describe('units', () => {
       expect(result).toEqual(1);
     });
     it('modifies an existing unit', () => {
-      units.setUnit('btchia', 9);
+      units.setUnit('btcgreen', 9);
 
-      const result = units.getUnit('btchia');
+      const result = units.getUnit('btcgreen');
 
       expect(result).toEqual(9);
 
-      units.setUnit('btchia', 1);
+      units.setUnit('btcgreen', 1);
     });
   });
   describe('#setDisplay', () => {
@@ -111,12 +111,12 @@ describe('units', () => {
       });
     });
     it('updates an existing display', () => {
-      units.setDisplay('btchia', {
+      units.setDisplay('btcgreen', {
         format: '{amount} TXBTC',
         fractionDigits: 0,
       });
 
-      const result = units.getDisplay('btchia');
+      const result = units.getDisplay('btcgreen');
 
       expect(result).toEqual({
         format: '{amount} TXBTC',

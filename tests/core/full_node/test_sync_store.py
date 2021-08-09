@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from btchia.full_node.sync_store import SyncStore
-from btchia.util.hash import std_hash
+from btcgreen.full_node.sync_store import SyncStore
+from btcgreen.util.hash import std_hash
 
 
 @pytest.fixture(scope="module")

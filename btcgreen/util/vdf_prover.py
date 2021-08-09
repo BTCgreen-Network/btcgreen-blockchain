@@ -2,11 +2,11 @@ from typing import Tuple
 
 from chiavdf import prove
 
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from btchia.util.ints import uint8, uint64
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.vdf import VDFInfo, VDFProof
+from btcgreen.util.ints import uint8, uint64
 
 
 def get_vdf_info_and_proof(

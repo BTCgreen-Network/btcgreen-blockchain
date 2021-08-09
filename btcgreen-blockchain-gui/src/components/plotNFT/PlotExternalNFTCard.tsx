@@ -11,7 +11,7 @@ import {
   Loading,
   FormatLargeNumber,
   Link,
-} from '@btchia/core';
+} from '@btcgreen/core';
 import {
   Box,
   Card,

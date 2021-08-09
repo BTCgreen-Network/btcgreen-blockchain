@@ -12,55 +12,55 @@ from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiabip158 import PyBIP158
 from cryptography.fernet import Fernet
 
-from btchia import __version__
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.coinbase import pool_parent_id, farmer_parent_id
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.find_fork_point import find_fork_point_in_chain
-from btchia.full_node.weight_proof import WeightProofHandler
-from btchia.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
-from btchia.pools.pool_wallet import PoolWallet
-from btchia.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.full_block import FullBlock
-from btchia.types.header_block import HeaderBlock
-from btchia.types.mempool_inclusion_status import MempoolInclusionStatus
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.errors import Err
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint32, uint64, uint128
-from btchia.wallet.block_record import HeaderBlockRecord
-from btchia.wallet.cc_wallet.cc_wallet import CCWallet
-from btchia.wallet.derivation_record import DerivationRecord
-from btchia.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
-from btchia.wallet.key_val_store import KeyValStore
-from btchia.wallet.rl_wallet.rl_wallet import RLWallet
-from btchia.wallet.settings.user_settings import UserSettings
-from btchia.wallet.trade_manager import TradeManager
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.backup_utils import open_backup_file
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet import Wallet
-from btchia.wallet.wallet_action import WalletAction
-from btchia.wallet.wallet_action_store import WalletActionStore
-from btchia.wallet.wallet_block_store import WalletBlockStore
-from btchia.wallet.wallet_blockchain import WalletBlockchain
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
-from btchia.wallet.wallet_coin_store import WalletCoinStore
-from btchia.wallet.wallet_info import WalletInfo, WalletInfoBackup
-from btchia.wallet.wallet_interested_store import WalletInterestedStore
-from btchia.wallet.wallet_pool_store import WalletPoolStore
-from btchia.wallet.wallet_puzzle_store import WalletPuzzleStore
-from btchia.wallet.wallet_sync_store import WalletSyncStore
-from btchia.wallet.wallet_transaction_store import WalletTransactionStore
-from btchia.wallet.wallet_user_store import WalletUserStore
-from btchia.server.server import BTChiaServer
-from btchia.wallet.did_wallet.did_wallet import DIDWallet
+from btcgreen import __version__
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.coinbase import pool_parent_id, farmer_parent_id
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.find_fork_point import find_fork_point_in_chain
+from btcgreen.full_node.weight_proof import WeightProofHandler
+from btcgreen.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH, solution_to_extra_data
+from btcgreen.pools.pool_wallet import PoolWallet
+from btcgreen.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.types.mempool_inclusion_status import MempoolInclusionStatus
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.errors import Err
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint32, uint64, uint128
+from btcgreen.wallet.block_record import HeaderBlockRecord
+from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
+from btcgreen.wallet.derivation_record import DerivationRecord
+from btcgreen.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
+from btcgreen.wallet.key_val_store import KeyValStore
+from btcgreen.wallet.rl_wallet.rl_wallet import RLWallet
+from btcgreen.wallet.settings.user_settings import UserSettings
+from btcgreen.wallet.trade_manager import TradeManager
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.backup_utils import open_backup_file
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet import Wallet
+from btcgreen.wallet.wallet_action import WalletAction
+from btcgreen.wallet.wallet_action_store import WalletActionStore
+from btcgreen.wallet.wallet_block_store import WalletBlockStore
+from btcgreen.wallet.wallet_blockchain import WalletBlockchain
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.wallet.wallet_coin_store import WalletCoinStore
+from btcgreen.wallet.wallet_info import WalletInfo, WalletInfoBackup
+from btcgreen.wallet.wallet_interested_store import WalletInterestedStore
+from btcgreen.wallet.wallet_pool_store import WalletPoolStore
+from btcgreen.wallet.wallet_puzzle_store import WalletPuzzleStore
+from btcgreen.wallet.wallet_sync_store import WalletSyncStore
+from btcgreen.wallet.wallet_transaction_store import WalletTransactionStore
+from btcgreen.wallet.wallet_user_store import WalletUserStore
+from btcgreen.server.server import BTCgreenServer
+from btcgreen.wallet.did_wallet.did_wallet import DIDWallet
 
 
 class WalletStateManager:
@@ -107,7 +107,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: BTChiaServer
+    server: BTCgreenServer
     root_path: Path
 
     @staticmethod
@@ -116,7 +116,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: BTChiaServer,
+        server: BTCgreenServer,
         root_path: Path,
         name: str = None,
     ):

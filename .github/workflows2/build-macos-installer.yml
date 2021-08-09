@@ -103,7 +103,7 @@ jobs:
         APPLE_NOTARIZE_PASSWORD: "${{ secrets.APPLE_NOTARIZE_PASSWORD }}"
       run: |
         . ./activate
-        cd ./btchia-blockchain-gui
+        cd ./btcgreen-blockchain-gui
         git status
         cd ../build_scripts
         sh build_macos.sh
@@ -111,5 +111,5 @@ jobs:
     - name: Upload MacOS artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: BTChia-Installer-on-MacOS-10.15-dmg
+        name: BTCgreen-Installer-on-MacOS-10.15-dmg
         path: ${{ github.workspace }}/build_scripts/final_installer/

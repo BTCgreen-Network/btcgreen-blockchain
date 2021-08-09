@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid, Typography } from '@material-ui/core';
 import styled from 'styled-components';
-import { CardHero, Link } from '@btchia/core';
+import { CardHero, Link } from '@btcgreen/core';
 import heroSrc from './images/hero.svg';
 import PlotAddDirectoryDialog from '../../plot/PlotAddDirectoryDialog';
 import useOpenDialog from '../../../hooks/useOpenDialog';
@@ -36,7 +36,7 @@ export default function FarmOverviewHero() {
               where your farm will be once you add a plot.{' '}
               <Link
                 target="_blank"
-                href="https://github.com/BTChia-Network/btchia-blockchain/wiki/Network-Architecture"
+                href="https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Network-Architecture"
               >
                 Learn more
               </Link>

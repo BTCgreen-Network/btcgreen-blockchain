@@ -4,26 +4,26 @@ from typing import Any, Dict, List, Optional, Set
 
 from blspy import G1Element
 
-from btchia.consensus.cost_calculator import calculate_cost_of_program, NPCResult
-from btchia.full_node.bundle_tools import simple_solution_generator
-from btchia.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.generator_types import BlockGenerator
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.hash import std_hash
-from btchia.wallet.derivation_record import DerivationRecord
-from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from btcgreen.consensus.cost_calculator import calculate_cost_of_program, NPCResult
+from btcgreen.full_node.bundle_tools import simple_solution_generator
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.generator_types import BlockGenerator
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.hash import std_hash
+from btcgreen.wallet.derivation_record import DerivationRecord
+from btcgreen.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
     puzzle_for_pk,
     solution_for_conditions,
 )
-from btchia.wallet.puzzles.puzzle_utils import (
+from btcgreen.wallet.puzzles.puzzle_utils import (
     make_assert_coin_announcement,
     make_assert_puzzle_announcement,
     make_assert_my_coin_id_condition,
@@ -33,13 +33,13 @@ from btchia.wallet.puzzles.puzzle_utils import (
     make_create_coin_condition,
     make_reserve_fee_condition,
 )
-from btchia.wallet.secret_key_store import SecretKeyStore
-from btchia.wallet.sign_coin_solutions import sign_coin_solutions
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
-from btchia.wallet.wallet_info import WalletInfo
+from btcgreen.wallet.secret_key_store import SecretKeyStore
+from btcgreen.wallet.sign_coin_solutions import sign_coin_solutions
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.wallet.wallet_info import WalletInfo
 
 
 class Wallet:
@@ -437,14 +437,14 @@ class Wallet:
         await self.wallet_state_manager.add_pending_transaction(tx)
 
     # This is to be aggregated together with a coloured coin offer to ensure that the trade happens
-    async def create_spend_bundle_relative_btchia(self, btchia_amount: int, exclude: List[Coin]) -> SpendBundle:
+    async def create_spend_bundle_relative_btcgreen(self, btcgreen_amount: int, exclude: List[Coin]) -> SpendBundle:
         list_of_solutions = []
         utxos = None
 
         # If we're losing value then get coins with at least that much value
         # If we're gaining value then our amount doesn't matter
-        if btchia_amount < 0:
-            utxos = await self.select_coins(abs(btchia_amount), exclude)
+        if btcgreen_amount < 0:
+            utxos = await self.select_coins(abs(btcgreen_amount), exclude)
         else:
             utxos = await self.select_coins(0, exclude)
 
@@ -452,7 +452,7 @@ class Wallet:
 
         # Calculate output amount given sum of utxos
         spend_value = sum([coin.amount for coin in utxos])
-        btchia_amount = spend_value + btchia_amount
+        btcgreen_amount = spend_value + btcgreen_amount
 
         # Create coin solutions for each utxo
         output_created = None
@@ -460,7 +460,7 @@ class Wallet:
             puzzle = await self.puzzle_for_puzzle_hash(coin.puzzle_hash)
             if output_created is None:
                 newpuzhash = await self.get_new_puzzlehash()
-                primaries = [{"puzzlehash": newpuzhash, "amount": btchia_amount}]
+                primaries = [{"puzzlehash": newpuzhash, "amount": btcgreen_amount}]
                 solution = self.make_solution(primaries=primaries)
                 output_created = coin
             list_of_solutions.append(CoinSolution(coin, puzzle, solution))

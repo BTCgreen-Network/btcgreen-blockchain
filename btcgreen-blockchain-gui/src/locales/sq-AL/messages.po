@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: sq_AL\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-06 23:47\n"
 "Last-Translator: \n"
 "Language-Team: Albanian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: sq\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr "(Opsionale)"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "Dëshiron të mësosh më shumë rreth BTChia's? Kliko në <0> BTChia Explorer</0> e ndërtuar nga një programues open source."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "Dëshiron të mësosh më shumë rreth BTCgreen's? Kliko në <0> BTCgreen Explorer</0> e ndërtuar nga një programues open source."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Korrësi eshte nje shërbim i cili është i integruar në pajisjen ku P
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
-msgstr "Rreth zinxhirit BTChia"
+msgid "About BTCgreen Blockchain"
+msgstr "Rreth zinxhirit BTCgreen"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Përsëritjet e Bllokut VDF"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "Blloku ne lartësin {0} ne Zinxhirin BTChia"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "Blloku ne lartësin {0} ne Zinxhirin BTCgreen"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -674,8 +674,8 @@ msgid "Edit"
 msgstr "Modifiko"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
-msgstr "Shkruaj 24 fjalët mnemonic që ke ruajtur pëer të rikthyer Kuletën tende BTChia."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
+msgstr "Shkruaj 24 fjalët mnemonic që ke ruajtur pëer të rikthyer Kuletën tende BTCgreen."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -688,8 +688,8 @@ msgid "Error"
 msgstr "Gabim"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
-msgstr "Gabim: Nuk mund te dergojmë BTChia në Adresën e dhënë. Ju lutemi vendosni një adresë BTChia."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
+msgstr "Gabim: Nuk mund te dergojmë BTCgreen në Adresën e dhënë. Ju lutemi vendosni një adresë BTCgreen."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "Plotet e kaluan filtërin"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "Ploteve u është dhënë hapësirë në hard diskun tuaj që përdoret për të fermuar dhe fituar BTChia. <0> Mësoni më shumë </0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "Ploteve u është dhënë hapësirë në hard diskun tuaj që përdoret për të fermuar dhe fituar BTCgreen. <0> Mësoni më shumë </0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1902,8 +1902,8 @@ msgstr "Gjatësia e intervalit të shpenzimeve (numri i blloqeve)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "Kufiri i shpenzimeve (btchia për interval): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "Kufiri i shpenzimeve (btcgreen për interval): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "Statusi:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,16 +1999,16 @@ msgstr "Sinkronizimi <0/>/<1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
-msgstr "BTChia"
+msgid "BTCgreen"
+msgstr "BTCgreen"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
-msgstr "Zinxhiri BTChia Wiki"
+msgid "BTCgreen Blockchain Wiki"
+msgstr "Zinxhiri BTCgreen Wiki"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
-msgstr "Kuleta BTChia"
+msgid "BTCgreen Wallet"
+msgstr "Kuleta BTCgreen"
 
 #: src/components/pool/PoolInfo.tsx:37
 msgid "Target Puzzle Hash"
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Kjo veçori është në dispozicion vetëm nga GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "Kjo është shuma e BTChia që mund të përdorni aktualisht për të bërë transaksione. Nuk përfshin shpërblime në pritje të, transaksione në hyrje dhe BTChia që sapo keni shpenzuar, por që nuk është ende në blockchain."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "Kjo është shuma e BTCgreen që mund të përdorni aktualisht për të bërë transaksione. Nuk përfshin shpërblime në pritje të, transaksione në hyrje dhe BTCgreen që sapo keni shpenzuar, por që nuk është ende në blockchain."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Kjo është koha kur blloku është krijuar nga fermeri, e cila është para se të finalizohet me një provë të kohës"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Kjo është sasia totale e btchia në blockchain në nën bllok bllokun aktual që kontrollohet nga çelësat tuaj privatë. Ai përfshin shpërblime të ngrira, por jo në pritje të transaksioneve hyrëse dhe dalëse."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Kjo është sasia totale e btcgreen në blockchain në nën bllok bllokun aktual që kontrollohet nga çelësat tuaj privatë. Ai përfshin shpërblime të ngrira, por jo në pritje të transaksioneve hyrëse dhe dalëse."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Kjo tregti u përfshi në bllokimin në këtë lartësi të bllokut"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
-msgstr "Ky version i BTChia nuk është më i pajtueshëm me blockchain dhe nuk mund të fermojë në mënyrë të sigurt."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
+msgstr "Ky version i BTCgreen nuk është më i pajtueshëm me blockchain dhe nuk mund të fermojë në mënyrë të sigurt."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2214,8 +2214,8 @@ msgstr "Madhësia totale e Ploteve:"
 msgid "Total Size of Plots"
 msgstr "Madhësia totale e ploteves"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr "Statusi i Portofolit:"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr "Dëshironi të bashkoheni në një poll? Krijoni një plot NFT"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "Dëshironi të fitoni më shumë BTChia? Shtoni më shumë plote në fermën tuaj."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "Dëshironi të fitoni më shumë BTCgreen? Shtoni më shumë plote në fermën tuaj."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Pesha është vështirësia totale e shtuar e të gjitha nën blloqeve deri dhe duke përfshirë këtë"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "Mirësevini në BTChia. Ju lutemi identifikohuni me një çelës ekzistues, ose krijoni një çelës të ri."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "Mirësevini në BTCgreen. Ju lutemi identifikohuni me një çelës ekzistues, ose krijoni një çelës të ri."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr "Së pari duhet të kërkoni shpërblimet tuaja"
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,9 +2583,9 @@ msgstr "{0} pikë {1} - {2} orë më parë"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Shpërblimet e bllokut"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
-msgstr "{currencyCode} Totali i BTChia"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
+msgstr "{currencyCode} Totali i BTCgreen"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

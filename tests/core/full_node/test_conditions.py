@@ -14,18 +14,18 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from btchia.consensus.blockchain import ReceiveBlockResult
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.announcement import Announcement
-from btchia.types.blockchain_format.program import Program
-from btchia.types.coin_record import CoinRecord
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.full_block import FullBlock
-from btchia.types.spend_bundle import SpendBundle
+from btcgreen.consensus.blockchain import ReceiveBlockResult
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.spend_bundle import SpendBundle
 from tests.block_tools import BlockTools, test_constants
-from btchia.util.errors import Err
-from btchia.util.ints import uint32
+from btcgreen.util.errors import Err
+from btcgreen.util.ints import uint32
 
 from .ram_db import create_ram_blockchain
 

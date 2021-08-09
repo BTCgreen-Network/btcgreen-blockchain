@@ -1,8 +1,8 @@
 from typing import Tuple
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.util.ints import uint128
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.util.ints import uint128
 
 
 def get_prev_transaction_block(

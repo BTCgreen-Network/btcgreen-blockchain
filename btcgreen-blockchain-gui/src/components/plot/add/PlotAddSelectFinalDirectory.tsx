@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useFormContext } from 'react-hook-form';
-import { ButtonSelected, CardStep, Flex, TextField } from '@btchia/core';
+import { ButtonSelected, CardStep, Flex, TextField } from '@btcgreen/core';
 import { Typography } from '@material-ui/core';
 import useSelectDirectory from '../../../hooks/useSelectDirectory';
 

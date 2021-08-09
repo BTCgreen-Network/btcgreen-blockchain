@@ -3,15 +3,15 @@ from typing import List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G2Element
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program, INFINITE_COST
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.spend_bundle import CoinSolution, SpendBundle
-from btchia.util.condition_tools import conditions_dict_for_solution
-from btchia.util.ints import uint64
-from btchia.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
-from btchia.wallet.puzzles.genesis_by_coin_id_with_0 import (
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program, INFINITE_COST
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.spend_bundle import CoinSolution, SpendBundle
+from btcgreen.util.condition_tools import conditions_dict_for_solution
+from btcgreen.util.ints import uint64
+from btcgreen.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
+from btcgreen.wallet.puzzles.genesis_by_coin_id_with_0 import (
     genesis_coin_id_for_genesis_coin_checker,
     lineage_proof_for_coin,
     lineage_proof_for_genesis,

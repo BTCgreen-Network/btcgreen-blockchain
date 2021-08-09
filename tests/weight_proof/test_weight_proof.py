@@ -6,22 +6,22 @@ from typing import Dict, List, Optional, Tuple
 import aiosqlite
 import pytest
 
-from btchia.consensus.block_header_validation import validate_finished_header_block
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain import Blockchain
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from btchia.consensus.full_block_to_block_record import block_to_block_record
-from btchia.full_node.block_store import BlockStore
-from btchia.full_node.coin_store import CoinStore
-from btchia.server.start_full_node import SERVICE_NAME
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from btchia.util.block_cache import BlockCache
+from btcgreen.consensus.block_header_validation import validate_finished_header_block
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain import Blockchain
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from btcgreen.consensus.full_block_to_block_record import block_to_block_record
+from btcgreen.full_node.block_store import BlockStore
+from btcgreen.full_node.coin_store import CoinStore
+from btcgreen.server.start_full_node import SERVICE_NAME
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btcgreen.util.block_cache import BlockCache
 from tests.block_tools import test_constants
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.generator_tools import get_block_header
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.generator_tools import get_block_header
 from tests.setup_nodes import bt
 
 try:
@@ -30,16 +30,16 @@ except ImportError:
     pass
 
 
-from btchia.consensus.pot_iterations import calculate_iterations_quality
-from btchia.full_node.weight_proof import (  # type: ignore
+from btcgreen.consensus.pot_iterations import calculate_iterations_quality
+from btcgreen.full_node.weight_proof import (  # type: ignore
     WeightProofHandler,
     _map_sub_epoch_summaries,
     _validate_sub_epoch_segments,
     _validate_summaries_weight,
 )
-from btchia.types.full_block import FullBlock
-from btchia.types.header_block import HeaderBlock
-from btchia.util.ints import uint32, uint64
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.util.ints import uint32, uint64
 from tests.core.fixtures import (
     default_400_blocks,
     default_1000_blocks,

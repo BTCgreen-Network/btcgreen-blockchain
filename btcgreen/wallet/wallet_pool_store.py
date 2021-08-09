@@ -3,9 +3,9 @@ from typing import List, Tuple, Dict, Optional
 
 import aiosqlite
 
-from btchia.types.coin_solution import CoinSolution
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint32
 
 log = logging.getLogger(__name__)
 

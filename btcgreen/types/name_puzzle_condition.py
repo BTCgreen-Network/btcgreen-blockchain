@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.util.condition_tools import ConditionOpcode
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

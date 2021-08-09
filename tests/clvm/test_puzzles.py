@@ -3,13 +3,13 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, BasicSchemeMPL, G1Element, G2Element
 
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.condition_tools import ConditionOpcode
-from btchia.util.hash import std_hash
-from btchia.wallet.puzzles import (
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.util.hash import std_hash
+from btcgreen.wallet.puzzles import (
     p2_conditions,
     p2_delegated_conditions,
     p2_delegated_puzzle,

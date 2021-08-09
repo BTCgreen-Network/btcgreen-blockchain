@@ -14,72 +14,72 @@ from typing import Callable, Dict, List, Optional, Tuple, Any
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 from chiabip158 import PyBIP158
 
-from btchia.cmds.init_funcs import create_all_ssl, create_default_btchia_config
-from btchia.full_node.bundle_tools import (
+from btcgreen.cmds.init_funcs import create_all_ssl, create_default_btcgreen_config
+from btcgreen.full_node.bundle_tools import (
     best_solution_generator_from_template,
     detect_potential_template_generator,
     simple_solution_generator,
 )
-from btchia.util.errors import Err
-from btchia.full_node.generator import setup_generator_args
-from btchia.full_node.mempool_check_conditions import GENERATOR_MOD
-from btchia.plotting.create_plots import create_plots
-from btchia.consensus.block_creation import unfinished_block_to_full_block
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.consensus.deficit import calculate_deficit
-from btchia.consensus.full_block_to_block_record import block_to_block_record
-from btchia.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from btchia.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from btchia.consensus.pot_iterations import (
+from btcgreen.util.errors import Err
+from btcgreen.full_node.generator import setup_generator_args
+from btcgreen.full_node.mempool_check_conditions import GENERATOR_MOD
+from btcgreen.plotting.create_plots import create_plots
+from btcgreen.consensus.block_creation import unfinished_block_to_full_block
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.consensus.deficit import calculate_deficit
+from btcgreen.consensus.full_block_to_block_record import block_to_block_record
+from btcgreen.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from btcgreen.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from btcgreen.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_interval_iters,
     calculate_sp_iters,
     is_overflow_block,
 )
-from btchia.consensus.vdf_info_computation import get_signage_point_vdf_info
-from btchia.full_node.signage_point import SignagePoint
-from btchia.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.coin import Coin, hash_coin_list
-from btchia.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
-from btchia.types.blockchain_format.pool_target import PoolTarget
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.slots import (
+from btcgreen.consensus.vdf_info_computation import get_signage_point_vdf_info
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.coin import Coin, hash_coin_list
+from btcgreen.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
+from btcgreen.types.blockchain_format.pool_target import PoolTarget
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from btchia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.full_block import FullBlock
-from btchia.types.generator_types import BlockGenerator, CompressorArg
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_block import UnfinishedBlock
-from btchia.types.name_puzzle_condition import NPC
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.block_cache import BlockCache
-from btchia.util.condition_tools import ConditionOpcode, conditions_by_opcode
-from btchia.util.config import load_config, save_config
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint16, uint32, uint64, uint128
-from btchia.util.keychain import Keychain, bytes_to_mnemonic
-from btchia.util.merkle_set import MerkleSet
-from btchia.util.prev_transaction_block import get_prev_transaction_block
-from btchia.util.path import mkdir
-from btchia.util.vdf_prover import get_vdf_info_and_proof
+from btcgreen.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btcgreen.types.blockchain_format.vdf import VDFInfo, VDFProof
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.generator_types import BlockGenerator, CompressorArg
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_block import UnfinishedBlock
+from btcgreen.types.name_puzzle_condition import NPC
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.block_cache import BlockCache
+from btcgreen.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from btcgreen.util.config import load_config, save_config
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint16, uint32, uint64, uint128
+from btcgreen.util.keychain import Keychain, bytes_to_mnemonic
+from btcgreen.util.merkle_set import MerkleSet
+from btcgreen.util.prev_transaction_block import get_prev_transaction_block
+from btcgreen.util.path import mkdir
+from btcgreen.util.vdf_prover import get_vdf_info_and_proof
 from tests.wallet_tools import WalletTool
-from btchia.wallet.derive_keys import (
+from btcgreen.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_local_sk,
     master_sk_to_pool_sk,
@@ -131,7 +131,7 @@ class BlockTools:
             root_path = Path(self._tempdir.name)
 
         self.root_path = root_path
-        create_default_btchia_config(root_path)
+        create_default_btcgreen_config(root_path)
         self.keychain = Keychain("testing-1.8.0", True)
         self.keychain.delete_all_keys()
         self.farmer_master_sk_entropy = std_hash(b"block_tools farmer key")
@@ -155,7 +155,7 @@ class BlockTools:
 
         self.farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
         if len(self.pool_pubkeys) == 0 or len(self.farmer_pubkeys) == 0:
-            raise RuntimeError("Keys not generated. Run `btchia generate keys`")
+            raise RuntimeError("Keys not generated. Run `btcgreen generate keys`")
 
         self.load_plots()
         self.local_sk_cache: Dict[bytes32, Tuple[PrivateKey, Any]] = {}
@@ -1219,7 +1219,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("BTCHIA_ROOT", "~/.btchia/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("BTCGREEN_ROOT", "~/.btcgreen/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

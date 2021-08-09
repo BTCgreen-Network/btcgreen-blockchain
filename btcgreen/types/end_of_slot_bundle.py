@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from btchia.types.blockchain_format.slots import (
+from btcgreen.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

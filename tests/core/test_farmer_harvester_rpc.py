@@ -6,22 +6,22 @@ import pytest
 from blspy import AugSchemeMPL
 from chiapos import DiskPlotter
 
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
-from btchia.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
-from btchia.protocols import farmer_protocol
-from btchia.rpc.farmer_rpc_api import FarmerRpcApi
-from btchia.rpc.farmer_rpc_client import FarmerRpcClient
-from btchia.rpc.harvester_rpc_api import HarvesterRpcApi
-from btchia.rpc.harvester_rpc_client import HarvesterRpcClient
-from btchia.rpc.rpc_server import start_rpc_server
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
+from btcgreen.protocols import farmer_protocol
+from btcgreen.rpc.farmer_rpc_api import FarmerRpcApi
+from btcgreen.rpc.farmer_rpc_client import FarmerRpcClient
+from btcgreen.rpc.harvester_rpc_api import HarvesterRpcApi
+from btcgreen.rpc.harvester_rpc_client import HarvesterRpcClient
+from btcgreen.rpc.rpc_server import start_rpc_server
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
 from tests.block_tools import get_plot_dir
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.config import load_config, save_config
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint16, uint32, uint64
-from btchia.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.config import load_config, save_config
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint16, uint32, uint64
+from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
 from tests.time_out_assert import time_out_assert
 

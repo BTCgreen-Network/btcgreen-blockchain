@@ -7,13 +7,13 @@ from typing import Any, Callable, Dict, List, Optional
 
 import aiohttp
 
-from btchia.server.outbound_message import NodeType
-from btchia.server.server import ssl_context_for_server
-from btchia.types.peer_info import PeerInfo
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint16
-from btchia.util.json_util import dict_to_json_str, obj_to_response
-from btchia.util.ws_message import create_payload, create_payload_dict, format_response, pong
+from btcgreen.server.outbound_message import NodeType
+from btcgreen.server.server import ssl_context_for_server
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint16
+from btcgreen.util.json_util import dict_to_json_str, obj_to_response
+from btcgreen.util.ws_message import create_payload, create_payload_dict, format_response, pong
 
 log = logging.getLogger(__name__)
 

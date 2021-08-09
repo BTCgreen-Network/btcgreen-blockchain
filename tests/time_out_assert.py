@@ -3,7 +3,7 @@ import logging
 import time
 from typing import Callable
 
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
 
 log = logging.getLogger(__name__)
 

@@ -2,17 +2,17 @@ from typing import Any, Dict, List, Optional
 
 import aiohttp
 
-from btchia.cmds.units import units
-from btchia.consensus.block_record import BlockRecord
-from btchia.rpc.farmer_rpc_client import FarmerRpcClient
-from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
-from btchia.rpc.wallet_rpc_client import WalletRpcClient
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.ints import uint16
-from btchia.util.misc import format_bytes
-from btchia.util.misc import format_minutes
-from btchia.util.network import is_localhost
+from btcgreen.cmds.units import units
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.rpc.farmer_rpc_client import FarmerRpcClient
+from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
+from btcgreen.rpc.wallet_rpc_client import WalletRpcClient
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.ints import uint16
+from btcgreen.util.misc import format_bytes
+from btcgreen.util.misc import format_minutes
+from btcgreen.util.network import is_localhost
 
 SECONDS_PER_BLOCK = (24 * 3600) / 4608
 
@@ -207,9 +207,9 @@ async def summary(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, 
         print("Farming")
 
     if amounts is not None:
-        print(f"Total btchia farmed: {amounts['farmed_amount'] / units['btchia']}")
-        print(f"User transaction fees: {amounts['fee_amount'] / units['btchia']}")
-        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['btchia']}")
+        print(f"Total btcgreen farmed: {amounts['farmed_amount'] / units['btcgreen']}")
+        print(f"User transaction fees: {amounts['fee_amount'] / units['btcgreen']}")
+        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['btcgreen']}")
         print(f"Last height farmed: {amounts['last_height_farmed']}")
 
     class PlotStats:
@@ -268,8 +268,8 @@ async def summary(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, 
 
     if amounts is None:
         if wallet_not_running:
-            print("For details on farmed rewards and fees you should run 'btchia start wallet' and 'btchia wallet show'")
+            print("For details on farmed rewards and fees you should run 'btcgreen start wallet' and 'btcgreen wallet show'")
         elif wallet_not_ready:
-            print("For details on farmed rewards and fees you should run 'btchia wallet show'")
+            print("For details on farmed rewards and fees you should run 'btcgreen wallet show'")
     else:
-        print("Note: log into your key using 'btchia wallet show' to see rewards for each key")
+        print("Note: log into your key using 'btcgreen wallet show' to see rewards for each key")

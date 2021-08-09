@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.ints import uint32
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

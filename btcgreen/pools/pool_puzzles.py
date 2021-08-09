@@ -3,20 +3,20 @@ from typing import Tuple, List, Optional
 from blspy import G1Element
 from clvm.casts import int_from_bytes, int_to_bytes
 
-from btchia.clvm.singleton import SINGLETON_LAUNCHER
-from btchia.consensus.block_rewards import calculate_pool_reward
-from btchia.consensus.coinbase import pool_parent_id
-from btchia.pools.pool_wallet_info import PoolState, LEAVING_POOL, SELF_POOLING
+from btcgreen.clvm.singleton import SINGLETON_LAUNCHER
+from btcgreen.consensus.block_rewards import calculate_pool_reward
+from btcgreen.consensus.coinbase import pool_parent_id
+from btcgreen.pools.pool_wallet_info import PoolState, LEAVING_POOL, SELF_POOLING
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
 
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.wallet.puzzles.load_clvm import load_clvm
-from btchia.wallet.puzzles.singleton_top_layer import puzzle_for_singleton
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.wallet.puzzles.singleton_top_layer import puzzle_for_singleton
 
-from btchia.util.ints import uint32, uint64
+from btcgreen.util.ints import uint32, uint64
 
 log = logging.getLogger(__name__)
 # "Full" is the outer singleton, with the inner puzzle filled in

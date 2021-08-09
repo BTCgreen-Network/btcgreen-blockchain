@@ -2,10 +2,10 @@ from typing import List, Optional
 
 import aiosqlite
 
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint32
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_action import WalletAction
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint32
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_action import WalletAction
 
 
 class WalletActionStore:

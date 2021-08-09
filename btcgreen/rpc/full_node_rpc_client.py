@@ -1,24 +1,24 @@
 from typing import Dict, List, Optional, Tuple, Any
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.full_node.signage_point import SignagePoint
-from btchia.rpc.rpc_client import RpcClient
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_record import CoinRecord
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.full_block import FullBlock
-from btchia.types.spend_bundle import SpendBundle
-from btchia.types.unfinished_header_block import UnfinishedHeaderBlock
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint32, uint64
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.full_node.signage_point import SignagePoint
+from btcgreen.rpc.rpc_client import RpcClient
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_record import CoinRecord
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.types.unfinished_header_block import UnfinishedHeaderBlock
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint32, uint64
 
 
 class FullNodeRpcClient(RpcClient):
     """
-    Client to BTChia RPC, connects to a local full node. Uses HTTP/JSON, and converts back from
+    Client to BTCgreen RPC, connects to a local full node. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run BTChia's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run BTCgreen's
     protocol on top of TCP), it's a separate protocol on top of HTTP thats provides easy access
     to the full node.
     """

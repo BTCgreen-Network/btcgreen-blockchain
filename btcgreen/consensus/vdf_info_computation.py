@@ -1,12 +1,12 @@
 from typing import List, Optional
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.consensus.constants import ConsensusConstants
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.util.ints import uint64, uint128
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.util.ints import uint64, uint128
 
 
 def get_signage_point_vdf_info(

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import icon from '../../assets/img/btchia_circle.svg';
+import icon from '../../assets/img/btcgreen_circle.svg';
 
 const GlobalStyle = createGlobalStyle`
   body,
@@ -70,7 +70,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://btchia.net';
+const url = 'https://btcgreen.net';
 
 type Props = {
   version: string;
@@ -114,7 +114,7 @@ export default function About(props: Props) {
         </StyledLink>
         <StyledSubTitle>{description}</StyledSubTitle>
         <Spacer />
-        <div className="copyright">Copyright (c) 2021 BTChia Network</div>
+        <div className="copyright">Copyright (c) 2021 BTCgreen Network</div>
         <Spacer />
         <VersionsTable>
           {versions?.electron && (
@@ -144,7 +144,7 @@ export default function About(props: Props) {
         </VersionsTable>
 
         <BugReport
-          href="https://github.com/BTChia-Network/btchia-blockchain/issues"
+          href="https://github.com/BTCgreen-Network/btcgreen-blockchain/issues"
           target="_blank"
         >
           Report an issue

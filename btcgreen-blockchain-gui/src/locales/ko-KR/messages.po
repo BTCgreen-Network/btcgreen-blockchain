@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ko_KR\n"
-"Project-Id-Version: btchia-blockchain\n"
+"Project-Id-Version: btcgreen-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-06 23:47\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: btchia-blockchain\n"
+"X-Crowdin-Project: btcgreen-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: ko\n"
-"X-Crowdin-File: /[BTChia-Network.btchia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[BTCgreen-Network.btcgreen-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore BTChia’s blocks further? Check out <0>BTChia Explorer</0> built by an open source developer."
-msgstr "BTChia의 블록을 더 탐험하고 싶으십니까? 오픈 소스 개발자가 만든 <0>BTChia Explorer</0>를 확인하세요."
+msgid "*Want to explore BTCgreen’s blocks further? Check out <0>BTCgreen Explorer</0> built by an open source developer."
+msgstr "BTCgreen의 블록을 더 탐험하고 싶으십니까? 오픈 소스 개발자가 만든 <0>BTCgreen Explorer</0>를 확인하세요."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,7 +44,7 @@ msgstr "수확기는 플롯이 실제 저장되어 구동되는 기기입니다.
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About BTChia Blockchain"
+msgid "About BTCgreen Blockchain"
 msgstr "치아 블록체인에 대하여"
 
 #: src/components/trading/ViewOffer.jsx:74
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "블록 VDF 반복"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the BTChia blockchain"
-msgstr "BTChia 블록체인 높이 {0} 에 있는 블록"
+msgid "Block at height {0} in the BTCgreen blockchain"
+msgstr "BTCgreen 블록체인 높이 {0} 에 있는 블록"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -674,7 +674,7 @@ msgid "Edit"
 msgstr "편집"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTChia wallet."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your BTCgreen wallet."
 msgstr "치아 지갑을 복구하기 위해서 24자로 된 니모닉 단어를 입력하세요."
 
 #: src/components/farm/FarmerStatus.tsx:21
@@ -688,7 +688,7 @@ msgid "Error"
 msgstr "오류"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send btchia to coloured address. Please enter a btchia address."
+msgid "Error: Cannot send btcgreen to coloured address. Please enter a btcgreen address."
 msgstr "에러: 치아를 컬러드 주소로 보낼 수 없습니다. 치아 주소를 입력하세요."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
@@ -1464,8 +1464,8 @@ msgid "Plots Passed Filter"
 msgstr "필터 통과된 구성들"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn BTChia. <0>Learn more</0>"
-msgstr "구성들은 나의 하드 드라이브에 적재되어 BTChia를 채굴하고 모읍니다. <0>더보기</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn BTCgreen. <0>Learn more</0>"
+msgstr "구성들은 나의 하드 드라이브에 적재되어 BTCgreen를 채굴하고 모읍니다. <0>더보기</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1902,8 +1902,8 @@ msgstr "지출 간격 길이 (블록 수)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (btchia per interval): {0}"
-msgstr "지출 한도 (간격 당 btchia): {0}"
+msgid "Spending Limit (btcgreen per interval): {0}"
+msgstr "지출 한도 (간격 당 btcgreen): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1951,8 +1951,8 @@ msgstr "상태:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the BTChia blockchain"
-#~ msgstr "Sub Block at height {0} in the BTChia blockchain"
+#~ msgid "Sub Block at height {0} in the BTCgreen blockchain"
+#~ msgstr "Sub Block at height {0} in the BTCgreen blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1999,15 +1999,15 @@ msgstr "동기화 중... <0/> / <1/>"
 #~ msgstr ""
 
 #: src/electron/main.tsx:419
-msgid "BTChia"
+msgid "BTCgreen"
 msgstr "치아"
 
 #: src/electron/main.tsx:358
-msgid "BTChia Blockchain Wiki"
+msgid "BTCgreen Blockchain Wiki"
 msgstr "치아 블록체인 위키"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "BTChia Wallet"
+msgid "BTCgreen Wallet"
 msgstr "치아 지갑"
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "이 기능은 GUI에서만 사용 가능합니다."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of BTChia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTChia that you have just spent but is not yet in the blockchain."
-msgstr "이것은 거래를하기 위해 현재 사용할 수있는 BTChia의 양입니다. 여기에는 보류중인 농업 보상, 보류중인 수신 거래 및 방금 지출했지만 아직 블록 체인에 포함되지 않은 BTChia는 포함되지 않습니다."
+msgid "This is the amount of BTCgreen that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and BTCgreen that you have just spent but is not yet in the blockchain."
+msgstr "이것은 거래를하기 위해 현재 사용할 수있는 BTCgreen의 양입니다. 여기에는 보류중인 농업 보상, 보류중인 수신 거래 및 방금 지출했지만 아직 블록 체인에 포함되지 않은 BTCgreen는 포함되지 않습니다."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2127,8 +2127,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "이것은 농부가 블록을 만든 시간이며 시간 증명으로 완성되기 전입니다."
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of btchia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "이것은 개인 키에 의해 제어되는 현재 피크 하위 블록에서 블록 체인의 총 btchia 양입니다. 여기에는 냉동 농업 보상이 포함되지만 보류중인 들어오고 나가는 거래는 포함되지 않습니다."
+msgid "This is the total amount of btcgreen in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "이것은 개인 키에 의해 제어되는 현재 피크 하위 블록에서 블록 체인의 총 btcgreen 양입니다. 여기에는 냉동 농업 보상이 포함되지만 보류중인 들어오고 나가는 거래는 포함되지 않습니다."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "이 거래는이 block height 에서 블록 체인에 포함되었습니다."
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of BTChia is no longer compatible with the blockchain and can not safely farm."
-msgstr "이 버전의 BTChia는 더 이상 블록 체인과 호환되지 않으며 안전하게 파밍 할 수 없습니다."
+msgid "This version of BTCgreen is no longer compatible with the blockchain and can not safely farm."
+msgstr "이 버전의 BTCgreen는 더 이상 블록 체인과 호환되지 않으며 안전하게 파밍 할 수 없습니다."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2214,8 +2214,8 @@ msgstr "전체 플롯의 용량:"
 msgid "Total Size of Plots"
 msgstr "전체 플롯의 용량"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:15
-#~ msgid "Total BTChia Farmed"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:15
+#~ msgid "Total BTCgreen Farmed"
 #~ msgstr ""
 
 #: src/components/block/Block.jsx:225
@@ -2379,7 +2379,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.btchiaWallet"
+#~ msgid "WalletItem.btcgreenWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:107
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more BTChia? Add more plots to your farm."
-msgstr "BTChia를 더 얻고 싶다면, 더 많은 플롯들을 당신의 농장에 추가하세요."
+msgid "Want to earn more BTCgreen? Add more plots to your farm."
+msgstr "BTCgreen를 더 얻고 싶다면, 더 많은 플롯들을 당신의 농장에 추가하세요."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "무게는 이것을 포함하여 모든 서브 블록의 총 추가 난이도입니다."
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to BTChia. Please log in with an existing key, or create a new key."
-msgstr "BTChia에 오신 것을 환영합니다. 사용하고 계신 키로 로그인하시거나 새로운 키를 만드세요."
+msgid "Welcome to BTCgreen. Please log in with an existing key, or create a new key."
+msgstr "BTCgreen에 오신 것을 환영합니다. 사용하고 계신 키로 로그인하시거나 새로운 키를 만드세요."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the BTChia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the BTChia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the BTCgreen application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the BTCgreen application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,9 +2583,9 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} 블록 보상"
 
-#: src/components/farm/card/FarmCardTotalBTChiaFarmed.tsx:29
-msgid "{currencyCode} Total BTChia Farmed"
-msgstr "{currencyCode} 채굴된 총 BTChia"
+#: src/components/farm/card/FarmCardTotalBTCgreenFarmed.tsx:29
+msgid "{currencyCode} Total BTCgreen Farmed"
+msgstr "{currencyCode} 채굴된 총 BTCgreen"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

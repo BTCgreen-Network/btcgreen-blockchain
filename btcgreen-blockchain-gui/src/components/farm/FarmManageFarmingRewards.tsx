@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useForm } from 'react-hook-form';
 import { Alert } from '@material-ui/lab';
 import styled from 'styled-components';
-import { Flex, Form, TextField, Loading } from '@btchia/core';
+import { Flex, Form, TextField, Loading } from '@btcgreen/core';
 import {
   Button,
   Dialog,

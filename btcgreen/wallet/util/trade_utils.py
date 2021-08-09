@@ -1,12 +1,12 @@
 from typing import Dict, Optional, Tuple
 
-from btchia.types.blockchain_format.program import Program, INFINITE_COST
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.condition_tools import conditions_dict_for_solution
-from btchia.wallet.cc_wallet import cc_utils
-from btchia.wallet.trade_record import TradeRecord
-from btchia.wallet.trading.trade_status import TradeStatus
+from btcgreen.types.blockchain_format.program import Program, INFINITE_COST
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.condition_tools import conditions_dict_for_solution
+from btcgreen.wallet.cc_wallet import cc_utils
+from btcgreen.wallet.trade_record import TradeRecord
+from btcgreen.wallet.trading.trade_status import TradeStatus
 
 
 def trade_status_ui_string(status: TradeStatus):
@@ -83,10 +83,10 @@ def get_discrepancies_for_spend_bundle(
                 coin_amount = coinsol.coin.amount
                 out_amount = get_output_amount_for_puzzle_and_solution(puzzle, solution)
                 diff = coin_amount - out_amount
-                if "btchia" in cc_discrepancies:
-                    cc_discrepancies["btchia"] = cc_discrepancies["btchia"] + diff
+                if "btcgreen" in cc_discrepancies:
+                    cc_discrepancies["btcgreen"] = cc_discrepancies["btcgreen"] + diff
                 else:
-                    cc_discrepancies["btchia"] = diff
+                    cc_discrepancies["btcgreen"] = diff
 
         return True, cc_discrepancies, None
     except Exception as e:

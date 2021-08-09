@@ -17,7 +17,7 @@ export default function AppTimeBomb() {
     return (
       <Alert severity="warning">
         <Trans>
-          This version of BTChia is no longer compatible with the blockchain and
+          This version of BTCgreen is no longer compatible with the blockchain and
           can not safely farm.
         </Trans>
       </Alert>

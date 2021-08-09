@@ -1,11 +1,11 @@
 import asyncio
 import socket
 
-from btchia.server.server import BTChiaServer
-from btchia.types.peer_info import PeerInfo
+from btcgreen.server.server import BTCgreenServer
+from btcgreen.types.peer_info import PeerInfo
 
 
-def start_reconnect_task(server: BTChiaServer, peer_info_arg: PeerInfo, log, auth: bool):
+def start_reconnect_task(server: BTCgreenServer, peer_info_arg: PeerInfo, log, auth: bool):
     """
     Start a background task that checks connection and reconnects periodically to a peer.
     """

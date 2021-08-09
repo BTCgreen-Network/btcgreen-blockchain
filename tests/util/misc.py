@@ -1,6 +1,6 @@
 import pytest
-from btchia.util.misc import format_bytes
-from btchia.util.misc import format_minutes
+from btcgreen.util.misc import format_bytes
+from btcgreen.util.misc import format_minutes
 
 
 class TestMisc:

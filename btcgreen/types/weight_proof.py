@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.reward_chain_block import RewardChainBlock
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.header_block import HeaderBlock
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.reward_chain_block import RewardChainBlock
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.vdf import VDFInfo, VDFProof
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

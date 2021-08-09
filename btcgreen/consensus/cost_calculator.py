@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from btchia.consensus.condition_costs import ConditionCost
-from btchia.types.blockchain_format.program import SerializedProgram
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.name_puzzle_condition import NPC
-from btchia.util.ints import uint64, uint16
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.consensus.condition_costs import ConditionCost
+from btcgreen.types.blockchain_format.program import SerializedProgram
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.name_puzzle_condition import NPC
+from btcgreen.util.ints import uint64, uint16
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

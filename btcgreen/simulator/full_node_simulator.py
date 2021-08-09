@@ -1,12 +1,12 @@
 from typing import List, Optional
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.full_node.full_node_api import FullNodeAPI
-from btchia.protocols.full_node_protocol import RespondBlock
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from btchia.types.full_block import FullBlock
-from btchia.util.api_decorators import api_request
-from btchia.util.ints import uint8
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.full_node.full_node_api import FullNodeAPI
+from btcgreen.protocols.full_node_protocol import RespondBlock
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from btcgreen.types.full_block import FullBlock
+from btcgreen.util.api_decorators import api_request
+from btcgreen.util.ints import uint8
 
 
 class FullNodeSimulator(FullNodeAPI):

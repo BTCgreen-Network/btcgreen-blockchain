@@ -4,18 +4,18 @@ from typing import Dict, List, Optional, Any
 
 import aiohttp
 
-from btchia.server.server import ssl_context_for_client
-from btchia.server.ssl_context import private_ssl_ca_paths
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint16
+from btcgreen.server.server import ssl_context_for_client
+from btcgreen.server.ssl_context import private_ssl_ca_paths
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint16
 
 
 class RpcClient:
     """
-    Client to BTChia RPC, connects to a local service. Uses HTTP/JSON, and converts back from
+    Client to BTCgreen RPC, connects to a local service. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run BTChia's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run BTCgreen's
     protocol on top of TCP), it's a separate protocol on top of HTTP thats provides easy access
     to the full node.
     """

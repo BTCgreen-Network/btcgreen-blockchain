@@ -6,13 +6,13 @@ from typing import List
 
 import pytest
 
-from btchia.full_node.weight_proof import _validate_sub_epoch_summaries
-from btchia.protocols import full_node_protocol
-from btchia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from btchia.types.full_block import FullBlock
-from btchia.types.peer_info import PeerInfo
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint16
+from btcgreen.full_node.weight_proof import _validate_sub_epoch_summaries
+from btcgreen.protocols import full_node_protocol
+from btcgreen.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from btcgreen.types.full_block import FullBlock
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint16
 from tests.core.fixtures import default_400_blocks, default_1000_blocks, default_10000_blocks, empty_blockchain
 from tests.core.node_height import node_height_exactly, node_height_between
 from tests.setup_nodes import bt, self_hostname, setup_n_nodes, setup_two_nodes, test_constants

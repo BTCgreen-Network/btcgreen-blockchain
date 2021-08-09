@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.ints import uint64
-from btchia.util.streamable import streamable, Streamable
-from btchia.wallet.lineage_proof import LineageProof
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.ints import uint64
+from btcgreen.util.streamable import streamable, Streamable
+from btcgreen.wallet.lineage_proof import LineageProof
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.coin import Coin
 
 
 @dataclass(frozen=True)

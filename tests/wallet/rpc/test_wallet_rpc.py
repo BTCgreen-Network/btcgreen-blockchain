@@ -1,23 +1,23 @@
 import asyncio
-from btchia.util.config import load_config, save_config
+from btcgreen.util.config import load_config, save_config
 import logging
 from pathlib import Path
 
 import pytest
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.rpc.full_node_rpc_api import FullNodeRpcApi
-from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
-from btchia.rpc.rpc_server import start_rpc_server
-from btchia.rpc.wallet_rpc_api import WalletRpcApi
-from btchia.rpc.wallet_rpc_client import WalletRpcClient
-from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-from btchia.types.peer_info import PeerInfo
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
-from btchia.wallet.derive_keys import master_sk_to_wallet_sk
-from btchia.util.ints import uint16, uint32
-from btchia.wallet.transaction_record import TransactionRecord
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.rpc.full_node_rpc_api import FullNodeRpcApi
+from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
+from btcgreen.rpc.rpc_server import start_rpc_server
+from btcgreen.rpc.wallet_rpc_api import WalletRpcApi
+from btcgreen.rpc.wallet_rpc_client import WalletRpcClient
+from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+from btcgreen.types.peer_info import PeerInfo
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk
+from btcgreen.util.ints import uint16, uint32
+from btcgreen.wallet.transaction_record import TransactionRecord
 from tests.setup_nodes import bt, setup_simulators_and_wallets, self_hostname
 from tests.time_out_assert import time_out_assert
 

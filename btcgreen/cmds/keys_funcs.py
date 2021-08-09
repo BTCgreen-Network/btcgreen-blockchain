@@ -2,13 +2,13 @@ from typing import List
 
 from blspy import AugSchemeMPL, G1Element, G2Element
 
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.ints import uint32
-from btchia.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
-from btchia.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.ints import uint32
+from btcgreen.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
+from btcgreen.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
 
 keychain: Keychain = Keychain()
 
@@ -21,7 +21,7 @@ def generate_and_print():
     mnemonic = generate_mnemonic()
     print("Generating private key. Mnemonic (24 secret words):")
     print(mnemonic)
-    print("Note that this key has not been added to the keychain. Run btchia keys add")
+    print("Note that this key has not been added to the keychain. Run btcgreen keys add")
     return mnemonic
 
 

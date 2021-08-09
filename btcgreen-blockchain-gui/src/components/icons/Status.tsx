@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
-import { StateColor } from '@btchia/core';
+import { StateColor } from '@btcgreen/core';
 import { FiberManualRecord as FiberManualRecordIcon } from '@material-ui/icons';
 
 const StyledFiberManualRecordIcon = styled(({ color, ...rest }) => (

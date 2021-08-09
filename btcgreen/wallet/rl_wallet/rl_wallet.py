@@ -8,17 +8,17 @@ from typing import Any, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.ints import uint8, uint32, uint64, uint128
-from btchia.util.streamable import Streamable, streamable
-from btchia.wallet.derivation_record import DerivationRecord
-from btchia.wallet.derive_keys import master_sk_to_wallet_sk
-from btchia.wallet.rl_wallet.rl_wallet_puzzles import (
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.util.streamable import Streamable, streamable
+from btcgreen.wallet.derivation_record import DerivationRecord
+from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk
+from btcgreen.wallet.rl_wallet.rl_wallet_puzzles import (
     make_clawback_solution,
     rl_make_aggregation_puzzle,
     rl_make_aggregation_solution,
@@ -26,12 +26,12 @@ from btchia.wallet.rl_wallet.rl_wallet_puzzles import (
     rl_puzzle_for_pk,
     solution_for_rl,
 )
-from btchia.wallet.transaction_record import TransactionRecord
-from btchia.wallet.util.transaction_type import TransactionType
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet import Wallet
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
-from btchia.wallet.wallet_info import WalletInfo
+from btcgreen.wallet.transaction_record import TransactionRecord
+from btcgreen.wallet.util.transaction_type import TransactionType
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet import Wallet
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.wallet.wallet_info import WalletInfo
 
 
 @dataclass(frozen=True)

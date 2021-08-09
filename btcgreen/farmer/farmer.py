@@ -9,12 +9,12 @@ import traceback
 import aiohttp
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-import btchia.server.ws_connection as ws  # lgtm [py/import-and-import-from]
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
-from btchia.consensus.constants import ConsensusConstants
-from btchia.pools.pool_config import PoolWalletConfig, load_pool_config
-from btchia.protocols import farmer_protocol, harvester_protocol
-from btchia.protocols.pool_protocol import (
+import btcgreen.server.ws_connection as ws  # lgtm [py/import-and-import-from]
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.pools.pool_config import PoolWalletConfig, load_pool_config
+from btcgreen.protocols import farmer_protocol, harvester_protocol
+from btcgreen.protocols.pool_protocol import (
     ErrorResponse,
     get_current_authentication_token,
     GetFarmerResponse,
@@ -25,24 +25,24 @@ from btchia.protocols.pool_protocol import (
     PutFarmerRequest,
     AuthenticationPayload,
 )
-from btchia.protocols.protocol_message_types import ProtocolMessageTypes
-from btchia.server.outbound_message import NodeType, make_msg
-from btchia.server.ws_connection import WSBTChiaConnection
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.bech32m import decode_puzzle_hash
-from btchia.util.config import load_config, save_config, config_path_for_filename
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint16, uint32, uint64
-from btchia.util.keychain import Keychain
-from btchia.wallet.derive_keys import (
+from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.server.outbound_message import NodeType, make_msg
+from btcgreen.server.ws_connection import WSBTCgreenConnection
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.bech32m import decode_puzzle_hash
+from btcgreen.util.config import load_config, save_config, config_path_for_filename
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint16, uint32, uint64
+from btcgreen.util.keychain import Keychain
+from btcgreen.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_pool_sk,
     master_sk_to_wallet_sk,
     find_authentication_sk,
     find_owner_sk,
 )
-from btchia.wallet.puzzles.singleton_top_layer import SINGLETON_MOD
+from btcgreen.wallet.puzzles.singleton_top_layer import SINGLETON_MOD
 
 singleton_mod_hash = SINGLETON_MOD.get_tree_hash()
 
@@ -116,7 +116,7 @@ class Farmer:
         ]
 
         if len(self.get_public_keys()) == 0:
-            error_str = "No keys exist. Please run 'btchia keys generate' or open the UI."
+            error_str = "No keys exist. Please run 'btcgreen keys generate' or open the UI."
             raise RuntimeError(error_str)
 
         # This is the farmer configuration
@@ -135,7 +135,7 @@ class Farmer:
         assert len(self.farmer_target) == 32
         assert len(self.pool_target) == 32
         if len(self.pool_sks_map) == 0:
-            error_str = "No keys exist. Please run 'btchia keys generate' or open the UI."
+            error_str = "No keys exist. Please run 'btcgreen keys generate' or open the UI."
             raise RuntimeError(error_str)
 
         # The variables below are for use with an actual pool
@@ -165,7 +165,7 @@ class Farmer:
     def _set_state_changed_callback(self, callback: Callable):
         self.state_changed_callback = callback
 
-    async def on_connect(self, peer: WSBTChiaConnection):
+    async def on_connect(self, peer: WSBTCgreenConnection):
         # Sends a handshake to the harvester
         self.state_changed("add_connection", {})
         handshake = harvester_protocol.HarvesterHandshake(
@@ -189,7 +189,7 @@ class Farmer:
             ErrorResponse(uint16(PoolErrorCode.REQUEST_FAILED.value), error_message).to_json_dict()
         )
 
-    def on_disconnect(self, connection: ws.WSBTChiaConnection):
+    def on_disconnect(self, connection: ws.WSBTCgreenConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self.state_changed("close_connection", {})
 
@@ -588,7 +588,7 @@ class Farmer:
                         "Harvester did not respond. You might need to update harvester to the latest version"
                     )
 
-    async def get_cached_harvesters(self, connection: WSBTChiaConnection) -> HarvesterCacheEntry:
+    async def get_cached_harvesters(self, connection: WSBTCgreenConnection) -> HarvesterCacheEntry:
         host_cache = self.harvester_cache.get(connection.peer_host)
         if host_cache is None:
             host_cache = {}

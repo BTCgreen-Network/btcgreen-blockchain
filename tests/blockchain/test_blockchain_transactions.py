@@ -4,14 +4,14 @@ import logging
 import pytest
 from clvm.casts import int_to_bytes
 
-from btchia.consensus.blockchain import ReceiveBlockResult
-from btchia.protocols import full_node_protocol
-from btchia.types.announcement import Announcement
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.condition_with_args import ConditionWithArgs
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.errors import ConsensusError, Err
-from btchia.util.ints import uint64
+from btcgreen.consensus.blockchain import ReceiveBlockResult
+from btcgreen.protocols import full_node_protocol
+from btcgreen.types.announcement import Announcement
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.condition_with_args import ConditionWithArgs
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.errors import ConsensusError, Err
+from btcgreen.util.ints import uint64
 from tests.wallet_tools import WalletTool
 from tests.core.full_node.test_full_node import connect_and_get_peer
 from tests.setup_nodes import bt, setup_two_nodes, test_constants

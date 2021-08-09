@@ -5,21 +5,21 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 
-from btchia import __version__
-from btchia.consensus.coinbase import create_puzzlehash_for_pk
-from btchia.ssl.create_ssl import generate_ca_signed_cert, get_btchia_ca_crt_key, make_ca_cert
-from btchia.util.bech32m import encode_puzzle_hash
-from btchia.util.config import (
-    create_default_btchia_config,
+from btcgreen import __version__
+from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
+from btcgreen.ssl.create_ssl import generate_ca_signed_cert, get_btcgreen_ca_crt_key, make_ca_cert
+from btcgreen.util.bech32m import encode_puzzle_hash
+from btcgreen.util.config import (
+    create_default_btcgreen_config,
     initial_config_file,
     load_config,
     save_config,
     unflatten_properties,
 )
-from btchia.util.ints import uint32
-from btchia.util.keychain import Keychain
-from btchia.util.path import mkdir
-from btchia.wallet.derive_keys import master_sk_to_pool_sk, master_sk_to_wallet_sk
+from btcgreen.util.ints import uint32
+from btcgreen.util.keychain import Keychain
+from btcgreen.util.path import mkdir
+from btcgreen.wallet.derive_keys import master_sk_to_pool_sk, master_sk_to_wallet_sk
 
 private_node_names = {"full_node", "wallet", "farmer", "harvester", "timelord", "daemon"}
 public_node_names = {"full_node", "wallet", "farmer", "introducer", "timelord"}
@@ -50,7 +50,7 @@ def check_keys(new_root: Path) -> None:
     keychain: Keychain = Keychain()
     all_sks = keychain.get_all_private_keys()
     if len(all_sks) == 0:
-        print("No keys are present in the keychain. Generate them with 'btchia keys generate'")
+        print("No keys are present in the keychain. Generate them with 'btcgreen keys generate'")
         return None
 
     config: Dict = load_config(new_root, "config.yaml")
@@ -176,11 +176,11 @@ def create_all_ssl(root: Path):
 
     private_ca_key_path = ca_dir / "private_ca.key"
     private_ca_crt_path = ca_dir / "private_ca.crt"
-    btchia_ca_crt, btchia_ca_key = get_btchia_ca_crt_key()
-    btchia_ca_crt_path = ca_dir / "btchia_ca.crt"
-    btchia_ca_key_path = ca_dir / "btchia_ca.key"
-    btchia_ca_crt_path.write_bytes(btchia_ca_crt)
-    btchia_ca_key_path.write_bytes(btchia_ca_key)
+    btcgreen_ca_crt, btcgreen_ca_key = get_btcgreen_ca_crt_key()
+    btcgreen_ca_crt_path = ca_dir / "btcgreen_ca.crt"
+    btcgreen_ca_key_path = ca_dir / "btcgreen_ca.key"
+    btcgreen_ca_crt_path.write_bytes(btcgreen_ca_crt)
+    btcgreen_ca_key_path.write_bytes(btcgreen_ca_key)
 
     if not private_ca_key_path.exists() or not private_ca_crt_path.exists():
         # Create private CA
@@ -197,8 +197,8 @@ def create_all_ssl(root: Path):
         ca_crt = private_ca_crt_path.read_bytes()
         generate_ssl_for_nodes(ssl_dir, ca_crt, ca_key, True)
 
-    btchia_ca_crt, btchia_ca_key = get_btchia_ca_crt_key()
-    generate_ssl_for_nodes(ssl_dir, btchia_ca_crt, btchia_ca_key, False, overwrite=False)
+    btcgreen_ca_crt, btcgreen_ca_key = get_btcgreen_ca_crt_key()
+    generate_ssl_for_nodes(ssl_dir, btcgreen_ca_crt, btcgreen_ca_key, False, overwrite=False)
 
 
 def generate_ssl_for_nodes(ssl_dir: Path, ca_crt: bytes, ca_key: bytes, private: bool, overwrite=True):
@@ -245,16 +245,16 @@ def init(create_certs: Optional[Path], root_path: Path):
         else:
             print(f"** {root_path} does not exist. Executing core init **")
             # sanity check here to prevent infinite recursion
-            if btchia_init(root_path) == 0 and root_path.exists():
+            if btcgreen_init(root_path) == 0 and root_path.exists():
                 return init(create_certs, root_path)
 
             print(f"** {root_path} was not created. Exiting **")
             return -1
     else:
-        return btchia_init(root_path)
+        return btcgreen_init(root_path)
 
 
-def btchia_version_number() -> Tuple[str, str, str, str]:
+def btcgreen_version_number() -> Tuple[str, str, str, str]:
     scm_full_version = __version__
     left_full_version = scm_full_version.split("+")
 
@@ -302,37 +302,37 @@ def btchia_version_number() -> Tuple[str, str, str, str]:
     return major_release_number, minor_release_number, patch_release_number, dev_release_number
 
 
-def btchia_minor_release_number():
-    res = int(btchia_version_number()[2])
+def btcgreen_minor_release_number():
+    res = int(btcgreen_version_number()[2])
     print(f"Install release number: {res}")
     return res
 
 
-def btchia_full_version_str() -> str:
-    major, minor, patch, dev = btchia_version_number()
+def btcgreen_full_version_str() -> str:
+    major, minor, patch, dev = btcgreen_version_number()
     return f"{major}.{minor}.{patch}{dev}"
 
 
-def btchia_init(root_path: Path):
-    if os.environ.get("BTCHIA_ROOT", None) is not None:
+def btcgreen_init(root_path: Path):
+    if os.environ.get("BTCGREEN_ROOT", None) is not None:
         print(
-            f"warning, your BTCHIA_ROOT is set to {os.environ['BTCHIA_ROOT']}. "
-            f"Please unset the environment variable and run btchia init again\n"
+            f"warning, your BTCGREEN_ROOT is set to {os.environ['BTCGREEN_ROOT']}. "
+            f"Please unset the environment variable and run btcgreen init again\n"
             f"or manually migrate config.yaml"
         )
 
-    print(f"BTChia directory {root_path}")
+    print(f"BTCgreen directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if BTCHIA_ROOT is set, or if user has run btchia init twice
+        # This is reached if BTCGREEN_ROOT is set, or if user has run btcgreen init twice
         # before a new update.
         check_keys(root_path)
         print(f"{root_path} already exists, no migration action taken")
         return -1
 
-    create_default_btchia_config(root_path)
+    create_default_btcgreen_config(root_path)
     create_all_ssl(root_path)
     check_keys(root_path)
     print("")
-    print("To see your keys, run 'btchia keys show --show-mnemonic-seed'")
+    print("To see your keys, run 'btcgreen keys show --show-mnemonic-seed'")
 
     return 0

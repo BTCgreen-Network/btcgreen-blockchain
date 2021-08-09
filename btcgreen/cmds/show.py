@@ -19,16 +19,16 @@ async def show_async(
 
     from time import localtime, struct_time
     from typing import List, Optional
-    from btchia.consensus.block_record import BlockRecord
-    from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
-    from btchia.server.outbound_message import NodeType
-    from btchia.types.full_block import FullBlock
-    from btchia.util.bech32m import encode_puzzle_hash
-    from btchia.util.byte_types import hexstr_to_bytes
-    from btchia.util.config import load_config
-    from btchia.util.default_root import DEFAULT_ROOT_PATH
-    from btchia.util.ints import uint16
-    from btchia.util.misc import format_bytes
+    from btcgreen.consensus.block_record import BlockRecord
+    from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
+    from btcgreen.server.outbound_message import NodeType
+    from btcgreen.types.full_block import FullBlock
+    from btcgreen.util.bech32m import encode_puzzle_hash
+    from btcgreen.util.byte_types import hexstr_to_bytes
+    from btcgreen.util.config import load_config
+    from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+    from btcgreen.util.ints import uint16
+    from btcgreen.util.misc import format_bytes
 
     try:
         config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
@@ -62,7 +62,7 @@ async def show_async(
                 print(f"Current Blockchain Status: Not Synced. Peak height: {peak.height}")
             else:
                 print("\nSearching for an initial chain\n")
-                print("You may be able to expedite with 'btchia show -a host:port' using a known node.\n")
+                print("You may be able to expedite with 'btcgreen show -a host:port' using a known node.\n")
 
             if peak is not None:
                 if peak.is_transaction_block:

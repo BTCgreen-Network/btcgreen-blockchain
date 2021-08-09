@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useMemo } from 'react';
-import { Dropzone } from '@btchia/core';
+import { Dropzone } from '@btcgreen/core';
 import { Trans } from '@lingui/macro';
 import {
   CssBaseline,
@@ -15,7 +15,7 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card } from '@btchia/core';
+import { Card } from '@btcgreen/core';
 
 import {
   createState,
@@ -24,7 +24,7 @@ import {
 } from '../../../modules/createWallet';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { recover_did_action } from '../../../modules/message';
-import { btchia_to_mojo } from '../../../util/btchia';
+import { btcgreen_to_mojo } from '../../../util/btcgreen';
 import { openDialog } from '../../../modules/dialog';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 

@@ -2,7 +2,7 @@ import functools
 import logging
 from inspect import signature
 
-from btchia.util.streamable import Streamable
+from btcgreen.util.streamable import Streamable
 
 log = logging.getLogger(__name__)
 

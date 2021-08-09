@@ -3,17 +3,17 @@ import asyncio
 from blspy import G2Element
 from clvm_tools import binutils
 
-from btchia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from btchia.rpc.full_node_rpc_client import FullNodeRpcClient
-from btchia.types.blockchain_format.program import Program
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.bech32m import decode_puzzle_hash
-from btchia.util.condition_tools import parse_sexp_to_conditions
-from btchia.util.config import load_config
-from btchia.util.default_root import DEFAULT_ROOT_PATH
-from btchia.util.ints import uint32, uint16
+from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.bech32m import decode_puzzle_hash
+from btcgreen.util.condition_tools import parse_sexp_to_conditions
+from btcgreen.util.config import load_config
+from btcgreen.util.default_root import DEFAULT_ROOT_PATH
+from btcgreen.util.ints import uint32, uint16
 
 
 def print_conditions(spend_bundle: SpendBundle):

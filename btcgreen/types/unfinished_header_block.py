@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from btchia.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock
-from btchia.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from btchia.types.blockchain_format.vdf import VDFProof
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.util.streamable import Streamable, streamable
+from btcgreen.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock
+from btcgreen.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from btcgreen.types.blockchain_format.vdf import VDFProof
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

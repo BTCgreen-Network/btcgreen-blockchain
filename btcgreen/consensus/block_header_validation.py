@@ -5,31 +5,31 @@ from typing import Optional, Tuple
 
 from blspy import AugSchemeMPL
 
-from btchia.consensus.block_record import BlockRecord
-from btchia.consensus.blockchain_interface import BlockchainInterface
-from btchia.consensus.constants import ConsensusConstants
-from btchia.consensus.deficit import calculate_deficit
-from btchia.consensus.difficulty_adjustment import can_finish_sub_and_full_epoch
-from btchia.consensus.get_block_challenge import final_eos_is_already_included, get_block_challenge
-from btchia.consensus.make_sub_epoch_summary import make_sub_epoch_summary
-from btchia.consensus.pot_iterations import (
+from btcgreen.consensus.block_record import BlockRecord
+from btcgreen.consensus.blockchain_interface import BlockchainInterface
+from btcgreen.consensus.constants import ConsensusConstants
+from btcgreen.consensus.deficit import calculate_deficit
+from btcgreen.consensus.difficulty_adjustment import can_finish_sub_and_full_epoch
+from btcgreen.consensus.get_block_challenge import final_eos_is_already_included, get_block_challenge
+from btcgreen.consensus.make_sub_epoch_summary import make_sub_epoch_summary
+from btcgreen.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_interval_iters,
     calculate_sp_iters,
     is_overflow_block,
 )
-from btchia.consensus.vdf_info_computation import get_signage_point_vdf_info
-from btchia.types.blockchain_format.classgroup import ClassgroupElement
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot, SubSlotProofs
-from btchia.types.blockchain_format.vdf import VDFInfo, VDFProof
-from btchia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from btchia.types.header_block import HeaderBlock
-from btchia.types.unfinished_header_block import UnfinishedHeaderBlock
-from btchia.util.errors import Err, ValidationError
-from btchia.util.hash import std_hash
-from btchia.util.ints import uint8, uint32, uint64, uint128
+from btcgreen.consensus.vdf_info_computation import get_signage_point_vdf_info
+from btcgreen.types.blockchain_format.classgroup import ClassgroupElement
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.slots import ChallengeChainSubSlot, RewardChainSubSlot, SubSlotProofs
+from btcgreen.types.blockchain_format.vdf import VDFInfo, VDFProof
+from btcgreen.types.end_of_slot_bundle import EndOfSubSlotBundle
+from btcgreen.types.header_block import HeaderBlock
+from btcgreen.types.unfinished_header_block import UnfinishedHeaderBlock
+from btcgreen.util.errors import Err, ValidationError
+from btcgreen.util.hash import std_hash
+from btcgreen.util.ints import uint8, uint32, uint64, uint128
 
 log = logging.getLogger(__name__)
 

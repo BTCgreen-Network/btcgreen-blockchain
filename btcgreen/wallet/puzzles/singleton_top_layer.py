@@ -1,14 +1,14 @@
 from typing import List, Tuple
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.condition_opcodes import ConditionOpcode
-from btchia.types.coin_solution import CoinSolution
-from btchia.wallet.puzzles.load_clvm import load_clvm
-from btchia.wallet.lineage_proof import LineageProof
-from btchia.util.ints import uint64
-from btchia.util.hash import std_hash
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.condition_opcodes import ConditionOpcode
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.wallet.lineage_proof import LineageProof
+from btcgreen.util.ints import uint64
+from btcgreen.util.hash import std_hash
 
 SINGLETON_MOD = load_clvm("singleton_top_layer.clvm")
 SINGLETON_MOD_HASH = SINGLETON_MOD.get_tree_hash()

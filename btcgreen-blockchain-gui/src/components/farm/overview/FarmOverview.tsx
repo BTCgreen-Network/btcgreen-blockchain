@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { Flex, More } from '@btchia/core';
+import { Flex, More } from '@btcgreen/core';
 import { useSelector } from 'react-redux';
 import {
   Box,

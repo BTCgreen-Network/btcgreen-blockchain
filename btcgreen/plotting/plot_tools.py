@@ -11,11 +11,11 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from blspy import G1Element, PrivateKey
 from chiapos import DiskProver
 
-from btchia.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR, _expected_plot_size
-from btchia.types.blockchain_format.proof_of_space import ProofOfSpace
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.config import load_config, save_config
-from btchia.wallet.derive_keys import master_sk_to_local_sk
+from btcgreen.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR, _expected_plot_size
+from btcgreen.types.blockchain_format.proof_of_space import ProofOfSpace
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.config import load_config, save_config
+from btcgreen.wallet.derive_keys import master_sk_to_local_sk
 
 log = logging.getLogger(__name__)
 

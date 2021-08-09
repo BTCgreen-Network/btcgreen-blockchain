@@ -1,19 +1,19 @@
 import logging
 from typing import List, Optional, Union, Tuple
-from btchia.types.blockchain_format.program import Program, SerializedProgram
-from btchia.types.generator_types import BlockGenerator, GeneratorArg, GeneratorBlockCacheInterface, CompressorArg
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.puzzles.load_clvm import load_clvm
-from btchia.wallet.puzzles.rom_bootstrap_generator import get_generator
+from btcgreen.types.blockchain_format.program import Program, SerializedProgram
+from btcgreen.types.generator_types import BlockGenerator, GeneratorArg, GeneratorBlockCacheInterface, CompressorArg
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.puzzles.load_clvm import load_clvm
+from btcgreen.wallet.puzzles.rom_bootstrap_generator import get_generator
 
 GENERATOR_MOD = get_generator()
 
-DECOMPRESS_BLOCK = load_clvm("block_program_zero.clvm", package_or_requirement="btchia.wallet.puzzles")
-DECOMPRESS_PUZZLE = load_clvm("decompress_puzzle.clvm", package_or_requirement="btchia.wallet.puzzles")
-# DECOMPRESS_CSE = load_clvm("decompress_coin_solution_entry.clvm", package_or_requirement="btchia.wallet.puzzles")
+DECOMPRESS_BLOCK = load_clvm("block_program_zero.clvm", package_or_requirement="btcgreen.wallet.puzzles")
+DECOMPRESS_PUZZLE = load_clvm("decompress_puzzle.clvm", package_or_requirement="btcgreen.wallet.puzzles")
+# DECOMPRESS_CSE = load_clvm("decompress_coin_solution_entry.clvm", package_or_requirement="btcgreen.wallet.puzzles")
 
 DECOMPRESS_CSE_WITH_PREFIX = load_clvm(
-    "decompress_coin_solution_entry_with_prefix.clvm", package_or_requirement="btchia.wallet.puzzles"
+    "decompress_coin_solution_entry_with_prefix.clvm", package_or_requirement="btcgreen.wallet.puzzles"
 )
 log = logging.getLogger(__name__)
 

@@ -6,12 +6,12 @@ import aiohttp
 from blspy import AugSchemeMPL, PrivateKey, PublicKeyMPL, SignatureMPL
 from cryptography.fernet import Fernet
 
-from btchia.server.server import ssl_context_for_root
-from btchia.ssl.create_ssl import get_mozilla_ca_crt
-from btchia.util.byte_types import hexstr_to_bytes
-from btchia.util.hash import std_hash
-from btchia.wallet.derive_keys import master_sk_to_backup_sk
-from btchia.wallet.util.wallet_types import WalletType
+from btcgreen.server.server import ssl_context_for_root
+from btcgreen.ssl.create_ssl import get_mozilla_ca_crt
+from btcgreen.util.byte_types import hexstr_to_bytes
+from btcgreen.util.hash import std_hash
+from btcgreen.wallet.derive_keys import master_sk_to_backup_sk
+from btcgreen.wallet.util.wallet_types import WalletType
 
 
 def open_backup_file(file_path, private_key):

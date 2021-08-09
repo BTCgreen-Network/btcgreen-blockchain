@@ -2,8 +2,8 @@ import unittest
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
-from btchia.util.ints import uint8
-from btchia.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
+from btcgreen.util.ints import uint8
+from btcgreen.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
 
 
 class TestIsTypeList(unittest.TestCase):

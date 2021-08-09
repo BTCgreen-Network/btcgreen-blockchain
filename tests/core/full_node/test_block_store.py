@@ -7,10 +7,10 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from btchia.consensus.blockchain import Blockchain
-from btchia.full_node.block_store import BlockStore
-from btchia.full_node.coin_store import CoinStore
-from btchia.util.db_wrapper import DBWrapper
+from btcgreen.consensus.blockchain import Blockchain
+from btcgreen.full_node.block_store import BlockStore
+from btcgreen.full_node.coin_store import CoinStore
+from btcgreen.util.db_wrapper import DBWrapper
 from tests.setup_nodes import bt, test_constants
 
 log = logging.getLogger(__name__)

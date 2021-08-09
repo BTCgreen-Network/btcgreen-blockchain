@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, BoxProps } from '@material-ui/core';
-import { BTChia } from '@btchia/icons';
+import { BTCgreen } from '@btcgreen/icons';
 
-const StyledBTChia = styled(BTChia)`
+const StyledBTCgreen = styled(BTCgreen)`
   max-width: 100%;
   width: auto;
   height: auto;
@@ -12,7 +12,7 @@ const StyledBTChia = styled(BTChia)`
 export default function Logo(props: BoxProps) {
   return (
     <Box {...props}>
-      <StyledBTChia />
+      <StyledBTCgreen />
     </Box>
   );
 }

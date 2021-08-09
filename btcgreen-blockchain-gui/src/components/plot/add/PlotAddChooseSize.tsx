@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { useFormContext } from 'react-hook-form';
-import { CardStep, ConfirmDialog, Link, Select, StateColor } from '@btchia/core';
+import { CardStep, ConfirmDialog, Link, Select, StateColor } from '@btcgreen/core';
 import {
   Grid,
   FormControl,
@@ -66,7 +66,7 @@ export default function PlotAddChooseSize() {
           }
           <Link
             target="_blank"
-            href="https://github.com/BTChia-Network/btchia-blockchain/wiki/k-sizes"
+            href="https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/k-sizes"
           >
             Learn more
           </Link>

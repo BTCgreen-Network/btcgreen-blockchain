@@ -1,9 +1,9 @@
 from typing import List
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.program import SerializedProgram
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.condition_tools import (
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.program import SerializedProgram
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.condition_tools import (
     conditions_dict_for_solution,
     created_outputs_for_conditions_dict,
 )

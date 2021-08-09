@@ -3,12 +3,12 @@ from typing import Dict, List, Optional, Set
 import aiosqlite
 import sqlite3
 
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.util.db_wrapper import DBWrapper
-from btchia.util.ints import uint32, uint64
-from btchia.wallet.util.wallet_types import WalletType
-from btchia.wallet.wallet_coin_record import WalletCoinRecord
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.util.db_wrapper import DBWrapper
+from btcgreen.util.ints import uint32, uint64
+from btcgreen.wallet.util.wallet_types import WalletType
+from btcgreen.wallet.wallet_coin_record import WalletCoinRecord
 
 
 class WalletCoinStore:

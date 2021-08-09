@@ -4,12 +4,12 @@
 #
 # import pytest
 #
-# from btchia.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
-# from btchia.simulator.simulator_protocol import FarmNewBlockProtocol
-# from btchia.types.peer_info import PeerInfo
-# from btchia.util.ints import uint16, uint32, uint64
+# from btcgreen.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+# from btcgreen.simulator.simulator_protocol import FarmNewBlockProtocol
+# from btcgreen.types.peer_info import PeerInfo
+# from btcgreen.util.ints import uint16, uint32, uint64
 # from tests.setup_nodes import setup_simulators_and_wallets
-# from btchia.wallet.cc_wallet.cc_wallet import CCWallet
+# from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
 # from tests.time_out_assert import time_out_assert
 #
 #

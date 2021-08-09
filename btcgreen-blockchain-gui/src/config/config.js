@@ -1,4 +1,4 @@
 export default {
   local_test: process.env.LOCAL_TEST === 'true',
-  backup_host: 'https://backup.btchia.net',
+  backup_host: 'https://backup.btcgreen.net',
 };

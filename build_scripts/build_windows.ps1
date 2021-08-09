@@ -34,24 +34,24 @@ pip install pyinstaller==4.2
 pip install setuptools_scm
 
 Write-Output "   ---"
-Write-Output "Get BTCHIA_INSTALLER_VERSION"
-# The environment variable BTCHIA_INSTALLER_VERSION needs to be defined
-$env:BTCHIA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
+Write-Output "Get BTCGREEN_INSTALLER_VERSION"
+# The environment variable BTCGREEN_INSTALLER_VERSION needs to be defined
+$env:BTCGREEN_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
 
-if (-not (Test-Path env:BTCHIA_INSTALLER_VERSION)) {
-  $env:BTCHIA_INSTALLER_VERSION = '0.0.0'
-  Write-Output "WARNING: No environment variable BTCHIA_INSTALLER_VERSION set. Using 0.0.0"
+if (-not (Test-Path env:BTCGREEN_INSTALLER_VERSION)) {
+  $env:BTCGREEN_INSTALLER_VERSION = '0.0.0'
+  Write-Output "WARNING: No environment variable BTCGREEN_INSTALLER_VERSION set. Using 0.0.0"
   }
-Write-Output "BTChia Version is: $env:BTCHIA_INSTALLER_VERSION"
+Write-Output "BTCgreen Version is: $env:BTCGREEN_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
-Write-Output "Build btchia-blockchain wheels"
+Write-Output "Build btcgreen-blockchain wheels"
 Write-Output "   ---"
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
 
 Write-Output "   ---"
-Write-Output "Install btchia-blockchain wheels into venv with pip"
+Write-Output "Install btcgreen-blockchain wheels into venv with pip"
 Write-Output "   ---"
 
 Write-Output "pip install miniupnpc"
@@ -60,20 +60,20 @@ pip install --no-index --find-links=.\win_build\ miniupnpc
 # Write-Output "pip install setproctitle"
 # pip install setproctitle==1.2.2
 
-Write-Output "pip install btchia-blockchain"
-pip install --no-index --find-links=.\win_build\ btchia-blockchain
+Write-Output "pip install btcgreen-blockchain"
+pip install --no-index --find-links=.\win_build\ btcgreen-blockchain
 
 Write-Output "   ---"
-Write-Output "Use pyinstaller to create btchia .exe's"
+Write-Output "Use pyinstaller to create btcgreen .exe's"
 Write-Output "   ---"
-$SPEC_FILE = (python -c 'import btchia; print(btchia.PYINSTALLER_SPEC_PATH)') -join "`n"
+$SPEC_FILE = (python -c 'import btcgreen; print(btcgreen.PYINSTALLER_SPEC_PATH)') -join "`n"
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
-Write-Output "Copy btchia executables to btchia-blockchain-gui\"
+Write-Output "Copy btcgreen executables to btcgreen-blockchain-gui\"
 Write-Output "   ---"
-Copy-Item "dist\daemon" -Destination "..\btchia-blockchain-gui\" -Recurse
-Set-Location -Path "..\btchia-blockchain-gui" -PassThru
+Copy-Item "dist\daemon" -Destination "..\btcgreen-blockchain-gui\" -Recurse
+Set-Location -Path "..\btcgreen-blockchain-gui" -PassThru
 
 git status
 
@@ -97,19 +97,19 @@ If ($LastExitCode -gt 0){
 }
 
 Write-Output "   ---"
-Write-Output "Increase the stack for btchia command for (btchia plots create) chiapos limitations"
+Write-Output "Increase the stack for btcgreen command for (btcgreen plots create) chiapos limitations"
 # editbin.exe needs to be in the path
-editbin.exe /STACK:8000000 daemon\btchia.exe
+editbin.exe /STACK:8000000 daemon\btcgreen.exe
 Write-Output "   ---"
 
-$packageVersion = "$env:BTCHIA_INSTALLER_VERSION"
-$packageName = "BTChia-$packageVersion"
+$packageVersion = "$env:BTCGREEN_INSTALLER_VERSION"
+$packageName = "BTCgreen-$packageVersion"
 
 Write-Output "packageName is $packageName"
 
 Write-Output "   ---"
 Write-Output "electron-packager"
-electron-packager . BTChia --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\btchia.ico --app-version=$packageVersion
+electron-packager . BTCgreen --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\btcgreen.ico --app-version=$packageVersion
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -123,8 +123,8 @@ If ($env:HAS_SECRET) {
    Write-Output "   ---"
    Write-Output "Add timestamp and verify signature"
    Write-Output "   ---"
-   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\BTChiaSetup-$packageVersion.exe
-   signtool.exe verify /v /pa .\release-builds\windows-installer\BTChiaSetup-$packageVersion.exe
+   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\BTCgreenSetup-$packageVersion.exe
+   signtool.exe verify /v /pa .\release-builds\windows-installer\BTCgreenSetup-$packageVersion.exe
    }   Else    {
    Write-Output "Skipping timestamp and verify signatures - no authorization to install certificates"
 }

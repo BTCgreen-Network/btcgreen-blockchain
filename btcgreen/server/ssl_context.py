@@ -23,8 +23,8 @@ def private_ssl_ca_paths(path: Path, config: Dict):
     )
 
 
-def btchia_ssl_ca_paths(path: Path, config: Dict):
+def btcgreen_ssl_ca_paths(path: Path, config: Dict):
     return (
-        path / config["btchia_ssl_ca"]["crt"],
-        path / config["btchia_ssl_ca"]["key"],
+        path / config["btcgreen_ssl_ca"]["crt"],
+        path / config["btcgreen_ssl_ca"]["key"],
     )

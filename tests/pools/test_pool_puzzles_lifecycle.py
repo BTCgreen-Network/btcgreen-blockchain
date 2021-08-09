@@ -5,23 +5,23 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-from btchia.types.blockchain_format.program import Program
-from btchia.types.blockchain_format.sized_bytes import bytes32
-from btchia.types.blockchain_format.coin import Coin
-from btchia.types.coin_solution import CoinSolution
-from btchia.types.spend_bundle import SpendBundle
-from btchia.util.ints import uint64, uint32
-from btchia.consensus.default_constants import DEFAULT_CONSTANTS
-from btchia.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from btcgreen.types.blockchain_format.program import Program
+from btcgreen.types.blockchain_format.sized_bytes import bytes32
+from btcgreen.types.blockchain_format.coin import Coin
+from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.spend_bundle import SpendBundle
+from btcgreen.util.ints import uint64, uint32
+from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
+from btcgreen.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     puzzle_for_pk,
     solution_for_conditions,
     calculate_synthetic_secret_key,
     DEFAULT_HIDDEN_PUZZLE_HASH,
 )
-from btchia.wallet.puzzles.p2_conditions import puzzle_for_conditions
-from btchia.wallet.puzzles import singleton_top_layer
-from btchia.pools.pool_wallet_info import PoolState
-from btchia.pools.pool_puzzles import (
+from btcgreen.wallet.puzzles.p2_conditions import puzzle_for_conditions
+from btcgreen.wallet.puzzles import singleton_top_layer
+from btcgreen.pools.pool_wallet_info import PoolState
+from btcgreen.pools.pool_puzzles import (
     create_waiting_room_inner_puzzle,
     create_pooling_inner_puzzle,
     create_p2_singleton_puzzle,
@@ -47,9 +47,9 @@ from tests.clvm.coin_store import CoinStore, CoinTimestamp, BadSpendBundleError
 
 """
 This test suite aims to test:
-    - btchia.pools.pool_puzzles.py
-    - btchia.wallet.puzzles.pool_member_innerpuz.clvm
-    - btchia.wallet.puzzles.pool_waiting_room_innerpuz.clvm
+    - btcgreen.pools.pool_puzzles.py
+    - btcgreen.wallet.puzzles.pool_member_innerpuz.clvm
+    - btcgreen.wallet.puzzles.pool_waiting_room_innerpuz.clvm
 """
 
 

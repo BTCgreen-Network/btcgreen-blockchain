@@ -8,7 +8,7 @@
       "esnext"
     ],
     "paths": {
-      "@btchia/*": ["./components/*"]
+      "@btcgreen/*": ["./components/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
