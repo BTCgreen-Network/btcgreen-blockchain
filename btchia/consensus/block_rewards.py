@@ -13,19 +13,20 @@ def calculate_pool_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
     """
+    return uint64(int(0))
 
     if height == 0:
-        return uint64(int((7 / 8) * 30000 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 0 * _mojo_per_btchia))
     elif height < 3 * _blocks_per_year:
-        return uint64(int((7 / 8) * 1 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 2 * _mojo_per_btchia))
     elif height < 6 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.5 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 1 * _mojo_per_btchia))
     elif height < 9 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.25 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 0.5 * _mojo_per_btchia))
     elif height < 12 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.125 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 0.25 * _mojo_per_btchia))
     else:
-        return uint64(int((7 / 8) * 0.0625 * _mojo_per_btchia))
+        return uint64(int((7 / 8) * 0.125 * _mojo_per_btchia))
 
 
 def calculate_base_farmer_reward(height: uint32) -> uint64:
