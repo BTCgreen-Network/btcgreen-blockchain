@@ -4,7 +4,7 @@ Discord Channel: https://discord.gg/xguteVCYHh
 
 Website: https://btchia.org (coming soon)
 
-Introducer: dns-introducer.btchia.org:18620
+Introducer: dns-introducer.btchia.org:9282
 
 Changelog:
 v1.0.0 - Initial Release
