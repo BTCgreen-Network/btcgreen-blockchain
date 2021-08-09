@@ -92,7 +92,7 @@ export default function WalletHistory(props: Props) {
       {transactions?.length ? (
         <Table
           cols={cols}
-          rows={transactions.filter(transaction => transaction.amount != 0)}
+          rows={transactions}
           rowsPerPageOptions={[10, 25, 100]}
           rowsPerPage={10}
           pages
