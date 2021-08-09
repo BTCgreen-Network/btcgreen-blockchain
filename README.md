@@ -4,7 +4,7 @@ Discord Channel: https://discord.gg/A9aHJ5ZYaS
 
 Website: Coming Soon
 
-Introducer: dns-introducer.btcgreen.org:9282
+Introducer: dns-introducer.btcgreen.us:9282
 
 Prefarm: 30,000
 

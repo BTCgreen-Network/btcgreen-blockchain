@@ -392,7 +392,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Added
 
-- This is a hard fork/breaking change from RC6/7. TXBTC Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.btcgreen.org/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
+- This is a hard fork/breaking change from RC6/7. TXBTC Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.btcgreen.us/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
 - The GUI now has a tooltip that directs users to the explanation of the plot filter.
 - The GUI now has a tooltip to explain the "Disable bitfield plotting" option. Thanks @shaneo257 for the idea.
 - The GUI now has a tooltip to explain Hierarchical Deterministic keys next to Receive Address on the Wallet page.
@@ -471,8 +471,8 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - When processing mempool transactions, Coin IDs are now calculated from parent coin ID and amount
 - We implemented rate limiting for full node. This can and will lead to short term bans of certain peers that didn't behave in expected ways. This is ok and normal, but strong defense against many DDOS attacks.
 - `requirements-dev.txt` has been removed in favor of the CI actions and test scripts.
-- We have moved to a new and much higher scalability download.btcgreen.org to support the mainnet launch flag and additional download demand.
-- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.btcgreen.org/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.btcgreen.org/latest/Setup-MacOS.dmg).
+- We have moved to a new and much higher scalability download.btcgreen.us to support the mainnet launch flag and additional download demand.
+- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.btcgreen.us/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.btcgreen.us/latest/Setup-MacOS.dmg).
 - BTCgreen wheels not on Pypi and some dependecies not found there also are now on pypi.chia.net.
 - Additional typing has been added to the Python code with thanks to @jespino.
 - Cryptography and Keyring have been bumped to their current releases.
@@ -495,7 +495,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 ### Added
 
 - The RC5 release is a new breaking change/hard fork blockchain. Plots and keys from previous chains will work fine on RC5 but balances of TXBTC will not come forward.
-- We now support a "green flag" chain launch process. A new version of the software will poll download.btcgreen.org/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
+- We now support a "green flag" chain launch process. A new version of the software will poll download.btcgreen.us/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
 - Bluebox Timelords are back. These are Timelords most anyone can run. They search through the historical chain and find large proofs of times and compact them down to their smallest representation. This significantly speeds up syncing for newly started nodes. Currently this is only supported on Linux and MacOS x86_64 but we will expand that. Any desktop or server of any age will be fast enough to be a useful Bluebox Timelord.
 - Thanks to @jespino there is now `btcgreen farm summary`. You can now get almost exactly the same farming information on the CLI as the GUI.
 - We have added Romanian to the GUI translations. Thank you to @bicilis on [Crowdin](https://crowdin.com/project/btcgreen-blockchain). We also added a couple of additional target languages. Klingon anyone?
@@ -526,7 +526,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - Nodes that were interrupted by a network crash or standby on a laptop were not syncing upon reconnection in RC4.
 - Sync issues could stop syncing from restarting and could lead to a peer host that you could not remove.
 - Adding Click changed the behavior of `btcgreen keys add -m`. The help now makes it clear that the 24 word mnemonic needs to be surrounded by a pair of quotes.
-- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.btcgreen.org via https, for example.
+- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.btcgreen.us via https, for example.
 - The difficulty adjustment calculation was simplified.
 - All of the btcgreen sub repositories that were attempting to build MacOS Universal wheels were only generating x86_64 wheels internally. We have moved back to only generating x86_64 MacOS wheels on CI.
 - However, we have updated and test compiled all BTCgreen dependencies on Apple Silicon and will be making available a test .dmg for MacOS ARM64 shortly.
@@ -818,7 +818,7 @@ all fields that referred to sub blocks are changed to blocks.
 
 - Welcome to the new consensus. This release is an all but a full re-write of the blockchain in under 30 days. There is now only one tip of the blockchain but we went from two chains to three. Block times are now a little under a minute but there are a couple of sub blocks between each transaction block. A block is also itself a special kind of sub block and each sub block rewards the farmer who won it 1 TXBTC. Sub blocks come, on average, about every 17 to 18 seconds.
 - Starting with this Beta, there are 4608 opportunities per day for a farmer to win 1 TXBTC compared to Beta 18 where there were 288 opportunities per day for a farmer to win 16 TXBTC.
-- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [btcgreen.org](https://btcgreen.org/). Among the improvements this gives the BTCgreen blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
+- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [btcgreen.us](https://btcgreen.us/). Among the improvements this gives the BTCgreen blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
 - New consensus means this is a very hard fork. All of your TXBTC from Beta 17/18 will be gone. Your plots and keys will work just fine however. You will have to sync to the new chain.
 - You now have to sync 16 times more "blocks" for every 5 minutes of historical time so syncing is slower than it was on the old chain. We're aware of this and will be speeding it up and addressing blockchain database growth in the nest couple of releases.
 - Prior to this Beta 19, we had block times that targeted 5 minutes and rewarded 16 TXBTC to one farmer. Moving forward we have epoch times that target 10 minutes and reward 32 TXBTC to 32 farmers about every 17-18 seconds over that period. This has subtle naming and UI impacts in various places.
@@ -1001,7 +1001,7 @@ all fields that referred to sub blocks are changed to blocks.
 ### Added
 
 - Rate limited wallets can now have unspent and un-spendable funds clawed back by the Admin wallet.
-- You can now backup your wallet related metadata in an encrypted and signed file to a free service from BTCgreen Network at backup.btcgreen.org. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the BTCgreen backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.btcgreen.org, your own installation, or a third party's version of it.
+- You can now backup your wallet related metadata in an encrypted and signed file to a free service from BTCgreen Network at backup.btcgreen.us. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the BTCgreen backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.btcgreen.us, your own installation, or a third party's version of it.
 - Added a Code of Conduct in CODE_OF_CONDUCT.md.
 - Added a bug report template in `.github/ISSUE_TEMPLATE/bug_report.md`.
 
@@ -1334,7 +1334,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Added
 
-- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in chialisp. Offers are especially cool as they create a truly decentralized exbtcange capability. Read much more about them in Bram's [blog post on Coloured coins](https://btcgreen.org/2020/04/29/coloured-coins-launch.en.html).
+- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in chialisp. Offers are especially cool as they create a truly decentralized exbtcange capability. Read much more about them in Bram's [blog post on Coloured coins](https://btcgreen.us/2020/04/29/coloured-coins-launch.en.html).
 - This release adds support for native Windows via a (mostly) automated installer and MacOS Mojave. Windows still requires some PowerShell command line use. You should expect ongoing improvements in ease of install and replication of the command line tools in the GUI. Again huge thanks to @dkackman for continued Windows installer development. Native Windows is currently slightly slower than the same version running in WSL 2 on the same machine for both block verification and plotting.
 - We made some speed improvements that positively affected all platforms while trying to increase plotting speed in Windows.
 - The graphical Full Node display now shows the expected finish times of each of the prospective chain tips.
@@ -1589,7 +1589,7 @@ relic. We will make a patch available for these systems shortly.
 ### Added
 
 - This is the first release of the BTCgreen testnet! Blockchain consensus, proof of time, and proof of space are included.
-- More details on the release at [https://www.btcgreen.org/developer/](https://www.btcgreen.org/developer/)
+- More details on the release at [https://www.btcgreen.us/developer/](https://www.btcgreen.us/developer/)
 
 [unreleased]: https://github.com/BTCgreen-Network/btcgreen-blockchain/compare/1.0beta5...dev
 [1.0beta5]: https://github.com/BTCgreen-Network/btcgreen-blockchain/compare/1.0beta4...1.0beta5
