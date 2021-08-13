@@ -219,9 +219,16 @@ class HarvesterAPI:
                 # If you want additional logs, uncomment the following line
                 # self.harvester.log.debug(f"Looking up qualities on {filename} took: {time_taken}")
             for response in sublist:
-                total_proofs_found += 1
-                msg = make_msg(ProtocolMessageTypes.new_proof_of_space, response)
-                await peer.send_message(msg)
+                 total_proofs_found += 1
+                 msg = make_msg(ProtocolMessageTypes.new_proof_of_space, response)
+                 await peer.send_message(msg)
+            if sublist:
+                self.harvester.log.info(
+                    f"Found {len(sublist)} proofs in {filename} in {time_taken:.5f} s"
+                )
+
+         now = uint64(int(time.time()))
+         farming_info = FarmingInfo(
 
         now = uint64(int(time.time()))
         farming_info = FarmingInfo(
