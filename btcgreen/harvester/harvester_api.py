@@ -222,13 +222,6 @@ class HarvesterAPI:
                  total_proofs_found += 1
                  msg = make_msg(ProtocolMessageTypes.new_proof_of_space, response)
                  await peer.send_message(msg)
-            if sublist:
-                self.harvester.log.info(
-                    f"Found {len(sublist)} proofs in {filename} in {time_taken:.5f} s"
-                )
-
-         now = uint64(int(time.time()))
-         farming_info = FarmingInfo(
 
         now = uint64(int(time.time()))
         farming_info = FarmingInfo(
