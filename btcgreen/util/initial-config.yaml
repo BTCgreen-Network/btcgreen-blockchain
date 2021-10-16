@@ -81,17 +81,17 @@ network_overrides: &network_overrides
       address_prefix: "xbtc"
       default_full_node_port: 9282
     testnet0:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
     testnet1:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
     testnet2:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
     testnet3:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
     testnet4:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
     testnet7:
-      address_prefix: "tcov"
+      address_prefix: "txbtc"
       default_full_node_port: 58444
 
 selected_network: &selected_network "mainnet"
