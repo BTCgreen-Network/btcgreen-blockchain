@@ -6,10 +6,10 @@ from concurrent.futures.process import ProcessPoolExecutor
 from enum import Enum
 from typing import Dict, List, Optional, Set, Tuple, Union
 
-from clvm.casts import int_from_bytes
-
 from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 from btcgreen.util.config import load_config
+from clvm.casts import int_from_bytes
+
 from btcgreen.consensus.block_body_validation import validate_block_body
 from btcgreen.consensus.block_header_validation import validate_finished_header_block, validate_unfinished_header_block
 from btcgreen.consensus.block_record import BlockRecord

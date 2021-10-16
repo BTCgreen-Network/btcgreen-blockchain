@@ -3,9 +3,8 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { mojo_to_btcgreen } from '../../../util/btcgreen';
+import { byte_to_btcgreen } from '../../../util/btcgreen';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { FormatLargeNumber } from '@btcgreen/core';
 
 export default function FarmCardBlockRewards() {
   const currencyCode = useCurrencyCode();
@@ -27,7 +26,7 @@ export default function FarmCardBlockRewards() {
       const val =
         BigInt(farmerRewardAmount.toString()) +
         BigInt(poolRewardAmount.toString());
-      return mojo_to_btcgreen(val);
+      return byte_to_btcgreen(val);
     }
   }, [farmerRewardAmount, poolRewardAmount]);
 
@@ -35,7 +34,7 @@ export default function FarmCardBlockRewards() {
     <FarmCard
       title={<Trans>{currencyCode} Block Rewards</Trans>}
       description={<Trans>Without fees</Trans>}
-      value={<FormatLargeNumber value={blockRewards} />}
+      value={blockRewards}
       loading={loading}
     />
   );

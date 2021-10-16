@@ -1429,8 +1429,8 @@ msgid "Not found Plots"
 msgstr "Plot non trovati"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:188
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25COV reward for pooling plots."
-msgstr "Nota che questo non cambia gli indirizzi di pagamento del pooling. Questo influenza solo i vecchi plot col vecchio formato, e la ricompensa di 0.25COV per il pooling dei plot."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XBTC reward for pooling plots."
+msgstr "Nota che questo non cambia gli indirizzi di pagamento del pooling. Questo influenza solo i vecchi plot col vecchio formato, e la ricompensa di 0.25XBTC per il pooling dei plot."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
@@ -2100,8 +2100,8 @@ msgid "Select Wallet Type"
 msgstr "Seleziona Tipo di Wallet"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
-msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "Seleziona la destinazione finale per la cartella dove vuoi che venga conservato il plot. Ti consigliamo di usare una hard drive lento e capiente (come un HDD)."
+msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external XBTC)."
+msgstr "Seleziona la destinazione finale per la cartella dove vuoi che venga conservato il plot. Ti consigliamo di usare una hard drive lento e capiente (come un XBTC)."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -3007,5 +3007,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Tasse Transazione Utente"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mojo, plural, one {mojo} other {mojos}}"
-msgstr "{mojo, plural, one {mojo} other {mojos}}"
+msgid "{byte, plural, one {byte} other {bytes}}"
+msgstr "{byte, plural, one {byte} other {bytes}}"

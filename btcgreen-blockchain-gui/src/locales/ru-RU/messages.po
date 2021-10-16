@@ -353,7 +353,7 @@ msgstr ""
 "\n"
 "BTCgreen Network разрабатывает блокчейн и платформу интеллектуальных транзакций, созданную изобретателем BitTorrent Брэмом Коэном. Он реализует первый новый алгоритм консенсуса Накамото со времен Биткойна в 2008 году. Доказательства пространства и времени заменяют энергоемкие «доказательства работы».\n"
 "\n"
-"BTCgreenlisp - это новый язык программирования BTCgreen, который является мощным, легким для аудита и безопасным. Это упростит использование криптовалюты, чем наличные деньги или кредит. В настоящее время доступны следующие эталонные смарт-транзакции: атомарные свопы, авторизованные получатели, восстанавливаемые кошельки, кошельки с несколькими подписями, кошельки с ограничением скорости и цветные монеты. Брэм представляет BTCgreenlisp в нашем блоге.\n"
+"Chialisp - это новый язык программирования BTCgreen, который является мощным, легким для аудита и безопасным. Это упростит использование криптовалюты, чем наличные деньги или кредит. В настоящее время доступны следующие эталонные смарт-транзакции: атомарные свопы, авторизованные получатели, восстанавливаемые кошельки, кошельки с несколькими подписями, кошельки с ограничением скорости и цветные монеты. Брэм представляет Chialisp в нашем блоге.\n"
 "Вам следует ознакомиться с примечаниями к выпуску, а затем установить блокчейн BTCgreen.\n"
 "\n"
 "Руководство для начинающих\n"
@@ -435,7 +435,7 @@ msgstr ""
 "\n"
 "Начальный размер графика - 32 k (101 ГиБ). Для создания графика вам потребуется временное хранилище размером не менее 332 ГиБ (357 ГБ).\n"
 "\n"
-"Выберите количество участков - вы можете выбрать количество для создания на SSD или HDD\n"
+"Выберите количество участков - вы можете выбрать количество для создания на SSD или XBTC\n"
 "\n"
 "График в очередь: означает, что если выбрано (5), он будет отображать # 1, затем, когда закончите, начнется # 2\n"
 "Параллельный график: \n"
@@ -459,7 +459,7 @@ msgstr ""
 " k 32 (101 ГиБ).\n"
 "\n"
 "Для этой работы рекомендуется использовать SSD-накопитель или накопитель NVME, но убедитесь, что вы знаете о SSD Endurance.\n"
-"Выберите место на –HDD, где готовое \"поле\" будет храниться. \n"
+"Выберите место на –XBTC, где готовое \"поле\" будет храниться. \n"
 "После создания оно перейдет в это место, где его будут обрабатывать и зарабатывать монеты чиа.\n"
 " Хранилище может быть внутренним или подключенным через USB. Сетевые диски могут работать, но могут перегружать вашу локальную сеть или медленно отвечать за вознаграждение (должно быть менее 30 секунд). Планируйте заранее - хранилище быстро заполняется.\n"
 "\n"
@@ -1601,8 +1601,8 @@ msgid "Not found Plots"
 msgstr "Участки не найдены"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:188
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25COV reward for pooling plots."
-msgstr "Обратите внимание, что это не меняет адреса выплат пула. Это влияет только на старый формат участков и на вознаграждение 0.25COV за участки в пуле."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XBTC reward for pooling plots."
+msgstr "Обратите внимание, что это не меняет адреса выплат пула. Это влияет только на старый формат участков и на вознаграждение 0.25XBTC за участки в пуле."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
@@ -2272,8 +2272,8 @@ msgid "Select Wallet Type"
 msgstr "Выберите Тип Кошелька"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
-msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "Выберите путь для конечной папки, в которой вы хотите хранить участок. Мы рекомендуем вам использовать большой медленный жесткий диск (например, внешний жесткий диск HDD)."
+msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external XBTC)."
+msgstr "Выберите путь для конечной папки, в которой вы хотите хранить участок. Мы рекомендуем вам использовать большой медленный жесткий диск (например, внешний жесткий диск XBTC)."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -3179,5 +3179,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Комиссия за транзакции пользователей"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mojo, plural, one {mojo} other {mojos}}"
+msgid "{byte, plural, one {byte} other {bytes}}"
 msgstr ""

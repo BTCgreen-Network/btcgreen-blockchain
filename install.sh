@@ -1,4 +1,20 @@
 #!/bin/bash
+
+# Check current BTCgreen SSL version to prevent update on old SSL
+if [ -e ../.btcgreen/mainnet/config/ssl/ca/btcgreen_ca.crt ]; then
+	BTCGREEN_SSL_SERIAL=$(openssl x509 -noout -in ../.btcgreen/mainnet/config/ssl/ca/btcgreen_ca.crt -serial)
+	if [ $BTCGREEN_SSL_SERIAL = "serial=5C8A71239328650EB9FEF85CEC32BF779CA6A0C5" ]; then
+		echo ""
+		echo "WARNING:"
+		echo "Old version of BTCgreen Blockchain SSL has been detected."
+		echo "Please visit https://btcgreen.us/sslupdate/ for further instructions."
+		echo ""
+		echo "Exiting installer..."
+		echo ""
+		exit 1
+	fi
+fi
+
 set -e
 UBUNTU=false
 DEBIAN=false
@@ -119,10 +135,11 @@ python -m pip install wheel
 python -m pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc==2.2.2
 python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
 
-echo ""
+
 echo "BTCgreen blockchain install.sh complete."
-echo "For assistance join us on Discord in the #testnet chat channel:"
-echo "https://discord.gg/TgJyxsEFFc"
+echo ""
+echo "Visit our Website to learn more about BTCgreen:"
+echo "https://btcgreen.us"
 echo ""
 echo "Try the Quick Start Guide to running btcgreen-blockchain:"
 echo "https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Quick-Start-Guide"

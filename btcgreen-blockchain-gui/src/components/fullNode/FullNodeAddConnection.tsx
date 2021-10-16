@@ -24,7 +24,7 @@ export default function FullNodeAddConnection(props: Props) {
     shouldUnregister: false,
     defaultValues: {
       host: '',
-      port: '9282',
+      port: '',
     },
   });
 

@@ -78,11 +78,11 @@ class HarvesterCacheEntry:
         self.data = data
         self.bump_last_update()
 
-    def needs_update(self, update_interval: int):
-        return time.time() - self.last_update > update_interval
+    def needs_update(self):
+        return time.time() - self.last_update > UPDATE_HARVESTER_CACHE_INTERVAL
 
-    def expired(self, update_interval: int):
-        return time.time() - self.last_update > update_interval * 10
+    def expired(self):
+        return time.time() - self.last_update > UPDATE_HARVESTER_CACHE_INTERVAL * 10
 
 
 class Farmer:
@@ -114,9 +114,7 @@ class Farmer:
         # A dictionary of keys to time added. These keys refer to keys in the above 4 dictionaries. This is used
         # to periodically clear the memory
         self.cache_add_time: Dict[bytes32, uint64] = {}
-
-        # Interval to request plots from connected harvesters
-        self.update_harvester_cache_interval = UPDATE_HARVESTER_CACHE_INTERVAL
+        self.lastChannageTime = 0
 
         self.cache_clear_task: asyncio.Task
         self.update_pool_state_task: asyncio.Task
@@ -151,13 +149,13 @@ class Farmer:
             raise RuntimeError(error_str)
 
         # This is the farmer configuration
-        self.farmer_target_encoded = self.config["cov_target_address"]
+        self.farmer_target_encoded = self.config["xbtc_target_address"]
         self.farmer_target = decode_puzzle_hash(self.farmer_target_encoded)
 
         self.pool_public_keys = [G1Element.from_bytes(bytes.fromhex(pk)) for pk in self.config["pool_public_keys"]]
 
         # This is the self pooling configuration, which is only used for original self-pooled plots
-        self.pool_target_encoded = self.pool_config["cov_target_address"]
+        self.pool_target_encoded = self.pool_config["xbtc_target_address"]
         self.pool_target = decode_puzzle_hash(self.pool_target_encoded)
         self.pool_sks_map: Dict = {}
         for key in self.get_private_keys():
@@ -534,11 +532,11 @@ class Farmer:
         if farmer_target_encoded is not None:
             self.farmer_target_encoded = farmer_target_encoded
             self.farmer_target = decode_puzzle_hash(farmer_target_encoded)
-            config["farmer"]["cov_target_address"] = farmer_target_encoded
+            config["farmer"]["xbtc_target_address"] = farmer_target_encoded
         if pool_target_encoded is not None:
             self.pool_target_encoded = pool_target_encoded
             self.pool_target = decode_puzzle_hash(pool_target_encoded)
-            config["pool"]["cov_target_address"] = pool_target_encoded
+            config["pool"]["xbtc_target_address"] = pool_target_encoded
         save_config(self._root_path, "config.yaml", config)
 
     async def set_payout_instructions(self, launcher_id: bytes32, payout_instructions: str):
@@ -594,7 +592,7 @@ class Farmer:
             remove_peers = []
             for peer_id, peer_cache in host_cache.items():
                 # If the peer cache is expired it means the harvester didn't respond for too long
-                if peer_cache.expired(self.update_harvester_cache_interval):
+                if peer_cache.expired():
                     remove_peers.append(peer_id)
             for key in remove_peers:
                 del host_cache[key]
@@ -607,11 +605,11 @@ class Farmer:
         updated = False
         for connection in self.server.get_connections(NodeType.HARVESTER):
             cache_entry = await self.get_cached_harvesters(connection)
-            if cache_entry.needs_update(self.update_harvester_cache_interval):
+            if cache_entry.needs_update():
                 self.log.debug(f"update_cached_harvesters update harvester: {connection.peer_node_id}")
                 cache_entry.bump_last_update()
                 response = await connection.request_plots(
-                    harvester_protocol.RequestPlots(), timeout=self.update_harvester_cache_interval
+                    harvester_protocol.RequestPlots(), timeout=UPDATE_HARVESTER_CACHE_INTERVAL
                 )
                 if response is not None:
                     if isinstance(response, harvester_protocol.RespondPlots):

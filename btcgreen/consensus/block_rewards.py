@@ -28,7 +28,6 @@ def calculate_pool_reward(height: uint32) -> uint64:
     else:
         return uint64(int((7 / 8) * 0.0625 * _mojo_per_btcgreen))
 
-
 def calculate_base_farmer_reward(height: uint32) -> uint64:
     """
     Returns the base farmer reward at a certain block height.

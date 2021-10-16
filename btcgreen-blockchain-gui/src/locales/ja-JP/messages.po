@@ -1429,7 +1429,7 @@ msgid "Not found Plots"
 msgstr "見つからない耕地"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:188
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25COV reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XBTC reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
@@ -2100,8 +2100,8 @@ msgid "Select Wallet Type"
 msgstr "ウォレットの種類を選択してください:"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
-msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "耕地の最終保存先となるフォルダを選択してください。大容量の遅いハードドライブがおすすめです。 (外部 HDD など)"
+msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external XBTC)."
+msgstr "耕地の最終保存先となるフォルダを選択してください。大容量の遅いハードドライブがおすすめです。 (外部 XBTC など)"
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -3007,5 +3007,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} ユーザー取引手数料"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mojo, plural, one {mojo} other {mojos}}"
+msgid "{byte, plural, one {byte} other {bytes}}"
 msgstr ""

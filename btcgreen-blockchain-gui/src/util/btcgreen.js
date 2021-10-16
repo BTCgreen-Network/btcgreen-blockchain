@@ -83,32 +83,32 @@ btcgreen_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const mojo_to_btcgreen = (mojo) => {
-  return btcgreen_formatter(Number.parseInt(mojo), 'mojo').to('btcgreen').value();
+export const byte_to_btcgreen = (byte) => {
+  return btcgreen_formatter(Number.parseInt(byte), 'byte').to('btcgreen').value();
 };
 
-export const btcgreen_to_mojo = (btcgreen) => {
+export const btcgreen_to_byte = (btcgreen) => {
   return btcgreen_formatter(Number.parseFloat(Number(btcgreen)), 'btcgreen')
-    .to('mojo')
+    .to('byte')
     .value();
 };
 
-export const mojo_to_btcgreen_string = (mojo) => {
-  return btcgreen_formatter(Number(mojo), 'mojo').to('btcgreen').toString();
+export const byte_to_btcgreen_string = (byte) => {
+  return btcgreen_formatter(Number(byte), 'byte').to('btcgreen').toString();
 };
 
-export const mojo_to_colouredcoin = (mojo) => {
-  return btcgreen_formatter(Number.parseInt(mojo), 'mojo')
+export const byte_to_colouredcoin = (byte) => {
+  return btcgreen_formatter(Number.parseInt(byte), 'byte')
     .to('colouredcoin')
     .value();
 };
 
-export const colouredcoin_to_mojo = (colouredcoin) => {
+export const colouredcoin_to_byte = (colouredcoin) => {
   return btcgreen_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
-    .to('mojo')
+    .to('byte')
     .value();
 };
 
-export const mojo_to_colouredcoin_string = (mojo) => {
-  return btcgreen_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
+export const byte_to_colouredcoin_string = (byte) => {
+  return btcgreen_formatter(Number(byte), 'byte').to('colouredcoin').toString();
 };

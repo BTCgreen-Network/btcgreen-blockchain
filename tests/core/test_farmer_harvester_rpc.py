@@ -1,6 +1,5 @@
 # flake8: noqa: E501
 import logging
-import traceback
 from os import unlink
 from pathlib import Path
 from secrets import token_bytes
@@ -29,7 +28,7 @@ from btcgreen.util.hash import std_hash
 from btcgreen.util.ints import uint8, uint16, uint32, uint64
 from btcgreen.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
-from tests.time_out_assert import time_out_assert, time_out_assert_custom_interval
+from tests.time_out_assert import time_out_assert
 
 log = logging.getLogger(__name__)
 
@@ -171,66 +170,37 @@ class TestRpc:
             res_2 = await client_2.get_plots()
             assert len(res_2["plots"]) == num_plots
 
-            # Reset cache and force updates cache every second to make sure the farmer gets the most recent data
-            update_interval_before = farmer_api.farmer.update_harvester_cache_interval
-            farmer_api.farmer.update_harvester_cache_interval = 1
-            farmer_api.farmer.harvester_cache = {}
-
             # Test farmer get_harvesters
             async def test_get_harvesters():
-                harvester.plot_manager.trigger_refresh()
-                await time_out_assert(5, harvester.plot_manager.needs_refresh, value=False)
                 farmer_res = await client.get_harvesters()
                 if len(list(farmer_res["harvesters"])) != 1:
-                    log.error(f"test_get_harvesters: invalid harvesters {list(farmer_res['harvesters'])}")
                     return False
                 if len(list(farmer_res["harvesters"][0]["plots"])) != num_plots:
-                    log.error(f"test_get_harvesters: invalid plots {list(farmer_res['harvesters'])}")
                     return False
                 return True
 
-            await time_out_assert_custom_interval(30, 1, test_get_harvesters)
-
-            # Reset cache and reset update interval to avoid hitting the rate limit
-            farmer_api.farmer.update_harvester_cache_interval = update_interval_before
-            farmer_api.farmer.harvester_cache = {}
+            await time_out_assert(30, test_get_harvesters)
 
             expected_result: PlotRefreshResult = PlotRefreshResult()
-            expected_result_matched = True
 
             def test_refresh_callback(refresh_result: PlotRefreshResult):
-                def test_value(name: str, actual: PlotRefreshResult, expected: PlotRefreshResult):
-                    nonlocal expected_result_matched
-                    try:
-                        actual_value = actual.__getattribute__(name)
-                        expected_value = expected.__getattribute__(name)
-                        if actual_value != expected_value:
-                            log.error(f"{name} invalid: actual {actual_value} expected {expected_value}")
-                            expected_result_matched = False
-                    except AttributeError as error:
-                        log.error(f"{error}")
-                        expected_result_matched = False
-
-                test_value("loaded_plots", refresh_result, expected_result)
-                test_value("removed_plots", refresh_result, expected_result)
-                test_value("processed_files", refresh_result, expected_result)
-                test_value("remaining_files", refresh_result, expected_result)
+                assert refresh_result.loaded_plots == expected_result.loaded_plots
+                assert refresh_result.removed_plots == expected_result.removed_plots
+                assert refresh_result.processed_files == expected_result.processed_files
+                assert refresh_result.remaining_files == expected_result.remaining_files
 
             harvester.plot_manager.set_refresh_callback(test_refresh_callback)
 
             async def test_case(
                 trigger, expect_loaded, expect_removed, expect_processed, expected_directories, expect_total_plots
             ):
-                nonlocal expected_result_matched
                 expected_result.loaded_plots = expect_loaded
                 expected_result.removed_plots = expect_removed
                 expected_result.processed_files = expect_processed
                 await trigger
-                expected_result_matched = True
                 harvester.plot_manager.trigger_refresh()
                 assert len(await client_2.get_plot_directories()) == expected_directories
                 await time_out_assert(5, harvester.plot_manager.needs_refresh, value=False)
-                assert expected_result_matched
                 result = await client_2.get_plots()
                 assert len(result["plots"]) == expect_total_plots
                 assert len(harvester.plot_manager.cache) == expect_total_plots
@@ -434,7 +404,7 @@ class TestRpc:
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(472)).get_g1()
             )
 
-            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xch"), encode_puzzle_hash(new_ph_2, "xch"))
+            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xbtc"), encode_puzzle_hash(new_ph_2, "xbtc"))
             targets_3 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_3["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_3["pool_target"]) == new_ph_2
@@ -443,7 +413,7 @@ class TestRpc:
             new_ph_3: bytes32 = create_puzzlehash_for_pk(
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(1888)).get_g1()
             )
-            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xch"))
+            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xbtc"))
             targets_4 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_4["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_4["pool_target"]) == new_ph_3
@@ -451,10 +421,10 @@ class TestRpc:
 
             root_path = farmer_api.farmer._root_path
             config = load_config(root_path, "config.yaml")
-            assert config["farmer"]["cov_target_address"] == encode_puzzle_hash(new_ph, "xch")
-            assert config["pool"]["cov_target_address"] == encode_puzzle_hash(new_ph_3, "xch")
+            assert config["farmer"]["xbtc_target_address"] == encode_puzzle_hash(new_ph, "xbtc")
+            assert config["pool"]["xbtc_target_address"] == encode_puzzle_hash(new_ph_3, "xbtc")
 
-            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xch")
+            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xbtc")
             added_char = new_ph_3_encoded + "a"
             with pytest.raises(ValueError):
                 await client.set_reward_targets(None, added_char)

@@ -29,7 +29,7 @@ import {
 import {
   Delete as DeleteIcon,
   Link as LinkIcon,
-  // Payment as PaymentIcon,
+  Payment as PaymentIcon,
 } from '@material-ui/icons';
 import type PlotNFT from '../../types/PlotNFT';
 import PlotNFTName from './PlotNFTName';
@@ -39,11 +39,11 @@ import usePlotNFTDetails from '../../hooks/usePlotNFTDetails';
 import useOpenDialog from '../../hooks/useOpenDialog';
 import PoolJoin from '../pool/PoolJoin';
 import PoolAbsorbRewards from '../pool/PoolAbsorbRewards';
-import { mojo_to_btcgreen } from '../../util/btcgreen';
+import { byte_to_btcgreen } from '../../util/btcgreen';
 import { deleteUnconfirmedTransactions } from '../../modules/incoming';
 import PlotNFTGraph from './PlotNFTGraph';
 import PlotNFTGetPoolLoginLinkDialog from './PlotNFTGetPoolLoginLinkDialog';
-// import PlotNFTPayoutInstructionsDialog from './PlotNFTPayoutInstructionsDialog';
+import PlotNFTPayoutInstructionsDialog from './PlotNFTPayoutInstructionsDialog';
 import getPercentPointsSuccessfull from '../../util/getPercentPointsSuccessfull';
 import usePayoutAddress from '../../hooks/usePayoutAddress';
 
@@ -135,11 +135,9 @@ export default function PlotNFTCard(props: Props) {
     openDialog(<PlotNFTGetPoolLoginLinkDialog nft={nft} />);
   }
 
-  /*
   function handlePayoutInstructions() {
     openDialog(<PlotNFTPayoutInstructionsDialog nft={nft} />);
   }
-  */
 
   const rows = [
     {
@@ -152,7 +150,7 @@ export default function PlotNFTCard(props: Props) {
       label: <Trans>Unclaimed Rewards</Trans>,
       value: (
         <UnitFormat
-          value={mojo_to_btcgreen(BigInt(balance))}
+          value={byte_to_btcgreen(BigInt(balance))}
           state={State.SUCCESS}
         />
       ),
@@ -289,7 +287,7 @@ export default function PlotNFTCard(props: Props) {
                         </Typography>
                       </MenuItem>
                     )}
-                    {/* !isSelfPooling && (
+                    {!isSelfPooling && (
                       <MenuItem
                         onClick={() => {
                           onClose();
@@ -300,10 +298,10 @@ export default function PlotNFTCard(props: Props) {
                           <PaymentIcon />
                         </ListItemIcon>
                         <Typography variant="inherit" noWrap>
-                          <Trans>View Payout Instructions</Trans>
+                          <Trans>Edit Payout Instructions</Trans>
                         </Typography>
                       </MenuItem>
-                    ) */}
+                    )}
                     <MenuItem
                       onClick={() => {
                         onClose();

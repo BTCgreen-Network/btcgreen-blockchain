@@ -55,7 +55,7 @@ def generate_ca_signed_cert(ca_crt: bytes, ca_key: bytes, cert_out: Path, key_ou
         [
             x509.NameAttribute(NameOID.COMMON_NAME, "BTCgreen"),
             x509.NameAttribute(NameOID.ORGANIZATION_NAME, "BTCgreen"),
-            x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, "BTCgreen Network"),
+            x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, "Organic Farming Division"),
         ]
     )
 

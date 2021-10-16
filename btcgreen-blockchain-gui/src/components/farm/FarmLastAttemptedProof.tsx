@@ -10,7 +10,7 @@ import { RootState } from '../../modules/rootReducer';
 
 const cols = [
   {
-    minWidth: '180px',
+    minWidth: '200px',
     field: 'challenge_hash',
     tooltip: true,
     title: <Trans>Challenge</Trans>,
@@ -26,10 +26,8 @@ const cols = [
     title: <Trans>Proofs Found</Trans>,
   },
   {
-    field(row: Row) {
-      return `${row.timeconsuming} ms`
-    },
-    title: <Trans>Plot Response Time</Trans>,
+    field: 'timeconsuming',
+    title: <Trans>Time Consuming(ms)</Trans>,
   },
   {
     field(row: Row) {

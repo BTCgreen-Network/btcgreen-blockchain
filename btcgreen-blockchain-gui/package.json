@@ -1,6 +1,6 @@
 {
     "name": "btcgreen-blockchain",
-    "author": "BTCgreen Network <hello@btcgreen.net> (https://btcgreen.net/)",
+    "author": "BTCgreen Network <hello@btcgreen.us> (https://btcgreen.us/)",
     "description": "GUI for BTCgreen Blockchain",
     "productName": "BTCgreen Blockchain",
     "private": true,
@@ -82,9 +82,7 @@
         "use-dark-mode": "^2.3.1",
         "validator": "^13.6.0",
         "ws": "^8.2.2",
-        "yarn": "^1.22.11",
-        "node-emoji": "^1.10.0",
-        "geoip-lite": "^1.4.2"
+        "yarn": "^1.22.11"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",

@@ -65,7 +65,7 @@ export default function FarmLatestBlockChallenges() {
           *Want to explore BTCgreen’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://alltheblocks.net/btcgreen/"
+            href="https://alltheblocks.net/btcgreen"
             target="_blank"
           >
             BTCgreen Explorer

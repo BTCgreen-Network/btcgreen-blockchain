@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { mojo_to_btcgreen } from '../../../util/btcgreen';
+import { byte_to_btcgreen } from '../../../util/btcgreen';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
 export default function FarmCardUserFees() {
@@ -19,7 +19,7 @@ export default function FarmCardUserFees() {
   const userTransactionFees = useMemo(() => {
     if (feeAmount !== undefined) {
       const val = BigInt(feeAmount.toString());
-      return mojo_to_btcgreen(val);
+      return byte_to_btcgreen(val);
     }
   }, [feeAmount]);
 

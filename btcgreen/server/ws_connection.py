@@ -136,7 +136,6 @@ class WSBTCgreenConnection:
 
             if message_type != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-
             if inbound_handshake.network_id != 'btcgreen-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 

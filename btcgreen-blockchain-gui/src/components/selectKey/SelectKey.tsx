@@ -79,7 +79,7 @@ export default function SelectKey() {
       >
         {response.used_for_farmer_rewards && (<Alert severity="warning">
           <Trans>
-            Warning: This key is used for your farming rewards address. 
+            Warning: This key is used for your farming rewards address.
             By deleting this key you may lose access to any future farming rewards
             </Trans>
           </Alert>)}

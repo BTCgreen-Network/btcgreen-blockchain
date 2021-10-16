@@ -1429,8 +1429,8 @@ msgid "Not found Plots"
 msgstr "Aucune parcelle trouvée"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:188
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25COV reward for pooling plots."
-msgstr "Notez que ceci ne change pas vos adresses de paiement de pool. Seules vos anciennes parcelles sont affectées, et la récompense de 0.25COV pour les parcelles de pool."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XBTC reward for pooling plots."
+msgstr "Notez que ceci ne change pas vos adresses de paiement de pool. Seules vos anciennes parcelles sont affectées, et la récompense de 0.25XBTC pour les parcelles de pool."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
@@ -2100,8 +2100,8 @@ msgid "Select Wallet Type"
 msgstr "Sélectionner un type de portefeuille"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
-msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "Sélectionner le répertoire de stockage final de vos parcelles. Nous recommandons un gros et lent disque dur (comme un HDD externe)."
+msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external XBTC)."
+msgstr "Sélectionner le répertoire de stockage final de vos parcelles. Nous recommandons un gros et lent disque dur (comme un XBTC externe)."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -3007,5 +3007,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Frais de transaction utilisateur"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mojo, plural, one {mojo} other {mojos}}"
-msgstr "{mojo, plural, one {mojo} other {mojos}}"
+msgid "{byte, plural, one {byte} other {bytes}}"
+msgstr "{byte, plural, one {byte} other {bytes}}"

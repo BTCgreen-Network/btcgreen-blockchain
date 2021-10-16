@@ -29,7 +29,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
-import { mojo_to_btcgreen_string } from '../../../util/btcgreen';
+import { byte_to_btcgreen_string } from '../../../util/btcgreen';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { openDialog } from '../../../modules/dialog';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
@@ -290,11 +290,11 @@ const RecoveryCard = (props) => {
   const id = props.wallet_id;
   const { wallet } = useWallet(id);
 
-  const {
-    mydid,
-    didcoin,
-    did_rec_pubkey,
-    did_rec_puzhash,
+  const { 
+    mydid, 
+    didcoin, 
+    did_rec_pubkey, 
+    did_rec_puzhash, 
     backup_dids: backup_did_list,
     dids_num_req,
   } = wallet;
@@ -613,7 +613,7 @@ const BalanceCardSubSection = (props) => {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_btcgreen_string(props.balance)} TXBTC
+            {byte_to_btcgreen_string(props.balance)} TXBTC
           </Typography>
         </Box>
       </Box>
@@ -751,7 +751,7 @@ const ManageDIDsCard = (props) => {
   var created = useSelector((state) => state.create_options.created);
 
   const { wallet } = useWallet(id);
-  const {
+  const { 
     backup_dids: backup_did_list,
     dids_num_req
   } = wallet;
@@ -830,7 +830,7 @@ const ManageDIDsCard = (props) => {
                 defaultValue=""
               />
             </Flex>
-
+              
             <Flex flexDirection="column" gap={1}>
               <Flex alignItems="center" gap={1}>
                 <Typography variant="subtitle1">

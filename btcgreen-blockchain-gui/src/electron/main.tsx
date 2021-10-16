@@ -386,9 +386,9 @@ if (!handleSquirrelEvent()) {
               );
             },
           },
-          {
-            type: 'separator',
-          },
+          //{
+           // type: 'separator',
+          //},
           {
             label: i18n._(/* i18n */ { id: 'Report an Issue...' }),
             click: () => {
@@ -397,16 +397,69 @@ if (!handleSquirrelEvent()) {
               );
             },
           },
-          {
-            label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
+          //{
+            //label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
+            //click: () => {
+              //openExternal('https://keybase.io/team/chia_network.public');
+            //},
+          //},
+		  {
+            type: 'separator',
+          },
+		  {
+            label: i18n._(/* i18n */ { id: 'Visit BTCgreen Website' }),
             click: () => {
-              openExternal('https://keybase.io/team/btcgreen_network.public');
+              openExternal(
+                'https://btcgreen.us',
+              );
             },
           },
-          {
-            label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
+		  {
+            label: i18n._(/* i18n */ { id: 'Join our Discord Server' }),
             click: () => {
-              openExternal('https://twitter.com/btcgreen_project');
+              openExternal(
+                'https://discord.gg/AZdGSFnqAR',
+              );
+            },
+          },	
+          {
+            label: i18n._(/* i18n */ { id: 'Follow us on Twitter' }),
+            click: () => {
+              openExternal(
+                'https://twitter.com/btcgreen',
+              );
+            },
+          },	
+          {
+            label: i18n._(/* i18n */ { id: 'Visit our YouTube Channel' }),
+            click: () => {
+              openExternal(
+                'https://www.youtube.com/channel/UChJY3YEOTDBvFJ0vLFEc1Sw',
+              );
+            },
+          },	
+          {
+            label: i18n._(/* i18n */ { id: 'Connect with us on Facebook' }),
+            click: () => {
+              openExternal(
+                'https://www.facebook.com/BTCgreenNetwork',
+              );
+            },
+          },	
+          {
+            label: i18n._(/* i18n */ { id: 'Join our group on Telegram' }),
+            click: () => {
+              openExternal(
+                'https://t.me/BTCgreen_Network',
+              );
+            },
+          },	
+          {
+            label: i18n._(/* i18n */ { id: 'Join our Reddit Community' }),
+            click: () => {
+              openExternal(
+                'https://www.reddit.com/r/BTCgreenNetwork',
+              );
             },
           },
         ],

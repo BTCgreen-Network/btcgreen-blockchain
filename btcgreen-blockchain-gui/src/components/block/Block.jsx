@@ -28,7 +28,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { mojo_to_btcgreen } from '../../util/btcgreen';
+import { byte_to_btcgreen } from '../../util/btcgreen';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -172,13 +172,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = mojo_to_btcgreen(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = mojo_to_btcgreen(
+  const poolReward = byte_to_btcgreen(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = byte_to_btcgreen(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
   const btcgreenFees = blockRecord.fees
-    ? mojo_to_btcgreen(BigInt(blockRecord.fees))
+    ? byte_to_btcgreen(BigInt(blockRecord.fees))
     : '';
 
   const rows = [
@@ -269,7 +269,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://alltheblocks.net/btcgreen/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
+          href={`https://www.btcgreenexplorer.com/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(
@@ -285,7 +285,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://alltheblocks.net/btcgreen/puzzlehash/${blockRecord.pool_puzzle_hash}`}
+          href={`https://www.btcgreenexplorer.com/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(

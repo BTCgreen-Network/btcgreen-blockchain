@@ -1,4 +1,4 @@
-export { default as BTCgreen } from './btcgreen';
+export { default as BTCgreen } from './BTCgreen';
 export { default as Farm } from './Farm';
 export { default as Home } from './Home';
 export { default as Keys } from './Keys';
