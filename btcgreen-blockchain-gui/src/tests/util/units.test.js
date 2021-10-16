@@ -112,14 +112,14 @@ describe('units', () => {
     });
     it('updates an existing display', () => {
       units.setDisplay('btcgreen', {
-        format: '{amount} TCOV',
+        format: '{amount} TXBTC',
         fractionDigits: 0,
       });
 
       const result = units.getDisplay('btcgreen');
 
       expect(result).toEqual({
-        format: '{amount} TCOV',
+        format: '{amount} TXBTC',
         fractionDigits: 0,
       });
     });

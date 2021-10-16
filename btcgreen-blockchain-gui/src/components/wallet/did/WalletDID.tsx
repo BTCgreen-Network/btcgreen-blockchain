@@ -613,7 +613,7 @@ const BalanceCardSubSection = (props) => {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_btcgreen_string(props.balance)} TCOV
+            {mojo_to_btcgreen_string(props.balance)} TXBTC
           </Typography>
         </Box>
       </Box>

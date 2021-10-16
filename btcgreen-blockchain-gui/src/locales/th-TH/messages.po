@@ -866,7 +866,7 @@ msgid "Fee"
 msgstr "ค่าธรรมเนียม"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TCOV)"
+#~ msgid "Fee (TXBTC)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -2126,23 +2126,23 @@ msgstr "กำลังซิงค์ <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TCOV Block Rewards"
+#~ msgid "TXBTC Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TCOV Farming Rewards"
+#~ msgid "TXBTC Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TCOV Fees Collected"
+#~ msgid "TXBTC Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TCOV User Fees"
-#~ msgstr "TCOV User Fees"
+#~ msgid "TXBTC User Fees"
+#~ msgstr "TXBTC User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TCOV User Transaction Fees"
+#~ msgid "TXBTC User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
