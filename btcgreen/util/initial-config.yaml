@@ -4,8 +4,15 @@ min_mainnet_k_size: 32
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
 daemon_port: 44276
+daemon_max_message_size: 50000000 # maximum size of RPC message in bytes
 inbound_rate_limit_percent: 100
 outbound_rate_limit_percent: 30
+
+# Limit the number of start_full_node worker processes to reduce ram and cpu usage
+# This allows users to farm more forks without running out of ram
+# Setting this too low reduces sync speed, but a synced node can stay synced with a multiprocessing_limit of 2
+# A value higher than 61 takes no effect, as chia limits the workers to 61 (windows server related python bug)
+# multiprocessing_limit: 4
 
 network_overrides: &network_overrides
   constants:
@@ -74,17 +81,17 @@ network_overrides: &network_overrides
       address_prefix: "xbtc"
       default_full_node_port: 9282
     testnet0:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
     testnet1:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
     testnet2:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
     testnet3:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
     testnet4:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
     testnet7:
-      address_prefix: "txbtc"
+      address_prefix: "tcov"
       default_full_node_port: 58444
 
 selected_network: &selected_network "mainnet"
@@ -128,7 +135,15 @@ harvester:
   start_rpc_server: True
   rpc_port: 18585
   num_threads: 30
-  plot_loading_frequency_seconds: 120
+  plots_refresh_parameter:
+    interval_seconds: 120 # The interval in seconds to refresh the plot file manager
+    retry_invalid_seconds: 1200 # How long to wait before re-trying plots which failed to load
+    batch_size: 300 # How many plot files the harvester processes before it waits batch_sleep_milliseconds
+    batch_sleep_milliseconds: 1 # Milliseconds the harvester sleeps between batch processing
+
+
+  # If True use parallel reads in chiapos
+  parallel_read: True
 
   logging: *logging
   network_overrides: *network_overrides
@@ -151,7 +166,7 @@ harvester:
 
 pool:
   # Replace this with a real puzzle hash
-  # xbtc_target_address: txbtc102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # cov_target_address: tcov102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -171,7 +186,7 @@ farmer:
   pool_public_keys: []
 
   # Replace this with a real puzzle hash
-  # xbtc_target_address: txbtc102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # cov_target_address: tcov102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
@@ -192,6 +207,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
+  host: *self_hostname
   port: 18155
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
@@ -270,6 +286,8 @@ full_node:
 
   # How often to initiate outbound connections to other full nodes.
   peer_connect_interval: 30
+  # How long to wait for a peer connection
+  peer_connect_timeout: 30
   # Accept peers until this number of connections
   target_peer_count: 80
   # Initiate outbound connections until this number is hit.
@@ -299,6 +317,10 @@ full_node:
   # analyze with btcgreen/utils/profiler.py
   enable_profiler: False
 
+  # this is a debug and profiling facility that logs all SQLite commands to a
+  # separate log file (under logging/sql.log).
+  log_sqlite_cmds: False
+
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
@@ -310,7 +332,7 @@ full_node:
       host: *self_hostname
       port: 18254
   introducer_peer:
-      host: introducer.btcgreen.us  # BTCgreen AWS introducer IPv4/IPv6
+      host: introducer.btcgreen.us  # BTCgreen Azure introducer IPv4/IPv6
       port: 9282
   wallet_peer:
     host: *self_hostname
@@ -394,7 +416,7 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.btcgreen.us # BTCgreen AWS introducer IPv4/IPv6
+    host: introducer.btcgreen.us # BTCgreen Azure introducer IPv4/IPv6
     port: 9282
 
   ssl:

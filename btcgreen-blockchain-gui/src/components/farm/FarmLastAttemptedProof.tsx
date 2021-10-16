@@ -10,7 +10,7 @@ import { RootState } from '../../modules/rootReducer';
 
 const cols = [
   {
-    minWidth: '200px',
+    minWidth: '180px',
     field: 'challenge_hash',
     tooltip: true,
     title: <Trans>Challenge</Trans>,
@@ -26,8 +26,10 @@ const cols = [
     title: <Trans>Proofs Found</Trans>,
   },
   {
-  field: 'timeconsuming',
-  title: <Trans>Time Consuming(ms)</Trans>,
+    field(row: Row) {
+      return `${row.timeconsuming} ms`
+    },
+    title: <Trans>Plot Response Time</Trans>,
   },
   {
     field(row: Row) {
@@ -40,11 +42,11 @@ const cols = [
 export default function FarmLastAttemptedProof() {
   const { size } = usePlots();
 
-  const lastAttemtedProof = useSelector(
+  const lastAttemptedProof = useSelector(
     (state: RootState) => state.farming_state.farmer.last_farming_info ?? [],
   );
-  const reducedLastAttemtedProof = lastAttemtedProof.slice(0, 5);
-  const isEmpty = !reducedLastAttemtedProof.length;
+  const reducedLastAttemptedProof = lastAttemptedProof.slice(0, 5).sort((a,b) => a.timestamp-b.timestamp);
+  const isEmpty = !reducedLastAttemptedProof.length;
 
   return (
     <Card
@@ -65,7 +67,7 @@ export default function FarmLastAttemptedProof() {
     >
       <Table
         cols={cols}
-        rows={reducedLastAttemtedProof}
+        rows={reducedLastAttemptedProof}
         caption={
           isEmpty && (
             <Typography>

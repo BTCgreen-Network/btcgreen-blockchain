@@ -6,7 +6,7 @@ from clvm_tools import binutils
 from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from btcgreen.rpc.full_node_rpc_client import FullNodeRpcClient
 from btcgreen.types.blockchain_format.program import Program
-from btcgreen.types.coin_solution import CoinSolution
+from btcgreen.types.coin_spend import CoinSpend
 from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.types.spend_bundle import SpendBundle
 from btcgreen.util.bech32m import decode_puzzle_hash
@@ -18,10 +18,8 @@ from btcgreen.util.ints import uint32, uint16
 
 def print_conditions(spend_bundle: SpendBundle):
     print("\nConditions:")
-    for coin_solution in spend_bundle.coin_solutions:
-        result = Program.from_bytes(bytes(coin_solution.puzzle_reveal)).run(
-            Program.from_bytes(bytes(coin_solution.solution))
-        )
+    for coin_spend in spend_bundle.coin_spends:
+        result = Program.from_bytes(bytes(coin_spend.puzzle_reveal)).run(Program.from_bytes(bytes(coin_spend.solution)))
         error, result_human = parse_sexp_to_conditions(result)
         assert error is None
         assert result_human is not None
@@ -45,8 +43,8 @@ async def main() -> None:
         print(farmer_prefarm.amount, farmer_amounts)
         assert farmer_amounts == farmer_prefarm.amount // 2
         assert pool_amounts == pool_prefarm.amount // 2
-        address1 = "xbtc1rdatypul5c642jkeh4yp933zu3hw8vv8tfup8ta6zfampnyhjnusxdgns6"  # Key 1
-        address2 = "xbtc1duvy5ur5eyj7lp5geetfg84cj2d7xgpxt7pya3lr2y6ke3696w9qvda66e"  # Key 2
+        address1 = "cov1rdatypul5c642jkeh4yp933zu3hw8vv8tfup8ta6zfampnyhjnusxdgns6"  # Key 1
+        address2 = "cov1duvy5ur5eyj7lp5geetfg84cj2d7xgpxt7pya3lr2y6ke3696w9qvda66e"  # Key 2
 
         ph1 = decode_puzzle_hash(address1)
         ph2 = decode_puzzle_hash(address2)
@@ -65,8 +63,8 @@ async def main() -> None:
 
         p_solution = Program.to(binutils.assemble("()"))
 
-        sb_farmer = SpendBundle([CoinSolution(farmer_prefarm, p_farmer_2, p_solution)], G2Element())
-        sb_pool = SpendBundle([CoinSolution(pool_prefarm, p_pool_2, p_solution)], G2Element())
+        sb_farmer = SpendBundle([CoinSpend(farmer_prefarm, p_farmer_2, p_solution)], G2Element())
+        sb_pool = SpendBundle([CoinSpend(pool_prefarm, p_pool_2, p_solution)], G2Element())
 
         print("\n\n\nConditions")
         print_conditions(sb_pool)

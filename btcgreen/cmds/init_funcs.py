@@ -7,7 +7,13 @@ import yaml
 
 from btcgreen import __version__
 from btcgreen.consensus.coinbase import create_puzzlehash_for_pk
-from btcgreen.ssl.create_ssl import generate_ca_signed_cert, get_btcgreen_ca_crt_key, make_ca_cert
+from btcgreen.ssl.create_ssl import (
+    ensure_ssl_dirs,
+    generate_ca_signed_cert,
+    get_btcgreen_ca_crt_key,
+    make_ca_cert,
+    write_ssl_cert_and_key,
+)
 from btcgreen.util.bech32m import encode_puzzle_hash
 from btcgreen.util.config import (
     create_default_btcgreen_config,
@@ -19,6 +25,14 @@ from btcgreen.util.config import (
 from btcgreen.util.ints import uint32
 from btcgreen.util.keychain import Keychain
 from btcgreen.util.path import mkdir
+from btcgreen.util.ssl import (
+    DEFAULT_PERMISSIONS_CERT_FILE,
+    DEFAULT_PERMISSIONS_KEY_FILE,
+    RESTRICT_MASK_CERT_FILE,
+    RESTRICT_MASK_KEY_FILE,
+    check_and_fix_permissions_for_ssl_file,
+    fix_ssl,
+)
 from btcgreen.wallet.derive_keys import master_sk_to_pool_sk, master_sk_to_wallet_sk
 
 private_node_names = {"full_node", "wallet", "farmer", "harvester", "timelord", "daemon"}
@@ -46,8 +60,9 @@ def dict_add_new_default(updated: Dict, default: Dict, do_not_migrate_keys: Dict
             updated[k] = v
 
 
-def check_keys(new_root: Path) -> None:
-    keychain: Keychain = Keychain()
+def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
+    if keychain is None:
+        keychain = Keychain()
     all_sks = keychain.get_all_private_keys()
     if len(all_sks) == 0:
         print("No keys are present in the keychain. Generate them with 'btcgreen keys generate'")
@@ -56,8 +71,8 @@ def check_keys(new_root: Path) -> None:
     config: Dict = load_config(new_root, "config.yaml")
     pool_child_pubkeys = [master_sk_to_pool_sk(sk).get_g1() for sk, _ in all_sks]
     all_targets = []
-    stop_searching_for_farmer = "xbtc_target_address" not in config["farmer"]
-    stop_searching_for_pool = "xbtc_target_address" not in config["pool"]
+    stop_searching_for_farmer = "cov_target_address" not in config["farmer"]
+    stop_searching_for_pool = "cov_target_address" not in config["pool"]
     number_of_ph_to_search = 500
     selected = config["selected_network"]
     prefix = config["network_overrides"]["config"][selected]["address_prefix"]
@@ -68,32 +83,42 @@ def check_keys(new_root: Path) -> None:
             all_targets.append(
                 encode_puzzle_hash(create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(i)).get_g1()), prefix)
             )
-            if all_targets[-1] == config["farmer"].get("xbtc_target_address"):
+            if all_targets[-1] == config["farmer"].get("cov_target_address"):
                 stop_searching_for_farmer = True
-            if all_targets[-1] == config["pool"].get("xbtc_target_address"):
+            if all_targets[-1] == config["pool"].get("cov_target_address"):
                 stop_searching_for_pool = True
 
-    # Set the destinations
-    if "xbtc_target_address" not in config["farmer"]:
-        print(f"Setting the xbtc destination address for coinbase fees reward to {all_targets[0]}")
-        config["farmer"]["xbtc_target_address"] = all_targets[0]
-    elif config["farmer"]["xbtc_target_address"] not in all_targets:
+    # Set the destinations, if necessary
+    updated_target: bool = False
+    if "cov_target_address" not in config["farmer"]:
+        print(
+            f"Setting the xbtc destination for the farmer reward to {all_targets[0]}"
+        )
+        config["farmer"]["cov_target_address"] = all_targets[0]
+        updated_target = True
+    elif config["farmer"]["cov_target_address"] not in all_targets:
         print(
             f"WARNING: using a farmer address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['farmer']['xbtc_target_address']} with {all_targets[0]}"
+            f"{config['farmer']['cov_target_address']} with {all_targets[0]}"
         )
 
     if "pool" not in config:
         config["pool"] = {}
-    if "xbtc_target_address" not in config["pool"]:
-        print(f"Setting the xbtc destination address for coinbase reward to {all_targets[0]}")
-        config["pool"]["xbtc_target_address"] = all_targets[0]
-    elif config["pool"]["xbtc_target_address"] not in all_targets:
+    if "cov_target_address" not in config["pool"]:
+        print(f"Setting the xbtc destination address for pool reward to {all_targets[0]}")
+        config["pool"]["cov_target_address"] = all_targets[0]
+        updated_target = True
+    elif config["pool"]["cov_target_address"] not in all_targets:
         print(
             f"WARNING: using a pool address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['pool']['xbtc_target_address']} with {all_targets[0]}"
+            f"{config['pool']['cov_target_address']} with {all_targets[0]}"
+        )
+    if updated_target:
+        print(
+            f"To change the XBTC destination addresses, edit the `cov_target_address` entries in"
+            f" {(new_root / 'config' / 'config.yaml').absolute()}."
         )
 
     # Set the pool pks in the farmer
@@ -155,9 +180,9 @@ def migrate_from(
     return 1
 
 
-def create_all_ssl(root: Path):
+def create_all_ssl(root_path: Path):
     # remove old key and crt
-    config_dir = root / "config"
+    config_dir = root_path / "config"
     old_key_path = config_dir / "trusted.key"
     old_crt_path = config_dir / "trusted.crt"
     if old_key_path.exists():
@@ -168,23 +193,19 @@ def create_all_ssl(root: Path):
         os.remove(old_crt_path)
 
     ssl_dir = config_dir / "ssl"
-    if not ssl_dir.exists():
-        ssl_dir.mkdir()
     ca_dir = ssl_dir / "ca"
-    if not ca_dir.exists():
-        ca_dir.mkdir()
+    ensure_ssl_dirs([ssl_dir, ca_dir])
 
     private_ca_key_path = ca_dir / "private_ca.key"
     private_ca_crt_path = ca_dir / "private_ca.crt"
     btcgreen_ca_crt, btcgreen_ca_key = get_btcgreen_ca_crt_key()
     btcgreen_ca_crt_path = ca_dir / "btcgreen_ca.crt"
     btcgreen_ca_key_path = ca_dir / "btcgreen_ca.key"
-    btcgreen_ca_crt_path.write_bytes(btcgreen_ca_crt)
-    btcgreen_ca_key_path.write_bytes(btcgreen_ca_key)
+    write_ssl_cert_and_key(btcgreen_ca_crt_path, btcgreen_ca_crt, btcgreen_ca_key_path, btcgreen_ca_key)
 
     if not private_ca_key_path.exists() or not private_ca_crt_path.exists():
         # Create private CA
-        print(f"Can't find private CA, creating a new one in {root} to generate TLS certificates")
+        print(f"Can't find private CA, creating a new one in {root_path} to generate TLS certificates")
         make_ca_cert(private_ca_crt_path, private_ca_key_path)
         # Create private certs for each node
         ca_key = private_ca_key_path.read_bytes()
@@ -192,7 +213,7 @@ def create_all_ssl(root: Path):
         generate_ssl_for_nodes(ssl_dir, ca_crt, ca_key, True)
     else:
         # This is entered when user copied over private CA
-        print(f"Found private CA in {root}, using it to generate TLS certificates")
+        print(f"Found private CA in {root_path}, using it to generate TLS certificates")
         ca_key = private_ca_key_path.read_bytes()
         ca_crt = private_ca_crt_path.read_bytes()
         generate_ssl_for_nodes(ssl_dir, ca_crt, ca_key, True)
@@ -209,8 +230,7 @@ def generate_ssl_for_nodes(ssl_dir: Path, ca_crt: bytes, ca_key: bytes, private:
 
     for node_name in names:
         node_dir = ssl_dir / node_name
-        if not node_dir.exists():
-            node_dir.mkdir()
+        ensure_ssl_dirs([node_dir])
         if private:
             prefix = "private"
         else:
@@ -223,13 +243,18 @@ def generate_ssl_for_nodes(ssl_dir: Path, ca_crt: bytes, ca_key: bytes, private:
 
 
 def copy_cert_files(cert_path: Path, new_path: Path):
-    for ext in "*.crt", "*.key":
-        for old_path_child in cert_path.glob(ext):
-            new_path_child = new_path / old_path_child.name
-            copy_files_rec(old_path_child, new_path_child)
+    for old_path_child in cert_path.glob("*.crt"):
+        new_path_child = new_path / old_path_child.name
+        copy_files_rec(old_path_child, new_path_child)
+        check_and_fix_permissions_for_ssl_file(new_path_child, RESTRICT_MASK_CERT_FILE, DEFAULT_PERMISSIONS_CERT_FILE)
+
+    for old_path_child in cert_path.glob("*.key"):
+        new_path_child = new_path / old_path_child.name
+        copy_files_rec(old_path_child, new_path_child)
+        check_and_fix_permissions_for_ssl_file(new_path_child, RESTRICT_MASK_KEY_FILE, DEFAULT_PERMISSIONS_KEY_FILE)
 
 
-def init(create_certs: Optional[Path], root_path: Path):
+def init(create_certs: Optional[Path], root_path: Path, fix_ssl_permissions: bool = False):
     if create_certs is not None:
         if root_path.exists():
             if os.path.isdir(create_certs):
@@ -245,13 +270,13 @@ def init(create_certs: Optional[Path], root_path: Path):
         else:
             print(f"** {root_path} does not exist. Executing core init **")
             # sanity check here to prevent infinite recursion
-            if btcgreen_init(root_path) == 0 and root_path.exists():
-                return init(create_certs, root_path)
+            if btcgreen_init(root_path, fix_ssl_permissions=fix_ssl_permissions) == 0 and root_path.exists():
+                return init(create_certs, root_path, fix_ssl_permissions)
 
             print(f"** {root_path} was not created. Exiting **")
             return -1
     else:
-        return btcgreen_init(root_path)
+        return btcgreen_init(root_path, fix_ssl_permissions=fix_ssl_permissions)
 
 
 def btcgreen_version_number() -> Tuple[str, str, str, str]:
@@ -313,7 +338,15 @@ def btcgreen_full_version_str() -> str:
     return f"{major}.{minor}.{patch}{dev}"
 
 
-def btcgreen_init(root_path: Path):
+def btcgreen_init(root_path: Path, *, should_check_keys: bool = True, fix_ssl_permissions: bool = False):
+    """
+    Standard first run initialization or migration steps. Handles config creation,
+    generation of SSL certs, and setting target addresses (via check_keys).
+
+    should_check_keys can be set to False to avoid blocking when accessing a passphrase
+    protected Keychain. When launching the daemon from the GUI, we want the GUI to
+    handle unlocking the keychain.
+    """
     if os.environ.get("BTCGREEN_ROOT", None) is not None:
         print(
             f"warning, your BTCGREEN_ROOT is set to {os.environ['BTCGREEN_ROOT']}. "
@@ -325,13 +358,19 @@ def btcgreen_init(root_path: Path):
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
         # This is reached if BTCGREEN_ROOT is set, or if user has run btcgreen init twice
         # before a new update.
-        check_keys(root_path)
+        if fix_ssl_permissions:
+            fix_ssl(root_path)
+        if should_check_keys:
+            check_keys(root_path)
         print(f"{root_path} already exists, no migration action taken")
         return -1
 
     create_default_btcgreen_config(root_path)
     create_all_ssl(root_path)
-    check_keys(root_path)
+    if fix_ssl_permissions:
+        fix_ssl(root_path)
+    if should_check_keys:
+        check_keys(root_path)
     print("")
     print("To see your keys, run 'btcgreen keys show --show-mnemonic-seed'")
 

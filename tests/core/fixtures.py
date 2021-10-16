@@ -10,27 +10,34 @@ from btcgreen.consensus.blockchain import Blockchain
 from btcgreen.consensus.constants import ConsensusConstants
 from btcgreen.full_node.block_store import BlockStore
 from btcgreen.full_node.coin_store import CoinStore
+from btcgreen.full_node.hint_store import HintStore
 from btcgreen.types.full_block import FullBlock
 from btcgreen.util.db_wrapper import DBWrapper
 from btcgreen.util.path import mkdir
 from tests.setup_nodes import bt, test_constants
 
 
+blockchain_db_counter: int = 0
+
+
 async def create_blockchain(constants: ConsensusConstants):
-    db_path = Path("blockchain_test.db")
+    global blockchain_db_counter
+    db_path = Path(f"blockchain_test-{blockchain_db_counter}.db")
     if db_path.exists():
         db_path.unlink()
+    blockchain_db_counter += 1
     connection = await aiosqlite.connect(db_path)
     wrapper = DBWrapper(connection)
     coin_store = await CoinStore.create(wrapper)
     store = await BlockStore.create(wrapper)
-    bc1 = await Blockchain.create(coin_store, store, constants)
+    hint_store = await HintStore.create(wrapper)
+    bc1 = await Blockchain.create(coin_store, store, constants, hint_store)
     assert bc1.get_peak() is None
     return bc1, connection, db_path
 
 
 @pytest.fixture(scope="function")
-async def empty_blockchain():
+async def empty_blockchain(request):
     """
     Provides a list of 10 valid blocks, as well as a blockchain with 9 blocks added to it.
     """

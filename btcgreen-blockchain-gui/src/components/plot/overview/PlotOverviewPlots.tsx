@@ -62,12 +62,12 @@ const cols = [
     },
     title: <Trans>K-Size</Trans>,
   },
-  {
-    minWidth: '100px',
-    field: 'queue-name',
-    tooltip: 'queue-name',
-    title: <Trans>Queue name</Trans>,
-  },
+  //{
+  //  minWidth: '100px',
+  //  field: 'queue-name',
+  //  tooltip: 'queue-name',
+  //  title: <Trans>Queue name</Trans>,
+  //},
   {
     minWidth: '100px',
     field: 'plot_public_key',
@@ -86,19 +86,19 @@ const cols = [
     tooltip: 'harvester.node_id',
     title: <Trans>Node Id</Trans>,
   },
-  {
-    minWidth: '100px',
-    field: ({ pool_contract_puzzle_hash }: Plot) => (
-      <Address value={pool_contract_puzzle_hash} tooltip copyToClipboard>
-        {(address) => (
-          <Typography variant="body2" noWrap>
-            {address}
-          </Typography>
-        )}
-      </Address>
-    ),
-    title: <Trans>Pool Contract Address</Trans>,
-  },
+  //{
+  //#  minWidth: '100px',
+  //  field: ({ pool_contract_puzzle_hash }: Plot) => (
+  //    <Address value={pool_contract_puzzle_hash} tooltip copyToClipboard>
+  //      {(address) => (
+  //        <Typography variant="body2" noWrap>
+  //          {address}
+  //        </Typography>
+  //      )}
+  //    </Address>
+  //  ),
+  //  title: <Trans>Pool Contract Address</Trans>,
+  //},
   {
     minWidth: '100px',
     field: 'filename',

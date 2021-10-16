@@ -5,6 +5,7 @@ import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
 import { mojo_to_btcgreen } from '../../../util/btcgreen';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
+import { FormatLargeNumber } from '@btcgreen/core';
 
 export default function FarmCardTotalBTCgreenFarmed() {
   const currencyCode = useCurrencyCode();
@@ -27,7 +28,7 @@ export default function FarmCardTotalBTCgreenFarmed() {
   return (
     <FarmCard
       title={<Trans>{currencyCode} Total BTCgreen Farmed</Trans>}
-      value={totalBTCgreenFarmed}
+      value={<FormatLargeNumber value={totalBTCgreenFarmed} />}
       loading={loading}
     />
   );

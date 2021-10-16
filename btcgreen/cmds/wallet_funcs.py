@@ -3,7 +3,7 @@ import sys
 import time
 from datetime import datetime
 from decimal import Decimal
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, List, Optional, Tuple, Dict
 
 import aiohttp
 
@@ -27,7 +27,7 @@ def print_transaction(tx: TransactionRecord, verbose: bool, name) -> None:
         to_address = encode_puzzle_hash(tx.to_puzzle_hash, name)
         print(f"Transaction {tx.name}")
         print(f"Status: {'Confirmed' if tx.confirmed else ('In mempool' if tx.is_in_mempool() else 'Pending')}")
-        print(f"Amount: {btcgreen_amount} {name}")
+        print(f"Amount {'sent' if tx.sent else 'received'}: {btcgreen_amount} {name}")
         print(f"To address: {to_address}")
         print("Created at:", datetime.fromtimestamp(tx.created_at_time).strftime("%Y-%m-%d %H:%M:%S"))
         print("")
@@ -44,6 +44,9 @@ async def get_transaction(args: dict, wallet_client: WalletRpcClient, fingerprin
 
 async def get_transactions(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> None:
     wallet_id = args["id"]
+    paginate = args["paginate"]
+    if paginate is None:
+        paginate = sys.stdout.isatty()
     txs: List[TransactionRecord] = await wallet_client.get_transactions(wallet_id)
     config = load_config(DEFAULT_ROOT_PATH, "config.yaml", SERVICE_NAME)
     name = config["network_overrides"]["config"][config["selected_network"]]["address_prefix"]
@@ -51,7 +54,7 @@ async def get_transactions(args: dict, wallet_client: WalletRpcClient, fingerpri
         print("There are no transactions to this address")
 
     offset = args["offset"]
-    num_per_screen = 5
+    num_per_screen = 5 if paginate else len(txs)
     for i in range(offset, len(txs), num_per_screen):
         for j in range(0, num_per_screen):
             if i + j >= len(txs):
@@ -223,7 +226,9 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
     return wallet_client, fingerprint
 
 
-async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_params: dict, function: Callable) -> None:
+async def execute_with_wallet(
+    wallet_rpc_port: Optional[int], fingerprint: int, extra_params: Dict, function: Callable
+) -> None:
     try:
         config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
         self_hostname = config["self_hostname"]

@@ -25,7 +25,7 @@ const StyledIconButton = styled(IconButton)`
 
 const cols = [
   {
-    minWidth: '200px',
+    minWidth: '100px',
     field(row: Connection) {
       return (
         <Tooltip title={row.node_id}>
@@ -41,7 +41,29 @@ const cols = [
   },
   {
     field(row: Connection) {
-      return `${row.peer_port}/${row.peer_server_port}`;
+      const Geo = window.geoip.lookup(row.peer_host.replace(/\[/,"").replace(/]/g,""))||{country:"",region:"",city:""}
+
+      var emoji = require('node-emoji')
+
+      var find_nat = emoji.get("flag-" + Geo.country.toLowerCase())
+      var cityRegion = `${Geo.city}`
+      if(cityRegion.length == 0)
+        cityRegion = `${Geo.region}`
+
+        var text = `${find_nat||''} ${Geo.country} ${cityRegion}`
+
+        return  emoji.emojify(text,(name)=>{
+          return emoji.get("earth_americas");
+        });
+    }, title: <Trans>Region</Trans>,
+  }, 
+  {
+    field(row: Connection) {
+      return (
+        <Tooltip title={`${row.peer_port}/${row.peer_server_port}`}>
+          <span>{row.peer_server_port}</span>
+        </Tooltip>
+      );
     },
     title: <Trans>Port</Trans>,
   },

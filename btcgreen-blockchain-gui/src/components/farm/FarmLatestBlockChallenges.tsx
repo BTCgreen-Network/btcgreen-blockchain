@@ -65,12 +65,12 @@ export default function FarmLatestBlockChallenges() {
           *Want to explore BTCgreen’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://btcgreen.posat.io/"
+            href="https://alltheblocks.net/btcgreen/"
             target="_blank"
           >
             BTCgreen Explorer
           </Link>{' '}
-          built by that one smart guy on discord.
+          built by an open source developer.
         </Trans>
       </Typography>
     </Card>

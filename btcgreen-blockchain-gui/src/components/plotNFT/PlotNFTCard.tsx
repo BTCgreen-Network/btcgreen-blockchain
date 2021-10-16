@@ -45,6 +45,7 @@ import PlotNFTGraph from './PlotNFTGraph';
 import PlotNFTGetPoolLoginLinkDialog from './PlotNFTGetPoolLoginLinkDialog';
 // import PlotNFTPayoutInstructionsDialog from './PlotNFTPayoutInstructionsDialog';
 import getPercentPointsSuccessfull from '../../util/getPercentPointsSuccessfull';
+import usePayoutAddress from '../../hooks/usePayoutAddress';
 
 const StyledCard = styled(Card)`
   display: flex;
@@ -88,6 +89,8 @@ export default function PlotNFTCard(props: Props) {
       pool_wallet_status: { wallet_id },
     },
   } = props;
+
+  const { loading, payoutAddress } = usePayoutAddress(nft);
 
   const percentPointsSuccessful24 = getPercentPointsSuccessfull(
     points_acknowledged_24h,
@@ -229,7 +232,7 @@ export default function PlotNFTCard(props: Props) {
       value: <FormatLargeNumber value={totalPointsFound24} />,
     },
     !isSelfPooling && {
-      key: 'points_found_24',
+      key: 'points_successful_24',
       label: (
         <Typography>
           <Trans>Points Successful in Last 24 Hours</Trans>
@@ -319,7 +322,7 @@ export default function PlotNFTCard(props: Props) {
               </More>
             </Flex>
             <StyledInvisibleContainer>
-              <Typography variant="body2" noWrap>
+              <Typography component='div' variant="body2" noWrap>
                 {!!pool_url && (
                   <Flex alignItems="center" gap={1}>
                     <Typography variant="body2" color="textSecondary">
@@ -351,6 +354,17 @@ export default function PlotNFTCard(props: Props) {
             <Tooltip title={launcher_id} copyToClipboard>
               <Typography variant="body2" noWrap>
                 {launcher_id}
+              </Typography>
+            </Tooltip>
+          </Flex>
+
+          <Flex flexDirection="column" gap={1}>
+            <Typography variant="body1" color="textSecondary" noWrap>
+              <Trans>Payout Address</Trans>
+            </Typography>
+            <Tooltip title={payoutAddress} copyToClipboard>
+              <Typography variant="body2" noWrap>
+                {loading ? <Loading size="1rem" /> : payoutAddress ?? <Trans>Not Available</Trans>}
               </Typography>
             </Tooltip>
           </Flex>

@@ -1,13 +1,7 @@
-BTCgreen is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
+BTCgreen is a cryptocurrency forked from Taco forked from Chia and uses the Proof of Space and Time consensus algorithm
 
-Discord Channel: https://discord.gg/A9aHJ5ZYaS
+Discord Channel: https://discord.gg/Tr2uxdHTxM
 
-Website: Coming Soon
+Website: https://www.btcgreen.us/btcgreen-coin
 
 Introducer: dns-introducer.btcgreen.us:9282
-
-Prefarm: 30,000
-
-Block Reward: 1 per block
-
-NFT plots pay full reward!

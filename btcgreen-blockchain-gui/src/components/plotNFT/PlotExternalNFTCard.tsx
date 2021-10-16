@@ -258,7 +258,7 @@ export default function PlotExternalNFTCard(props: Props) {
                           <PaymentIcon />
                         </ListItemIcon>
                         <Typography variant="inherit" noWrap>
-                          <Trans>View Payout Instructions</Trans>
+                          <Trans>Edit Payout Instructions</Trans>
                         </Typography>
                       </MenuItem>
                     ) */}
