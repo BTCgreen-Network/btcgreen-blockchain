@@ -25,7 +25,7 @@ from btcgreen.util.config import (
 from btcgreen.util.ints import uint32
 from btcgreen.util.keychain import Keychain
 from btcgreen.util.path import mkdir
-from btcgreen.util.ssl import (
+from btcgreen.util.ssl_check import (
     DEFAULT_PERMISSIONS_CERT_FILE,
     DEFAULT_PERMISSIONS_KEY_FILE,
     RESTRICT_MASK_CERT_FILE,

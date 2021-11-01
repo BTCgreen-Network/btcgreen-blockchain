@@ -16,7 +16,7 @@ from btcgreen.cmds.wallet import wallet_cmd
 from btcgreen.cmds.plotnft import plotnft_cmd
 from btcgreen.util.default_root import DEFAULT_KEYS_ROOT_PATH, DEFAULT_ROOT_PATH
 from btcgreen.util.keychain import set_keys_root_path, supports_keyring_passphrase
-from btcgreen.util.ssl import check_ssl
+from btcgreen.util.ssl_check import check_ssl
 from typing import Optional
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])

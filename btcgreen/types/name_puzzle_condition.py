@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.condition_with_args import ConditionWithArgs
-from btcgreen.util.condition_tools import ConditionOpcode
+from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.util.streamable import Streamable, streamable
 
 
@@ -18,5 +18,6 @@ class NPC(Streamable):
     def condition_dict(self):
         d: Dict[ConditionOpcode, List[ConditionWithArgs]] = {}
         for opcode, l in self.conditions:
+            assert opcode not in d
             d[opcode] = l
         return d

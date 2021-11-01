@@ -2,7 +2,6 @@ import collections
 import logging
 from typing import Dict, List, Optional, Set, Tuple, Union, Callable
 
-from blspy import G1Element
 from chiabip158 import PyBIP158
 from clvm.casts import int_from_bytes
 
@@ -28,9 +27,7 @@ from btcgreen.types.generator_types import BlockGenerator
 from btcgreen.types.name_puzzle_condition import NPC
 from btcgreen.types.unfinished_block import UnfinishedBlock
 from btcgreen.util import cached_bls
-from btcgreen.util.condition_tools import (
-    pkm_pairs_for_conditions_dict,
-)
+from btcgreen.util.condition_tools import pkm_pairs
 from btcgreen.util.errors import Err
 from btcgreen.util.generator_tools import (
     additions_for_npc,
@@ -435,9 +432,6 @@ async def validate_block_body(
             return Err.WRONG_PUZZLE_HASH, None
 
     # 21. Verify conditions
-    # create hash_key list for aggsig check
-    pairs_pks: List[G1Element] = []
-    pairs_msgs: List[bytes] = []
     for npc in npc_list:
         assert height is not None
         unspent = removal_coin_records[npc.coin_name]
@@ -449,11 +443,9 @@ async def validate_block_body(
         )
         if error:
             return error, None
-        for pk, m in pkm_pairs_for_conditions_dict(
-            npc.condition_dict, npc.coin_name, constants.AGG_SIG_ME_ADDITIONAL_DATA
-        ):
-            pairs_pks.append(pk)
-            pairs_msgs.append(m)
+
+    # create hash_key list for aggsig check
+    pairs_pks, pairs_msgs = pkm_pairs(npc_list, constants.AGG_SIG_ME_ADDITIONAL_DATA)
 
     # 22. Verify aggregated signature
     # TODO: move this to pre_validate_blocks_multiprocessing so we can sync faster

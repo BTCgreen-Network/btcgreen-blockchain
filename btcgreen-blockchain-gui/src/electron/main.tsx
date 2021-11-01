@@ -1,4 +1,5 @@
 import { app, dialog, shell, ipcMain, BrowserWindow, Menu, session } from 'electron';
+require('@electron/remote/main').initialize()
 import path from 'path';
 import React from 'react';
 import url from 'url';
@@ -49,13 +50,9 @@ function openAbout() {
   });
   aboutWindow.loadURL(`data:text/html;charset=utf-8,${about}`);
 
-  aboutWindow.webContents.on('will-navigate', (e, url) => {
-    e.preventDefault();
-    shell.openExternal(url);
-  });
-  aboutWindow.webContents.on('new-window', (e, url) => {
-    e.preventDefault();
-    shell.openExternal(url);
+  aboutWindow.webContents.setWindowOpenHandler((details) => {
+    shell.openExternal(details.url);
+    return { action: 'deny' }
   });
 
   aboutWindow.once('closed', () => {
@@ -135,7 +132,8 @@ if (!handleSquirrelEvent()) {
         webPreferences: {
           preload: `${__dirname}/preload.js`,
           nodeIntegration: true,
-          enableRemoteModule: true,
+          contextIsolation: false,
+          nativeWindowOpen: true
         },
       });
 
@@ -163,6 +161,7 @@ if (!handleSquirrelEvent()) {
       console.log('startUrl', startUrl);
 
       mainWindow.loadURL(startUrl);
+      require("@electron/remote/main").enable(mainWindow.webContents)
 
       mainWindow.once('ready-to-show', () => {
         mainWindow.show();
@@ -214,7 +213,17 @@ if (!handleSquirrelEvent()) {
           });
         }
       });
+      mainWindow.on('showMessageBox' , async (e, a) => {
+        e.reply(await dialog.showMessageBox(mainWindow,a))
+      })
+
+      mainWindow.on('showSaveDialog' , async (e, a) => {
+        e.reply(await dialog.showSaveDialog(a))
+      })
+
     };
+
+
 
     const createMenu = () => Menu.buildFromTemplate(getMenuTemplate());
 
@@ -386,9 +395,9 @@ if (!handleSquirrelEvent()) {
               );
             },
           },
-          //{
-           // type: 'separator',
-          //},
+          {
+            type: 'separator',
+          },
           {
             label: i18n._(/* i18n */ { id: 'Report an Issue...' }),
             click: () => {
@@ -397,69 +406,16 @@ if (!handleSquirrelEvent()) {
               );
             },
           },
-          //{
-            //label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
-            //click: () => {
-              //openExternal('https://keybase.io/team/chia_network.public');
-            //},
-          //},
-		  {
-            type: 'separator',
-          },
-		  {
-            label: i18n._(/* i18n */ { id: 'Visit BTCgreen Website' }),
+          {
+            label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
             click: () => {
-              openExternal(
-                'https://btcgreen.us',
-              );
+              openExternal('https://keybase.io/team/btcgreen_network.public');
             },
           },
-		  {
-            label: i18n._(/* i18n */ { id: 'Join our Discord Server' }),
-            click: () => {
-              openExternal(
-                'https://discord.gg/AZdGSFnqAR',
-              );
-            },
-          },	
           {
-            label: i18n._(/* i18n */ { id: 'Follow us on Twitter' }),
+            label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal(
-                'https://twitter.com/btcgreen',
-              );
-            },
-          },	
-          {
-            label: i18n._(/* i18n */ { id: 'Visit our YouTube Channel' }),
-            click: () => {
-              openExternal(
-                'https://www.youtube.com/channel/UChJY3YEOTDBvFJ0vLFEc1Sw',
-              );
-            },
-          },	
-          {
-            label: i18n._(/* i18n */ { id: 'Connect with us on Facebook' }),
-            click: () => {
-              openExternal(
-                'https://www.facebook.com/BTCgreenNetwork',
-              );
-            },
-          },	
-          {
-            label: i18n._(/* i18n */ { id: 'Join our group on Telegram' }),
-            click: () => {
-              openExternal(
-                'https://t.me/BTCgreen_Network',
-              );
-            },
-          },	
-          {
-            label: i18n._(/* i18n */ { id: 'Join our Reddit Community' }),
-            click: () => {
-              openExternal(
-                'https://www.reddit.com/r/BTCgreenNetwork',
-              );
+              openExternal('https://twitter.com/btcgreen_project');
             },
           },
         ],

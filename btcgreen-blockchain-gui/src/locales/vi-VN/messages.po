@@ -1924,8 +1924,8 @@ msgid "Select Wallet Type"
 msgstr "Chọn loại ví"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
-msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external XBTC)."
-msgstr "Chọn điểm đến cuối cùng cho thư mục nơi bạn muốn lưu trữ plot. Chúng tôi khuyên bạn nên sử dụng ổ cứng có dung lượng lớn (như ổ cứng XBTC)."
+msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
+msgstr "Chọn điểm đến cuối cùng cho thư mục nơi bạn muốn lưu trữ plot. Chúng tôi khuyên bạn nên sử dụng ổ cứng có dung lượng lớn (như ổ cứng HDD)."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -2752,6 +2752,6 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Phí giao dịch của người dùng"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{byte, plural, one {byte} other {bytes}}"
+msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
 

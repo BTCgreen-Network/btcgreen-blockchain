@@ -6,8 +6,6 @@ from concurrent.futures.process import ProcessPoolExecutor
 from enum import Enum
 from typing import Dict, List, Optional, Set, Tuple, Union
 
-from btcgreen.util.default_root import DEFAULT_ROOT_PATH
-from btcgreen.util.config import load_config
 from clvm.casts import int_from_bytes
 
 from btcgreen.consensus.block_body_validation import validate_block_body
@@ -106,10 +104,7 @@ class Blockchain(BlockchainInterface):
         cpu_count = multiprocessing.cpu_count()
         if cpu_count > 61:
             cpu_count = 61  # Windows Server 2016 has an issue https://bugs.python.org/issue26903
-        config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
         num_workers = max(cpu_count - 2, 1)
-        if 'multiprocessing_limit' in config.keys():
-            num_workers = min(num_workers, int(config["multiprocessing_limit"]));
         self.pool = ProcessPoolExecutor(max_workers=num_workers)
         log.info(f"Started {num_workers} processes for block validation")
 
@@ -734,11 +729,10 @@ class Blockchain(BlockchainInterface):
         if len(self.__block_records) < self.constants.BLOCKS_CACHE_SIZE:
             return None
 
-        peak = self.get_peak()
-        assert peak is not None
-        if peak.height - self.constants.BLOCKS_CACHE_SIZE < 0:
+        assert self._peak_height is not None
+        if self._peak_height - self.constants.BLOCKS_CACHE_SIZE < 0:
             return None
-        self.clean_block_record(peak.height - self.constants.BLOCKS_CACHE_SIZE)
+        self.clean_block_record(self._peak_height - self.constants.BLOCKS_CACHE_SIZE)
 
     async def get_block_records_in_range(self, start: int, stop: int) -> Dict[bytes32, BlockRecord]:
         return await self.block_store.get_block_records_in_range(start, stop)

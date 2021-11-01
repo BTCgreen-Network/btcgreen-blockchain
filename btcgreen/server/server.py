@@ -28,7 +28,7 @@ from btcgreen.types.peer_info import PeerInfo
 from btcgreen.util.errors import Err, ProtocolError
 from btcgreen.util.ints import uint16
 from btcgreen.util.network import is_localhost, is_in_network
-from btcgreen.util.ssl import verify_ssl_certs_and_keys
+from btcgreen.util.ssl_check import verify_ssl_certs_and_keys
 
 
 def ssl_context_for_server(
@@ -714,7 +714,7 @@ class BTCgreenServer:
         try:
             timeout = ClientTimeout(total=15)
             async with ClientSession(timeout=timeout) as session:
-                async with session.get("https://ip.btcgreen.us/") as resp:
+                async with session.get("https://ip.btcgreen.net/") as resp:
                     if resp.status == 200:
                         ip = str(await resp.text())
                         ip = ip.rstrip()

@@ -33,6 +33,7 @@ from btcgreen.util.db_wrapper import DBWrapper
 from btcgreen.util.errors import Err
 from btcgreen.util.hash import std_hash
 from btcgreen.util.ints import uint32, uint64, uint128
+from btcgreen.util.db_synchronous import db_synchronous_on
 from btcgreen.wallet.block_record import HeaderBlockRecord
 from btcgreen.wallet.cc_wallet.cc_wallet import CCWallet
 from btcgreen.wallet.derivation_record import DerivationRecord
@@ -138,7 +139,10 @@ class WalletStateManager:
         self.log.debug(f"Starting in db path: {db_path}")
         self.db_connection = await aiosqlite.connect(db_path)
         await self.db_connection.execute("pragma journal_mode=wal")
-        await self.db_connection.execute("pragma synchronous=OFF")
+
+        await self.db_connection.execute(
+            "pragma synchronous={}".format(db_synchronous_on(self.config.get("db_sync", "auto"), db_path))
+        )
 
         self.db_wrapper = DBWrapper(self.db_connection)
         self.coin_store = await WalletCoinStore.create(self.db_wrapper)
