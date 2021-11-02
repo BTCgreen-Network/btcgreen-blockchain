@@ -105,12 +105,6 @@ jobs:
         $env:path="C:\Program` Files` (x86)\Windows` Kits\10\App` Certification` Kit;$env:path"
         .\build_scripts\build_windows.ps1
 
-    - name: Upload Windows exe's to artifacts
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: Windows-Exe
-        path: ${{ github.workspace }}\btcgreen-blockchain-gui\BTCgreen-win32-x64\
-
     - name: Upload Installer to artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
