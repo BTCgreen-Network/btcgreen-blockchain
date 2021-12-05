@@ -26,8 +26,10 @@ const cols = [
     title: <Trans>Proofs Found</Trans>,
   },
   {
-    field: 'timeconsuming',
-    title: <Trans>Time Consuming(ms)</Trans>,
+    field(row: Row) {
+      return `${row.timeconsuming} ms`
+    },
+    title: <Trans>Plot Response Time</Trans>,
   },
   {
     field(row: Row) {

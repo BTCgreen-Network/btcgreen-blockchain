@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { byte_to_btcgreen } from '../../../util/btcgreen';
+import { mojo_to_btcgreen } from '../../../util/btcgreen';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
 export default function FarmCardTotalBTCgreenFarmed() {
@@ -20,7 +20,7 @@ export default function FarmCardTotalBTCgreenFarmed() {
   const totalBTCgreenFarmed = useMemo(() => {
     if (farmedAmount !== undefined) {
       const val = BigInt(farmedAmount.toString());
-      return byte_to_btcgreen(val);
+      return mojo_to_btcgreen(val);
     }
   }, [farmedAmount]);
 

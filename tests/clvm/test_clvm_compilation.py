@@ -9,7 +9,7 @@ wallet_program_files = set(
     [
         "btcgreen/wallet/puzzles/calculate_synthetic_public_key.clvm",
         "btcgreen/wallet/puzzles/cc.clvm",
-        "btcgreen/wallet/puzzles/chialisp_deserialisation.clvm",
+        "btcgreen/wallet/puzzles/btcgreenlisp_deserialisation.clvm",
         "btcgreen/wallet/puzzles/rom_bootstrap_generator.clvm",
         "btcgreen/wallet/puzzles/generator_for_single_coin.clvm",
         "btcgreen/wallet/puzzles/genesis-by-coin-id-with-0.clvm",

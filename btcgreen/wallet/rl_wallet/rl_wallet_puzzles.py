@@ -7,7 +7,7 @@ from btcgreen.types.blockchain_format.program import Program
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.util.ints import uint64
-from btcgreen.wallet.chialisp import sexp
+from btcgreen.wallet.btcgreenlisp import sexp
 from btcgreen.wallet.puzzles.load_clvm import load_clvm
 
 RATE_LIMITED_MODE = 1

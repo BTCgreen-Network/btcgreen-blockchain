@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { byte_to_btcgreen_string } from '../../../util/btcgreen';
+import { mojo_to_btcgreen_string } from '../../../util/btcgreen';
 
 type Props = {
   wallet_id: number;
@@ -32,7 +32,7 @@ export default function WalletCardSpendableBalance(props: Props) {
       }
       value={
         <>
-          {byte_to_btcgreen_string(value)} {currencyCode}
+          {mojo_to_btcgreen_string(value)} {currencyCode}
         </>
       }
     />

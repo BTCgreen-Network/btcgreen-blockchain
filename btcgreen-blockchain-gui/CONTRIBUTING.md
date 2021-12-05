@@ -6,10 +6,10 @@ We are happy that you are taking a look at the code for BTCgreen, a proof of spa
 A lot of fascinating new cryptography and blockchain concepts are used and implemented here.
 This repo includes the code for the BTCgreen GUI in electron/react and TypeScript.
 
-It is an input to the [btcgreen-blockchain](https://github.com/BTCgreen-Network/btcgreen-blockchain) repository which also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/BTCgreen-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/BTCgreen-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/BTCgreen-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/BTCgreen-Network/chiabip158).
+It is an input to the [btcgreen-blockchain](https://github.com/BTCgreen-Network/btcgreen-blockchain) repository which also includes a verifiable delay function implementation that it imports from the [btcgreenvdf repo](https://github.com/BTCgreen-Network/btcgreenvdf) (in c/c++), and a proof of space implementation that it imports from the [btcgreenpos repo](https://github.com/BTCgreen-Network/btcgreenpos). BLS signatures are imported from the [bls-signatures repo](https://github.com/BTCgreen-Network/bls-signatures) as blspy. There is an additional dependency on the [btcgreenbip158 repo](https://github.com/BTCgreen-Network/btcgreenbip158).
 For major platforms, binary and source wheels are shipped to PyPI from each dependent repo and then btcgreen-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows and MacOS installer. On unsupported platforms, pip will fall back to the source distributions to be compiled locally.
 
-If you want to learn more about this project, read the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreen.us/assets/BTCgreenGreenPaper.pdf).
+If you want to learn more about this project, read the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreen.net/assets/BTCgreenGreenPaper.pdf).
 
 ## Contributions
 

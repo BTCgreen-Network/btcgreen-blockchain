@@ -136,6 +136,7 @@ class WSBTCgreenConnection:
 
             if message_type != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
+
             if inbound_handshake.network_id != 'btcgreen-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
@@ -214,9 +215,17 @@ class WSBTCgreenConnection:
         except Exception:
             error_stack = traceback.format_exc()
             self.log.warning(f"Exception closing socket: {error_stack}")
-            self.close_callback(self, ban_time)
+            try:
+                self.close_callback(self, ban_time)
+            except Exception:
+                error_stack = traceback.format_exc()
+                self.log.error(f"Error closing1: {error_stack}")
             raise
-        self.close_callback(self, ban_time)
+        try:
+            self.close_callback(self, ban_time)
+        except Exception:
+            error_stack = traceback.format_exc()
+            self.log.error(f"Error closing2: {error_stack}")
 
     async def ban_peer_bad_protocol(self, log_err_msg: str):
         """Ban peer for protocol violation"""

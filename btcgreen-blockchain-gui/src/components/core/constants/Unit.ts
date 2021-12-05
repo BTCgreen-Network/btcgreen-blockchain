@@ -1,6 +1,6 @@
 enum Unit {
   BTCGREEN = 'BTCGREEN',
-  BYTE = 'BYTE',
+  MOJO = 'MOJO',
   COLOURED_COIN = 'COLOUREDCOIN',
 }
 

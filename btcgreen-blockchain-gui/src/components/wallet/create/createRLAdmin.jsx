@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { btcgreen_to_byte } from '../../../util/btcgreen';
+import { btcgreen_to_mojo } from '../../../util/btcgreen';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -156,12 +156,12 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const btcgreenper = btcgreen_to_byte(btcgreenper_input.value);
+    const btcgreenper = btcgreen_to_mojo(btcgreenper_input.value);
     const btcgreenper_value = Number.parseInt(Number(btcgreenper));
     const userpubkey = userpubkey_input.value;
-    const amount = btcgreen_to_byte(amount_input.value);
+    const amount = btcgreen_to_mojo(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = btcgreen_to_byte(fee_input.value);
+    // var fee = btcgreen_to_mojo(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(

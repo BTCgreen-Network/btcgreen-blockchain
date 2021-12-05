@@ -21,7 +21,7 @@ import usePlotNFTs from '../../hooks/usePlotNFTs';
 import { pwAbsorbRewards } from '../../modules/plotNFT';
 import { SubmitData } from './select/PlotNFTSelectPool';
 import PlotNFTName from './PlotNFTName';
-import { byte_to_btcgreen, btcgreen_to_byte } from '../../util/btcgreen';
+import { mojo_to_btcgreen, btcgreen_to_mojo } from '../../util/btcgreen';
 import useStandardWallet from '../../hooks/useStandardWallet';
 
 type FormData = {
@@ -64,13 +64,13 @@ export default function PlotNFTAbsorbRewards(props: Props) {
 
       const { fee } = data;
 
-      const feeBytes = btcgreen_to_byte(fee);
+      const feeMojos = btcgreen_to_mojo(fee);
 
       if (walletId === undefined || !address) {
         return;
       }
 
-      await dispatch(pwAbsorbRewards(walletId, feeBytes));
+      await dispatch(pwAbsorbRewards(walletId, feeMojos));
 
       if (history.length) {
         history.goBack();
@@ -137,7 +137,7 @@ export default function PlotNFTAbsorbRewards(props: Props) {
               <Trans>
                 You will recieve{' '}
                 <UnitFormat
-                  value={byte_to_btcgreen(BigInt(balance))}
+                  value={mojo_to_btcgreen(BigInt(balance))}
                   display="inline"
                   state={State.SUCCESS}
                 />{' '}

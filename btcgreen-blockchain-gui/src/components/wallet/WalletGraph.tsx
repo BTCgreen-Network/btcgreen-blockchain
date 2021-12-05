@@ -9,7 +9,7 @@ import useWallet from '../../hooks/useWallet';
 import TransactionType from '../../constants/TransactionType';
 import type Transaction from '../../types/Transaction';
 import type Peak from '../../types/Peak';
-import { byte_to_btcgreen } from '../../util/btcgreen';
+import { mojo_to_btcgreen } from '../../util/btcgreen';
 import usePeak from '../../hooks/usePeak';
 import useCurrencyCode from '../../hooks/useCurrencyCode';
 import blockHeightToTimestamp from '../../util/blockHeightToTimestamp';
@@ -197,8 +197,8 @@ function prepareGraphPoints(
   const points = [
     {
       x: peak.height,
-      y: Math.max(0, byte_to_btcgreen(start)),
-      tooltip: byte_to_btcgreen(balance),
+      y: Math.max(0, mojo_to_btcgreen(start)),
+      tooltip: mojo_to_btcgreen(balance),
     },
   ];
 
@@ -209,8 +209,8 @@ function prepareGraphPoints(
 
     points.push({
       x: timestamp,
-      y: Math.max(0, byte_to_btcgreen(start)),
-      tooltip: byte_to_btcgreen(start),
+      y: Math.max(0, mojo_to_btcgreen(start)),
+      tooltip: mojo_to_btcgreen(start),
     });
   });
 

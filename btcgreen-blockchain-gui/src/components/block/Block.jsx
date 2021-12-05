@@ -28,7 +28,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { byte_to_btcgreen } from '../../util/btcgreen';
+import { mojo_to_btcgreen } from '../../util/btcgreen';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -172,13 +172,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = byte_to_btcgreen(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = byte_to_btcgreen(
+  const poolReward = mojo_to_btcgreen(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = mojo_to_btcgreen(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
   const btcgreenFees = blockRecord.fees
-    ? byte_to_btcgreen(BigInt(blockRecord.fees))
+    ? mojo_to_btcgreen(BigInt(blockRecord.fees))
     : '';
 
   const rows = [

@@ -74,28 +74,28 @@ def configure(
             change_made = True
         else:
             print(f"Logging level not updated. Use one of: {levels}")
-    if enable_upnp is not None:
+    if enable_upnp:
         config["full_node"]["enable_upnp"] = str2bool(enable_upnp)
         if str2bool(enable_upnp):
             print("uPnP enabled")
         else:
             print("uPnP disabled")
         change_made = True
-    if set_outbound_peer_count is not None:
+    if set_outbound_peer_count:
         config["full_node"]["target_outbound_peer_count"] = int(set_outbound_peer_count)
         print("Target outbound peer count updated")
         change_made = True
-    if set_peer_count is not None:
+    if set_peer_count:
         config["full_node"]["target_peer_count"] = int(set_peer_count)
         print("Target peer count updated")
         change_made = True
-    if testnet is not None:
+    if testnet:
         if testnet == "true" or testnet == "t":
             print("Setting Testnet")
-            testnet_port = "38444"
-            testnet_introducer = "testnet-introducer.btcgreen.us"
-            testnet_dns_introducer = "dns-testnet-introducer.btcgreen.us"
-            testnet = "testnet1"
+            testnet_port = "58444"
+            testnet_introducer = "beta1_introducer.btcgreen.com"
+            testnet_dns_introducer = "dns-introducer-testnet7.btcgreen.com"
+            testnet = "testnet7"
             config["full_node"]["port"] = int(testnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(testnet_port)
             config["farmer"]["full_node_peer"]["port"] = int(testnet_port)
@@ -120,8 +120,8 @@ def configure(
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
             mainnet_port = "9282"
-            mainnet_introducer = "introducer.btcgreen.us"
-            mainnet_dns_introducer = "dns-introducer.btcgreen.us"
+            mainnet_introducer = "introducer.btcgreen.com"
+            mainnet_dns_introducer = "dns-introducer.btcgreen.com"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)
@@ -146,7 +146,7 @@ def configure(
         else:
             print("Please choose True or False")
 
-    if peer_connect_timeout is not None:
+    if peer_connect_timeout:
         config["full_node"]["peer_connect_timeout"] = int(peer_connect_timeout)
         change_made = True
 

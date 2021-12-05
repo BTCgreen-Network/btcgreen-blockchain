@@ -6,6 +6,78 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project does not yet adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 for setuptools_scm/PEP 440 reasons.
 
+## 1.2.11 BTCgreen blockchain 2021-11-4
+
+Farmers rejoice: today's release integrates two plotters in broad use in the BTCgreen community: Bladebit, created by @harold-b, and Madmax, created by @madMAx43v3r. Both of these plotters bring significant improvements in plotting time. More plotting info [here](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Alternative--Plotters).
+This release also includes several important performance improvements as a result of last weekends "Dust Storm", with two goals in mind: make sure everyone can farm at all times, and improve how many transactions per second each node can accept, especially for low-end hardware. Please know that these optimizations are only the first wave in a series of many over the next few releases to help address this going forward. While the changes we have implemented in this update may not necessarily solve for _every_ possible congestion scenario, they should go a long way towards helping low-end systems perform closer to expectations if this happens again.
+
+### Added
+
+- Performance improvements for nodes to support higher transaction volumes, especially for low powered devices like RaspBerry Pi. Full details at [#9050](https://github.com/BTCgreen-Network/btcgreen-blockchain/pull/9050).
+  - Improved multi-core usage through process pools.
+  - Prioritized block validation.
+  - Added transaction queues for more efficient handling of incoming transactions.
+  - Increased BLS pairing cache.
+- Integrated the Bladebit plotter to CLI and GUI. Thanks @harold-b for all your hard work on this, and welcome again to the BTCgreen Network team!
+- Added the Madmax plotter to CLI and GUI. Thanks @madMAx43v3r for your support!
+- Added option to configure your node to testnet using to `btcgreen init --testnet`.
+
+### Changed
+
+- Improved the wallet GUI's startup loading time by loading the default private key's fingerprint.
+- Upgraded from clvm_rs 0.1.14 to 0.1.15.
+
+### Fixed
+
+- Minor verbiage and syntax changes in CLI and GUI.
+- Partial version to fix launcher name definition.
+- Fix harvester plot loading perfomance issues.
+- Fixed a packaging failure when passphrase is being used. Thanks @ForkFarmer for reporting this defect.
+- Fixed launcher name definition, which resolved an issue for some users in which wallet-node couldn't sync.
+- Fixed a bug in the GUI that prevented some users from switching their plotNFT.
+
+### Known Issues
+
+- PlotNFT transactions via CLI (e.g. `btcgreen plotnft join`) now accept a fee parameter, but it is not yet operable.
+
+## 1.2.10 BTCgreen blockchain 2021-10-25
+
+We have some great improvements in this release: We launched our migration of keys to a common encrypted keyring.yaml file, and we secure this with an optional passphrase in both GUI and CLI. We've added a passphrase hint in case you forget your passphrase. More info on our [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Passphrase-Protected-BTCgreen-Keys-and-Key-Storage-Migration). We also launched a new BTCgreenlisp compiler in clvm_tools_rs which substantially improves compile time for BTCgreenlisp developers. We also addressed a widely reported issue in which a system failure, such as a power outage, would require some farmers to sync their full node from zero. This release also includes several other improvements and fixes.
+
+### Added
+
+- Added support for keyring migration from keychain, and the addition of passphrase support. Learn more at our [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Passphrase-Protected-BTCgreen-Keys-and-Key-Storage-Migration).
+- Enabled experimental use of a new BTCgreenlisp compiler in clvm_tools_rs in btcgreen-blockchain, which is off by default, and substantially improves compile time.
+- Added Windows PowerShell scripts to support installation from source.
+- Added a test to check that we don't reorg subslots unless there is a new peak.
+- Added harvester info to farmer logging.
+- Add 'points found 24h' to CLI reporting.
+- Added an alternative to pkm_pairs_for_conditions_dict() which is a bit more straightforward and returns the public keys and messages in the forms we need them to validate them.
+- Added ability to see unopenable plots at the end of plots check.
+- Added Program.at utility function.
+
+### Changed
+
+- Truncate points_[found,acknowledged]_24h to 24 hours at each signage point.
+- Improved reliability of test_farmer_harvester_rpc.py, by increasing the interval between harvester checks, which should avoid spamming logs with excessive plot refreshing and cache updates.
+- Thanks @cross for change that allows using IPv6 address in config.yaml for remote harvesters and other btcgreen services.
+- Change to stop creating unused indexes in block_records and full_blocks tables.
+- Removed unnecessary index in CoinStore & add additional benchmarks.
+- Changed db_sync setting to default to FULL. In a prior release, this setting caused some users to have to resync their full node from zero if the node went offline, such as in a power outage. Users can change this to OFF in config.yaml.
+- Updated the coin_store benchmark to enable synchronous mode when talking to the DB, since that's the default now, and improves the output a bit.
+- Updated the old comment on btcgreen/util/streamable.py with newer developer documentation.
+- Minor GUI changes based on community feedback.
+- Thanks @jack60612 for your help in improving our GUI code, including upgrading to electron 13, migration to electron remote, updating the latest dependencies, and more.
+
+### Fixed
+
+- Corrected a super-linter name typo to GitHub
+- Thanks @sharjeelaziz for correcting our typo in your name. Our apologies for the error!
+- In macOS builds, changed the export value of NOTARIZE to fix some build failures.
+- Fix log output for duplicated plots.
+- Removed a flaky mtime check for plots that resolved an issue where file_path.stat() shows multiple copies of plots and slows performance of the farmer. Thanks @timporter for the assist on this one.
+- Thanks @jcteng for fixing a bug on the BTCgreen DID wallet that showed 'mojo:'' instead of 'mojo'.
+
 ## 1.2.9 BTCgreen blockchain 2021-10-01
 
 ### Changed
@@ -17,7 +89,7 @@ for setuptools_scm/PEP 440 reasons.
 ### Added
 
 - Added RPC updates to support keyring migration and to support adding a passphrase for wallets in an upcoming release.
-- Added plot memo caching in PlotManager, speeding initial loading and cached loading, by enabling harvester to save the parsed plot memo on disk on shutdown, then load it back into memory on startup so that it can skip key parsing calculations for all already known plots.
+- Added plot memo xbtching in PlotManager, speeding initial loading and cached loading, by enabling harvester to save the parsed plot memo on disk on shutdown, then load it back into memory on startup so that it can skip key parsing calculations for all already known plots.
 - Added a debug option to log all SQL commands.
 - Added support for DID, our decentralized identity solution, as a building block toward BTCgreen's broader set of DID capabilities.
 - Thanks @olivernyc for the addition of a query in CoinStore to special case height 0 to avoid querying all unspent coins.
@@ -26,7 +98,7 @@ for setuptools_scm/PEP 440 reasons.
 - Added a config option for peer_connect_timeout.
 - Added support for unhardened key derivations.
 - Various CoinStore benchmark and performance improvements.
-- Beta builds are built on every merge to main, and are now available from <https://btcgreen.us/download/>.
+- Beta builds are built on every merge to main, and are now available from <https://btcgreen.com/download/>.
 - Thanks @Radexito for adding support for Raspberry Pi 4 64Bit to the GUI installation script.
 - Added macOS keyring.yaml support, migrating keys from macOS Keychain to keyring.yaml to support an upcoming release in which we'll add an optional passphrase to wallets.
 - We have made many full node changes to support our upcoming BTCgreen Asset Token (CAT) standard and our upcoming standalone light wallet, which will use BTCgreen's new electrum-style protocol to enable faster wallet syncing.
@@ -105,7 +177,7 @@ Today we’re releasing version 1.2.6 to address a resource bug with nodes, and 
 - Enabled querying AAAA records for DNS Introducer.
 - We now set the version for the GUI when doing a manual install using the install-gui.sh script. Uses a python helper to get the version of the btcgreen install and then converts it into proper npm format and puts that into package.json.
 - Added some new class methods to the Program objects to improve ease of use.
-- Added an option to sign bytes as well as UTF-8 strings, which is particularly helpful if you're writing Chialisp puzzles that require signatures and you want to test them without necessarily writing a whole python script for signing the relevant data.
+- Added an option to sign bytes as well as UTF-8 strings, which is particularly helpful if you're writing BTCgreenlisp puzzles that require signatures and you want to test them without necessarily writing a whole python script for signing the relevant data.
 - Added a first version of .pre-commit-config.yaml and applied the changes required by the following initial hooks in separate commits. To use this you need to install pre-commit, see <https://pre-commit.com/#installation/>.
 - We have added many new translations in this release based on community
 submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
@@ -117,7 +189,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - Thanks @altendky for changing the default to paginate to btcgreen wallet get_transactions to address cases such as piping and output redirection to a file where the command previously just hung while waiting for the user to press c for the next page.
 - Removed commented-out debug breakpoints.
 - Enabled Rust condition checker to add the ability to parse the output conditions from a  generator program in Rust. It also validates some of the conditions in Rust.
-- Switched IP address lookup to first use BTCgreen's service ip.btcgreen.us.
+- Switched IP address lookup to first use BTCgreen's service ip.btcgreen.com.
 - Made changes so that when creating SSL certificate and private key files, we ensure that files are written with the proper file permissions.
 - Define a new encrypted keyring format to be used to store keys, and which is optionally encrypted to a user-supplied passphrase. GUI for the passphrase will come in an upcoming release.
 - Removed initial transaction freeze put in place at mainnet launch as it is no longer necessary.
@@ -161,7 +233,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 
 - Updated blspy to 1.0.5.
 - Updated chiapos to 1.0.4.
-- Included all Chialisp files in source distribution.
+- Included all BTCgreenlisp files in source distribution.
 - Removed left-over debug logging from test_wallet_pool_store.
 - Made changes to allow us to use the name coin_spend everywhere in our code, without changing it in the API requests, both outgoing and incoming. Enables us to decide at a later date when to cut over completely to the coin_spend name.
 - Thanks @mishan for your change to 'btcgreen plotnft show' to display Percent Successful Points.
@@ -234,7 +306,7 @@ OG plots made before this release can continue to be farmed side by side with th
 - We updated to clvm 0.9.6 and clvm_rs 0.1.8. CLVMObject now lazily converts python types to CLVM types as elements are inspected in clvm. cvlm_rs now returns python objects rather than a serialized object.
 - We now have rudimentary checks to makes sure that fees are less than the amount being spent.
 - The harvester API no longer relies upon time:time with thanks to @x1957.
-- We have increased the strictness of validating Chialisp in the mempool and clvm.
+- We have increased the strictness of validating BTCgreenlisp in the mempool and clvm.
 - Thanks to @ruslanskorb for improvements to the human-readable forms in the CLI.
 - Thanks to @etr2460 for improvements to the plotting progress bar in the GUI and enhancements to human-readable sizes.
 - @dkackman changed the way that configuration was found on startup.
@@ -351,7 +423,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 - We now require node 12.x to build the GUI. Installers have been building using node 12.x for quite some time.
 - Node will now farm while syncing.
-- We changed chialisp singletons to take a puzzlehash as its origin. We also updated the DID wallet to use this.
+- We changed btcgreenlisp singletons to take a puzzlehash as its origin. We also updated the DID wallet to use this.
 - Transactions are now cached for 10 minutes in mempool to retry if there is a failure of a spending attempt.
 - Thank you to @Chida82 who made the log rotation count fully configurable. Apologies to him for not initially being included here.
 - Thank you to @fiveangle for making install.sh more resilient across python installations.
@@ -365,9 +437,9 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - @martomi added logging of added coins back.
 - Thank you to @aisk for additional type checking.
 - @aisk added error checking in bech32m
-- Chialisp programs now remained serialized in Node for better performance.
+- BTCgreenlisp programs now remained serialized in Node for better performance.
 - Mempool is now set to be 50 times the single block size.
-- Mitigate 1-3 byte dust attacks.
+- Mitigate 1-3 mojo dust attacks.
 - CLI now switches to EiB for netspace display as appropriate.
 
 ### Fixed
@@ -415,7 +487,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 ### Added
 
 - This fork release includes full transaction support for the BTCgreen Blockchain. Transactions are still disabled until 5/3/2021 at 10:00AM PDT. It is hard to overstate how much work and clean up went into this release.
-- This is the 1.0 release of Chialisp. Much has been massaged and finalized. We will be putting a focus on updating and expanding the documentation on [chialisp.com](https://chialisp.com) shortly.
+- This is the 1.0 release of BTCgreenlisp. Much has been massaged and finalized. We will be putting a focus on updating and expanding the documentation on [btcgreenlisp.com](https://btcgreenlisp.com) shortly.
 - Farmers now compress blocks using code snippets from previous blocks. This saves storage space and allows larger smart coins to have a library of sorts on chain.
 - We now support offline signing of coins.
 - You can now ask for an offset wallet receive address in the cli. Thanks @jespino.
@@ -559,7 +631,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 ### Changed
 
 - Weight proof request timeout was increased to 180 seconds.
-- Mainnet uses port 8444 and other constants and service names were changed for mainnet.
+- Mainnet uses port 9282 and other constants and service names were changed for mainnet.
 - GUI locales are now extracted and compiled in `npm run build`.
 - Daemon now logs to STDERR also.
 
@@ -587,7 +659,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Added
 
-- This is a hard fork/breaking change from RC6/7. TXBTC Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.btcgreen.us/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
+- This is a hard fork/breaking change from RC6/7. TXBTC Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.btcgreen.com/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
 - The GUI now has a tooltip that directs users to the explanation of the plot filter.
 - The GUI now has a tooltip to explain the "Disable bitfield plotting" option. Thanks @shaneo257 for the idea.
 - The GUI now has a tooltip to explain Hierarchical Deterministic keys next to Receive Address on the Wallet page.
@@ -662,13 +734,13 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - There are new timestamp consensus rules. A block N must have a greater timestamp than block N-1. Also, a block's timestamp cannot be more than 5 minutes in the future. Note that we have decided that work factor difficulty resets are now going to be 24 hours on mainnet but are still shorter on testnet.
 - A List[Tuple[uint16, str]] is added to the peer network handshake. These are the capabilities that the node supports, to add new features to the protocol in an easy - soft fork - manner. The message_id is now before the data in each message.
 - Peer gossip limits were set.
-- Generators have been re-worked in CLVM. We added a chialisp deserialization puzzle and improved the low-level generator. We reduce the accepted atom size to 1MB during BTCgreenLisp native deserialization.
+- Generators have been re-worked in CLVM. We added a btcgreenlisp deserialization puzzle and improved the low-level generator. We reduce the accepted atom size to 1MB during BTCgreenLisp native deserialization.
 - When processing mempool transactions, Coin IDs are now calculated from parent coin ID and amount
 - We implemented rate limiting for full node. This can and will lead to short term bans of certain peers that didn't behave in expected ways. This is ok and normal, but strong defense against many DDOS attacks.
 - `requirements-dev.txt` has been removed in favor of the CI actions and test scripts.
-- We have moved to a new and much higher scalability download.btcgreen.us to support the mainnet launch flag and additional download demand.
-- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.btcgreen.us/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.btcgreen.us/latest/Setup-MacOS.dmg).
-- BTCgreen wheels not on Pypi and some dependecies not found there also are now on pypi.btcgreen.us.
+- We have moved to a new and much higher scalability download.btcgreen.com to support the mainnet launch flag and additional download demand.
+- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.btcgreen.com/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.btcgreen.com/latest/Setup-MacOS.dmg).
+- BTCgreen wheels not on Pypi and some dependecies not found there also are now on pypi.chia.net.
 - Additional typing has been added to the Python code with thanks to @jespino.
 - Cryptography and Keyring have been bumped to their current releases.
 - PRs and commits to the btcgreen-blockchain-gui repository will automatically have their locales updated.
@@ -690,13 +762,13 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 ### Added
 
 - The RC5 release is a new breaking change/hard fork blockchain. Plots and keys from previous chains will work fine on RC5 but balances of TXBTC will not come forward.
-- We now support a "green flag" chain launch process. A new version of the software will poll download.btcgreen.us/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
+- We now support a "green flag" chain launch process. A new version of the software will poll download.btcgreen.com/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
 - Bluebox Timelords are back. These are Timelords most anyone can run. They search through the historical chain and find large proofs of times and compact them down to their smallest representation. This significantly speeds up syncing for newly started nodes. Currently this is only supported on Linux and MacOS x86_64 but we will expand that. Any desktop or server of any age will be fast enough to be a useful Bluebox Timelord.
 - Thanks to @jespino there is now `btcgreen farm summary`. You can now get almost exactly the same farming information on the CLI as the GUI.
 - We have added Romanian to the GUI translations. Thank you to @bicilis on [Crowdin](https://crowdin.com/project/btcgreen-blockchain). We also added a couple of additional target languages. Klingon anyone?
 - `btcgreen wallet` now takes get_address to get a new wallet receive address from the CLI.
 - `btcgreen plots check` will list out all the failed plot filenames at the end of the report. Thanks for the PR go to @eFishCent.
-- Chialisp and the clvm have had the standard puzzle updated and we replaced `((c P A))` with `(a P A)`.
+- BTCgreenlisp and the clvm have had the standard puzzle updated and we replaced `((c P A))` with `(a P A)`.
 
 ## Changed
 
@@ -710,10 +782,10 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - The new chiavdf proof format is not compatible with the old one, however zero-Wesolowski proofs are not affected as they have zero proof segments and consist only of (y, proof).
 - We made two HashPrime optimizations in chiavdf. This forces numbers being tested for primality to be odd and avoids an unnecessary update of the sprout vector by stopping after the first non-zero value. This is a breaking change as it changes the prime numbers generated from a given seed. We believe this is the final breaking change for chiavdf.
 - chiabip158 was set to a gold 1.0 version.
-- Comments to Chialisp and clvm source have been updated for all of the Chialisp changes over the proceeding three weeks.
+- Comments to BTCgreenlisp and clvm source have been updated for all of the BTCgreenlisp changes over the proceeding three weeks.
 - And thanks yet again to @jespino for a host of PRs to add more detailed typing to various components in btcgreen-blockchain.
 - aiohttp was updated to 3.7.4 to address a low severity [security issue](https://github.com/advisories/GHSA-v6wp-4m6f-gcjg).
-- calccrypto/uint128_t was updated in the Windows chiapos implementation. Chiapos required some changes its build process to support MacOS ARM64.
+- calccrypto/uint128_t was updated in the Windows chiapos implementation. BTCgreenpos required some changes its build process to support MacOS ARM64.
 
 ### Fixed
 
@@ -721,7 +793,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - Nodes that were interrupted by a network crash or standby on a laptop were not syncing upon reconnection in RC4.
 - Sync issues could stop syncing from restarting and could lead to a peer host that you could not remove.
 - Adding Click changed the behavior of `btcgreen keys add -m`. The help now makes it clear that the 24 word mnemonic needs to be surrounded by a pair of quotes.
-- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.btcgreen.us via https, for example.
+- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.btcgreen.com via https, for example.
 - The difficulty adjustment calculation was simplified.
 - All of the btcgreen sub repositories that were attempting to build MacOS Universal wheels were only generating x86_64 wheels internally. We have moved back to only generating x86_64 MacOS wheels on CI.
 - However, we have updated and test compiled all BTCgreen dependencies on Apple Silicon and will be making available a test .dmg for MacOS ARM64 shortly.
@@ -740,9 +812,9 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Added
 
-- RC3 is a new chain to support the last major chialisp changes. TXBTC from the RC1/2 chain do not come forward to this chain but plots and keys continue to work as usual.
+- RC3 is a new chain to support the last major btcgreenlisp changes. TXBTC from the RC1/2 chain do not come forward to this chain but plots and keys continue to work as usual.
 - We have lowered the transaction lock to the first 5000 blocks to facilitate testing. We also started this chain at a lower difficulty.
-- A new RPC api: /push_tx. Using this RPC, you can spend custom chialisp programs. You need to make a SpendBundle, which includes the puzzle reveal (chialisp), a solution (chialisp) and a signature.
+- A new RPC api: /push_tx. Using this RPC, you can spend custom btcgreenlisp programs. You need to make a SpendBundle, which includes the puzzle reveal (btcgreenlisp), a solution (btcgreenlisp) and a signature.
 - You can now use the RPC apis to query the mempool.
 - There are now Swedish, Spanish, and Slovak translations. Huge thanks to @ordtrogen (Swedish), @jespino and @dvd101x (Spanish), and our own @seeden (Slovak). Also thanks were due to @f00b4r (Finnish), @A-Caccese (Italian), and @Bibop182 and @LeonidShamis (Russian). Quite a few more are almost complete and ready for inclusion. You can help translate and review translations at our [crowdin project](https://crowdin.com/project/btcgreen-blockchain).
 - You can obtain a new wallet receive address on the command line with `btcgreen wallet new_address`. Thanks to @jespino for this and a lot more in the next section below.
@@ -750,7 +822,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Changed
 
-- All chialisp opcodes have been renumbered. This should be the last major breaking change for chialisp and the clvm. There are a couple minor enhancements still needed for mainnet launch, but they may or may not require minor breaking changes. We will be restarting testnet chains on a mostly weekly basis either way.
+- All btcgreenlisp opcodes have been renumbered. This should be the last major breaking change for btcgreenlisp and the clvm. There are a couple minor enhancements still needed for mainnet launch, but they may or may not require minor breaking changes. We will be restarting testnet chains on a mostly weekly basis either way.
 - Node batch syncing performance was increased, and it now avoids re-validating blocks that node had already validated.
 - The entire CLI has been ported to [Click](https://click.palletsprojects.com/en/7.x/). Huge thanks to @jespino for the big assist and @unparalleled-js for the [recommendation and the initial start](https://github.com/BTCgreen-Network/btcgreen-blockchain/issues/464). This will make building out the CLI much easier. There are some subtle changes and some shortcuts are not there anymore. `btcgreen -h` and `btcgreen SUBCOMMAND -h` can be your guide.
 - We have upgraded Electron to 11.3 to support Apple Silicon. There are still one or two issues in our build chain for Apple Silicon but we should have an M1 native build shortly.
@@ -793,7 +865,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Added
 
-- This is the first release in our release candidate series. There are still a few things that will change at the edges but the blockchain, clvm, and chialisp are in release form. We have one major change to chialisp/clvm that we have chosen to schedule for the next release as in this release we're breaking the way q/quote works. We also have one more revision to the VDF that will decrease the sizes of the proofs of time. We expect a few more releases in the release candidate series.
+- This is the first release in our release candidate series. There are still a few things that will change at the edges but the blockchain, clvm, and btcgreenlisp are in release form. We have one major change to btcgreenlisp/clvm that we have chosen to schedule for the next release as in this release we're breaking the way q/quote works. We also have one more revision to the VDF that will decrease the sizes of the proofs of time. We expect a few more releases in the release candidate series.
 - Installers will now be of the pattern BTCgreenSetup-0.2.1.exe. `0.2` is release candidate and the final `.1` is the first release candidate.
 - Use 'btcgreen wallet get_transactions' in the command line to see your transactions.
 - 'btcgreen wallet show' now shows your wallet's height.
@@ -811,7 +883,7 @@ validation was changed to allow blocks like these to be made. This will enable c
 - Sub blocks renamed to blocks, and blocks renamed to transaction blocks, everywhere. This effects the RPC, now
 all fields that referred to sub blocks are changed to blocks.
 - Base difficulty and weight have increased, so difficulty of "5" in the rc1 testnet will be equivalent to "21990232555520" in the previous testnet.
-- 'btcgreen wallet send' now takes in TXBTC or XBTC as units instead of bytes.
+- 'btcgreen wallet send' now takes in TXBTC or XBTC as units instead of mojos.
 - Transactions have been further sped up.
 - The blockchain database has more careful validation.
 - The GUI is now using bech32m.
@@ -874,13 +946,13 @@ all fields that referred to sub blocks are changed to blocks.
 ### Changed
 
 - Significant improvements have been made to how the full node handles the mempool. This generally cuts CPU usage of node by 2x or more. Part of this increase is that we have temporarily limited the size of transactions. If you want to test sending a transaction you should keep the value of your transaction below 20 TXBTC as new consensus will cause you to use a lot of inputs. This will be returned to the expected level as soon as the integration of [clvm rust](https://github.com/BTCgreen-Network/clvm_rs) is complete.
-- We have changed the way TLS between nodes and between btcgreen services work. Each node now has two certificate authorities. One is a public, shared CA that signs the TLS certificates that every node uses to connect to other nodes on 8444 or 58444. You now also have a self generated private CA that must sign e.g. farmer and harvester's certificates. To run a remote harvester you need a new harvester key that is then signed by your private CA. We know this is not easy for remote harvester in this release but will address it quickly.
+- We have changed the way TLS between nodes and between btcgreen services work. Each node now has two certificate authorities. One is a public, shared CA that signs the TLS certificates that every node uses to connect to other nodes on 9282 or 511444. You now also have a self generated private CA that must sign e.g. farmer and harvester's certificates. To run a remote harvester you need a new harvester key that is then signed by your private CA. We know this is not easy for remote harvester in this release but will address it quickly.
 - We have changed the way we compile the proof of space plotter and added one additional optimization. On many modern processors this will mean that using the plotter with the `-e` flag will be 2-3% faster than the Beta 17 plotter on the same CPU. We have found this to be very sensitive to different CPUs but are now confident that, at worst, the Beta 24 plotter with `-e` will be the same speed as Beta 17 if not slightly faster on the same hardware. Huge thanks to @xorinox for meticulously tracking down and testing this.
 - If a peer is not responsive during sync, node will disconnect it.
 - Peers that have not sent data in the last hour are now disconnected.
 - We have made the "Help Translate" button in the GUI open in your default web browser and added instructions for adding new translations and more phrases in existing translations at that [URL](https://github.com/BTCgreen-Network/btcgreen-blockchain/tree/main/electron-react/src/locales). Try the "Help Translate" option on the language selection pull down to the left of the dark/light mode selection at the top right of the GUI.
 - Sync store now tracks all connected peers and removes them as they get removed.
-- The Rate Limited Wallet has been ported to new consensus and updated Chialisp methods.
+- The Rate Limited Wallet has been ported to new consensus and updated BTCgreenlisp methods.
 - We are down to only one sub dependency that does not ship binary wheels for all four platforms. The only platform still impacted is ARM64 (generally Raspberry Pi) but that only means that you still need the minor build tools as outlined on the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Raspberry-Pi).
 - We upgraded to Electron 9.4.2 for the GUI.
 - We have upgraded to py-setproctitle 1.2.2. We now have binary wheels for setproctitle on all four platforms and make it a requirement in setup.py. It is run-time optional if you wish to disable it.
@@ -1013,7 +1085,7 @@ all fields that referred to sub blocks are changed to blocks.
 
 - Welcome to the new consensus. This release is an all but a full re-write of the blockchain in under 30 days. There is now only one tip of the blockchain but we went from two chains to three. Block times are now a little under a minute but there are a couple of sub blocks between each transaction block. A block is also itself a special kind of sub block and each sub block rewards the farmer who won it 1 TXBTC. Sub blocks come, on average, about every 17 to 18 seconds.
 - Starting with this Beta, there are 4608 opportunities per day for a farmer to win 1 TXBTC compared to Beta 18 where there were 288 opportunities per day for a farmer to win 16 TXBTC.
-- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [btcgreen.us](https://btcgreen.us/). Among the improvements this gives the BTCgreen blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
+- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [btcgreen.com](https://btcgreen.com/). Among the improvements this gives the BTCgreen blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
 - New consensus means this is a very hard fork. All of your TXBTC from Beta 17/18 will be gone. Your plots and keys will work just fine however. You will have to sync to the new chain.
 - You now have to sync 16 times more "blocks" for every 5 minutes of historical time so syncing is slower than it was on the old chain. We're aware of this and will be speeding it up and addressing blockchain database growth in the nest couple of releases.
 - Prior to this Beta 19, we had block times that targeted 5 minutes and rewarded 16 TXBTC to one farmer. Moving forward we have epoch times that target 10 minutes and reward 32 TXBTC to 32 farmers about every 17-18 seconds over that period. This has subtle naming and UI impacts in various places.
@@ -1034,17 +1106,17 @@ all fields that referred to sub blocks are changed to blocks.
 - The plotter supports the new bitfield back propagation method and the old method from Beta 17. To choose the old method add a `-e` to the command line or choose "Disable bitfield plotting" in "Show Advanced Options" of the Plots tab. Bitfield back propagation writes about 13% less total writes and can be faster on some slower hard drive temp spaces. For now, SSD temp space will likely plot faster with bitfield back propagation disabled. We will be returning to speed enhancements to the plotter as we approach and pass our mainnet launch.
 - The Farm tab in the GUI is significantly enhanced. Here you have a dashboard overview of your farm and your activity in response to challenges blockchain challnegs, how long it will take you - on average - to win a block, and how much TXBTC you've won so far. Harvester and Full Node connections have moved to Advanced Options.
 - Harvester and farmer will start when the GUI starts instead of waiting for key selection if there are already keys available. This means you will start farming on reboot if you have the BTCgreen application set to launch on start.
-- Testnet is now running at the primary port of 58444. Update your routers appropriately. This opens 8444 for mainnet.
+- Testnet is now running at the primary port of 511444. Update your routers appropriately. This opens 9282 for mainnet.
 - All networking code has been refactored and mostly moved to websockets.
 - RPCs and daemon now communicate over TLS with certificates that are generated into `~/.btcgreen/VERSION/config/`
 - We have moved to taproot across all of our transactions and smart transactions.
 - We have adopted chech32m encoding of keys and addresses in parallel to bitcoin's coming adoption of bech32m.
 - The rate limited wallet was updated and re-factored.
-- All appropriate Chialisp smart transactions have been updated to use aggsig_me.
+- All appropriate BTCgreenlisp smart transactions have been updated to use aggsig_me.
 - Full node should be more aggressive about finding other peers.
 - Peer disconnect messages are now set to log level INFO down from WARNING.
 - chiavdf now allows passing in input to a VDF for new consensus.
-- sha256tree has been removed from Chialisp.
+- sha256tree has been removed from BTCgreenlisp.
 - `btcgreen show -s` has been refactored to support the new consensus.
 - `btcgreen netspace` has been refactored for new consensus.
 - aiohttp, clvm-tools, colorlog, concurrent-log-handler, keyring, cryptography, and sortedcontainers have been upgraded to their current versions.
@@ -1172,7 +1244,7 @@ all fields that referred to sub blocks are changed to blocks.
 
 - Temporary space required for each k size was updated with more accurate estimates.
 - Tables in the README.MD were not rendering correctly on Pypi. Thanks again @altendky.
-- Chiapos issue where memory was spiking and increasing
+- BTCgreenpos issue where memory was spiking and increasing
 - Fixed working space estimates so they are exact
 - Log all errors in chiapos
 - Fixed a bug that was causing Bluebox vdfs to fail.
@@ -1196,7 +1268,7 @@ all fields that referred to sub blocks are changed to blocks.
 ### Added
 
 - Rate limited wallets can now have unspent and un-spendable funds clawed back by the Admin wallet.
-- You can now backup your wallet related metadata in an encrypted and signed file to a free service from BTCgreen Network at backup.btcgreen.us. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the BTCgreen backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.btcgreen.us, your own installation, or a third party's version of it.
+- You can now backup your wallet related metadata in an encrypted and signed file to a free service from BTCgreen Network at backup.btcgreen.com. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the BTCgreen backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.btcgreen.com, your own installation, or a third party's version of it.
 - Added a Code of Conduct in CODE_OF_CONDUCT.md.
 - Added a bug report template in `.github/ISSUE_TEMPLATE/bug_report.md`.
 
@@ -1382,7 +1454,7 @@ farmer and full node protocols.
 - Use real plot sizes in UI instead of a formula/
 - HD keys now use EIP 2333 format instead of BIP32, for compatibility with
 other chains.
-- Keys are now derived with the EIP 2334 (m/12381/8444/a/b).
+- Keys are now derived with the EIP 2334 (m/12381/9282/a/b).
 - Removed the ability to pass in sk_seed to plotting, to increase security.
 - Linux builds of chiavdf and blspy now use a fresh build of gmp 6.2.1.
 
@@ -1529,7 +1601,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Added
 
-- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in Chialisp. Offers are especially cool as they create a truly decentralized exbtcange capability. Read much more about them in Bram's [blog post on Coloured coins](https://btcgreen.us/2020/04/29/coloured-coins-launch.en.html).
+- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in BTCgreenlisp. Offers are especially cool as they create a truly decentralized exchange capability. Read much more about them in Bram's [blog post on Coloured coins](https://btcgreen.com/2020/04/29/coloured-coins-launch.en.html).
 - This release adds support for native Windows via a (mostly) automated installer and MacOS Mojave. Windows still requires some PowerShell command line use. You should expect ongoing improvements in ease of install and replication of the command line tools in the GUI. Again huge thanks to @dkackman for continued Windows installer development. Native Windows is currently slightly slower than the same version running in WSL 2 on the same machine for both block verification and plotting.
 - We made some speed improvements that positively affected all platforms while trying to increase plotting speed in Windows.
 - The graphical Full Node display now shows the expected finish times of each of the prospective chain tips.
@@ -1765,7 +1837,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Added
 
-- Introducer now makes sure it only sends peer addresses to peers of peers that it can reach on port 8444 or their UPnP port.
+- Introducer now makes sure it only sends peer addresses to peers of peers that it can reach on port 9282 or their UPnP port.
 - We are now using setuptools_scm for versioning.
 
 ### Changed
@@ -1784,7 +1856,7 @@ relic. We will make a patch available for these systems shortly.
 ### Added
 
 - This is the first release of the BTCgreen testnet! Blockchain consensus, proof of time, and proof of space are included.
-- More details on the release at [https://www.btcgreen.us/developer/](https://www.btcgreen.us/developer/)
+- More details on the release at [https://www.btcgreen.com/developer/](https://www.btcgreen.com/developer/)
 
 [unreleased]: https://github.com/BTCgreen-Network/btcgreen-blockchain/compare/1.0beta5...dev
 [1.0beta5]: https://github.com/BTCgreen-Network/btcgreen-blockchain/compare/1.0beta4...1.0beta5

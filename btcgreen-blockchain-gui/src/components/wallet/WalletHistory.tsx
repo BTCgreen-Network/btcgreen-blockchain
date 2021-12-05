@@ -4,8 +4,8 @@ import { Box, Tooltip, Typography } from '@material-ui/core';
 import { Card, CopyToClipboard, Flex, Table } from '@btcgreen/core';
 import type { Row } from '../core/components/Table/Table';
 import {
-  byte_to_btcgreen_string,
-  byte_to_colouredcoin_string,
+  mojo_to_btcgreen_string,
+  mojo_to_colouredcoin_string,
 } from '../../util/btcgreen';
 import { unix_to_short_date } from '../../util/utils';
 import TransactionType from '../../constants/TransactionType';
@@ -57,12 +57,12 @@ const getCols = (type: WalletType) => [
   {
     field: (row: Row) =>
       type === WalletType.COLOURED_COIN
-        ? byte_to_colouredcoin_string(row.amount)
-        : byte_to_btcgreen_string(row.amount),
+        ? mojo_to_colouredcoin_string(row.amount)
+        : mojo_to_btcgreen_string(row.amount),
     title: <Trans>Amount</Trans>,
   },
   {
-    field: (row: Row) => byte_to_btcgreen_string(row.fee_amount),
+    field: (row: Row) => mojo_to_btcgreen_string(row.fee_amount),
     title: <Trans>Fee</Trans>,
   },
 ];
@@ -92,7 +92,7 @@ export default function WalletHistory(props: Props) {
       {transactions?.length ? (
         <Table
           cols={cols}
-          rows={transactions.filter(transaction => transaction.amount != 0)}
+          rows={transactions}
           rowsPerPageOptions={[10, 25, 100]}
           rowsPerPage={10}
           pages

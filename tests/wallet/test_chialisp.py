@@ -1,6 +1,6 @@
 import pytest
 
-from btcgreen.wallet.chialisp import (
+from btcgreen.wallet.btcgreenlisp import (
     apply,
     args,
     cons,
@@ -17,7 +17,7 @@ from btcgreen.wallet.chialisp import (
 )
 
 
-class TestChialisp:
+class TestBTCgreenlisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"
