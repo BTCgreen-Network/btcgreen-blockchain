@@ -1,6 +1,6 @@
 {
     "name": "btcgreen-blockchain",
-    "author": "BTCgreen Network <hello@btcgreen.com> (https://btcgreen.com/)",
+    "author": "BTCgreen Network <hello@btcgreen.us> (https://btcgreen.us/)",
     "description": "GUI for BTCgreen Blockchain",
     "productName": "BTCgreen Blockchain",
     "private": true,

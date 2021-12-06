@@ -48,7 +48,7 @@ dev_dependencies = [
 kwargs = dict(
     name="btcgreen-blockchain",
     description="BTCgreen blockchain full node, farmer, timelord, and wallet.",
-    url="https://btcgreen.com/",
+    url="https://btcgreen.us/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="btcgreen blockchain node",
