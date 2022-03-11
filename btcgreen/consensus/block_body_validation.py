@@ -1,6 +1,6 @@
 import collections
 import logging
-from typing import Dict, List, Optional, Set, Tuple, Union, Callable
+from typing import Callable, Dict, List, Optional, Set, Tuple, Union
 
 from chiabip158 import PyBIP158
 from clvm.casts import int_from_bytes
@@ -8,15 +8,14 @@ from clvm.casts import int_from_bytes
 from btcgreen.consensus.block_record import BlockRecord
 from btcgreen.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from btcgreen.consensus.block_root_validation import validate_block_merkle_roots
-from btcgreen.full_node.mempool_check_conditions import mempool_check_conditions_dict
 from btcgreen.consensus.blockchain_interface import BlockchainInterface
 from btcgreen.consensus.coinbase import create_farmer_coin, create_pool_coin
 from btcgreen.consensus.constants import ConsensusConstants
-from btcgreen.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from btcgreen.consensus.cost_calculator import NPCResult
 from btcgreen.consensus.find_fork_point import find_fork_point_in_chain
 from btcgreen.full_node.block_store import BlockStore
 from btcgreen.full_node.coin_store import CoinStore
-from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from btcgreen.full_node.mempool_check_conditions import get_name_puzzle_conditions, mempool_check_conditions_dict
 from btcgreen.types.blockchain_format.coin import Coin
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.coin_record import CoinRecord
@@ -29,10 +28,7 @@ from btcgreen.types.unfinished_block import UnfinishedBlock
 from btcgreen.util import cached_bls
 from btcgreen.util.condition_tools import pkm_pairs
 from btcgreen.util.errors import Err
-from btcgreen.util.generator_tools import (
-    additions_for_npc,
-    tx_removals_and_additions,
-)
+from btcgreen.util.generator_tools import additions_for_npc, tx_removals_and_additions
 from btcgreen.util.hash import std_hash
 from btcgreen.util.ints import uint32, uint64, uint128
 
@@ -50,6 +46,7 @@ async def validate_block_body(
     npc_result: Optional[NPCResult],
     fork_point_with_peak: Optional[uint32],
     get_block_generator: Callable,
+    *,
     validate_signature=True,
 ) -> Tuple[Optional[Err], Optional[NPCResult]]:
     """
@@ -159,7 +156,7 @@ async def validate_block_body(
     removals_puzzle_dic: Dict[bytes32, bytes32] = {}
     cost: uint64 = uint64(0)
 
-    # In header validation we check that timestamp is not more that 10 minutes into the future
+    # In header validation we check that timestamp is not more that 5 minutes into the future
     # 6. No transactions before INITIAL_TRANSACTION_FREEZE timestamp
     # (this test has been removed)
 
@@ -197,7 +194,7 @@ async def validate_block_body(
         # Get List of names removed, puzzles hashes for removed coins and conditions created
 
         assert npc_result is not None
-        cost = calculate_cost_of_program(block.transactions_generator, npc_result, constants.COST_PER_BYTE)
+        cost = npc_result.cost
         npc_list = npc_result.npc_list
 
         # 7. Check that cost <= MAX_BLOCK_COST_CLVM
@@ -250,9 +247,15 @@ async def validate_block_body(
     byte_array_tx: List[bytes32] = []
 
     for coin in additions + coinbase_additions:
-        byte_array_tx.append(bytearray(coin.puzzle_hash))
+        # TODO: address hint error and remove ignore
+        #       error: Argument 1 to "append" of "list" has incompatible type "bytearray"; expected "bytes32"
+        #       [arg-type]
+        byte_array_tx.append(bytearray(coin.puzzle_hash))  # type: ignore[arg-type]
     for coin_name in removals:
-        byte_array_tx.append(bytearray(coin_name))
+        # TODO: address hint error and remove ignore
+        #       error: Argument 1 to "append" of "list" has incompatible type "bytearray"; expected "bytes32"
+        #       [arg-type]
+        byte_array_tx.append(bytearray(coin_name))  # type: ignore[arg-type]
 
     bip158: PyBIP158 = PyBIP158(byte_array_tx)
     encoded_filter = bytes(bip158.GetEncoded())
@@ -316,7 +319,8 @@ async def validate_block_body(
                     curr_block_generator,
                     min(constants.MAX_BLOCK_COST_CLVM, curr.transactions_info.cost),
                     cost_per_byte=constants.COST_PER_BYTE,
-                    safe_mode=False,
+                    mempool_mode=False,
+                    height=curr.height,
                 )
                 removals_in_curr, additions_in_curr = tx_removals_and_additions(curr_npc_result.npc_list)
             else:
@@ -353,7 +357,6 @@ async def validate_block_body(
                 rem_coin,
                 height,
                 height,
-                True,
                 False,
                 block.foliage_transaction_block.timestamp,
             )
@@ -378,7 +381,6 @@ async def validate_block_body(
                     new_coin,
                     confirmed_height,
                     uint32(0),
-                    False,
                     False,
                     confirmed_timestamp,
                 )
@@ -455,7 +457,7 @@ async def validate_block_body(
 
     # The pairing cache is not useful while syncing as each pairing is seen
     # only once, so the extra effort of populating it is not justified.
-    # However, we force xbtching of pairings just for unfinished blocks
+    # However, we force caching of pairings just for unfinished blocks
     # as the cache is likely to be useful when validating the corresponding
     # finished blocks later.
     if validate_signature:

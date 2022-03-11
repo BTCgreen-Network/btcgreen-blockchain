@@ -6,8 +6,8 @@ from blspy import AugSchemeMPL, BasicSchemeMPL, G1Element, G2Element
 from btcgreen.types.blockchain_format.program import Program
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.coin_spend import CoinSpend
+from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.types.spend_bundle import SpendBundle
-from btcgreen.util.condition_tools import ConditionOpcode
 from btcgreen.util.hash import std_hash
 from btcgreen.wallet.puzzles import (
     p2_conditions,

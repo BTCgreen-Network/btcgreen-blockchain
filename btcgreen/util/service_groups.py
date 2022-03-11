@@ -10,10 +10,12 @@ SERVICES_FOR_GROUP = {
     "timelord": "btcgreen_timelord_launcher btcgreen_timelord btcgreen_full_node".split(),
     "timelord-only": "btcgreen_timelord".split(),
     "timelord-launcher-only": "btcgreen_timelord_launcher".split(),
-    "wallet": "btcgreen_wallet btcgreen_full_node".split(),
-    "wallet-only": "btcgreen_wallet".split(),
+    "wallet": "btcgreen_wallet".split(),
     "introducer": "btcgreen_introducer".split(),
     "simulator": "btcgreen_full_node_simulator".split(),
+    "crawler": "btcgreen_crawler".split(),
+    "seeder": "btcgreen_crawler btcgreen_seeder".split(),
+    "seeder-only": "btcgreen_seeder".split(),
 }
 
 

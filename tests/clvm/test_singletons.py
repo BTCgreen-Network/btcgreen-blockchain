@@ -8,9 +8,9 @@ from btcgreen.types.blockchain_format.program import Program
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.blockchain_format.coin import Coin
 from btcgreen.types.coin_spend import CoinSpend
+from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.types.spend_bundle import SpendBundle
 from btcgreen.util.errors import Err
-from btcgreen.util.condition_tools import ConditionOpcode
 from btcgreen.util.ints import uint64
 from btcgreen.consensus.default_constants import DEFAULT_CONSTANTS
 from btcgreen.wallet.lineage_proof import LineageProof

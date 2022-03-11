@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import Any, List
 
+from clvm.casts import int_to_bytes
+
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
-from btcgreen.util.clvm import int_to_bytes
 from btcgreen.util.hash import std_hash
 from btcgreen.util.ints import uint64
 from btcgreen.util.streamable import Streamable, streamable

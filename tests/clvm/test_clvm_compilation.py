@@ -8,12 +8,10 @@ from btcgreen.types.blockchain_format.program import Program, SerializedProgram
 wallet_program_files = set(
     [
         "btcgreen/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "btcgreen/wallet/puzzles/cc.clvm",
+        "btcgreen/wallet/puzzles/cat.clvm",
         "btcgreen/wallet/puzzles/btcgreenlisp_deserialisation.clvm",
         "btcgreen/wallet/puzzles/rom_bootstrap_generator.clvm",
         "btcgreen/wallet/puzzles/generator_for_single_coin.clvm",
-        "btcgreen/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "btcgreen/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
         "btcgreen/wallet/puzzles/lock.inner.puzzle.clvm",
         "btcgreen/wallet/puzzles/p2_conditions.clvm",
         "btcgreen/wallet/puzzles/p2_delegated_conditions.clvm",
@@ -37,6 +35,14 @@ wallet_program_files = set(
         "btcgreen/wallet/puzzles/pool_member_innerpuz.clvm",
         "btcgreen/wallet/puzzles/singleton_launcher.clvm",
         "btcgreen/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
+        "btcgreen/wallet/puzzles/genesis_by_puzzle_hash.clvm",
+        "btcgreen/wallet/puzzles/everything_with_signature.clvm",
+        "btcgreen/wallet/puzzles/delegated_tail.clvm",
+        "btcgreen/wallet/puzzles/settlement_payments.clvm",
+        "btcgreen/wallet/puzzles/genesis_by_coin_id.clvm",
+        "btcgreen/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "btcgreen/wallet/puzzles/delegated_genesis_checker.clvm",
+        "btcgreen/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
     ]
 )
 

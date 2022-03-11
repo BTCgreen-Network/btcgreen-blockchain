@@ -1,7 +1,3 @@
-BTCgreen is a cryptocurrency forked from Chia and uses the Proof of Space and Time consensus algorithm
-
-Discord Channel: https://discord.gg/uGQDaSstmv
-
-Website: https://btcgreen.us (coming soon)
-
-Introducer: dns-introducer.btcgreen.us:9282
+# btcgreen-blockchain
+ 
+**BTCgreen** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.

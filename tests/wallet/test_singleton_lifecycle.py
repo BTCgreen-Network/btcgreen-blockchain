@@ -10,8 +10,8 @@ from btcgreen.types.announcement import Announcement
 from btcgreen.types.blockchain_format.coin import Coin
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.coin_spend import CoinSpend
+from btcgreen.types.condition_opcodes import ConditionOpcode
 from btcgreen.types.spend_bundle import SpendBundle
-from btcgreen.util.condition_tools import ConditionOpcode
 
 from btcgreen.util.ints import uint64
 from btcgreen.wallet.puzzles.load_clvm import load_clvm
