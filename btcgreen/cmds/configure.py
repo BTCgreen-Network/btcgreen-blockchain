@@ -133,7 +133,7 @@ def configure(
 
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
-            mainnet_port = "7442"
+            mainnet_port = "9282"
             mainnet_introducer = "introducer.btcgreen.com"
             mainnet_dns_introducer = "dns-introducer.btcgreen.com"
             bootstrap_peers = ["node.btcgreen.com"]
