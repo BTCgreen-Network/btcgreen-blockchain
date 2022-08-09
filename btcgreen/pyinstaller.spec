@@ -11,13 +11,13 @@ from PyInstaller.utils.hooks import collect_submodules, copy_metadata
 THIS_IS_WINDOWS = platform.system().lower().startswith("win")
 THIS_IS_MAC = platform.system().lower().startswith("darwin")
 
-ROOT = pathlib.Path(importlib.import_module("shibgreen").__file__).absolute().parent.parent
+ROOT = pathlib.Path(importlib.import_module("btcgreen").__file__).absolute().parent.parent
 
 
 def solve_name_collision_problem(analysis):
     """
-    There is a collision between the `shibgreen` file name (which is the executable)
-    and the `shibgreen` directory, which contains non-code resources like `english.txt`.
+    There is a collision between the `btcgreen` file name (which is the executable)
+    and the `btcgreen` directory, which contains non-code resources like `english.txt`.
     We move all the resources in the zipped area so there is no
     need to create the `chia` directory, since the names collide.
 
@@ -33,7 +33,7 @@ def solve_name_collision_problem(analysis):
     zipped = []
     datas = []
     for data in analysis.datas:
-        if str(data[0]).startswith("shibgreen/"):
+        if str(data[0]).startswith("btcgreen/"):
             zipped.append(data)
         else:
             datas.append(data)
@@ -50,7 +50,7 @@ keyring_imports = collect_submodules("keyring.backends")
 # keyring uses entrypoints to read keyring.backends from metadata file entry_points.txt.
 keyring_datas = copy_metadata("keyring")[0]
 
-version_data = copy_metadata(get_distribution("shibgreen-blockchain"))[0]
+version_data = copy_metadata(get_distribution("btcgreen-blockchain"))[0]
 
 block_cipher = None
 
@@ -63,9 +63,9 @@ SERVERS = [
     "timelord",
 ]
 
-# TODO: collapse all these entry points into one `shibgreen_exec` entrypoint that accepts the server as a parameter
+# TODO: collapse all these entry points into one `btcgreen_exec` entrypoint that accepts the server as a parameter
 
-entry_points = ["shibgreen.cmds.shibgreen"] + [f"shibgreen.server.start_{s}" for s in SERVERS]
+entry_points = ["btcgreen.cmds.btcgreen"] + [f"btcgreen.server.start_{s}" for s in SERVERS]
 
 hiddenimports = []
 hiddenimports.extend(entry_points)
@@ -73,11 +73,11 @@ hiddenimports.extend(keyring_imports)
 
 binaries = [
     (
-        f"{ROOT}/madmax/shibgreen_plot",
+        f"{ROOT}/madmax/btcgreen_plot",
         "madmax"
     ),
     (
-        f"{ROOT}/madmax/shibgreen_plot_k34",
+        f"{ROOT}/madmax/btcgreen_plot_k34",
         "madmax"
     )
 ]
@@ -95,10 +95,10 @@ if THIS_IS_WINDOWS:
 
 # this probably isn't necessary
 if THIS_IS_WINDOWS:
-    entry_points.extend(["aiohttp", "shibgreen.util.bip39"])
+    entry_points.extend(["aiohttp", "btcgreen.util.bip39"])
 
 if THIS_IS_WINDOWS:
-    shibgreen_mod = importlib.import_module("shibgreen")
+    btcgreen_mod = importlib.import_module("btcgreen")
     dll_paths = pathlib.Path(sysconfig.get_path("platlib")) / "*.dll"
 
     binaries = [
@@ -115,11 +115,11 @@ if THIS_IS_WINDOWS:
             ".",
         ),
         (
-            f"{ROOT}\\madmax\\shibgreen_plot.exe",
+            f"{ROOT}\\madmax\\btcgreen_plot.exe",
             "madmax"
         ),
         (
-            f"{ROOT}\\madmax\\shibgreen_plot_k34.exe",
+            f"{ROOT}\\madmax\\btcgreen_plot_k34.exe",
             "madmax"
         ),
         (
@@ -131,10 +131,10 @@ if THIS_IS_WINDOWS:
 
 datas = []
 
-datas.append((f"{ROOT}/shibgreen/util/english.txt", "shibgreen/util"))
-datas.append((f"{ROOT}/shibgreen/util/initial-config.yaml", "shibgreen/util"))
-datas.append((f"{ROOT}/shibgreen/wallet/puzzles/*.hex", "shibgreen/wallet/puzzles"))
-datas.append((f"{ROOT}/shibgreen/ssl/*", "shibgreen/ssl"))
+datas.append((f"{ROOT}/btcgreen/util/english.txt", "btcgreen/util"))
+datas.append((f"{ROOT}/btcgreen/util/initial-config.yaml", "btcgreen/util"))
+datas.append((f"{ROOT}/btcgreen/wallet/puzzles/*.hex", "btcgreen/wallet/puzzles"))
+datas.append((f"{ROOT}/btcgreen/ssl/*", "btcgreen/ssl"))
 datas.append((f"{ROOT}/mozilla-ca/*", "mozilla-ca"))
 datas.append(version_data)
 
@@ -184,14 +184,14 @@ def add_binary(name, path_to_script, collect_args):
 
 COLLECT_ARGS = []
 
-add_binary("shibgreen", f"{ROOT}/shibgreen/cmds/shibgreen.py", COLLECT_ARGS)
-add_binary("daemon", f"{ROOT}/shibgreen/daemon/server.py", COLLECT_ARGS)
+add_binary("btcgreen", f"{ROOT}/btcgreen/cmds/btcgreen.py", COLLECT_ARGS)
+add_binary("daemon", f"{ROOT}/btcgreen/daemon/server.py", COLLECT_ARGS)
 
 for server in SERVERS:
-    add_binary(f"start_{server}", f"{ROOT}/shibgreen/server/start_{server}.py", COLLECT_ARGS)
+    add_binary(f"start_{server}", f"{ROOT}/btcgreen/server/start_{server}.py", COLLECT_ARGS)
 
-add_binary("start_crawler", f"{ROOT}/shibgreen/seeder/start_crawler.py", COLLECT_ARGS)
-add_binary("start_seeder", f"{ROOT}/shibgreen/seeder/dns_server.py", COLLECT_ARGS)
+add_binary("start_crawler", f"{ROOT}/btcgreen/seeder/start_crawler.py", COLLECT_ARGS)
+add_binary("start_seeder", f"{ROOT}/btcgreen/seeder/dns_server.py", COLLECT_ARGS)
 
 COLLECT_KWARGS = dict(
     strip=False,
