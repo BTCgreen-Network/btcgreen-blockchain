@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { Flex, Link, Loading } from '@btcgreen/core';
 import { useGetTransactionQuery } from '@btcgreen/api-react';
-import { Box, Card, CardContent, Typography } from '@material-ui/core';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import type { UnconfirmedPlotNFT } from '@btcgreen/api';
 import PlotNFTState from '../../constants/PlotNFTState';
 import useUnconfirmedPlotNFTs from '../../hooks/useUnconfirmedPlotNFTs';

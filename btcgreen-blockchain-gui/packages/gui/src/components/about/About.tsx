@@ -71,7 +71,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://btcgreennetwork.org';
+const url = 'https://btcgreen.net';
 
 type Props = {
   version: string;

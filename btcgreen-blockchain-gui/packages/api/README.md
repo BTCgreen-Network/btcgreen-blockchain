@@ -1,8 +1,8 @@
 # @btcgreen/api
 
-![Alt text](https://www.btcgreennetwork.org/img/btcgreen_logo.svg)
+![Alt text](https://www.btcgreen.net/img/btcgreen_logo.svg)
 
-This library provides support for TypeScript/JavaScript [BTCgreen](https://www.btcgreennetwork.org) apps to access the [BTCgreen Blockchain RPC](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/RPC-Interfaces), by making it easier to perform the following actions:
+This library provides support for TypeScript/JavaScript [BTCgreen](https://www.btcgreen.net) apps to access the [BTCgreen Blockchain RPC](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/RPC-Interfaces), by making it easier to perform the following actions:
 
 - Making requests to the BTCgreen Blockchain RPC.
 - Catch responses and errors with standard try/catch and async/await syntax.

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, BoxProps } from '@material-ui/core';
+import { Box, BoxProps } from '@mui/material';
 import { BTCgreen } from '@btcgreen/icons';
 
 const StyledBTCgreen = styled(BTCgreen)`

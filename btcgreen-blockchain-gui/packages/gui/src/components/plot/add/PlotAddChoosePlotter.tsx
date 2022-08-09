@@ -10,7 +10,7 @@ import {
   InputLabel,
   MenuItem,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import styled from 'styled-components';
 import { defaultPlotter, PlotterName } from '@btcgreen/api';
 import type { Plotter, PlotterMap } from '@btcgreen/api';
@@ -31,7 +31,7 @@ export default function PlotAddChoosePlotter(props: Props) {
 
   function displayablePlotters(plotters: PlotterMap<PlotterName, Plotter>): PlotterName[] {
     const displayablePlotters = Object.keys(plotters) as PlotterName[];
-    // Sort chiapos to the top of the list
+    // Sort btcgreenpos to the top of the list
     displayablePlotters.sort((a, b) => a == PlotterName.BTCGREENPOS ? -1 : a.localeCompare(b));
     return displayablePlotters;
   }

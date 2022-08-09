@@ -1,4 +1,4 @@
-import type WalletType from '../constants/WalletType';
+import { WalletType } from '@btcgreen/api';
 import type Wallet from '../types/Wallet';
 
 // deprecated

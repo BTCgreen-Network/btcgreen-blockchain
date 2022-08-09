@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import { Trans } from '@lingui/macro';
-import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple } from '@btcgreen/core';
+import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple, useLocale } from '@btcgreen/core';
 import { useGetFarmedAmountQuery } from '@btcgreen/api-react';
 
 export default function FarmCardTotalBTCgreenFarmed() {
   const currencyCode = useCurrencyCode();
+  const [locale] = useLocale();
   const { data, isLoading, error } = useGetFarmedAmountQuery();
 
   const farmedAmount = data?.farmedAmount;
@@ -13,13 +14,13 @@ export default function FarmCardTotalBTCgreenFarmed() {
     if (farmedAmount !== undefined) {
       return (
         <>
-          {mojoToBTCgreenLocaleString(farmedAmount)}
+          {mojoToBTCgreenLocaleString(farmedAmount, locale)}
           &nbsp;
           {currencyCode}
         </>
       );
     }
-  }, [farmedAmount]);
+  }, [farmedAmount, locale, currencyCode]);
 
   return (
     <CardSimple

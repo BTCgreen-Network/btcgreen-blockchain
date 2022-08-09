@@ -12,8 +12,8 @@ from btcgreen.util.streamable import Streamable, streamable
 from btcgreen.wallet.util.transaction_type import TransactionType
 
 
-@dataclass(frozen=True)
 @streamable
+@dataclass(frozen=True)
 class TransactionRecord(Streamable):
     """
     Used for storing transaction data and status in wallets.

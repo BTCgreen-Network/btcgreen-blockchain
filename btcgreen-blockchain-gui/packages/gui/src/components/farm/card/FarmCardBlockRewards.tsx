@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { Trans } from '@lingui/macro';
-import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple } from '@btcgreen/core';
+import BigNumber from 'bignumber.js';
+import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple, useLocale } from '@btcgreen/core';
 import { useGetFarmedAmountQuery } from '@btcgreen/api-react';
 
 export default function FarmCardBlockRewards() {
   const currencyCode = useCurrencyCode();
+  const [locale] = useLocale();
   const { data, isLoading, error } = useGetFarmedAmountQuery();
 
   const farmerRewardAmount = data?.farmerRewardAmount;
@@ -12,18 +14,17 @@ export default function FarmCardBlockRewards() {
 
   const blockRewards = useMemo(() => {
     if (farmerRewardAmount !== undefined && poolRewardAmount !== undefined) {
-      const val =
-        BigInt(farmerRewardAmount.toString()) +
-        BigInt(poolRewardAmount.toString());
+      const val = new BigNumber(farmerRewardAmount).plus(new BigNumber(poolRewardAmount));
+
       return (
         <>
-          {mojoToBTCgreenLocaleString(val)}
+          {mojoToBTCgreenLocaleString(val, locale)}
           &nbsp;
           {currencyCode}
         </>
       );
     }
-  }, [farmerRewardAmount, poolRewardAmount]);
+  }, [farmerRewardAmount, poolRewardAmount, locale, currencyCode]);
 
   return (
     <CardSimple

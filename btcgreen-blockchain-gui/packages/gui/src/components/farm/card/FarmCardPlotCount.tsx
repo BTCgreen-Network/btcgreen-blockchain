@@ -1,16 +1,16 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
 import { FormatLargeNumber, CardSimple } from '@btcgreen/core';
-import usePlots from '../../../hooks/usePlots';
+import { useGetTotalHarvestersSummaryQuery } from '@btcgreen/api-react';
 
 export default function FarmCardPlotCount() {
-  const { uniquePlots } = usePlots();
+  const { plots, isLoading } = useGetTotalHarvestersSummaryQuery();
 
   return (
     <CardSimple
       title={<Trans>Plot Count</Trans>}
-      value={<FormatLargeNumber value={uniquePlots?.length} />}
-      loading={!uniquePlots}
+      value={<FormatLargeNumber value={plots} />}
+      loading={isLoading}
     />
   );
 }

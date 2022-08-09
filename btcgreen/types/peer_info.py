@@ -6,8 +6,8 @@ from btcgreen.util.ints import uint16, uint64
 from btcgreen.util.streamable import Streamable, streamable
 
 
-@dataclass(frozen=True)
 @streamable
+@dataclass(frozen=True)
 class PeerInfo(Streamable):
     host: str
     port: uint16
@@ -59,8 +59,8 @@ class PeerInfo(Streamable):
         return group
 
 
-@dataclass(frozen=True)
 @streamable
+@dataclass(frozen=True)
 class TimestampedPeerInfo(Streamable):
     host: str
     port: uint16

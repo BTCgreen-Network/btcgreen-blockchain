@@ -5,9 +5,9 @@ We are happy that you are taking a look at the code for BTCgreen, a proof of spa
 
 A lot of fascinating new cryptography and blockchain concepts are used and implemented here.
 This repo includes the code for the BTCgreen full node, farmer, and timelord (in btcgreen folder), which are all written in python.
-It also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/BTCgreen-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/BTCgreen-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/BTCgreen-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/BTCgreen-Network/chiabip158). For major platforms, binary and source wheels are shipped to PyPI from each dependent repo. Then btcgreen-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows installer. On unsupported platforms, pip will fall back to the source distributions, to be compiled locally.
+It also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/Chia-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/Chia-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/Chia-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/Chia-Network/chiabip158). For major platforms, binary and source wheels are shipped to PyPI from each dependent repo. Then btcgreen-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows installer. On unsupported platforms, pip will fall back to the source distributions, to be compiled locally.
 
-If you want to learn more about this project, read the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreennetwork.org/assets/BTCgreenGreenPaper.pdf).
+If you want to learn more about this project, read the [wiki](https://github.com/BTCgreenNetwork/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreen.network/).
 
 ## Contributions
 
@@ -19,7 +19,7 @@ You can visit our [Trello project board](https://trello.com/b/ZuNx7sET) to get a
 Generally, things to the left are in progress or done. Some things go through "Coming up soon", but some will come directly out of other columns.
 Usually, the things closer to the top of each column are the ones that will be worked on soonest.
 If you are interested in cryptography, math, or just like hacking in python, there are many interesting problems to work on.
-Contact any of the team members on [Discord](https://discord.gg/yEWaF6CQcA), which we use as the main communication method. You can also comment on any Trello card.
+Contact any of the team members on [Keybase](https://keybase.io/team/btcgreen_network.public), which we use as the main communication method. You can also comment on any Trello card.
 
 We ask that external contributors create a fork of the `main` branch for any feature work they wish to take on.
 
@@ -58,13 +58,12 @@ py.test tests -v --durations 0
 The [black library](https://black.readthedocs.io/en/stable/) is used as an automatic style formatter to make things easier.
 The [flake8 library](https://readthedocs.org/projects/flake8/) helps ensure consistent style.
 The [Mypy library](https://mypy.readthedocs.io/en/stable/) is very useful for ensuring objects are of the correct type, so try to always add the type of the return value, and the type of local variables.
-The [isort library](https://isort.readthedocs.io) is used to sort, group and validate imports in all python files.
 
 If you want verbose logging for tests, edit the `tests/pytest.ini` file.
 
 ## Pre-Commit
 
-We provide a [pre-commit configuration](https://github.com/BTCgreen-Network/btcgreen-blockchain/blob/main/.pre-commit-config.yaml) which triggers several useful
+We provide a [pre-commit configuration](https://github.com/BTCgreenNetwork/btcgreen-blockchain/blob/main/.pre-commit-config.yaml) which triggers several useful
 hooks (including linters/formatter) before each commit you make if you installed and set up [pre-commit](https://pre-commit.com/). This will help
 to reduce the time you spend on failed CI jobs.
 
@@ -93,7 +92,7 @@ workflow.
 3. Install BlackConnect plugin
 4. Set to run python black on save
 5. Set line length to 120
-6. Install these linters https://github.com/BTCgreen-Network/btcgreen-blockchain/tree/main/.github/linters
+6. Install these linters https://github.com/BTCgreenNetwork/btcgreen-blockchain/tree/main/.github/linters
 
 ## Testnets and review environments
 
@@ -104,7 +103,7 @@ Following the release of `1.1.0`, the official `testnet` will include all change
 Prior to proposing changes to `main`, proposers should consider if running a `beta testnet` review environment will make the reviewer more effective when evaluating a change.
 Changes that impact the blockchain could require a review environment before acceptance into `main`. This is at the discretion of the reviewer.
 BTCgreen organization members have been granted CI access to deploy `beta testnets`.
-If you are not a BTCgreen organization member, you can enquire about deploying a `beta testnet` in the public dev Discord channel.
+If you are not a BTCgreen organization member, you can enquire about deploying a `beta testnet` in the public dev Keybase channel.
 
 ## Submit changes
 

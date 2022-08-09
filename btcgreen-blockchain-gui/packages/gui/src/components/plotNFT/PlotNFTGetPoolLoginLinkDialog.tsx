@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { t, Trans } from '@lingui/macro';
-import { Alert } from '@material-ui/lab';
 import styled from 'styled-components';
-import { CopyToClipboard, Flex, Link, Loading } from '@btcgreen/core';
+import { Button, CopyToClipboard, Flex, Link, Loading } from '@btcgreen/core';
 import {
-  Button,
+  Alert,
   Dialog,
   DialogActions,
   DialogTitle,
   DialogContent,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useGetPoolLoginLinkQuery } from '@btcgreen/api-react';
 import type { PlotNFT, PlotNFTExternal } from '@btcgreen/api';
 

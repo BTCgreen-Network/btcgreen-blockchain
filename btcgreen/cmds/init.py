@@ -34,7 +34,7 @@ def init_cmd(ctx: click.Context, create_certs: str, fix_ssl_permissions: bool, t
     - Run `btcgreen init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
     - Get more details on remote harvester on BTCgreen wiki:
-      https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Farming-on-many-machines
+      https://github.com/BTCgreenNetwork/btcgreen-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init

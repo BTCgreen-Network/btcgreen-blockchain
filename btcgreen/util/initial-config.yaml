@@ -17,19 +17,22 @@ network_overrides: &network_overrides
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
     testnet0:
-      GENESIS_CHALLENGE: 28a206a22e7e2060230c88ad149d81cc8e74bcf5e8e74aafcce8b8efe6181dbb
+      MIN_PLOT_SIZE: 18
+      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       NETWORK_TYPE: 1
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
-      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
   config:
     mainnet:
       address_prefix: "xbtc"
+      default_full_node_port: 9282
     testnet0:
       address_prefix: "txbtc"
+      default_full_node_port: 23333
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.btcgreennetwork.org/notify/mainnet_alert.txt
-BTCGREEN_ALERTS_PUBKEY: a88dc9b53e21088dcd53347eda53b533aec7cd5ff267c3968b1dfc0dc132e39575cf401f0d6bc9952404dbbfc30731c5
+ALERTS_URL: https://download.btcgreen.us/notify/mainnet_alert.txt
+BTCGREEN_ALERTS_PUBKEY: 89b7fd87cb56e926ecefb879a29aae308be01f31980569f6a75a69d2a9a69daefd71fb778d865f7c50d6c967e3025937
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -53,23 +56,23 @@ logging: &logging
   log_filename: "log/debug.log"
   log_level: "INFO"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
-  log_maxbytessrotation: 52428800 #  Max bytes logged before rotating logs
+  log_maxbytesrotation: 52428800 #  Max bytes logged before rotating logs
   log_syslog: False  # If True, outputs to SysLog host and port specified
   log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
   log_syslog_port: 514  # UDP port of the remote or local Unix syslog
 
 seeder:
   # The fake full node used for crawling will run on this port.
-  port: 8444
-  # Most full nodes on the network run on this port. (i.e. 8444 for mainnet, 58444 for testnet).
-  other_peers_port: 8444
+  port: 9282
+  # Most full nodes on the network run on this port. (i.e. 9282 for mainnet, 23333 for testnet).
+  other_peers_port: 9282
   # This will override the default full_node.peer_connect_timeout for the crawler full node
   peer_connect_timeout: 2
   # Path to crawler DB. Defaults to $BTCGREEN_ROOT/crawler.db
   crawler_db_path: "crawler.db"
   # Peers used for the initial run.
   bootstrap_peers:
-    - "node.btcgreen.com"
+    - "node.btcgreen.us"
   # Only consider nodes synced at least to this height.
   minimum_height: 240000
   # How many of a particular version we need to see before reporting it in the logs
@@ -90,7 +93,7 @@ seeder:
   # Crawler is its own standalone service within the seeder component
   crawler:
     start_rpc_server: True
-    rpc_port: 8561
+    rpc_port: 21451
     ssl:
       private_crt: "config/ssl/crawler/private_crawler.crt"
       private_key: "config/ssl/crawler/private_crawler.key"
@@ -113,7 +116,7 @@ harvester:
     batch_sleep_milliseconds: 1 # Milliseconds the harvester sleeps between batch processing
 
 
-  # If True use parallel reads in chiapos
+  # If True use parallel reads in btcgreenpos
   parallel_read: True
 
   logging: *logging
@@ -122,6 +125,7 @@ harvester:
 
   # Plots are searched for in the following directories
   plot_directories: []
+  recursive_plot_scan: False # If True the harvester scans plots recursively in the provided directories.
 
   ssl:
     private_crt:  "config/ssl/harvester/private_harvester.crt"
@@ -235,7 +239,7 @@ timelord:
   multiprocessing_start_method: default
 
   start_rpc_server: True
-  rpc_port: 8557
+  rpc_port: 21450
 
   ssl:
     private_crt:  "config/ssl/timelord/private_timelord.crt"
@@ -258,6 +262,11 @@ full_node:
   # "auto"  on/off is decided based on a heuristic of how likely a failure is on
   #         the particular system we're running on. Defaults to "full".
   db_sync: "auto"
+
+  # the number of threads used to read from the blockchain database
+  # concurrently. There's always only 1 writer, but the number of readers is
+  # configurable
+  db_readers: 4
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v2_CHALLENGE.sqlite
@@ -287,6 +296,11 @@ full_node:
   # When creating process pools the process count will generally be the CPU count minus
   # this reserved core count.
   reserved_cores: 0
+
+  # set this to true to not offload heavy lifting into separate child processes.
+  # this option is mostly useful when profiling, since only the main process is
+  # profiled.
+  single_threaded: False
 
   # How often to initiate outbound connections to other full nodes.
   peer_connect_interval: 30
@@ -459,3 +473,6 @@ wallet:
   # if an unknown CAT belonging to us is seen, a wallet will be automatically created
   # the user accepts the risk/responsibility of verifying the authenticity and origin of unknown CATs
   automatically_add_unknown_cats: False
+
+  # Interval to resend unconfirmed transactions, even if previously accepted into Mempool
+  tx_resend_timeout_secs: 1800

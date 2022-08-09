@@ -2,9 +2,9 @@ import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useNavigate } from 'react-router-dom';
 import { useRefreshPlotsMutation } from '@btcgreen/api-react';
-import { Button, Grid, Typography, Divider } from '@material-ui/core';
-import { CardHero, Flex, Link, useOpenDialog } from '@btcgreen/core';
-import { PlotHero as PlotHeroIcon } from '@btcgreen/icons';
+import { Grid, Typography, Divider } from '@mui/material';
+import { Button, CardHero, Flex, Link, useOpenDialog } from '@btcgreen/core';
+import { Plots } from '@btcgreen/icons';
 import PlotAddDirectoryDialog from '../PlotAddDirectoryDialog';
 
 export default function PlotOverviewHero() {
@@ -28,12 +28,11 @@ export default function PlotOverviewHero() {
     <Grid container>
       <Grid xs={12} md={6} lg={5} item>
         <CardHero>
-          <PlotHeroIcon fontSize="large" />
+          <Plots color="primary" fontSize="extraLarge" />
           <Typography variant="body1">
             <Trans>
-              {
-                'Plots are allocated space on your hard drive used to farm and earn BTCgreen. '
-              }
+              Plots are allocated space on your hard drive used to farm and earn BTCgreen.
+              &nbsp;
               <Link
                 target="_blank"
                 href="https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki/Network-Architecture"
@@ -54,7 +53,7 @@ export default function PlotOverviewHero() {
             <Button
               onClick={handleRefreshPlots}
               variant="outlined"
-              color="primary"
+              color="secondary"
               fullWidth
             >
               <Trans>Refresh Plots</Trans>

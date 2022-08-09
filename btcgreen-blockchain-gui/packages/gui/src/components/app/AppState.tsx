@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro';
 import { ConnectionState, ServiceHumanName, ServiceName, PassphrasePromptReason } from '@btcgreen/api';
 import { useCloseMutation, useGetStateQuery, useGetKeyringStatusQuery, useServices } from '@btcgreen/api-react';
 import { Flex, useSkipMigration, LayoutHero, LayoutLoading, useMode, useIsSimulator } from '@btcgreen/core';
-import { Typography, Collapse } from '@material-ui/core';
+import { Typography, Collapse } from '@mui/material';
 import AppKeyringMigrator from './AppKeyringMigrator';
 import AppPassPrompt from './AppPassPrompt';
 import AppSelectMode from './AppSelectMode';

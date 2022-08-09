@@ -1,6 +1,6 @@
 import PlotterName from '../constants/PlotterName';
 import { PlotterDefaults } from '../@types/Plotter';
-import { bladebitDefaults, madmaxDefaults, chiaposDefaults } from '../constants/Plotters';
+import { bladebitDefaults, madmaxDefaults, btcgreenposDefaults } from '../constants/Plotters';
 
 export default function defaultsForPlotter(plotterName: PlotterName): PlotterDefaults {
   switch (plotterName) {
@@ -10,6 +10,6 @@ export default function defaultsForPlotter(plotterName: PlotterName): PlotterDef
       return madmaxDefaults;
     case PlotterName.BTCGREENPOS: // fallthrough
     default:
-      return chiaposDefaults;
+      return btcgreenposDefaults;
   }
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { t, Trans } from '@lingui/macro';
-import { defaultPlotter } from '@btcgreen/api';
-import { useStartPlottingMutation, useCreateNewPoolWalletMutation } from '@btcgreen/api-react';
-import { ChevronRight as ChevronRightIcon } from '@material-ui/icons';
+import { defaultPlotter, toBech32m } from '@btcgreen/api';
+import {
+  useStartPlottingMutation,
+  useCreateNewPoolWalletMutation,
+} from '@btcgreen/api-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useShowError, ButtonLoading, Flex, Form, FormBackButton, toBech32m } from '@btcgreen/core';
-import { PlotHeaderSource } from '../PlotHeader';
+import { Back, useShowError, ButtonLoading, Flex, Form } from '@btcgreen/core';
 import PlotAddChoosePlotter from './PlotAddChoosePlotter';
 import PlotAddChooseSize from './PlotAddChooseSize';
 import PlotAddNumberOfPlots from './PlotAddNumberOfPlots';
@@ -37,12 +38,14 @@ export default function PlotAddForm(props: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const showError = useShowError();
 
-  const { isLoading: isLoadingUnconfirmedPlotNFTs, add: addUnconfirmedPlotNFT } = useUnconfirmedPlotNFTs();
+  const {
+    isLoading: isLoadingUnconfirmedPlotNFTs,
+    add: addUnconfirmedPlotNFT,
+  } = useUnconfirmedPlotNFTs();
   const [startPlotting] = useStartPlottingMutation();
   const [createNewPoolWallet] = useCreateNewPoolWalletMutation();
   const addNFTref = useRef();
   const { state } = useLocation();
-
 
   const otherDefaults = {
     plotCount: 1,
@@ -58,9 +61,12 @@ export default function PlotAddForm(props: Props) {
   };
 
   const defaultsForPlotter = (plotterName: PlotterName) => {
-    const plotterDefaults = plotters[plotterName]?.defaults ?? defaultPlotter.defaults;
+    const plotterDefaults =
+      plotters[plotterName]?.defaults ?? defaultPlotter.defaults;
     const plotSize = plotterDefaults.plotSize;
-    const maxRam = plotSizes.find((element) => element.value === plotSize)?.defaultRam;
+    const maxRam = plotSizes.find(
+      (element) => element.value === plotSize,
+    )?.defaultRam;
     const defaults = {
       ...plotterDefaults,
       ...otherDefaults,
@@ -68,7 +74,7 @@ export default function PlotAddForm(props: Props) {
     };
 
     return defaults;
-  }
+  };
 
   const methods = useForm<FormData>({
     defaultValues: defaultsForPlotter(PlotterName.BTCGREENPOS),
@@ -87,8 +93,8 @@ export default function PlotAddForm(props: Props) {
 
   const plotter = plotters[plotterName] ?? defaultPlotter;
   let step = 1;
-  const allowTempDirectorySelection: boolean = plotter.options.haveBladebitOutputDir === false;
-
+  const allowTempDirectorySelection: boolean =
+    plotter.options.haveBladebitOutputDir === false;
 
   const handlePlotterChanged = (newPlotterName: PlotterName) => {
     const defaults = defaultsForPlotter(newPlotterName);
@@ -116,7 +122,11 @@ export default function PlotAddForm(props: Props) {
           initialTargetState,
           initialTargetState: { state },
         } = nftData;
-        const { transaction, p2SingletonPuzzleHash } = await createNewPoolWallet(initialTargetState, fee).unwrap();
+        const { transaction, p2SingletonPuzzleHash } =
+          await createNewPoolWallet({
+            initialTargetState,
+            fee,
+          }).unwrap();
 
         if (!p2SingletonPuzzleHash) {
           throw new Error(t`p2SingletonPuzzleHash is not defined`);
@@ -167,13 +177,10 @@ export default function PlotAddForm(props: Props) {
 
   return (
     <Form methods={methods} onSubmit={handleSubmit}>
-      <PlotHeaderSource>
-        <Flex alignItems="center">
-          <ChevronRightIcon color="secondary" />
-          <Trans>Add a Plot</Trans>
-        </Flex>
-      </PlotHeaderSource>
       <Flex flexDirection="column" gap={3}>
+        <Back variant="h5" form>
+          <Trans>Add a Plot</Trans>
+        </Back>
         <PlotAddChoosePlotter step={step++} onChange={handlePlotterChanged} />
         <PlotAddChooseSize step={step++} plotter={plotter} />
         <PlotAddNumberOfPlots step={step++} plotter={plotter} />
@@ -181,8 +188,8 @@ export default function PlotAddForm(props: Props) {
           <PlotAddSelectTemporaryDirectory step={step++} plotter={plotter} />
         )}
         <PlotAddSelectFinalDirectory step={step++} plotter={plotter} />
-        <Flex gap={1}>
-          <FormBackButton variant="outlined" />
+        <PlotAddNFT ref={addNFTref} step={step++} plotter={plotter} />
+        <Flex justifyContent="flex-end">
           <ButtonLoading
             loading={loading}
             color="primary"

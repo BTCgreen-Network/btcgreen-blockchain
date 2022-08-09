@@ -6,7 +6,7 @@ import {
   Loading,
   Table,
 } from '@btcgreen/core';
-import { Tooltip } from '@material-ui/core';
+import { Tooltip } from '@mui/material';
 import { Connection, ServiceConnectionName } from '@btcgreen/api';
 import { useGetWalletConnectionsQuery } from '@btcgreen/api-react';
 
@@ -63,14 +63,16 @@ const cols = [
   },
 ];
 
-type Props = {
+export type WalletConnectionsProps = {
   walletId: number;
 };
 
-export default function WalletConnections(props: Props) {
+export default function WalletConnections(props: WalletConnectionsProps) {
   const { walletId } = props;
   const { data: connections, isLoading } = useGetWalletConnectionsQuery({
     walletId,
+  }, {
+    pollingInterval: 10000,
   });
 
   return (

@@ -13,16 +13,16 @@ if ($null -eq (Get-Command node -ErrorAction SilentlyContinue))
     Exit 1
 }
 
-Write-Output "Running 'git submodule update --init --recursive'."
-Write-Output ""
-git submodule update --init --recursive
+#Write-Output "Running 'git submodule update --init --recursive'."
+#Write-Output ""
+#git submodule update --init --recursive
 
 Push-Location
 try {
     Set-Location btcgreen-blockchain-gui
 
     $ErrorActionPreference = "SilentlyContinue"
-    npm install --loglevel=error
+    npm ci --loglevel=error
     npm audit fix
     npm run build
     py ..\installhelper.py

@@ -1,5 +1,5 @@
 # btcgreen-blockchain
-![Alt text](https://www.btcgreennetwork.org/img/btcgreen_logo.svg)
+![Alt text](https://www.btcgreen.net/img/btcgreen_logo.svg)
 
 ![GitHub contributors](https://img.shields.io/github/contributors/BTCgreen-Network/btcgreen-blockchain?logo=GitHub)
 

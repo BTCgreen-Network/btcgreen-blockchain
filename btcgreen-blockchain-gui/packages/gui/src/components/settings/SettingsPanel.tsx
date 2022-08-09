@@ -1,7 +1,8 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import {
+  Button,
   AlertDialog,
   Suspender,
   useOpenDialog,
@@ -11,23 +12,24 @@ import {
   Flex,
   StateTypography,
   State,
+  TooltipIcon,
 } from '@btcgreen/core';
 import { useGetKeyringStatusQuery } from '@btcgreen/api-react';
 import {
   Grid,
   Typography,
   Box,
-  Button,
   Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   Help as HelpIcon,
   Lock as LockIcon,
   NoEncryption as NoEncryptionIcon,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 import ChangePassphrasePrompt from './ChangePassphrasePrompt';
 import RemovePassphrasePrompt from './RemovePassphrasePrompt';
 import SetPassphrasePrompt from './SetPassphrasePrompt';
+import SettingsDerivationIndex from './SettingsDerivationIndex';
 
 const useStyles = makeStyles((theme) => ({
   passToggleBox: {
@@ -66,7 +68,7 @@ export default function SettingsPanel() {
     );
   }
 
-  const passphraseSupportEnabled = keyringStatus?.passphraseSupportEnabled ?? false; 
+  const passphraseSupportEnabled = keyringStatus?.passphraseSupportEnabled ?? false;
 
   const {
     userPassphraseIsSet,
@@ -132,7 +134,7 @@ export default function SettingsPanel() {
       tooltipTitle = (<Trans>Passphrase support requires migrating your keys to a new keyring</Trans>);
     } else {
       tooltipTitle = (<Trans>Secure your keychain using a strong passphrase</Trans>);
-      
+
       if (userPassphraseIsSet) {
         icon = (<LockIcon style={{ color: '#3AAC59',  marginRight: 6 }} />);
         statusMessage = (<Trans>Passphrase protection is enabled</Trans>);
@@ -211,6 +213,23 @@ export default function SettingsPanel() {
 
   return (
     <SettingsApp>
+      <Flex flexDirection="column" gap={1}>
+        <SettingsLabel>
+          <Flex gap={1} alignItems="center">
+            <Trans>Derivation Index</Trans>
+            <TooltipIcon>
+              <Trans>
+                The derivation index sets the range of wallet addresses that the wallet scans the blockchain for.
+                This number is generally higher if you have a lot of transactions or canceled offers for XBTC, CATs, or NFTs.
+                If you believe your balance is incorrect because it’s missing coins,
+                then increasing the derivation index could help the wallet include the missing coins in the balance total.
+              </Trans>
+            </TooltipIcon>
+          </Flex>
+        </SettingsLabel>
+
+        <SettingsDerivationIndex />
+      </Flex>
       {passphraseSupportEnabled && (
         <Flex flexDirection="column" gap={1}>
           <SettingsLabel>

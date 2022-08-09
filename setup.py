@@ -1,41 +1,39 @@
 from setuptools import setup
 
 dependencies = [
-    "multidict==5.1.0",  # Avoid 5.2.0 due to Avast
     "aiofiles==0.7.0",  # Async IO for files
-    "blspy==1.0.9",  # Signature library
-    "chiavdf==1.0.5",  # timelord and vdf verification
+    "blspy==1.0.13",  # Signature library
+    "chiavdf==1.0.6",  # timelord and vdf verification
     "chiabip158==1.1",  # bip158-style wallet filters
-    "chiapos==1.0.9",  # proof of space
+    "chiapos==1.0.10",  # proof of space
     "clvm==0.9.7",
-    "clvm_rs==0.1.19",
-    "clvm_tools==0.4.3",
-    "aiohttp==3.7.4",  # HTTP server for full node rpc
+    "clvm_tools==0.4.4",  # Currying, Program.to, other conveniences
+    "chia_rs==0.1.2",
+    "clvm-tools-rs==0.1.9",  # Rust implementation of clvm_tools
+    "aiohttp==3.8.1",  # HTTP server for full node rpc
     "aiosqlite==0.17.0",  # asyncio wrapper for sqlite, to store blocks
     "bitstring==3.1.9",  # Binary data management library
     "colorama==0.4.4",  # Colorizes terminal output
-    "colorlog==5.0.1",  # Adds color to logs
+    "colorlog==6.6.0",  # Adds color to logs
     "concurrent-log-handler==0.9.19",  # Concurrently log and rotate logs
-    "cryptography==3.4.7",  # Python cryptography library for TLS - keyring conflict
-    "fasteners==0.16.3",  # For interprocess file locking
-    "filelock==3.4.2", # For reading and writing config multiprocess and multithread safely (non-reentrant locks)
+    "cryptography==36.0.2",  # Python cryptography library for TLS - keyring conflict
+    "fasteners==0.16.3",  # For interprocess file locking, expected to be replaced by filelock
+    "filelock==3.4.2",  # For reading and writing config multiprocess and multithread safely  (non-reentrant locks)
     "keyring==23.0.1",  # Store keys in MacOS Keychain, Windows Credential Locker
     "keyrings.cryptfile==1.3.4",  # Secure storage for keys on Linux (Will be replaced)
     #  "keyrings.cryptfile==1.3.8",  # Secure storage for keys on Linux (Will be replaced)
     #  See https://github.com/frispete/keyrings.cryptfile/issues/15
-    "PyYAML==5.4.1",  # Used for config file format
-    "setproctitle==1.2.2",  # Gives the btcgreen processes readable names
+    "PyYAML==6.0",  # Used for config file format
+    "setproctitle==1.2.3",  # Gives the btcgreen processes readable names
     "sortedcontainers==2.4.0",  # For maintaining sorted mempools
-    "websockets==8.1.0",  # For use in wallet RPC and electron UI
     # TODO: when moving to click 8 remove the pinning of black noted below
     "click==7.1.2",  # For the CLI
     "dnspythonchia==2.2.0",  # Query DNS seeds
-    "watchdog==2.1.6",  # Filesystem event watching - watches keyring.yaml
+    "watchdog==2.1.7",  # Filesystem event watching - watches keyring.yaml
     "dnslib==0.9.17",  # dns lib
     "typing-extensions==4.0.1",  # typing backports like Protocol and TypedDict
     "zstd==1.5.0.4",
     "packaging==21.0",
-    "wget==3.2", # Only for downloading peer node list
 ]
 
 upnp_dependencies = [
@@ -44,9 +42,10 @@ upnp_dependencies = [
 
 dev_dependencies = [
     "build",
+    "coverage",
     "pre-commit",
     "pytest",
-    "pytest-asyncio>=0.18.1", # require attribute 'fixture'
+    "pytest-asyncio>=0.18.1",  # require attribute 'fixture'
     "pytest-monitor; sys_platform == 'linux'",
     "pytest-xdist",
     "twine",
@@ -57,6 +56,7 @@ dev_dependencies = [
     "black==21.12b0",
     "aiohttp_cors",  # For blackd
     "ipython",  # For asyncio debugging
+    "pyinstaller==5.0",
     "types-aiofiles",
     "types-click",
     "types-cryptography",
@@ -67,8 +67,10 @@ dev_dependencies = [
 
 kwargs = dict(
     name="btcgreen-blockchain",
+    author="hello",
+    author_email="hello@btcgreen.us",
     description="BTCgreen blockchain full node, farmer, timelord, and wallet.",
-    url="https://btcgreennetwork.org/",
+    url="https://btcgreen.us/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="btcgreen blockchain node",
@@ -90,6 +92,7 @@ kwargs = dict(
         "btcgreen.farmer",
         "btcgreen.harvester",
         "btcgreen.introducer",
+        "btcgreen.plot_sync",
         "btcgreen.plotters",
         "btcgreen.plotting",
         "btcgreen.pools",
@@ -106,6 +109,7 @@ kwargs = dict(
         "btcgreen.wallet.rl_wallet",
         "btcgreen.wallet.cat_wallet",
         "btcgreen.wallet.did_wallet",
+        "btcgreen.wallet.nft_wallet",
         "btcgreen.wallet.settings",
         "btcgreen.wallet.trading",
         "btcgreen.wallet.util",
@@ -115,6 +119,7 @@ kwargs = dict(
     entry_points={
         "console_scripts": [
             "btcgreen = btcgreen.cmds.btcgreen:main",
+            "btcgreen_daemon = btcgreen.daemon.server:main",
             "btcgreen_wallet = btcgreen.server.start_wallet:main",
             "btcgreen_full_node = btcgreen.server.start_full_node:main",
             "btcgreen_harvester = btcgreen.server.start_harvester:main",

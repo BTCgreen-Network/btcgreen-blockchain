@@ -4,7 +4,7 @@ from btcgreen.plotters.madmax import install_madmax
 
 
 def install_plotter(plotter, root_path):
-    if plotter == "chiapos":
+    if plotter == "btcgreenpos":
         print("BTCgreenpos already installed. No action taken.")
         return
     elif plotter == "madmax":
