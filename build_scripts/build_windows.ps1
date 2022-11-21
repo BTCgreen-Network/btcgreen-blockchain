@@ -5,7 +5,6 @@ $ErrorActionPreference = "Stop"
 mkdir build_scripts\win_build
 
 git status
-git submodule
 
 if (-not (Test-Path env:BTCGREEN_INSTALLER_VERSION)) {
   $env:BTCGREEN_INSTALLER_VERSION = '0.0.0'
@@ -29,21 +28,40 @@ Write-Output "   ---"
 Write-Output "Setup npm packager"
 Write-Output "   ---"
 Set-Location -Path ".\npm_windows" -PassThru
-npm ci
+npm install
 $Env:Path = $(npm bin) + ";" + $Env:Path
+Set-Location -Path "..\" -PassThru
 
-Set-Location -Path "..\..\" -PassThru
+Set-Location -Path "..\btcgreen-blockchain-gui" -PassThru
+# We need the code sign cert in the gui subdirectory so we can actually sign the UI package
 If ($env:HAS_SECRET) {
-    $env:CSC_LINK = Join-Path "." "win_code_sign_cert.p12" -Resolve
+    Copy-Item "win_code_sign_cert.p12" -Destination "packages\gui\"
 }
+
+git status
 
 Write-Output "   ---"
 Write-Output "Prepare Electron packager"
 Write-Output "   ---"
 $Env:NODE_OPTIONS = "--max-old-space-size=3000"
 
+lerna clean -y
+npm install
+# Audit fix does not currently work with Lerna. See https://github.com/lerna/lerna/issues/1663
+# npm audit fix
+
+git status
+
+Write-Output "   ---"
+Write-Output "Electron package Windows Installer"
+Write-Output "   ---"
+npm run build
+If ($LastExitCode -gt 0){
+    Throw "npm run build failed!"
+}
+
 # Change to the GUI directory
-Set-Location -Path "btcgreen-blockchain-gui\packages\gui" -PassThru
+Set-Location -Path "packages\gui" -PassThru
 
 Write-Output "   ---"
 Write-Output "Increase the stack for btcgreen command for (btcgreen plots create) chiapos limitations"
@@ -66,26 +84,34 @@ mv temp.json package.json
 Write-Output "   ---"
 
 Write-Output "   ---"
-Write-Output "electron-builder"
-electron-builder build --win --x64 --config.productName="BTCgreen"
-Get-ChildItem dist\win-unpacked\resources
+Write-Output "electron-packager"
+electron-packager . BTCgreen --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\btcgreen.ico --app-version=$packageVersion
 Write-Output "   ---"
+
+Write-Output "   ---"
+Write-Output "node winstaller.js"
+node winstaller.js
+Write-Output "   ---"
+
+git status
 
 If ($env:HAS_SECRET) {
    Write-Output "   ---"
-   Write-Output "Verify signature"
+   Write-Output "Add timestamp and verify signature"
    Write-Output "   ---"
-   signtool.exe verify /v /pa .\dist\BTCgreenSetup-$packageVersion.exe
+   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\BTCgreenSetup-$packageVersion.exe
+   signtool.exe verify /v /pa .\release-builds\windows-installer\BTCgreenSetup-$packageVersion.exe
    }   Else    {
-   Write-Output "Skipping verify signatures - no authorization to install certificates"
+   Write-Output "Skipping timestamp and verify signatures - no authorization to install certificates"
 }
+
+git status
 
 Write-Output "   ---"
 Write-Output "Moving final installers to expected location"
 Write-Output "   ---"
-Copy-Item ".\dist\win-unpacked" -Destination "$env:GITHUB_WORKSPACE\btcgreen-blockchain-gui\BTCgreen-win32-x64" -Recurse
-mkdir "$env:GITHUB_WORKSPACE\btcgreen-blockchain-gui\release-builds\windows-installer" -ea 0
-Copy-Item ".\dist\BTCgreenSetup-$packageVersion.exe" -Destination "$env:GITHUB_WORKSPACE\btcgreen-blockchain-gui\release-builds\windows-installer"
+Copy-Item ".\BTCgreen-win32-x64" -Destination "$env:GITHUB_WORKSPACE\btcgreen-blockchain-gui\" -Recurse
+Copy-Item ".\release-builds" -Destination "$env:GITHUB_WORKSPACE\btcgreen-blockchain-gui\" -Recurse
 
 Write-Output "   ---"
 Write-Output "Windows Installer complete"

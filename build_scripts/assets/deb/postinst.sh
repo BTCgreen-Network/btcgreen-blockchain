@@ -3,5 +3,5 @@
 
 set -e
 
-ln -s /opt/btcgreen/resources/app.asar.unpacked/daemon/btcgreen /usr/bin/btcgreen || true
-ln -s /opt/btcgreen/btcgreen-blockchain /usr/bin/btcgreen-blockchain || true
+ln -s /usr/lib/btcgreen-blockchain/resources/app.asar.unpacked/daemon/btcgreen /usr/bin/btcgreen || true
+ln -s /usr/lib/btcgreen-blockchain/resources/app.asar.unpacked/daemon /opt/btcgreen || true

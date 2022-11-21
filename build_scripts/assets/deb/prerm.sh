@@ -4,4 +4,4 @@
 set -e
 
 unlink /usr/bin/btcgreen || true
-unlink /usr/bin/btcgreen-blockchain || true
+unlink /opt/btcgreen || true

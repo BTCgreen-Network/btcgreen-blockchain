@@ -1,5 +1,5 @@
 {
-  "name": "npm_linux",
+  "name": "npm_linux_rpm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron-builder": "^23.5.1",
-    "lerna": "^5.5.2"
+    "electron-installer-redhat": "^3.3.0",
+    "electron-packager": "^15.4.0",
+    "lerna": "^4.0.0"
   }
 }
