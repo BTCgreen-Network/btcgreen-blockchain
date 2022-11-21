@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
 import type { PlotNFT, Plot } from '@btcgreen/api';
 import { useIsWalletSynced } from '@btcgreen/wallets';
+import { useMemo } from 'react';
+
 import PlotNFTState from '../constants/PlotNFTState';
 import usePlotNFTName from './usePlotNFTName';
 

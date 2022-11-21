@@ -1,11 +1,11 @@
-import React from 'react';
-import { Trans } from '@lingui/macro';
-import { Tooltip } from '@btcgreen/core';
-import { useGetCatListQuery } from '@btcgreen/api-react';
-import { VerifiedUser as VerifiedUserIcon, VerifiedUserProps } from '@mui/icons-material';
-import styled from 'styled-components';
 import type { Wallet } from '@btcgreen/api';
 import { WalletType } from '@btcgreen/api';
+import { useGetCatListQuery } from '@btcgreen/api-react';
+import { Tooltip } from '@btcgreen/core';
+import { Trans } from '@lingui/macro';
+import { VerifiedUser as VerifiedUserIcon, VerifiedUserProps } from '@mui/icons-material';
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledSmallBadge = styled(VerifiedUserIcon)`
   font-size: 1rem;
@@ -32,4 +32,3 @@ export default function WalletBadge(props: Props) {
 
   return null;
 }
-

@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import { useGetFarmedAmountQuery } from '@btcgreen/api-react';
+import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple, useLocale } from '@btcgreen/core';
 import { Trans } from '@lingui/macro';
 import BigNumber from 'bignumber.js';
-import { useCurrencyCode, mojoToBTCgreenLocaleString, CardSimple, useLocale } from '@btcgreen/core';
-import { useGetFarmedAmountQuery } from '@btcgreen/api-react';
+import React, { useMemo } from 'react';
 
 export default function FarmCardBlockRewards() {
   const currencyCode = useCurrencyCode();

@@ -12,26 +12,88 @@ outbound_rate_limit_percent: 30
 network_overrides: &network_overrides
   constants:
     mainnet:
-      NETWORK_TYPE: 0
       GENESIS_CHALLENGE: 3651040b10c417512ee251d64e566cf72f42c97d14f7e06eb11893eb1447772a
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
     testnet0:
       MIN_PLOT_SIZE: 18
-      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-      NETWORK_TYPE: 1
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_CHALLENGE: 3651040b10c417512ee251d64e566cf72f42c97d14f7e06eb11893eb1447772a
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
+    testnet2:
+      MIN_PLOT_SIZE: 18
+      GENESIS_CHALLENGE: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c"
+    testnet3:
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      GENESIS_CHALLENGE: ca7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015af
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      MIN_PLOT_SIZE: 18
+      MEMPOOL_BLOCK_BUFFER: 10
+    testnet4:
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      GENESIS_CHALLENGE: dd7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015af
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      MIN_PLOT_SIZE: 18
+      MEMPOOL_BLOCK_BUFFER: 10
+      EPOCH_BLOCKS: 768
+      DIFFICULTY_STARTING: 30
+    testnet5:
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      GENESIS_CHALLENGE: ee7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015af
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      MIN_PLOT_SIZE: 18
+      MEMPOOL_BLOCK_BUFFER: 10
+      EPOCH_BLOCKS: 768
+      DIFFICULTY_STARTING: 30
+    testnet7:
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      GENESIS_CHALLENGE: 117816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015af
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      MIN_PLOT_SIZE: 18
+      MEMPOOL_BLOCK_BUFFER: 50
+      EPOCH_BLOCKS: 768
+      DIFFICULTY_STARTING: 30
+    testnet10:
+      AGG_SIG_ME_ADDITIONAL_DATA: ae83525ba8d1dd3f09b277de18ca3e43fc0af20d20c4b3e92ef2a48bd291ccb2
+      DIFFICULTY_CONSTANT_FACTOR: 10052721566054
+      DIFFICULTY_STARTING: 30
+      EPOCH_BLOCKS: 768
+      GENESIS_CHALLENGE: ae83525ba8d1dd3f09b277de18ca3e43fc0af20d20c4b3e92ef2a48bd291ccb2
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: 75e5849b1a27d71e74de1390a4fc81c38b4ed8ce24d4efb2c9a5807d0e82106c
+      MEMPOOL_BLOCK_BUFFER: 10
+      MIN_PLOT_SIZE: 18
   config:
     mainnet:
       address_prefix: "xbtc"
       default_full_node_port: 9282
     testnet0:
       address_prefix: "txbtc"
-      default_full_node_port: 23333
+      default_full_node_port: 59282
+    testnet1:
+      address_prefix: "txbtc"
+    testnet2:
+      address_prefix: "txbtc"
+    testnet3:
+      address_prefix: "txbtc"
+    testnet4:
+      address_prefix: "txbtc"
+    testnet7:
+      address_prefix: "txbtc"
+      default_full_node_port: 59282
+    testnet10:
+      address_prefix: "txbtc"
+      default_full_node_port: 59282
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.btcgreen.us/notify/mainnet_alert.txt
+ALERTS_URL: https://download.btcgreen.net/notify/mainnet_alert.txt
 BTCGREEN_ALERTS_PUBKEY: 89b7fd87cb56e926ecefb879a29aae308be01f31980569f6a75a69d2a9a69daefd71fb778d865f7c50d6c967e3025937
 
 # public ssl ca is included in source code
@@ -50,13 +112,14 @@ daemon_ssl:
   private_key: "config/ssl/daemon/private_daemon.key"
 
 
-# Controls logging of all servers (harvester, farmer, etc..). Each one can be overriden.
+# Controls logging of all servers (harvester, farmer, etc..). Each one can be overridden.
 logging: &logging
   log_stdout: False  # If True, outputs to stdout instead of a file
   log_filename: "log/debug.log"
   log_level: "INFO"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
   log_maxbytesrotation: 52428800 #  Max bytes logged before rotating logs
+  log_use_gzip: False #  Use gzip to compress rotated logs
   log_syslog: False  # If True, outputs to SysLog host and port specified
   log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
   log_syslog_port: 514  # UDP port of the remote or local Unix syslog
@@ -64,7 +127,7 @@ logging: &logging
 seeder:
   # The fake full node used for crawling will run on this port.
   port: 9282
-  # Most full nodes on the network run on this port. (i.e. 9282 for mainnet, 23333 for testnet).
+  # Most full nodes on the network run on this port. (i.e. 9282 for mainnet, 59282 for testnet).
   other_peers_port: 9282
   # This will override the default full_node.peer_connect_timeout for the crawler full node
   peer_connect_timeout: 2
@@ -72,7 +135,7 @@ seeder:
   crawler_db_path: "crawler.db"
   # Peers used for the initial run.
   bootstrap_peers:
-    - "node.btcgreen.us"
+    - "node.btcgreen.net"
   # Only consider nodes synced at least to this height.
   minimum_height: 240000
   # How many of a particular version we need to see before reporting it in the logs
@@ -93,7 +156,7 @@ seeder:
   # Crawler is its own standalone service within the seeder component
   crawler:
     start_rpc_server: True
-    rpc_port: 21451
+    rpc_port: 8561
     ssl:
       private_crt: "config/ssl/crawler/private_crawler.crt"
       private_key: "config/ssl/crawler/private_crawler.key"
@@ -116,7 +179,7 @@ harvester:
     batch_sleep_milliseconds: 1 # Milliseconds the harvester sleeps between batch processing
 
 
-  # If True use parallel reads in btcgreenpos
+  # If True use parallel reads in chiapos
   parallel_read: True
 
   logging: *logging
@@ -140,7 +203,7 @@ harvester:
     key: "config/ssl/ca/btcgreen_ca.key"
 
 pool:
-  # Replace this with a real puzzle hash
+  # Replace this with a real receive address
   # xbtc_target_address: txbtc102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
   logging: *logging
   network_overrides: *network_overrides
@@ -160,7 +223,7 @@ farmer:
 
   pool_public_keys: []
 
-  # Replace this with a real puzzle hash
+  # Replace this with a real receive address
   # xbtc_target_address: txbtc102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
 
   # If True, starts an RPC server at the following port
@@ -216,7 +279,7 @@ timelord:
   # fast_algorithm is a faster proof generation algorithm. This speed increase
   # requires much less memory usage and a does not have the risk of OOM that
   # the normal timelord has but requires significantly more cores doing
-  # parrallel proof generation and creates a larger and slower to verify
+  # parallel proof generation and creates a larger and slower to verify
   # resulting proof.
   # An Intel Core i9-10900K can run 2 normal vdf_clients at ~221,000 ips
   # without slowing down but running more than 1 with fast_algorithm will
@@ -239,7 +302,7 @@ timelord:
   multiprocessing_start_method: default
 
   start_rpc_server: True
-  rpc_port: 21450
+  rpc_port: 8557
 
   ssl:
     private_crt:  "config/ssl/timelord/private_timelord.crt"
@@ -273,10 +336,6 @@ full_node:
   # peer_db_path is deprecated and has been replaced by peers_file_path
   peer_db_path: db/peer_table_node.sqlite
   peers_file_path: db/peers.dat
-  simulator_database_path: sim_db/simulator_blockchain_v1_CHALLENGE.sqlite
-  # simulator_peer_db_path is deprecated and has been replaced by simulator_peers_file_path
-  simulator_peer_db_path: sim_db/peer_table_node.sqlite
-  simulator_peers_file_path: sim_db/peer_table_node.dat
 
   multiprocessing_start_method: default
 
@@ -335,6 +394,8 @@ full_node:
   # analyze with btcgreen/utils/profiler.py
   enable_profiler: False
 
+  enable_memory_profiler: False
+
   # this is a debug and profiling facility that logs all SQLite commands to a
   # separate log file (under logging/sql.log).
   log_sqlite_cmds: False
@@ -345,7 +406,7 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.btcgreen.us"
+    - "dns-introducer.btcgreen.net"
   farmer_peer:
       host: *self_hostname
       port: 18655
@@ -353,7 +414,7 @@ full_node:
       host: *self_hostname
       port: 18254
   introducer_peer:
-      host: introducer.btcgreen.us  # BTCgreen AWS introducer IPv4/IPv6
+      host: introducer.btcgreen.net  # BTCgreen AWS introducer IPv4/IPv6
       port: 9282
   wallet_peer:
     host: *self_hostname
@@ -410,25 +471,30 @@ wallet:
 
   enable_profiler: False
 
+  enable_memory_profiler: False
+
   # see description for full_node.db_sync
   db_sync: auto
 
+  # the number of threads used to read from the wallet database
+  # concurrently. There's always only 1 writer, but the number of readers is
+  # configurable
+  db_readers: 2
+
   connect_to_unknown_peers: True
 
-  # The minimum height that we care about for our transactions. Set to zero
-  # If we are restoring from private key and don't know the height.
-  starting_height: 0
-  start_height_buffer: 100  # Wallet will stop fly sync at starting_height - buffer
-  num_sync_batches: 50
-  initial_num_public_keys: 100
+  initial_num_public_keys: 425
 
   dns_servers:
-    - "dns-introducer.btcgreen.us"
+    - "dns-introducer.btcgreen.net"
 
   full_node_peer:
     host: *self_hostname
     port: 9282
-
+  # The path of NFT off-chain metadata cache
+  nft_metadata_cache_path: "nft_cache"
+  # The length of NFT ID prefix will be used as hash index
+  nft_metadata_cache_hash_length: 3
   multiprocessing_start_method: default
 
   testing: False
@@ -437,6 +503,10 @@ wallet:
   # wallet_peers_path is deprecated and has been replaced by wallet_peers_file_path
   wallet_peers_path: wallet/db/wallet_peers.sqlite
   wallet_peers_file_path: wallet/db/wallet_peers.dat
+
+  # this is a debug and profiling facility that logs all SQLite commands to a
+  # separate log file (under logging/wallet_sql.log).
+  log_sqlite_cmds: False
 
   logging: *logging
   network_overrides: *network_overrides
@@ -449,7 +519,7 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.btcgreen.us # BTCgreen AWS introducer IPv4/IPv6
+    host: introducer.btcgreen.net # BTCgreen AWS introducer IPv4/IPv6
     port: 9282
 
   ssl:
@@ -458,8 +528,9 @@ wallet:
     public_crt:  "config/ssl/wallet/public_wallet.crt"
     public_key:  "config/ssl/wallet/public_wallet.key"
 
+  # Node IDs of trusted full node peers, for performing a fast trusted wallet sync
   trusted_peers:
-    trusted_node_1: "config/ssl/full_node/public_full_node.crt"
+    0ThisisanexampleNodeID7ff9d60f1c3fa270c213c0ad0cb89c01274634a7c3cb9: Does_not_matter
 
   short_sync_blocks_behind_threshold: 20
 
@@ -476,3 +547,68 @@ wallet:
 
   # Interval to resend unconfirmed transactions, even if previously accepted into Mempool
   tx_resend_timeout_secs: 1800
+
+  # After n received unspent transactions, the spam filter will be enabled, which will filter out received
+  # coins with very small value. Any standard TX under xbtc_spam_amount is filtered
+  spam_filter_after_n_txs: 200
+  xbtc_spam_amount: 1000000
+  # Accept notifications from parties on chain
+  accept_notifications: False
+  # The amount someone has to pay you in mojos for you to see their notification
+  required_notification_amount: 10000000
+
+data_layer:
+  # TODO: consider name
+  # TODO: organize consistently with other sections
+
+  # TODO: shouldn't we not need this since we have no actual public interface (yet)?
+  port: 8561
+  wallet_peer:
+    host: localhost
+    port: 19544
+
+  database_path: "data_layer/db/data_layer_CHALLENGE.sqlite"
+  # The location where the server files will be stored.
+  server_files_location: "data_layer/db/server_files_location_CHALLENGE"
+  # The timeout for the client to download a file from a server
+  client_timeout: 15
+  # Data for running a data layer server.
+  host_ip: 0.0.0.0
+  host_port: 8575
+  # Data for running a data layer client.
+  manage_data_interval: 60
+  selected_network: *selected_network
+  # If True, starts an RPC server at the following port
+  start_rpc_server: True
+  # TODO: what considerations are there in choosing this?
+  rpc_port: 8562
+  rpc_server_max_request_body_size: 26214400
+  fee: 1000000000
+  logging: *logging
+
+  # TODO: which of these are really appropriate?
+
+  ssl:
+    private_crt:  "config/ssl/data_layer/private_data_layer.crt"
+    private_key:  "config/ssl/data_layer/private_data_layer.key"
+    public_crt:  "config/ssl/data_layer/public_data_layer.crt"
+    public_key:  "config/ssl/data_layer/public_data_layer.key"
+
+simulator:
+
+  # Should the simulator farm a block whenever a transaction is in mempool
+  auto_farm: True
+
+  # The key used by the simulator to farm blocks and send transactions
+  key_fingerprint:
+
+  # The target address for any blocks that are farmed
+  farming_address:
+
+  # the directory used to save plots
+  # for the plot directory below the final directory will be: ~/.btcgreen/simulator/plots
+  plot_directory: simulator/plots
+
+  # Should we use real time in the simulated chain?
+  # most tests don't need this, however it is pretty important when writing BTCgreenLisp
+  use_current_time: True

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import asyncio
 import json
 import logging
@@ -9,14 +11,8 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 import aiohttp
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-import btcgreen.server.ws_connection as ws  # lgtm [py/import-and-import-from]
 from btcgreen.consensus.constants import ConsensusConstants
-from btcgreen.daemon.keychain_proxy import (
-    KeychainProxy,
-    KeychainProxyConnectionFailure,
-    connect_to_keychain_and_validate,
-    wrap_local_keychain,
-)
+from btcgreen.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
 from btcgreen.plot_sync.delta import Delta
 from btcgreen.plot_sync.receiver import Receiver
 from btcgreen.pools.pool_config import PoolWalletConfig, add_auth_key, load_pool_config
@@ -33,6 +29,7 @@ from btcgreen.protocols.pool_protocol import (
     get_current_authentication_token,
 )
 from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
+from btcgreen.rpc.rpc_server import default_get_connections
 from btcgreen.server.outbound_message import NodeType, make_msg
 from btcgreen.server.server import ssl_context_for_root
 from btcgreen.server.ws_connection import WSBTCgreenConnection
@@ -42,6 +39,7 @@ from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.util.bech32m import decode_puzzle_hash
 from btcgreen.util.byte_types import hexstr_to_bytes
 from btcgreen.util.config import config_path_for_filename, load_config, lock_and_load_config, save_config
+from btcgreen.util.errors import KeychainProxyConnectionFailure
 from btcgreen.util.hash import std_hash
 from btcgreen.util.ints import uint8, uint16, uint32, uint64
 from btcgreen.util.keychain import Keychain
@@ -118,6 +116,9 @@ class Farmer:
         # Last time we updated pool_state based on the config file
         self.last_config_access_time: uint64 = uint64(0)
 
+    def get_connections(self, request_node_type: Optional[NodeType]) -> List[Dict[str, Any]]:
+        return default_get_connections(server=self.server, request_node_type=request_node_type)
+
     async def ensure_keychain_proxy(self) -> KeychainProxy:
         if self.keychain_proxy is None:
             if self.local_keychain:
@@ -125,7 +126,7 @@ class Farmer:
             else:
                 self.keychain_proxy = await connect_to_keychain_and_validate(self._root_path, self.log)
                 if not self.keychain_proxy:
-                    raise KeychainProxyConnectionFailure("Failed to connect to keychain service")
+                    raise KeychainProxyConnectionFailure()
         return self.keychain_proxy
 
     async def get_all_private_keys(self):
@@ -134,7 +135,11 @@ class Farmer:
 
     async def setup_keys(self) -> bool:
         no_keys_error_str = "No keys exist. Please run 'btcgreen keys generate' or open the UI."
-        self.all_root_sks: List[PrivateKey] = [sk for sk, _ in await self.get_all_private_keys()]
+        try:
+            self.all_root_sks: List[PrivateKey] = [sk for sk, _ in await self.get_all_private_keys()]
+        except KeychainProxyConnectionFailure:
+            return False
+
         self._private_keys = [master_sk_to_farmer_sk(sk) for sk in self.all_root_sks] + [
             master_sk_to_pool_sk(sk) for sk in self.all_root_sks
         ]
@@ -251,7 +256,7 @@ class Farmer:
             ErrorResponse(uint16(PoolErrorCode.REQUEST_FAILED.value), error_message).to_json_dict()
         )
 
-    def on_disconnect(self, connection: ws.WSBTCgreenConnection):
+    def on_disconnect(self, connection: WSBTCgreenConnection):
         self.log.info(f"peer disconnected {connection.get_peer_logging()}")
         self.state_changed("close_connection", {})
         if connection.connection_type is NodeType.HARVESTER:

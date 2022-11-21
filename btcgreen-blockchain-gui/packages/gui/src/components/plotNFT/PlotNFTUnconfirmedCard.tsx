@@ -1,10 +1,11 @@
+import type { UnconfirmedPlotNFT } from '@btcgreen/api';
+import { useGetTransactionQuery } from '@btcgreen/api-react';
+import { Flex, Link, Loading } from '@btcgreen/core';
+import { Trans } from '@lingui/macro';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Trans } from '@lingui/macro';
-import { Flex, Link, Loading } from '@btcgreen/core';
-import { useGetTransactionQuery } from '@btcgreen/api-react';
-import { Box, Card, CardContent, Typography } from '@mui/material';
-import type { UnconfirmedPlotNFT } from '@btcgreen/api';
+
 import PlotNFTState from '../../constants/PlotNFTState';
 import useUnconfirmedPlotNFTs from '../../hooks/useUnconfirmedPlotNFTs';
 
@@ -31,11 +32,14 @@ export default function PlotNFTUnconfirmedCard(props: Props) {
   } = props;
 
   const { remove } = useUnconfirmedPlotNFTs();
-  const { data: transaction, isLoading } = useGetTransactionQuery({
-    transactionId,
-  }, {
-    pollingInterval: 5000,
-  });
+  const { data: transaction, isLoading } = useGetTransactionQuery(
+    {
+      transactionId,
+    },
+    {
+      pollingInterval: 5000,
+    }
+  );
 
   useEffect(() => {
     if (transaction?.confirmed) {
@@ -70,13 +74,7 @@ export default function PlotNFTUnconfirmedCard(props: Props) {
               </Flex>
             )}
           </Box>
-          <Flex
-            flexGrow={1}
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-            gap={2}
-          >
+          <Flex flexGrow={1} alignItems="center" justifyContent="center" flexDirection="column" gap={2}>
             <Loading />
             <Typography variant="body2" align="center">
               <Trans>Waiting for the transaction to be confirmed</Trans>

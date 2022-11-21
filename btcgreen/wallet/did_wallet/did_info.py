@@ -8,8 +8,6 @@ from btcgreen.wallet.lineage_proof import LineageProof
 from btcgreen.types.blockchain_format.program import Program
 from btcgreen.types.blockchain_format.coin import Coin
 
-DID_HRP = "did:btcgreen:"
-
 
 @streamable
 @dataclass(frozen=True)

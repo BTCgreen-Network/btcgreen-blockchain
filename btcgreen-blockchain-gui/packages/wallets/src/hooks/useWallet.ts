@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
-import { useGetWalletsQuery, useGetCatListQuery } from '@btcgreen/api-react';
 import { WalletType } from '@btcgreen/api';
 import type { Wallet } from '@btcgreen/api';
+import { useGetWalletsQuery, useGetCatListQuery } from '@btcgreen/api-react';
 import { useCurrencyCode } from '@btcgreen/core';
+import { useMemo } from 'react';
 
 export default function useWallet(walletId?: number | string): {
   loading: boolean;
@@ -13,9 +13,10 @@ export default function useWallet(walletId?: number | string): {
   const { data: wallets, isLoading } = useGetWalletsQuery();
   const { data: catList = [], isLoading: isCatListLoading } = useGetCatListQuery();
 
-  const wallet = useMemo(() => {
-    return wallets?.find((item) => item.id.toString() === walletId?.toString());
-  }, [wallets, walletId]);
+  const wallet = useMemo(
+    () => wallets?.find((item) => item.id.toString() === walletId?.toString()),
+    [wallets, walletId]
+  );
 
   const unit = useMemo(() => {
     if (wallet) {
@@ -27,13 +28,13 @@ export default function useWallet(walletId?: number | string): {
 
         return undefined;
       }
-      
+
       return currencyCode;
-    } 
+    }
   }, [wallet, currencyCode, isCatListLoading]);
 
-  return { 
-    wallet, 
+  return {
+    wallet,
     loading: isLoading,
     unit,
   };

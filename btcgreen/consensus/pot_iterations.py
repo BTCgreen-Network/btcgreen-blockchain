@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from btcgreen.consensus.constants import ConsensusConstants
 from btcgreen.consensus.pos_quality import _expected_plot_size
 from btcgreen.types.blockchain_format.sized_bytes import bytes32

@@ -1,4 +1,6 @@
-from typing import List, Callable
+from __future__ import annotations
+
+from typing import Callable, List
 
 from btcgreen.consensus.blockchain_interface import BlockchainInterface
 from btcgreen.util.ints import uint32

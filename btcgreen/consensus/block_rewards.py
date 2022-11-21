@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from btcgreen.util.ints import uint32, uint64
 
 # 1 BTCgreen coin = 1,000,000,000,000 = 1 trillion mojo.
@@ -27,6 +29,7 @@ def calculate_pool_reward(height: uint32) -> uint64:
         return uint64(int((7 / 8) * 0.125 * _mojo_per_btcgreen))
     else:
         return uint64(int((7 / 8) * 0.0625 * _mojo_per_btcgreen))
+
 
 def calculate_base_farmer_reward(height: uint32) -> uint64:
     """

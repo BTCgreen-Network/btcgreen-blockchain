@@ -1,7 +1,15 @@
-from typing import KeysView, Generator
+from __future__ import annotations
+
+from typing import Generator, KeysView
 
 SERVICES_FOR_GROUP = {
-    "all": "btcgreen_harvester btcgreen_timelord_launcher btcgreen_timelord btcgreen_farmer btcgreen_full_node btcgreen_wallet".split(),
+    "all": (
+        "btcgreen_harvester btcgreen_timelord_launcher btcgreen_timelord btcgreen_farmer "
+        "btcgreen_full_node btcgreen_wallet btcgreen_data_layer btcgreen_data_layer_http"
+    ).split(),
+    # TODO: should this be `data_layer`?
+    "data": "btcgreen_wallet btcgreen_data_layer".split(),
+    "data_layer_http": "btcgreen_data_layer_http".split(),
     "node": "btcgreen_full_node".split(),
     "harvester": "btcgreen_harvester".split(),
     "farmer": "btcgreen_harvester btcgreen_farmer btcgreen_full_node btcgreen_wallet".split(),

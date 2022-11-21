@@ -1,7 +1,7 @@
-import React from 'react';
-import { Trans } from '@lingui/macro';
-import { FormatBytes, CardSimple } from '@btcgreen/core';
 import { useGetTotalHarvestersSummaryQuery } from '@btcgreen/api-react';
+import { FormatBytes, CardSimple } from '@btcgreen/core';
+import { Trans } from '@lingui/macro';
+import React from 'react';
 
 export default function PlotCardTotalPlotsSize() {
   const { totalPlotSize, initializedHarvesters, isLoading } = useGetTotalHarvestersSummaryQuery();

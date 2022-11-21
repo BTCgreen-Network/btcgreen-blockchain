@@ -1,4 +1,5 @@
 import type { PoolState } from '@btcgreen/api';
+
 import removeOldPoints from './removeOldPoints';
 
 export default function normalizePoolState(poolState: PoolState): PoolState {

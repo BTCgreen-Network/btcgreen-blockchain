@@ -1,9 +1,7 @@
-
-
-import React from 'react';
-import { Trans } from '@lingui/macro';
-import { FormatLargeNumber, CardSimple } from '@btcgreen/core';
 import { useGetTotalHarvestersSummaryQuery } from '@btcgreen/api-react';
+import { FormatLargeNumber, CardSimple } from '@btcgreen/core';
+import { Trans } from '@lingui/macro';
+import React from 'react';
 
 export default function PlotCardPlotsFailedToOpen() {
   const { failedToOpenFilenames, initializedHarvesters, isLoading } = useGetTotalHarvestersSummaryQuery();

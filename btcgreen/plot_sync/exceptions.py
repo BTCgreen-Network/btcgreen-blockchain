@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 from typing import Any
 
 from btcgreen.plot_sync.util import ErrorCodes, State
 from btcgreen.protocols.harvester_protocol import PlotSyncIdentifier
-from btcgreen.server.ws_connection import NodeType
+from btcgreen.server.outbound_message import NodeType
 from btcgreen.util.ints import uint64
 
 

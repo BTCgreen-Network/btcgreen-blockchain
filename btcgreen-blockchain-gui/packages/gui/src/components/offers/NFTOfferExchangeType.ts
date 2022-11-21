@@ -1,6 +1,6 @@
 enum NFTOfferExchangeType {
-  NFTForXBTC = 'nft_for_xbtc',
-  XBTCForNFT = 'xbtc_for_nft',
+  NFTForToken = 'nft_for_token',
+  TokenForNFT = 'token_for_nft',
 }
 
 export default NFTOfferExchangeType;

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Callable, Optional
 
 from btcgreen.introducer.introducer import Introducer
@@ -6,7 +8,7 @@ from btcgreen.protocols.protocol_message_types import ProtocolMessageTypes
 from btcgreen.server.outbound_message import Message, make_msg
 from btcgreen.server.ws_connection import WSBTCgreenConnection
 from btcgreen.types.peer_info import TimestampedPeerInfo
-from btcgreen.util.api_decorators import api_request, peer_required
+from btcgreen.util.api_decorators import api_request
 from btcgreen.util.ints import uint64
 
 
@@ -19,8 +21,7 @@ class IntroducerAPI:
     def _set_state_changed_callback(self, callback: Callable):
         pass
 
-    @peer_required
-    @api_request
+    @api_request(peer_required=True)
     async def request_peers_introducer(
         self,
         request: RequestPeersIntroducer,

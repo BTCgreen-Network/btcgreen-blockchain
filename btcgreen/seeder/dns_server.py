@@ -11,7 +11,7 @@ import aiosqlite
 from dnslib import A, AAAA, SOA, NS, MX, CNAME, RR, DNSRecord, QTYPE, DNSHeader
 
 from btcgreen.util.btcgreen_logging import initialize_logging
-from btcgreen.util.path import mkdir, path_from_root
+from btcgreen.util.path import path_from_root
 from btcgreen.util.config import load_config
 from btcgreen.util.default_root import DEFAULT_ROOT_PATH
 
@@ -80,7 +80,7 @@ class DNSServer:
 
         crawler_db_path: str = config.get("crawler_db_path", "crawler.db")
         self.db_path = path_from_root(root_path, crawler_db_path)
-        mkdir(self.db_path.parent)
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
 
     async def start(self):
         # self.crawl_db = await aiosqlite.connect(self.db_path)

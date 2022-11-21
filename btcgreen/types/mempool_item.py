@@ -1,12 +1,13 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import List
 
 from btcgreen.consensus.cost_calculator import NPCResult
 from btcgreen.types.blockchain_format.coin import Coin
-from btcgreen.types.blockchain_format.program import SerializedProgram
 from btcgreen.types.blockchain_format.sized_bytes import bytes32
 from btcgreen.types.spend_bundle import SpendBundle
-from btcgreen.util.ints import uint64
+from btcgreen.util.ints import uint32, uint64
 from btcgreen.util.streamable import Streamable, streamable
 
 
@@ -19,10 +20,9 @@ class MempoolItem(Streamable):
     cost: uint64
     spend_bundle_name: bytes32
     additions: List[Coin]
-    removals: List[Coin]
-    program: SerializedProgram
+    height_added_to_mempool: uint32
 
-    def __lt__(self, other):
+    def __lt__(self, other: MempoolItem) -> bool:
         return self.fee_per_cost < other.fee_per_cost
 
     @property
@@ -32,3 +32,7 @@ class MempoolItem(Streamable):
     @property
     def name(self) -> bytes32:
         return self.spend_bundle_name
+
+    @property
+    def removals(self) -> List[Coin]:
+        return self.spend_bundle.removals()

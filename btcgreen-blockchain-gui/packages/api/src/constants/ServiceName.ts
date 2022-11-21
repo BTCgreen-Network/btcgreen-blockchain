@@ -9,6 +9,8 @@ enum ServiceName {
   TIMELORD = 'btcgreen_timelord',
   INTRODUCER = 'btcgreen_introducer',
   EVENTS = 'wallet_ui',
-};
+  DATALAYER = 'btcgreen_data_layer',
+  DATALAYER_SERVER = 'btcgreen_data_layer_http',
+}
 
 export default ServiceName;
