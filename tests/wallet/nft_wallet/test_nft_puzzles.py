@@ -42,7 +42,7 @@ def test_nft_transfer_puzzle_hashes():
     maker_did = Program.to("maker did").get_tree_hash()
     # maker_did_inner_hash = Program.to("maker did inner hash").get_tree_hash()
     metadata = [
-        ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+        ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
         ("h", 0xD4584AD463139FA8C0D9F68F4B59F185),
     ]
     metadata_updater_hash = NFT_METADATA_UPDATER_DEFAULT.get_tree_hash()
@@ -171,7 +171,7 @@ def get_updated_nft_puzzle(puzzle: Program, solution: Program) -> bytes32:
 
 def test_transfer_puzzle_builder() -> None:
     metadata = [
-        ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+        ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
         ("h", 0xD4584AD463139FA8C0D9F68F4B59F185),
     ]
     sp2_puzzle, solution = make_a_new_solution()

@@ -974,7 +974,7 @@ async def test_nft_endpoints(wallet_rpc_environment: WalletRpcTestEnvironment):
         None,
         None,
         "0xD4584AD463139FA8C0D9F68F4B59F185",
-        ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"],
+        ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"],
     )
     assert res["success"]
 

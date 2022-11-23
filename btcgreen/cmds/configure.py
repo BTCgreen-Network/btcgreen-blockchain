@@ -101,9 +101,9 @@ def configure(
             if testnet == "true" or testnet == "t":
                 print("Setting Testnet")
                 testnet_port = "59282"
-                testnet_introducer = "introducer-testnet10.btcgreen.net"
-                testnet_dns_introducer = "dns-introducer-testnet10.btcgreen.net"
-                bootstrap_peers = ["testnet10-node.btcgreen.net"]
+                testnet_introducer = "introducer-testnet10.btcgreen.us"
+                testnet_dns_introducer = "dns-introducer-testnet10.btcgreen.us"
+                bootstrap_peers = ["testnet10-node.btcgreen.us"]
                 testnet = "testnet10"
                 config["full_node"]["port"] = int(testnet_port)
                 if config["full_node"]["introducer_peer"] is None:
@@ -145,9 +145,9 @@ def configure(
             elif testnet == "false" or testnet == "f":
                 print("Setting Mainnet")
                 mainnet_port = "9282"
-                mainnet_introducer = "introducer.btcgreen.net"
-                mainnet_dns_introducer = "dns-introducer.btcgreen.net"
-                bootstrap_peers = ["node.btcgreen.net"]
+                mainnet_introducer = "introducer.btcgreen.us"
+                mainnet_dns_introducer = "dns-introducer.btcgreen.us"
+                bootstrap_peers = ["node.btcgreen.us"]
                 net = "mainnet"
                 config["full_node"]["port"] = int(mainnet_port)
                 config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)

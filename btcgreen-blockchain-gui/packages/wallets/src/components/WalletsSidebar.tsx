@@ -95,7 +95,7 @@ export default function WalletsSidebar() {
   );
 
   function handleOpenBlogPost() {
-    openExternal('https://www.btcgreen.net/cat2blog');
+    openExternal('https://www.btcgreen.us/cat2blog');
   }
 
   function openTokensInfoDialog() {
@@ -123,7 +123,7 @@ export default function WalletsSidebar() {
                 variant="outlined"
                 size="large"
                 onClick={() =>
-                  openExternal(`https://cat1.btcgreen.net/#publicKey=${privateKey.pk}&fingerprint=${fingerprint}`)
+                  openExternal(`https://cat1.btcgreen.us/#publicKey=${privateKey.pk}&fingerprint=${fingerprint}`)
                 }
                 disabled={isLoadingFingerprint || isLoadingPrivateKey}
               >
@@ -137,7 +137,7 @@ export default function WalletsSidebar() {
           <p>
             <Trans>Want to see your old balance for yourself?</Trans>
           </p>
-          <Link target="_blank" href="https://www.btcgreen.net/download/">
+          <Link target="_blank" href="https://www.btcgreen.us/download/">
             <Trans>Click here to download an older version of the wallet</Trans>
           </Link>
         </ContentStyled>

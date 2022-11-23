@@ -1,6 +1,6 @@
 # btcgreen-blockchain
 
-![Alt text](https://www.btcgreen.net/wp-content/uploads/2022/09/btcgreen-logo.svg)
+![Alt text](https://www.btcgreen.us/wp-content/uploads/2022/09/btcgreen-logo.svg)
 
 | Current Release/main | Development Branch/dev |
 |         :---:          |          :---:         |

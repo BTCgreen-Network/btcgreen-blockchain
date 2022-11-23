@@ -97,7 +97,7 @@ async def test_nft_mint_from_did(two_wallet_nodes: Any, trusted: Any) -> None:
     # construct sample metadata
     metadata = Program.to(
         [
-            ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+            ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
             ("h", "0xD4584AD463139FA8C0D9F68F4B59F185"),
         ]
     )
@@ -583,7 +583,7 @@ async def test_nft_mint_from_did_multiple_xbtc(two_wallet_nodes: Any, trusted: A
     # construct sample metadata
     metadata = Program.to(
         [
-            ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+            ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
             ("h", "0xD4584AD463139FA8C0D9F68F4B59F185"),
         ]
     )
@@ -691,7 +691,7 @@ async def test_nft_mint_from_xbtc(two_wallet_nodes: Any, trusted: Any) -> None:
     # construct sample metadata
     metadata = Program.to(
         [
-            ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+            ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
             ("h", "0xD4584AD463139FA8C0D9F68F4B59F185"),
         ]
     )
@@ -985,7 +985,7 @@ async def test_nft_mint_from_xbtc_multiple_xbtc(two_wallet_nodes: Any, trusted: 
     # construct sample metadata
     metadata = Program.to(
         [
-            ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+            ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
             ("h", "0xD4584AD463139FA8C0D9F68F4B59F185"),
         ]
     )

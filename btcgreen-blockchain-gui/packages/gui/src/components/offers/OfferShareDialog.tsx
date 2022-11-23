@@ -75,7 +75,7 @@ type CommonDialogProps = {
 
 type OfferShareServiceDialogProps = CommonOfferProps & CommonDialogProps;
 
-const testnetDummyHost = 'offers-api-sim.btcgreen.net';
+const testnetDummyHost = 'offers-api-sim.btcgreen.us';
 
 const OfferSharingProviders: {
   [key in OfferSharingService]: OfferSharingProvider;
@@ -234,7 +234,7 @@ async function postToOfferBin(offerData: string, sharePrivately: boolean, testne
   log('OfferBin upload completed');
 
   if (testnet) {
-    return 'https://www.btcgreen.net/offers';
+    return 'https://www.btcgreen.us/offers';
   }
 
   const { hash } = JSON.parse(responseBody);
@@ -281,7 +281,7 @@ async function postToHashgreen(offerData: string, testnet: boolean): Promise<str
     log('Hashgreen upload completed');
 
     if (testnet) {
-      return 'https://www.btcgreen.net/offers';
+      return 'https://www.btcgreen.us/offers';
     }
 
     const jsonObj = JSON.parse(responseBody);

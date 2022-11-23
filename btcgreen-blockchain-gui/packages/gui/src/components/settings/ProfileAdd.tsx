@@ -44,7 +44,7 @@ export default function ProfileAdd() {
   const openExternal = useOpenExternal();
 
   function handleClick() {
-    openExternal('https://faucet.btcgreen.net/');
+    openExternal('https://faucet.btcgreen.us/');
   }
 
   async function handleSubmit(data: CreateProfileData) {

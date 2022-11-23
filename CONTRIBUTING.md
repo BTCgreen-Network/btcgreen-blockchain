@@ -7,7 +7,7 @@ A lot of fascinating new cryptography and blockchain concepts are used and imple
 This repo includes the code for the BTCgreen full node, farmer, and timelord (in btcgreen folder), which are all written in python.
 It also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/BTCgreen-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/BTCgreen-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/BTCgreen-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/BTCgreen-Network/chiabip158). For major platforms, binary and source wheels are shipped to PyPI from each dependent repo. Then btcgreen-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows installer. On unsupported platforms, pip will fall back to the source distributions, to be compiled locally.
 
-If you want to learn more about this project, read the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreen.net/assets/BTCgreenGreenPaper.pdf).
+If you want to learn more about this project, read the [wiki](https://github.com/BTCgreen-Network/btcgreen-blockchain/wiki), or check out the [green paper](https://www.btcgreen.us/assets/BTCgreenGreenPaper.pdf).
 
 ## Contributions
 

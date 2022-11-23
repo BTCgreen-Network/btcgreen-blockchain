@@ -1116,7 +1116,7 @@ class TestWalletSync:
         # Create a new NFT and send it to the farmer's NFT wallet
         metadata = Program.to(
             [
-                ("u", ["https://www.btcgreen.net/img/branding/btcgreen-logo.svg"]),
+                ("u", ["https://www.btcgreen.us/img/branding/btcgreen-logo.svg"]),
                 ("h", "0xD4584AD463139FA8C0D9F68F4B59F185"),
             ]
         )
